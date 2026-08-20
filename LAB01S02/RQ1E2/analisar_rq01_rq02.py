@@ -1,4 +1,6 @@
+import os
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 ARQUIVO_RQ01 = "rq01_idade.csv"
@@ -28,7 +30,6 @@ def analisar_coluna(dados, coluna, nome_rq):
         (serie < limite_inferior) |
         (serie > limite_superior)
     ]
-
 
     print(f"\n=== {nome_rq} ===")
 
@@ -60,6 +61,46 @@ def analisar_coluna(dados, coluna, nome_rq):
 
             print(f"- {repositorio}: {valor:.2f}")
 
+
+# Cria dois gráficos para melhorar analise dos dados (tirar daqui talvez? Não sei se compromete a Sprint 3)
+def gerar_histograma_idade(dados):
+    os.makedirs("graficos", exist_ok=True)
+
+    plt.figure(figsize=(10, 6))
+
+    dados["idade_anos"].dropna().plot(
+        kind="hist",
+        bins=20,
+        edgecolor="black"
+    )
+
+    plt.title("Distribuição da idade dos repositórios")
+    plt.xlabel("Idade do repositório (anos)")
+    plt.ylabel("Quantidade de repositórios")
+
+    plt.tight_layout()
+    plt.savefig("graficos/rq01_distribuicao_idade.png")
+    plt.close()
+
+
+def gerar_boxplot_pull_requests(dados):
+    os.makedirs("graficos", exist_ok=True)
+
+    plt.figure(figsize=(10, 6))
+
+    plt.boxplot(
+        dados["pull_requests_aceitas"].dropna(),
+        vert=False,
+        tick_labels=["RQ02"],
+    )
+
+    plt.title("Distribuição de Pull Requests aceitas nos 1.000 repositórios")
+    plt.xlabel("Quantidade de Pull Requests aceitas")
+    plt.tight_layout()
+    plt.savefig("graficos/rq02_boxplot_pull_requests.png")
+    plt.close()
+
+
 def main():
     dados_rq01 = pd.read_csv(ARQUIVO_RQ01)
     dados_rq02 = pd.read_csv(ARQUIVO_RQ02)
@@ -75,6 +116,10 @@ def main():
         "pull_requests_aceitas",
         "RQ02 — Pull Requests aceitas"
     )
+
+    gerar_histograma_idade(dados_rq01)
+    gerar_boxplot_pull_requests(dados_rq02)
+    print("\nGráficos de validação gerados na pasta 'graficos'.")
 
 
 if __name__ == "__main__":
