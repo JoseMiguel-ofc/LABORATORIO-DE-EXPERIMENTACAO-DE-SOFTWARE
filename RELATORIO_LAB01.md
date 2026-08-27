@@ -125,9 +125,40 @@ O objeto de estudo é a população dos **1.000 repositórios com maior número 
 
 ### 3.6 Inovações Propostas pelo Grupo (30% da nota)
 
-> **Pendente de decisão do grupo.** A RQ07 (comparação de RQ02/03/04 por linguagem) **já faz parte do enunciado oficial** — não conta como os 30% de inovação, mesmo sendo tratada como "bônus" na sugestão de divisão de tarefas da S01. Os 30% exigem algo **além** das 7 RQs do enunciado: uma nova RQ, uma métrica adicional, uma mudança de arquitetura de coleta, ou uma metodologia complementar (ver opções na orientação do template). Hoje o repositório não tem nenhum artefato correspondente a essa seção — decidam como grupo o que entra aqui antes da entrega, e eu ajudo a implementar.
+Como contribuição adicional às questões de pesquisa definidas pelo enunciado, o grupo adotou duas inovações complementares: uma relacionada à arquitetura de coleta dos dados e outra relacionada à metodologia de análise estatística.
 
-*[conteúdo do grupo — substituir este texto após a decisão]*
+#### 3.6.1 Coleta resiliente de dados
+
+A primeira inovação consistiu na implementação de mecanismos de tolerância a falhas no script responsável pela coleta de dados através da API GraphQL do GitHub. Durante a execução das consultas, foram observadas falhas temporárias, principalmente erros HTTP 429, 502, 503 e 504.
+
+Para evitar que esses erros interrompessem toda a coleta, o script foi desenvolvido com até cinco tentativas automáticas por requisição e espera exponencial entre as novas tentativas. Além disso, foram coletadas informações do campo `rateLimit` da própria API, permitindo acompanhar o custo de cada consulta, a quantidade de pontos restantes e o horário de renovação da cota.
+
+Essa abordagem foi considerada relevante porque uma coleta envolvendo 1.000 repositórios exige diversas requisições consecutivas e está sujeita tanto às limitações de uso da API quanto a falhas temporárias de comunicação. Sem esse mecanismo, uma única falha poderia interromper o processo e gerar conjuntos de dados incompletos.
+
+Como resultado, foi possível concluir a coleta dos dados dos 1.000 repositórios utilizados no laboratório, mantendo os conjuntos de dados de RQ01, RQ02, RQ03 e RQ04 completos. Os efeitos dessa inovação são apresentados na Seção 4.1, referente à coleta de dados, e considerados novamente na discussão sobre confiabilidade e ameaças à validade.
+
+#### 3.6.2 Análise estatística complementar com quartis e outliers
+
+A segunda inovação foi a utilização de uma análise estatística complementar às métricas solicitadas originalmente. Além dos valores centrais das métricas, foram calculados mediana, primeiro quartil (Q1), terceiro quartil (Q3), intervalo interquartil (IQR) e identificação de valores considerados outliers.
+
+A identificação dos outliers foi realizada utilizando a regra do intervalo interquartil:
+
+Limite inferior = Q1 − 1,5 × IQR
+
+Limite superior = Q3 + 1,5 × IQR
+
+em que:
+
+IQR = Q3 − Q1.
+
+Essa metodologia foi adotada porque diversas métricas relacionadas a repositórios populares apresentam distribuições muito assimétricas. Nesses casos, utilizar apenas a média poderia gerar uma interpretação distorcida dos resultados devido à presença de poucos projetos com valores extremamente elevados.
+
+A análise mostrou, por exemplo, que a RQ02 apresentou mediana de 768 pull requests aceitas, enquanto a média foi de aproximadamente 4.240, sendo identificados 124 repositórios como outliers de alto volume. Isso demonstra que uma pequena parcela dos projetos concentra uma quantidade muito elevada de contribuições externas.
+
+Na RQ03, a análise dos quartis também acrescentou uma informação relevante: apesar da mediana de 39 releases, o primeiro quartil foi igual a zero, indicando que pelo menos 25% dos repositórios analisados não possuíam nenhuma release publicada. Dessa forma, a análise estatística complementar permitiu identificar características da distribuição que não seriam percebidas apenas pela análise da média ou da mediana isoladamente.
+
+Os resultados dessa inovação são apresentados e discutidos nas Seções 4.2 e 4.3, especialmente nas análises das RQ02 e RQ03, e são retomados na Conclusão como evidência de que a popularidade de um repositório não implica necessariamente comportamento homogêneo entre os projetos analisados.
+
 
 ---
 
@@ -193,11 +224,17 @@ Completude por CSV:
 
 ## 5. Conclusão
 
-Das 7 questões de pesquisa investigadas, 5 foram confirmadas de forma direta (RQ01, RQ02, RQ04, RQ05, RQ06) e 2 foram parcialmente confirmadas (RQ03 e RQ07). Em conjunto, os resultados desenham um perfil consistente de repositório popular no GitHub: um projeto maduro (mediana de quase 8 anos), atualizado quase continuamente, escrito predominantemente em uma linguagem de grande adoção de mercado (Octoverse), com alto percentual de issues resolvidas e volume elevado de contribuição externa via pull requests — mas **não necessariamente** com um ciclo formal de releases (RQ03) nem com uma relação direta entre linguagem popular e frequência de atualização (RQ07).
+## 5. Conclusão
 
-**Limitações do estudo:** amostra única (sem replicação em outra data), possível teto artificial no `totalCount` de releases da API do GitHub, e exclusão pontual de repositórios sem linguagem/issues habilitadas em métricas específicas.
+Das 7 questões de pesquisa investigadas, 5 foram confirmadas de forma direta (RQ01, RQ02, RQ04, RQ05 e RQ06) e 2 foram parcialmente confirmadas (RQ03 e RQ07). Em conjunto, os resultados desenham um perfil consistente de repositório popular no GitHub: um projeto maduro, com mediana de quase 8 anos, atualizado quase continuamente, escrito predominantemente em uma linguagem de grande adoção de mercado segundo o Octoverse, com alto percentual de issues resolvidas e elevado volume de contribuição externa por meio de pull requests — mas não necessariamente com um ciclo formal de releases (RQ03) nem com uma relação direta entre linguagem popular e frequência de atualização (RQ07).
 
-*[Completar após a decisão da seção 3.6: relacionar o que a inovação do grupo acrescentou aos 70% do enunciado.]*
+Como contribuição adicional ao enunciado do laboratório, o grupo implementou mecanismos de resiliência na coleta de dados, utilizando tentativas automáticas, espera exponencial em caso de falhas temporárias e acompanhamento do rate limit da API GraphQL do GitHub. Essa estratégia contribuiu para tornar o processo de coleta mais robusto e permitiu concluir a obtenção dos dados dos 1.000 repositórios mesmo diante de falhas temporárias da API.
+
+Também foi utilizada uma análise estatística complementar baseada em mediana, quartis, intervalo interquartil (IQR) e identificação de outliers. Essa abordagem permitiu observar características que não seriam evidentes apenas por meio da média. Na RQ02, por exemplo, a diferença entre média e mediana e a identificação de 124 outliers mostraram uma forte concentração de pull requests aceitas em determinados projetos. Já na RQ03, o primeiro quartil igual a zero evidenciou que pelo menos 25% dos repositórios analisados não possuíam releases publicadas.
+
+Dessa forma, as inovações propostas pelo grupo contribuíram tanto para aumentar a confiabilidade da coleta quanto para aprofundar a interpretação dos resultados obtidos, mostrando que repositórios populares podem apresentar comportamentos bastante distintos mesmo dentro de uma mesma amostra.
+
+**Limitações do estudo:** amostra única, sem replicação em outra data; possível teto artificial no `totalCount` de releases da API do GitHub; e exclusão pontual de repositórios sem linguagem ou issues habilitadas em métricas específicas.
 
 ---
 
