@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-ARQUIVO_RQ01 = "rq01_idade.csv"
-ARQUIVO_RQ02 = "rq02_pull_requests.csv"
+ARQUIVO_RQ03 = "../../LAB01S01/RQ3E4/rq03_releases.csv"
+ARQUIVO_RQ04 = "../../LAB01S01/RQ3E4/rq04_atualizacao.csv"
 
 
 def analisar_coluna(dados, coluna, nome_rq):
@@ -62,63 +62,62 @@ def analisar_coluna(dados, coluna, nome_rq):
             print(f"- {repositorio}: {valor:.2f}")
 
 
-# Cria dois gráficos para melhorar analise dos dados (tirar daqui talvez? Não sei se compromete a Sprint 3)
-def gerar_histograma_idade(dados):
-    os.makedirs("graficos", exist_ok=True)
-
-    plt.figure(figsize=(10, 6))
-
-    dados["idade_anos"].dropna().plot(
-        kind="hist",
-        bins=20,
-        edgecolor="black"
-    )
-
-    plt.title("Distribuição da idade dos repositórios")
-    plt.xlabel("Idade do repositório (anos)")
-    plt.ylabel("Quantidade de repositórios")
-
-    plt.tight_layout()
-    plt.savefig("graficos/rq01_distribuicao_idade.png")
-    plt.close()
-
-
-def gerar_boxplot_pull_requests(dados):
+def gerar_boxplot_releases(dados):
     os.makedirs("graficos", exist_ok=True)
 
     plt.figure(figsize=(10, 6))
 
     plt.boxplot(
-        dados["pull_requests_aceitas"].dropna(),
+        dados["total_releases"].dropna(),
         vert=False,
-        tick_labels=["RQ02"],
+        tick_labels=["RQ03"],
     )
 
-    plt.title("Distribuição de Pull Requests aceitas nos 1.000 repositórios")
-    plt.xlabel("Quantidade de Pull Requests aceitas")
+    plt.title("Distribuição do total de releases nos 1.000 repositórios")
+    plt.xlabel("Quantidade de releases")
     plt.tight_layout()
-    plt.savefig("graficos/rq02_boxplot_pull_requests.png")
+    plt.savefig("graficos/rq03_boxplot_releases.png")
+    plt.close()
+
+
+def gerar_histograma_atualizacao(dados):
+    os.makedirs("graficos", exist_ok=True)
+
+    plt.figure(figsize=(10, 6))
+
+    dados["dias_desde_ultima_atualizacao"].dropna().plot(
+        kind="hist",
+        bins=20,
+        edgecolor="black"
+    )
+
+    plt.title("Distribuição do tempo até a última atualização")
+    plt.xlabel("Dias desde a última atualização")
+    plt.ylabel("Quantidade de repositórios")
+
+    plt.tight_layout()
+    plt.savefig("graficos/rq04_histograma_atualizacao.png")
     plt.close()
 
 
 def main():
-    dados_rq01 = pd.read_csv(ARQUIVO_RQ01)
-    dados_rq02 = pd.read_csv(ARQUIVO_RQ02)
+    dados_rq03 = pd.read_csv(ARQUIVO_RQ03)
+    dados_rq04 = pd.read_csv(ARQUIVO_RQ04)
 
     analisar_coluna(
-        dados_rq01,
-        "idade_anos",
-        "RQ01 — Idade dos repositórios"
+        dados_rq03,
+        "total_releases",
+        "RQ03 — Total de releases"
     )
 
     analisar_coluna(
-        dados_rq02,
-        "pull_requests_aceitas",
-        "RQ02 — Pull Requests aceitas"
+        dados_rq04,
+        "dias_desde_ultima_atualizacao",
+        "RQ04 — Dias desde a última atualização"
     )
 
-    gerar_histograma_idade(dados_rq01)
-    gerar_boxplot_pull_requests(dados_rq02)
+    gerar_boxplot_releases(dados_rq03)
+    gerar_histograma_atualizacao(dados_rq04)
     print("\nGráficos de validação gerados na pasta 'graficos'.")
 
 

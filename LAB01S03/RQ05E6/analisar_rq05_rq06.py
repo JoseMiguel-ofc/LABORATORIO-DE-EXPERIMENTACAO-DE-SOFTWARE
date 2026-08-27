@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-ARQUIVO_RQ05 = "rq05_linguagem.csv"
-ARQUIVO_RQ06 = "rq06_issues.csv"
+ARQUIVO_RQ05 = "../../LAB01S02/RQ05E6/rq05_linguagem.csv"
+ARQUIVO_RQ06 = "../../LAB01S02/RQ05E6/rq06_issues.csv"
 
 # Linguagens mais populares segundo o GitHub Octoverse
 # (referência mantida ao longo de todo o laboratório)
