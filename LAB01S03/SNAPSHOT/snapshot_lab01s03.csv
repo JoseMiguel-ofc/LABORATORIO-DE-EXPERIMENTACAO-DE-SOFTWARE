@@ -1,0 +1,9 @@
+issue,titulo,status,responsavel,estado_issue,repositorio,url
+4,Extrair dados RQ05+RQ06 (amostra 5-10 repos),Done,JoseMiguel-ofc,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/4
+2,Extrair dados RQ01+RQ02 (amostra 5-10 repos),Done,PedroTalmaToledo,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/2
+1,"Setup GitHub Projects (board, colunas, WIP)",Done,JoseMiguel-ofc,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/1
+3,Extrair dados RQ03+RQ04 (amostra 5-10 repos),Done,Betelguelse,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/3
+6,"Sprint 3 - Lab 1, atualizações no relatório",Done,Betelguelse,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/6
+5,"Sprint 3 - Lab 1, atualizações e relatorio",Done,JoseMiguel-ofc,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/5
+7,Sprint 3 - Analisar e visualizar os resultados das RQ01 e RQ02,Done,PedroTalmaToledo,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/7
+8,Exportar snapshot do GitHub Project da Sprint 03,Done,PedroTalmaToledo,CLOSED,JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE,https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/issues/8
