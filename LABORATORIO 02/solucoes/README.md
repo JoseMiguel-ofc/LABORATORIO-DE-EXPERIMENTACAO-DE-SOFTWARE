@@ -13,8 +13,10 @@ integrante__kata__tratamento.py
 Exemplo:
 
 ```text
-Pedro__FizzBuzz__COM_IA.py
-Pedro__FizzBuzz__SEM_IA.py
+Pedro__ReposicaoEstoque__COM_IA.py
+Pedro__ExcessoBagagem__SEM_IA.py
 ```
 
 Esse padrão permite que o script `metricas_estaticas.py` (em `S01/scripts/`) identifique automaticamente integrante/kata/tratamento de cada arquivo e depois cruze essas métricas com os tempos coletados em `S02/resultados/tempos_trials.csv`.
+
+Consulte os [enunciados, modelos e comandos de testes da S01](../S01/README.md). Cada integrante resolve um kata por tratamento, conforme a alocação do protocolo.
