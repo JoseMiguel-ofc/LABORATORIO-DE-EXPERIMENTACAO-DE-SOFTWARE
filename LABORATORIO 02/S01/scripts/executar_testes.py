@@ -14,6 +14,8 @@ import unittest
 FUNCOES = {
     "ReposicaoEstoque": "calcular_reposicao",
     "ExcessoBagagem": "calcular_excesso",
+    "ConsumoEnergetico": "calcular_consumo_excedente",
+    "MetaProducao": "calcular_deficit_producao",
 }
 PASTA_CASOS = Path(__file__).resolve().parents[1] / "testes"
 

@@ -6,6 +6,10 @@ Material para comparar resolução de tarefas em Python nos tratamentos `COM_IA`
 |---|---|---|---|
 | `ReposicaoEstoque` | [Reposição de estoque](katas/ReposicaoEstoque.md) | [Arquivo inicial](katas/modelos/ReposicaoEstoque.py) | [26 casos](testes/ReposicaoEstoque.json) |
 | `ExcessoBagagem` | [Excesso de bagagem](katas/ExcessoBagagem.md) | [Arquivo inicial](katas/modelos/ExcessoBagagem.py) | [26 casos](testes/ExcessoBagagem.json) |
+| `ConsumoEnergetico` | [Consumo energético excedente](katas/ConsumoEnergetico.md) | [Arquivo inicial](katas/modelos/ConsumoEnergetico.py) | [26 casos](testes/ConsumoEnergetico.json) |
+| `MetaProducao` | [Meta de produção](katas/MetaProducao.md) | [Arquivo inicial](katas/modelos/MetaProducao.py) | [26 casos](testes/MetaProducao.json) |
+
+`ConsumoEnergetico` espelha exatamente a suíte de `ExcessoBagagem` (mesma lógica de excedente) e `MetaProducao` espelha exatamente a suíte de `ReposicaoEstoque` (mesma lógica de déficit), só variando domínio e nomes — garante dificuldade formalmente equivalente dentro de cada par. Os 4 katas juntos atendem ao mínimo de 4 katas exigido pelo enunciado do laboratório (número par, para dividir metade `COM_IA` e metade `SEM_IA`).
 
 ## Executar um trial
 
@@ -25,10 +29,12 @@ python3 "LABORATORIO 02/S01/scripts/coletar_tempo.py"
 python3 "LABORATORIO 02/S01/scripts/executar_testes.py" --kata ReposicaoEstoque --arquivo "LABORATORIO 02/solucoes/Ana__ReposicaoEstoque__COM_IA.py"
 ```
 
-Para o outro kata, ajuste também a identificação do trial no cronômetro:
+Repita para os outros katas da sua alocação, ajustando também a identificação do trial no cronômetro:
 
 ```bash
 python3 "LABORATORIO 02/S01/scripts/executar_testes.py" --kata ExcessoBagagem --arquivo "LABORATORIO 02/solucoes/Ana__ExcessoBagagem__SEM_IA.py"
+python3 "LABORATORIO 02/S01/scripts/executar_testes.py" --kata ConsumoEnergetico --arquivo "LABORATORIO 02/solucoes/Ana__ConsumoEnergetico__COM_IA.py"
+python3 "LABORATORIO 02/S01/scripts/executar_testes.py" --kata MetaProducao --arquivo "LABORATORIO 02/solucoes/Ana__MetaProducao__SEM_IA.py"
 ```
 
 5. Pressione ENTER no cronômetro **somente após 26/26 casos aprovados**. Se atingir 35 minutos, interrompa a edição e preserve a solução parcial. Execute a suíte final sobre esse arquivo sem corrigi-lo.
@@ -44,7 +50,7 @@ python3 "LABORATORIO 02/S01/scripts/executar_testes.py" --kata ExcessoBagagem --
 - Se houver erro de importação ou timeout, registre `status_testes` correspondente e deixe `casos_aprovados` vazio: a avaliação não terminou. Não interprete esse campo como zero casos executados.
 - Os modelos contêm `NotImplementedError`: **é esperado que falhem** até serem implementados. Não há solução de referência publicada junto aos materiais dos participantes.
 
-Os arquivos JSON guardam entradas e saídas esperadas explícitas. Nos dois arquivos, `limite` representa o segundo argumento da função (`minimo` ou `franquia`). Arrays de registros e resultados são convertidos em tuplas pelo executor. A suíte é pública e idêntica entre tratamentos; não é uma avaliação secreta nem uma prova de correção para todas as entradas possíveis.
+Os arquivos JSON guardam entradas e saídas esperadas explícitas. Em todos eles, `limite` representa o segundo argumento da função (`minimo`, `franquia` ou `meta`, conforme o kata). Arrays de registros e resultados são convertidos em tuplas pelo executor. A suíte é pública e idêntica entre tratamentos; não é uma avaliação secreta nem uma prova de correção para todas as entradas possíveis.
 
 ## Verificar a preparação
 
@@ -54,7 +60,9 @@ Os testes de regressão do próprio avaliador podem ser executados sem resolver 
 python3 -m unittest discover -s "LABORATORIO 02/S01/testes" -p "test_*.py" -v
 ```
 
-Na preparação, em Python 3.9.6, os seis testes do avaliador passaram. Também foram realizadas 33 execuções de verificação com arquivos temporários: duas implementações de referência aprovaram os 52 casos; 22 variantes com defeitos deliberados e os dois modelos incompletos foram rejeitados; sete cenários de erro/timeout do executor produziram os códigos esperados. As referências temporárias não integram os materiais entregues. Essa verificação técnica não substitui revisão humana nem o piloto de dificuldade.
+Na preparação dos katas A/B (`ReposicaoEstoque`/`ExcessoBagagem`), em Python 3.9.6, os seis testes do avaliador passaram. Também foram realizadas 33 execuções de verificação com arquivos temporários: duas implementações de referência aprovaram os 52 casos; 22 variantes com defeitos deliberados e os dois modelos incompletos foram rejeitados; sete cenários de erro/timeout do executor produziram os códigos esperados. As referências temporárias não integram os materiais entregues. Essa verificação técnica não substitui revisão humana nem o piloto de dificuldade.
+
+Na inclusão dos katas C/D (`ConsumoEnergetico`/`MetaProducao`), em Python 3.13.12, os seis testes do avaliador seguiram passando. Uma implementação de referência temporária por kata aprovou os 26/26 casos de sua suíte; rodar a suíte contra o modelo inicial (`NotImplementedError`) produziu os 26 erros esperados em ambos. As referências temporárias também não integram os materiais entregues.
 
 ## Registro complementar
 
