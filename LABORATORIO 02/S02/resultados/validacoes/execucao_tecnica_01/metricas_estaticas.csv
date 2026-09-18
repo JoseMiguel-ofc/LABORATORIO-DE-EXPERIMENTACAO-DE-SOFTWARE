@@ -1,0 +1,5 @@
+integrante,kata,tratamento,arquivo,loc,lloc,sloc,comentarios,linhas_em_branco,num_blocos,complexidade_total,complexidade_media,complexidade_maxima,erro
+Codex,ConsumoEnergetico,COM_IA,Codex__ConsumoEnergetico__COM_IA.py,17,11,14,0,2,1,7,7.0,7,
+Codex,ExcessoBagagem,COM_IA,Codex__ExcessoBagagem__COM_IA.py,17,11,14,0,2,1,7,7.0,7,
+Codex,MetaProducao,COM_IA,Codex__MetaProducao__COM_IA.py,17,11,14,0,2,1,7,7.0,7,
+Codex,ReposicaoEstoque,COM_IA,Codex__ReposicaoEstoque__COM_IA.py,17,11,14,0,2,1,7,7.0,7,

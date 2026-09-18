@@ -1,0 +1,74 @@
+{
+  "tipo_registro": "VALIDACAO_TECNICA",
+  "inicio_utc": "2026-09-18T02:56:20.017618+00:00",
+  "python": "3.9.6",
+  "radon": "6.0.1",
+  "plataforma": "macOS-26.6.2-arm64-arm-64bit",
+  "arquivos": {
+    "S02/validacao_tecnica/solucoes/Codex__ConsumoEnergetico__COM_IA.py": {
+      "sha256": "ba62a0db33f1583ee56553f1ef91c23447121de0d16c674ab5be0bff00733da6",
+      "copia": "fontes/00_Codex__ConsumoEnergetico__COM_IA.py"
+    },
+    "S02/validacao_tecnica/solucoes/Codex__ExcessoBagagem__COM_IA.py": {
+      "sha256": "2d14801651b0d8e3f9afc6663626a37e7a1941feda96645324141a0d785d2981",
+      "copia": "fontes/01_Codex__ExcessoBagagem__COM_IA.py"
+    },
+    "S02/validacao_tecnica/solucoes/Codex__MetaProducao__COM_IA.py": {
+      "sha256": "6c8fd2ed67b24cf302e03c9f1ccee1bb523c52e06f1e45d6a52dc3467b85bc9c",
+      "copia": "fontes/02_Codex__MetaProducao__COM_IA.py"
+    },
+    "S02/validacao_tecnica/solucoes/Codex__ReposicaoEstoque__COM_IA.py": {
+      "sha256": "8b14a49c0629ad9e4d8d52d1ce0f6b020342460e75cf6e623b8a96176ac71b78",
+      "copia": "fontes/03_Codex__ReposicaoEstoque__COM_IA.py"
+    },
+    "S01/testes/ConsumoEnergetico.json": {
+      "sha256": "3634c47b5098151cb8c9e313e52635c54f38b7b29331f9a7a7f8a5c0ba831179",
+      "copia": "fontes/04_ConsumoEnergetico.json"
+    },
+    "S01/testes/ExcessoBagagem.json": {
+      "sha256": "3634c47b5098151cb8c9e313e52635c54f38b7b29331f9a7a7f8a5c0ba831179",
+      "copia": "fontes/05_ExcessoBagagem.json"
+    },
+    "S01/testes/MetaProducao.json": {
+      "sha256": "6b36afcdc56200ac70747a72be2a3cef6a4ebc32fab54f49ce945bcfd1c609ff",
+      "copia": "fontes/06_MetaProducao.json"
+    },
+    "S01/testes/ReposicaoEstoque.json": {
+      "sha256": "6b36afcdc56200ac70747a72be2a3cef6a4ebc32fab54f49ce945bcfd1c609ff",
+      "copia": "fontes/07_ReposicaoEstoque.json"
+    },
+    "S01/scripts/executar_testes.py": {
+      "sha256": "c2b36d7d238b6549f5190aba0139d1101f5365f7e814da5ce98c4dcb3c303dfa",
+      "copia": "fontes/08_executar_testes.py"
+    },
+    "S01/scripts/metricas_estaticas.py": {
+      "sha256": "e1f325d4af4390e2fcc60322c21c77f0f4e376fd07be3d9c2aeb9ec37a0cef7c",
+      "copia": "fontes/09_metricas_estaticas.py"
+    },
+    "S02/scripts/executar_validacao.py": {
+      "sha256": "224cd63e898a1833c06fe9f91034f3f4f50d769a9345014d12768b05b703fa0c",
+      "copia": "fontes/10_executar_validacao.py"
+    },
+    "S02/scripts/metricas_duplicacao.py": {
+      "sha256": "b79f0354a7cb26d609a1355e33f2eaf5f02813f6648e9114247bfc6682612430",
+      "copia": "fontes/11_metricas_duplicacao.py"
+    },
+    "S01/katas/ConsumoEnergetico.md": {
+      "sha256": "de8d3ab706f74f8f33905a958eafed1e0d2bf35219e354d3e2b634109b4ef3af",
+      "copia": "fontes/12_ConsumoEnergetico.md"
+    },
+    "S01/katas/ExcessoBagagem.md": {
+      "sha256": "8d52b8f613e01628e7366004533272b2bf31188109a79defc552813057e787f5",
+      "copia": "fontes/13_ExcessoBagagem.md"
+    },
+    "S01/katas/MetaProducao.md": {
+      "sha256": "ce1ef94e08989b1d919737686ca046f9ff6decde95d9069049477d684d5c2f64",
+      "copia": "fontes/14_MetaProducao.md"
+    },
+    "S01/katas/ReposicaoEstoque.md": {
+      "sha256": "2d6f23fe47a302451a28912d705cdc4b35fbadd779b943e82f7fc6fa17156600",
+      "copia": "fontes/15_ReposicaoEstoque.md"
+    }
+  },
+  "nota": "Duração mede apenas testes. Não mede resolução humana nem conclusão em 35 minutos."
+}

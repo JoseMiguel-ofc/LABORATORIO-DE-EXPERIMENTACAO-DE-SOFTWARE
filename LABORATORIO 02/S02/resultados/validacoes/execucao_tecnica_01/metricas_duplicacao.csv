@@ -1,0 +1,5 @@
+integrante,kata,tratamento,arquivo,linhas_comparaveis,linhas_duplicadas,percentual_duplicacao,blocos_duplicados,arquivos_relacionados
+Codex,ConsumoEnergetico,COM_IA,Codex__ConsumoEnergetico__COM_IA.py,15,5,33.33,1,Codex__ExcessoBagagem__COM_IA.py
+Codex,ExcessoBagagem,COM_IA,Codex__ExcessoBagagem__COM_IA.py,15,5,33.33,1,Codex__ConsumoEnergetico__COM_IA.py
+Codex,MetaProducao,COM_IA,Codex__MetaProducao__COM_IA.py,15,0,0.0,0,
+Codex,ReposicaoEstoque,COM_IA,Codex__ReposicaoEstoque__COM_IA.py,15,0,0.0,0,

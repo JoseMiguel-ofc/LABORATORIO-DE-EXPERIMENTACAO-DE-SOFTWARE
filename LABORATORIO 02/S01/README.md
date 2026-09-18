@@ -48,7 +48,7 @@ python3 "LABORATORIO 02/S01/scripts/executar_testes.py" --kata MetaProducao --ar
 - São conferidos os valores, a ordem, o tipo de retorno, a exceção `ValueError` quando exigida e a preservação da entrada. Os testes também exercitam chamadas sucessivas no mesmo módulo.
 - O processo da suíte tem limite de **10 segundos**, incluindo importação, para encerrar implementações que entram em loop. Esse limite é diferente dos 35 minutos do trial. Pode ser alterado com `--tempo-limite`, mas deve ser congelado e igual nos dois tratamentos.
 - Se houver erro de importação ou timeout, registre `status_testes` correspondente e deixe `casos_aprovados` vazio: a avaliação não terminou. Não interprete esse campo como zero casos executados.
-- Os modelos contêm `NotImplementedError`: **é esperado que falhem** até serem implementados. Não há solução de referência publicada junto aos materiais dos participantes.
+- Os modelos contêm `NotImplementedError`: **é esperado que falhem** até serem implementados. As [soluções técnicas da S02](../S02/README.md) e suas cópias de evidência devem ficar fora dos materiais dos participantes.
 
 Os arquivos JSON guardam entradas e saídas esperadas explícitas. Em todos eles, `limite` representa o segundo argumento da função (`minimo`, `franquia` ou `meta`, conforme o kata). Arrays de registros e resultados são convertidos em tuplas pelo executor. A suíte é pública e idêntica entre tratamentos; não é uma avaliação secreta nem uma prova de correção para todas as entradas possíveis.
 
@@ -71,7 +71,7 @@ O arquivo `avaliacao_trials.csv` começa apenas com o cabeçalho, sem dados expe
 | Campo | Preenchimento |
 |---|---|
 | `integrante`, `kata`, `tratamento` | Mesma chave usada nos tempos e no nome da solução |
-| `sequencia`, `periodo` | Sequência S1–S4 e período 1 ou 2 do protocolo |
+| `sequencia`, `periodo` | Sequência S1–S4 e período 1 a 4 do protocolo |
 | `concluido` | `True` somente se a suíte inteira passou dentro de 35 minutos; caso contrário, `False` |
 | `casos_aprovados`, `total_casos` | Contagem da avaliação final e total previsto (26) |
 | `status_testes` | `APROVADO`, `REPROVADO`, `ERRO_CARGA`, `TIMEOUT` ou `ERRO_EXECUTOR` |

@@ -19,4 +19,6 @@ Pedro__ExcessoBagagem__SEM_IA.py
 
 Esse padrão permite que o script `metricas_estaticas.py` (em `S01/scripts/`) identifique automaticamente integrante/kata/tratamento de cada arquivo e depois cruze essas métricas com os tempos coletados em `S02/resultados/tempos_trials.csv`.
 
-Consulte os [enunciados, modelos e comandos de testes da S01](../S01/README.md). Cada integrante resolve um kata por tratamento, conforme a alocação do protocolo.
+Consulte os [enunciados, modelos e comandos de testes da S01](../S01/README.md). Cada integrante resolve quatro katas, dois por tratamento, conforme a alocação do protocolo.
+
+As [soluções técnicas geradas com IA na S02](../S02/README.md) ficam em pasta própria e não representam trials dos integrantes. Use esta pasta somente para os arquivos obtidos na execução dos participantes.

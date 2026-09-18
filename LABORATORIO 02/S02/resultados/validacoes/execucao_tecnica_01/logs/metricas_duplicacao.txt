@@ -1,0 +1,9 @@
+
+=== LAB02 S02 - Duplicação de Código ===
+
+Codex__ConsumoEnergetico__COM_IA.py: 5/15 linhas duplicadas (33.33%), 1 bloco(s), relacionado a: Codex__ExcessoBagagem__COM_IA.py
+Codex__ExcessoBagagem__COM_IA.py: 5/15 linhas duplicadas (33.33%), 1 bloco(s), relacionado a: Codex__ConsumoEnergetico__COM_IA.py
+Codex__MetaProducao__COM_IA.py: 0/15 linhas duplicadas (0.0%), 0 bloco(s), relacionado a: -
+Codex__ReposicaoEstoque__COM_IA.py: 0/15 linhas duplicadas (0.0%), 0 bloco(s), relacionado a: -
+
+Resultados salvos em: /Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 02/S02/resultados/validacoes/execucao_tecnica_01/metricas_duplicacao.csv

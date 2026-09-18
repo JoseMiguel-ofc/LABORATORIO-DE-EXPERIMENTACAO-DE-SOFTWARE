@@ -1,0 +1,22 @@
+=== LAB02 S02 - Validação dos Trials ===
+
+=== RESUMO DOS TRIALS ===
+
+Total de trials: 1
+
+Pedro
+  Total: 1
+  COM_IA: 1
+  SEM_IA: 0
+  Katas: Teste
+
+=== RESULTADO DA VALIDAÇÃO ===
+
+Dataset inválido. 4 problema(s) encontrado(s):
+
+- Quantidade total esperada: 12. Encontrada: 1.
+- Pedro: esperado 4 trials, encontrado 1.
+- Pedro: esperado 2 trials COM_IA, encontrado 1.
+- Pedro: esperado 2 trials SEM_IA, encontrado 0.
+
+Dataset apto para análise da Sprint 3: NÃO

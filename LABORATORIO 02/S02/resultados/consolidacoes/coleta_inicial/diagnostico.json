@@ -1,0 +1,27 @@
+{
+  "gerado_em_utc": "2026-09-18T02:56:20.547588+00:00",
+  "trials_esperados": 12,
+  "chaves_encontradas": 0,
+  "trials_com_tempo": 0,
+  "trials_com_avaliacao": 0,
+  "trials_com_todas_as_fontes": 0,
+  "tempos_faltantes_para_total": 12,
+  "arquivos_ausentes": [
+    "metricas_estaticas.csv",
+    "metricas_duplicacao.csv"
+  ],
+  "registros_excluidos": [
+    {
+      "arquivo": "tempos_trials.csv",
+      "linha": 2,
+      "chave": [
+        "Pedro",
+        "Teste",
+        "COM_IA"
+      ],
+      "motivo": "Teste de instrumentação documentado na S01"
+    }
+  ],
+  "coleta_completa_em_quantidade": false,
+  "nota": "Consolidar não valida o desenho, valores ou balanceamento. Rode também validar_trials.py. Campos vazios não foram imputados."
+}
