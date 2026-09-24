@@ -1,4 +1,5 @@
 integrante,kata,tratamento,inicio,fim,tempo_segundos,tempo_minutos,censurado
-Pedro,Teste,COM_IA,2026-09-10T14:08:36,2026-09-10T14:08:57,21.01,0.35,False
 JoseMiguel,ReposicaoEstoque,COM_IA,2026-09-24T17:14:12,2026-09-24T17:14:38,26.09,0.43,False
 JoseMiguel,ExcessoBagagem,COM_IA,2026-09-24T17:15:20,2026-09-24T17:15:53,33.02,0.55,False
+Pedro,ReposicaoEstoque,COM_IA,2026-09-24T18:14:13,2026-09-24T18:14:39,26.01,0.43,False
+Pedro,ExcessoBagagem,COM_IA,2026-09-24T18:16:34,2026-09-24T18:16:55,21.01,0.35,False
