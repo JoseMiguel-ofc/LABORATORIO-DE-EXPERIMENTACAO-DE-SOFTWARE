@@ -42,6 +42,14 @@ Para um kata isolado:
 
 ## Registrar e consolidar os trials reais
 
+Para testar o fluxo usando o rótulo `SEM_IA`, há uma [cópia experimental identificada como simulação](resultados/simulacoes/sem_ia_experimental_01/README.md). Os CSVs dessa cópia mantêm `tratamento_original=COM_IA` e `origem_codigo=GERADO_COM_IA`. Para gerar outra simulação em uma nova pasta:
+
+```bash
+.venv/bin/python "LABORATORIO 02/S02/scripts/simular_sem_ia.py"
+```
+
+### Coleta dos participantes
+
 1. Registre a alocação antes de começar, conforme o [protocolo da S01](../S01/PROTOCOLO.md). Cada integrante faz quatro katas, dois `COM_IA` e dois `SEM_IA`. Forneça somente os materiais autorizados do kata corrente; as soluções técnicas e suas cópias em `fontes/` não fazem parte do pacote dos participantes.
 2. Durante cada trial, use `S01/scripts/coletar_tempo.py`, implemente em `LABORATORIO 02/solucoes/` e rode `S01/scripts/executar_testes.py`. Preserve o arquivo e o log final. O cronômetro deve abranger leitura, implementação e depuração.
 3. Preencha `S02/resultados/avaliacao_trials.csv` com o resultado final e metadados reais. Aprovação posterior ao limite não transforma o trial em concluído. Não renomeie uma solução gerada com IA como `SEM_IA`.

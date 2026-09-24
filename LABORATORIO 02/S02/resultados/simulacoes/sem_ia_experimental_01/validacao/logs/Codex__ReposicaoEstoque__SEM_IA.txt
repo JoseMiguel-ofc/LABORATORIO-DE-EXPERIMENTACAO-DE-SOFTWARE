@@ -1,0 +1,58 @@
+unittest.case.FunctionTestCase (verificar)
+01_lista_vazia ... ok
+unittest.case.FunctionTestCase (verificar)
+02_lista_vazia_limite_zero ... ok
+unittest.case.FunctionTestCase (verificar)
+03_total_abaixo ... ok
+unittest.case.FunctionTestCase (verificar)
+04_total_igual ... ok
+unittest.case.FunctionTestCase (verificar)
+05_total_acima ... ok
+unittest.case.FunctionTestCase (verificar)
+06_valor_zero ... ok
+unittest.case.FunctionTestCase (verificar)
+07_limite_zero ... ok
+unittest.case.FunctionTestCase (verificar)
+08_repetidos_consecutivos ... ok
+unittest.case.FunctionTestCase (verificar)
+09_repetidos_intercalados ... ok
+unittest.case.FunctionTestCase (verificar)
+10_maiusculas ... ok
+unittest.case.FunctionTestCase (verificar)
+11_espacos_externos ... ok
+unittest.case.FunctionTestCase (verificar)
+12_preserva_espacos_internos ... ok
+unittest.case.FunctionTestCase (verificar)
+13_preserva_acentos ... ok
+unittest.case.FunctionTestCase (verificar)
+14_ordena_resultado ... ok
+unittest.case.FunctionTestCase (verificar)
+15_mistura_fronteiras ... ok
+unittest.case.FunctionTestCase (verificar)
+16_soma_antes_de_filtrar ... ok
+unittest.case.FunctionTestCase (verificar)
+17_inteiros_grandes ... ok
+unittest.case.FunctionTestCase (verificar)
+18_limite_negativo_lista_vazia ... ok
+unittest.case.FunctionTestCase (verificar)
+19_limite_negativo ... ok
+unittest.case.FunctionTestCase (verificar)
+20_valor_negativo ... ok
+unittest.case.FunctionTestCase (verificar)
+21_negativo_apos_valido ... ok
+unittest.case.FunctionTestCase (verificar)
+22_nome_vazio ... ok
+unittest.case.FunctionTestCase (verificar)
+23_nome_so_espacos ... ok
+unittest.case.FunctionTestCase (verificar)
+24_nome_invalido_ao_final ... ok
+unittest.case.FunctionTestCase (verificar)
+25_zeros_repetidos ... ok
+unittest.case.FunctionTestCase (verificar)
+26_ordena_varios_excessos ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.001s
+
+OK
+ReposicaoEstoque: 26/26 casos aprovados.

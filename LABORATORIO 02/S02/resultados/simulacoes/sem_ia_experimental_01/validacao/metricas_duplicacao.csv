@@ -1,0 +1,5 @@
+integrante,kata,tratamento,arquivo,linhas_comparaveis,linhas_duplicadas,percentual_duplicacao,blocos_duplicados,arquivos_relacionados,tipo_registro,tratamento_original,origem_codigo
+Codex,ConsumoEnergetico,SEM_IA,Codex__ConsumoEnergetico__SEM_IA.py,15,5,33.33,1,Codex__ExcessoBagagem__SEM_IA.py,SIMULACAO,COM_IA,GERADO_COM_IA
+Codex,ExcessoBagagem,SEM_IA,Codex__ExcessoBagagem__SEM_IA.py,15,5,33.33,1,Codex__ConsumoEnergetico__SEM_IA.py,SIMULACAO,COM_IA,GERADO_COM_IA
+Codex,MetaProducao,SEM_IA,Codex__MetaProducao__SEM_IA.py,15,0,0.0,0,,SIMULACAO,COM_IA,GERADO_COM_IA
+Codex,ReposicaoEstoque,SEM_IA,Codex__ReposicaoEstoque__SEM_IA.py,15,0,0.0,0,,SIMULACAO,COM_IA,GERADO_COM_IA

@@ -1,0 +1,9 @@
+
+=== LAB02 - Métricas Estáticas ===
+
+Codex__ConsumoEnergetico__SEM_IA.py: LOC=17 SLOC=14 CC_total=7 CC_media=7.0 CC_max=7
+Codex__ExcessoBagagem__SEM_IA.py: LOC=17 SLOC=14 CC_total=7 CC_media=7.0 CC_max=7
+Codex__MetaProducao__SEM_IA.py: LOC=17 SLOC=14 CC_total=7 CC_media=7.0 CC_max=7
+Codex__ReposicaoEstoque__SEM_IA.py: LOC=17 SLOC=14 CC_total=7 CC_media=7.0 CC_max=7
+
+Resultados salvos em: /Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 02/S02/resultados/simulacoes/sem_ia_experimental_01/validacao/metricas_estaticas.csv
