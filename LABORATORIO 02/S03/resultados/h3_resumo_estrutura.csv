@@ -1,0 +1,17 @@
+metrica,subconjunto,tratamento,n,mediana,media,desvio_padrao
+estatica_complexidade_maxima,concluido,COM_IA,2,8.0,8.0,0.0
+estatica_complexidade_maxima,sem_avaliacao,COM_IA,4,7.0,7.0,0.0
+estatica_complexidade_maxima,sem_avaliacao,SEM_IA,6,7.0,7.0,0.0
+estatica_complexidade_maxima,wilcoxon_pareado_completas,COM_IA_vs_SEM_IA,0,,,Menos de 3 pares disponíveis; teste de Wilcoxon não é aplicável.
+estatica_loc,concluido,COM_IA,2,30.0,30.0,0.0
+estatica_loc,sem_avaliacao,COM_IA,4,18.5,18.5,1.7320508075688772
+estatica_loc,sem_avaliacao,SEM_IA,6,21.0,21.0,3.577708763999663
+estatica_loc,wilcoxon_pareado_completas,COM_IA_vs_SEM_IA,0,,,Menos de 3 pares disponíveis; teste de Wilcoxon não é aplicável.
+estatica_sloc,concluido,COM_IA,2,21.0,21.0,0.0
+estatica_sloc,sem_avaliacao,COM_IA,4,15.0,15.0,1.1547005383792517
+estatica_sloc,sem_avaliacao,SEM_IA,6,16.0,15.333333333333334,1.0327955589886448
+estatica_sloc,wilcoxon_pareado_completas,COM_IA_vs_SEM_IA,0,,,Menos de 3 pares disponíveis; teste de Wilcoxon não é aplicável.
+duplicacao_percentual_duplicacao,concluido,COM_IA,2,0.0,0.0,0.0
+duplicacao_percentual_duplicacao,sem_avaliacao,COM_IA,4,0.0,8.3325,16.665
+duplicacao_percentual_duplicacao,sem_avaliacao,SEM_IA,6,0.0,5.555,13.606915521160554
+duplicacao_percentual_duplicacao,wilcoxon_pareado_completas,COM_IA_vs_SEM_IA,0,,,Menos de 3 pares disponíveis; teste de Wilcoxon não é aplicável.

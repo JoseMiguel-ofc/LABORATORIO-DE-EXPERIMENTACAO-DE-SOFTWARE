@@ -1,0 +1,13 @@
+integrante,kata,tratamento,arquivo,linhas_comparaveis,linhas_duplicadas,percentual_duplicacao,blocos_duplicados,arquivos_relacionados
+Eddie,ConsumoEnergetico,COM_IA,Eddie__ConsumoEnergetico__COM_IA.py,15,5,33.33,1,Eddie__ExcessoBagagem__SEM_IA.py
+Eddie,ExcessoBagagem,SEM_IA,Eddie__ExcessoBagagem__SEM_IA.py,15,5,33.33,1,Eddie__ConsumoEnergetico__COM_IA.py
+Eddie,MetaProducao,COM_IA,Eddie__MetaProducao__COM_IA.py,15,0,0.0,0,
+Eddie,ReposicaoEstoque,SEM_IA,Eddie__ReposicaoEstoque__SEM_IA.py,15,0,0.0,0,
+JoseMiguel,ConsumoEnergetico,SEM_IA,JoseMiguel__ConsumoEnergetico__SEM_IA.py,17,0,0.0,0,
+JoseMiguel,ExcessoBagagem,COM_IA,JoseMiguel__ExcessoBagagem__COM_IA.py,22,0,0.0,0,
+JoseMiguel,MetaProducao,SEM_IA,JoseMiguel__MetaProducao__SEM_IA.py,17,0,0.0,0,
+JoseMiguel,ReposicaoEstoque,COM_IA,JoseMiguel__ReposicaoEstoque__COM_IA.py,22,0,0.0,0,
+Pedro,ConsumoEnergetico,SEM_IA,Pedro__ConsumoEnergetico__SEM_IA.py,16,0,0.0,0,
+Pedro,ExcessoBagagem,COM_IA,Pedro__ExcessoBagagem__COM_IA.py,16,0,0.0,0,
+Pedro,MetaProducao,SEM_IA,Pedro__MetaProducao__SEM_IA.py,16,0,0.0,0,
+Pedro,ReposicaoEstoque,COM_IA,Pedro__ReposicaoEstoque__COM_IA.py,16,0,0.0,0,

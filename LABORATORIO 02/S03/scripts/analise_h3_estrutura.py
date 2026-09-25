@@ -26,10 +26,11 @@ METRICAS = {
 
 
 def localizar_consolidacao_mais_recente(pasta_consolidacoes):
-    candidatos = sorted(
-        p for p in pasta_consolidacoes.iterdir()
+    candidatos = [
+        p / "trials_consolidados.csv"
+        for p in pasta_consolidacoes.iterdir()
         if p.is_dir() and (p / "trials_consolidados.csv").exists()
-    )
+    ]
 
     if not candidatos:
         raise FileNotFoundError(
@@ -37,7 +38,7 @@ def localizar_consolidacao_mais_recente(pasta_consolidacoes):
             "Rode antes: LABORATORIO 02/S02/scripts/consolidar_trials.py"
         )
 
-    return candidatos[-1] / "trials_consolidados.csv"
+    return max(candidatos, key=lambda caminho: caminho.stat().st_mtime)
 
 
 def carregar_dados(caminho_csv):
@@ -47,7 +48,10 @@ def carregar_dados(caminho_csv):
         if coluna in dados.columns:
             dados[coluna] = pd.to_numeric(dados[coluna], errors="coerce")
 
-    dados["concluido"] = dados.get("avaliacao_concluido", "").eq("True")
+    avaliacao_concluido = dados.get("avaliacao_concluido", pd.Series("", index=dados.index))
+    dados["situacao"] = avaliacao_concluido.map(
+        lambda v: "concluido" if v == "True" else ("nao_concluido" if v == "False" else "sem_avaliacao")
+    )
 
     if "estatica_erro" in dados.columns:
         com_erro = dados["estatica_erro"].astype(bool) & (dados["estatica_erro"] != "")
@@ -139,8 +143,15 @@ def gerar_grafico(dados, coluna, titulo, caminho_saida):
 def analisar(dados, pasta_saida):
     pasta_saida.mkdir(parents=True, exist_ok=True)
 
-    completas = dados[dados["concluido"]]
-    parciais = dados[~dados["concluido"]]
+    completas = dados[dados["situacao"] == "concluido"]
+    parciais = dados[dados["situacao"] == "nao_concluido"]
+    sem_avaliacao = dados[dados["situacao"] == "sem_avaliacao"]
+
+    if not sem_avaliacao.empty:
+        print(
+            f"\nAviso: {len(sem_avaliacao)} trial(s) sem avaliacao_concluido preenchido em "
+            "avaliacao_trials.csv - não entram nas estatísticas por situação, só nos totais gerais."
+        )
 
     linhas_resumo = []
 
@@ -150,7 +161,9 @@ def analisar(dados, pasta_saida):
 
         print(f"\n=== {titulo} ===")
 
-        for rotulo, subconjunto in (("completas", completas), ("parciais", parciais)):
+        for rotulo, subconjunto in (
+            ("concluido", completas), ("nao_concluido", parciais), ("sem_avaliacao", sem_avaliacao)
+        ):
             descritivas = descritivas_por_tratamento(subconjunto, coluna)
             print(f"-- {rotulo} --")
             print(descritivas.to_string() if not descritivas.empty else "(sem dados)")

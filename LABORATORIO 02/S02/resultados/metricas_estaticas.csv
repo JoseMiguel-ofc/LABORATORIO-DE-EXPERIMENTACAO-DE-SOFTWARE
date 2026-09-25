@@ -1,0 +1,13 @@
+integrante,kata,tratamento,arquivo,loc,lloc,sloc,comentarios,linhas_em_branco,num_blocos,complexidade_total,complexidade_media,complexidade_maxima,erro
+Eddie,ConsumoEnergetico,COM_IA,Eddie__ConsumoEnergetico__COM_IA.py,17,11,14,0,2,1,7,7.0,7,
+Eddie,ExcessoBagagem,SEM_IA,Eddie__ExcessoBagagem__SEM_IA.py,17,11,14,0,2,1,7,7.0,7,
+Eddie,MetaProducao,COM_IA,Eddie__MetaProducao__COM_IA.py,17,11,14,0,2,1,7,7.0,7,
+Eddie,ReposicaoEstoque,SEM_IA,Eddie__ReposicaoEstoque__SEM_IA.py,17,11,14,0,2,1,7,7.0,7,
+JoseMiguel,ConsumoEnergetico,SEM_IA,JoseMiguel__ConsumoEnergetico__SEM_IA.py,25,17,16,0,8,1,7,7.0,7,
+JoseMiguel,ExcessoBagagem,COM_IA,JoseMiguel__ExcessoBagagem__COM_IA.py,30,19,21,0,8,1,8,8.0,8,
+JoseMiguel,MetaProducao,SEM_IA,JoseMiguel__MetaProducao__SEM_IA.py,25,17,16,0,8,1,7,7.0,7,
+JoseMiguel,ReposicaoEstoque,COM_IA,JoseMiguel__ReposicaoEstoque__COM_IA.py,30,19,21,0,8,1,8,8.0,8,
+Pedro,ConsumoEnergetico,SEM_IA,Pedro__ConsumoEnergetico__SEM_IA.py,21,16,16,0,5,1,7,7.0,7,
+Pedro,ExcessoBagagem,COM_IA,Pedro__ExcessoBagagem__COM_IA.py,20,12,16,0,4,1,7,7.0,7,
+Pedro,MetaProducao,SEM_IA,Pedro__MetaProducao__SEM_IA.py,21,16,16,0,5,1,7,7.0,7,
+Pedro,ReposicaoEstoque,COM_IA,Pedro__ReposicaoEstoque__COM_IA.py,20,12,16,0,4,1,7,7.0,7,

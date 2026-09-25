@@ -1,0 +1,13 @@
+{
+  "gerado_em_utc": "2026-09-25T02:16:58.768325+00:00",
+  "trials_esperados": 12,
+  "chaves_encontradas": 12,
+  "trials_com_tempo": 12,
+  "trials_com_avaliacao": 2,
+  "trials_com_todas_as_fontes": 2,
+  "tempos_faltantes_para_total": 0,
+  "arquivos_ausentes": [],
+  "registros_excluidos": [],
+  "coleta_completa_em_quantidade": false,
+  "nota": "Consolidar não valida o desenho, valores ou balanceamento. Rode também validar_trials.py. Campos vazios não foram imputados."
+}
