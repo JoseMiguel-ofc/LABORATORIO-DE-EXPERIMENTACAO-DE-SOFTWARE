@@ -1,3 +1,3 @@
 tratamento,n_registrados,n_validos,n_nao_avaliaveis,concluidos,nao_concluidos,proporcao
-COM_IA,6,2,4,2,0,1.0
-SEM_IA,2,0,2,0,0,
+COM_IA,6,6,0,6,0,1.0
+SEM_IA,6,6,0,6,0,1.0

@@ -1,9 +1,13 @@
 integrante,kata,familia,tratamento,periodo,tempo_segundos,censurado,status_testes,casos_aprovados,concluido_no_limite,situacao,motivo
-Eddie,ConsumoEnergetico,excesso,COM_IA,,685.11,False,,,,nao_avaliavel,tempo ou avaliação ausente
-Eddie,ExcessoBagagem,excesso,SEM_IA,,796.23,False,,,,nao_avaliavel,tempo ou avaliação ausente
-Eddie,MetaProducao,deficit,COM_IA,,639.87,False,,,,nao_avaliavel,tempo ou avaliação ausente
-Eddie,ReposicaoEstoque,deficit,SEM_IA,,779.29,False,,,,nao_avaliavel,tempo ou avaliação ausente
+Eddie,ConsumoEnergetico,excesso,COM_IA,,685.11,False,APROVADO,26,1,valido,
+Eddie,ExcessoBagagem,excesso,SEM_IA,,796.23,False,APROVADO,26,1,valido,
+Eddie,MetaProducao,deficit,COM_IA,,639.87,False,APROVADO,26,1,valido,
+Eddie,ReposicaoEstoque,deficit,SEM_IA,,779.29,False,APROVADO,26,1,valido,
+JoseMiguel,ConsumoEnergetico,excesso,SEM_IA,,1072.77,False,APROVADO,26,1,valido,
 JoseMiguel,ExcessoBagagem,excesso,COM_IA,,33.02,False,APROVADO,26,1,valido,
+JoseMiguel,MetaProducao,deficit,SEM_IA,,1288.75,False,APROVADO,26,1,valido,
 JoseMiguel,ReposicaoEstoque,deficit,COM_IA,,26.09,False,APROVADO,26,1,valido,
-Pedro,ExcessoBagagem,excesso,COM_IA,,21.01,False,,,,nao_avaliavel,tempo ou avaliação ausente
-Pedro,ReposicaoEstoque,deficit,COM_IA,,26.01,False,,,,nao_avaliavel,tempo ou avaliação ausente
+Pedro,ConsumoEnergetico,excesso,SEM_IA,,775.01,False,APROVADO,26,1,valido,
+Pedro,ExcessoBagagem,excesso,COM_IA,,21.01,False,APROVADO,26,1,valido,
+Pedro,MetaProducao,deficit,SEM_IA,,690.01,False,APROVADO,26,1,valido,
+Pedro,ReposicaoEstoque,deficit,COM_IA,,26.01,False,APROVADO,26,1,valido,

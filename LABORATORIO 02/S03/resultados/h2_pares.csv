@@ -1,1 +1,7 @@
 integrante,familia,kata_com_ia,kata_sem_ia,com_ia,sem_ia
+Eddie,deficit,MetaProducao,ReposicaoEstoque,1,1
+Eddie,excesso,ConsumoEnergetico,ExcessoBagagem,1,1
+JoseMiguel,deficit,ReposicaoEstoque,MetaProducao,1,1
+JoseMiguel,excesso,ExcessoBagagem,ConsumoEnergetico,1,1
+Pedro,deficit,ReposicaoEstoque,MetaProducao,1,1
+Pedro,excesso,ExcessoBagagem,ConsumoEnergetico,1,1

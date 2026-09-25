@@ -91,6 +91,16 @@ def rodar_wilcoxon(pares):
             "observacao": "Menos de 3 pares disponíveis; teste de Wilcoxon não é aplicável.",
         }
 
+    diferencas = pares["COM_IA"] - pares["SEM_IA"]
+
+    if (diferencas == 0).all():
+        return {
+            "n_pares": len(pares),
+            "estatistica": 0.0,
+            "p_valor": 1.0,
+            "observacao": "Todas as diferenças pareadas são zero (empate perfeito); Wilcoxon é degenerado aqui.",
+        }
+
     try:
         resultado = wilcoxon(pares["COM_IA"], pares["SEM_IA"])
         return {
