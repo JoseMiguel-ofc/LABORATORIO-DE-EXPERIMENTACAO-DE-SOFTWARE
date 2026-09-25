@@ -1,0 +1,4 @@
+subconjunto,tratamento,n,mediana_segundos,media_segundos,desvio_padrao_segundos
+confiavel,COM_IA,4,26.05,26.532500000000002,4.9347230587609126
+confiavel,SEM_IA,4,934.5,984.26,243.52697454970638
+wilcoxon_pareado_confiaveis,COM_IA_vs_SEM_IA,1,,,Menos de 3 pares disponíveis; teste de Wilcoxon não é aplicável.

@@ -1,0 +1,5 @@
+integrante,kata,tratamento,tempo_segundos,inicio_fim_segundos,divergencia_segundos
+Eddie,ConsumoEnergetico,COM_IA,685.11,887.0,201.89
+Eddie,MetaProducao,COM_IA,639.87,842.0,202.13
+Pedro,ConsumoEnergetico,SEM_IA,775.01,18.0,757.01
+Pedro,MetaProducao,SEM_IA,690.01,20.0,670.01
