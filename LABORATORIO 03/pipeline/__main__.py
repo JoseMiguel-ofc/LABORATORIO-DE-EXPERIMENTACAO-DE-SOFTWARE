@@ -102,7 +102,13 @@ def main(argv=None):
     # Cliente com cache, rate limit e backoff: pipeline/api_client.py (Pessoa C).
     # Os módulos daqui só usam get(caminho, params) -> resposta com .status,
     # .dados, .link e .ok, e paginar(caminho, params, chave=None, max_paginas=None).
-    from pipeline.api_client import ClienteGitHub
+    try:
+        from pipeline.api_client import ClienteGitHub
+    except ModuleNotFoundError as erro:
+        if erro.name != "pipeline.api_client":
+            raise
+        sys.exit("Coleta real indisponível: falta pipeline/api_client.py (Pessoa C). "
+                 "Os módulos da Pessoa B podem ser validados sem rede com python -m pytest.")
     cliente = ClienteGitHub(token, config["saida"]["cache_dir"])
     inicio, fim = limites_da_janela(config["janela"]["inicio"], config["janela"]["fim"])
     faixas = [(f["min"], f.get("max")) for f in config["busca"]["faixas_estrelas"]]

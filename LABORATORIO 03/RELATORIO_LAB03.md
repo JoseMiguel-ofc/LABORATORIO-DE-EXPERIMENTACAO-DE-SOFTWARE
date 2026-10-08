@@ -108,4 +108,20 @@ tinham sido resolvidos no fim da janela. Também esperamos que a recuperação s
 mais lenta em repositórios com menos contribuidores, porque há menos pessoas
 disponíveis para corrigir a falha.
 
-<!-- Hipóteses das RQ 05 a 07: Pessoas B e C. -->
+**H5 (RQ 05, velocidade e estabilidade).** Esperamos uma associação fraca entre
+frequência de releases e CFR de CI (a). Releases frequentes podem refletir lotes
+menores, mas também mais oportunidades de executar workflows com falhas. Para
+CFR de entrega (b), esperamos uma associação positiva mais acentuada: projetos
+que publicam muitos patches têm maior chance de satisfazer a heurística de
+correção em sete dias. Essa associação pode decorrer da definição do proxy e,
+isoladamente, não demonstra que entregar mais rápido reduza a estabilidade.
+
+**H6 (RQ 06, características dos projetos).** Esperamos que projetos com mais
+contribuidores tenham maior frequência de releases e menor lead time, por
+disporem de mais capacidade de revisão e manutenção. Para idade e estrelas,
+esperamos associações menos claras: maturidade pode melhorar a automação, mas
+também acompanhar maior complexidade e ciclos de entrega mais longos. Não
+assumimos uma relação causal entre popularidade e qualidade. As comparações
+serão feitas entre quartis de estrelas, idade e contribuidores.
+
+<!-- Hipótese da RQ 07: Pessoa C. -->

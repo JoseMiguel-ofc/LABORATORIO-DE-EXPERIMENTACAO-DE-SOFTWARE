@@ -1,0 +1,40 @@
+LAB03 - Validação técnica da Sprint 1 da pessoa B
+Data: 08/10/2026 (America/Sao_Paulo)
+Ambiente: macOS, CPython 3.12.15, ambiente local .venv
+
+Escopo: somente Sprint 1 da pessoa B e regressão dos módulos existentes.
+Todos os testes usam dados controlados; nenhuma coleta real do GitHub foi feita.
+
+Comandos executados a partir de LABORATORIO 03:
+
+.venv/bin/python -m compileall -q pipeline metricas tests
+Resultado: código de saída 0, sem erros de compilação.
+
+.venv/bin/python -m pytest -q --cov=pipeline --cov=metricas --cov-report=term-missing --cov-fail-under=80
+Resultado: 147 passed in 0.54s
+Cobertura: 97.74% (530 instruções; 12 não cobertas), superior ao mínimo de 80%.
+
+Verificações funcionais:
+- Exemplo de lead time: variante (a) = 312 horas (13 dias);
+  observações da variante (b) = 312, 120 e 24 horas (13, 5 e 1 dias);
+  mediana da variante (b) = 120 horas (5 dias).
+- Primeira release histórica, única release, predecessora pré-janela,
+  comparação sem commits, datas inválidas e erros 404 tratados.
+- Compare paginado acima de 250 commits; dados incompletos não viram zero.
+- Tags usam a data do commit apontado; frequência usa semanas inclusivas.
+- CLI do pipeline testada com ClienteFalso: seleção, CSVs, frequência de
+  5/(365/7) releases/semana e medianas de lead time de 24 horas.
+- Coleta da pessoa B exporta somente releases.csv, tags.csv, commits.csv
+  e metricas_entrega.csv, sem dependência dos módulos de sprints posteriores.
+- Hipóteses H5/H6 preservadas no relatório, conforme pedido da Sprint 1.
+- git diff --check não apontou erros de whitespace.
+
+Limites da validação:
+- O cliente real pipeline/api_client.py e o módulo de runs da pessoa C não
+  existem nesta versão. O teste de integração simula a interface desse cliente.
+- A janela do config.yaml é provisória. As datas oficiais e o dataset real
+  não foram disponibilizados.
+- Os testes validam o código e seus casos esperados, não uma coleta real de
+  100 repositórios. A integração da infraestrutura da pessoa C ainda é necessária.
+
+Consulte README.md para instalação, contratos dos CSVs e comandos de execução.

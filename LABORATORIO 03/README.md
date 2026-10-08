@@ -5,6 +5,13 @@ aplica os critérios de inclusão do laboratório e coleta os dados usados para
 calcular as métricas DORA (deployment frequency, lead time, change failure rate
 e tempo de recuperação).
 
+**Estado da entrega da pessoa B — Sprint 1:** coleta de releases, tags e
+commits, cálculo da frequência de releases e do lead time nas variantes (a)/(b),
+e hipóteses H5/H6 no relatório. A coleta real depende de `pipeline/api_client.py`
+da pessoa C, ausente nesta versão. Os testes usam exemplos controlados e não
+exigem acesso à API. A janela em `config.yaml` é provisória, aguardando as datas
+oficiais do professor.
+
 ## Como executar
 
 Requer Python 3.12+ e um token do GitHub (um *fine-grained token* só com acesso
@@ -12,7 +19,9 @@ de leitura a repositórios públicos basta).
 
 ```bash
 cd "LABORATORIO 03"
-pip install -r requirements.txt
+python3.12 -m venv .venv
+source .venv/bin/activate          # PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 export GITHUB_TOKEN=ghp_...          # PowerShell: $env:GITHUB_TOKEN = "ghp_..."
 python -m pipeline --config config.yaml
 ```
@@ -20,14 +29,14 @@ python -m pipeline --config config.yaml
 O token é lido da variável de ambiente indicada em `github.token_env` no
 `config.yaml` e nunca é gravado em disco.
 
-**Retomada** (`pipeline/api_client.py` e `pipeline/cache.py`). Toda resposta da API fica salva em `dados/cache/` (um JSON por
-URL). Se a coleta parar por rate limit, queda de rede ou `Ctrl+C`, basta rodar
-o mesmo comando de novo: o que já foi baixado vem do cache, sem gastar cota. Para
-coletar tudo do zero, apague `dados/cache/`.
+Antes da coleta real, integre o cliente da pessoa C e substitua `janela.inicio`,
+`janela.fim` e a data de `busca.filtro_extra` pelas datas oficiais. A CLI explica
+a dependência caso o cliente ainda esteja ausente.
 
-**Rate limit** (`pipeline/api_client.py`). O cliente lê `X-RateLimit-Remaining`/`X-RateLimit-Reset` e
-espera sozinho quando a cota acaba; respostas 5xx são repetidas com backoff
-exponencial (1 s, 2 s, 4 s, …).
+**Infraestrutura prevista, pendente da pessoa C:** retomada por cache em
+`dados/cache/`, paginação pelo cabeçalho `Link`, espera por rate limit e backoff
+exponencial em respostas 5xx. Os módulos da pessoa B recebem esse cliente como
+parâmetro; não criam outro cliente nem armazenam o token.
 
 ## Configuração (`config.yaml`)
 
@@ -58,7 +67,8 @@ exponencial (1 s, 2 s, 4 s, …).
    truque `per_page=1` + página `rel="last"` do cabeçalho `Link`.
 4. **Coletas detalhadas**: os módulos `pipeline/releases.py` e `pipeline/runs.py`
    expõem `coletar(cliente, amostra, config)` e rodam só sobre a amostra
-   aprovada. Enquanto não existirem, o pipeline avisa e pula a etapa.
+   aprovada. `releases.py` também chama `commits.py` e calcula frequência
+   e lead time. A etapa `runs.py` ainda está pendente da pessoa C.
 
 ## Saídas (`dados/`)
 
@@ -87,10 +97,16 @@ Colunas de `repositorios.csv`:
 ## Testes
 
 ```bash
-pytest --cov=metricas --cov-report=term-missing
+python -m compileall -q pipeline metricas tests
+python -m pytest --cov=pipeline --cov=metricas --cov-report=term-missing --cov-fail-under=80
 ```
 
 Os testes usam um cliente falso (`tests/conftest.py`) e não acessam a rede.
+Não é necessário token para compilar ou executar os testes. O teste de integração
+executa a CLI com o cliente da pessoa C simulado, passa pelo funil e confere os
+quatro CSVs da pessoa B com os resultados esperados.
+O registro da execução e seus limites estão em
+[VALIDACAO_PESSOA_B.txt](VALIDACAO_PESSOA_B.txt).
 
 | Arquivo | O que cobre |
 |---|---|
@@ -98,6 +114,9 @@ Os testes usam um cliente falso (`tests/conftest.py`) e não acessam a rede.
 | `tests/test_funil.py` | Filtros de inclusão, janela e tabela do funil |
 | `tests/test_busca_metadados.py` | Faixas de estrelas, teto de 1.000, descarte sem Actions, contribuidores |
 | `tests/test_main.py` | Seleção da amostra de ponta a ponta |
+| `tests/test_releases.py`, `test_commits.py` | Histórico, tags, paginação acima de 250 commits, erro 404 e CSVs |
+| `tests/test_frequencia.py`, `test_lead_time.py` | Janela inclusiva; exemplo de 13 dias em (a) e 13, 5, 1 dias em (b); primeiras releases e comparações vazias |
+| `tests/test_integracao_pessoa_b.py` | CLI com cliente simulado e comparação dos arquivos gerados com resultados esperados |
 
 ## Classificação DORA (`metricas/dora.py`)
 
@@ -106,3 +125,28 @@ de recuperação em **horas**; CFR como **fração** de 0 a 1. "1 por mês" equi
 12 / (365/7) ≈ 0,23 deploys por semana. A categoria geral é a mediana dos pontos
 (Elite = 4 … Low = 1) arredondada para baixo; métricas ausentes (ex.: repositório
 sem episódios de falha) ficam fora da mediana.
+
+## Entregas e decisões da pessoa B — Sprint 1
+
+| Arquivo gerado em `dados/` | Conteúdo |
+|---|---|
+| `releases.csv` | Histórico, inclusive fora da janela, com flags, predecessora, estado da comparação e lead time por release |
+| `tags.csv` | Tag, SHA, datas do commit apontado, inclusão na janela e estado da consulta |
+| `commits.csv` | Um commit por comparação, mensagem, datas de autoria/integração e intervalos até a release |
+| `metricas_entrega.csv` | Frequência de releases estáveis por semana, medianas de lead time (a)/(b) e contagens de diagnóstico e exclusões |
+
+O lead time usa `commit.committer.date` como referência e preserva também
+`commit.author.date` nos dados coletados. A variante (a) mede o commit mais antigo
+de cada release; (b) agrega todos os commits das comparações. As saídas estão
+em **horas**: o exemplo do PDF produz 312 h em (a), `[312, 120, 24]` h em (b),
+com mediana de 120 h para (b). A primeira release da história e comparações
+vazias não geram lead time; a predecessora anterior à janela é aproveitada.
+Falhas 404 e outras indisponibilidades são contadas e não viram zeros.
+
+A frequência considera releases publicadas, sem rascunhos nem pré-releases,
+divididas pelas semanas da janela inclusiva, incluindo semanas sem release.
+A coleta preserva as flags `draft`/`prerelease`, as tags e as datas dos commits
+apontados por elas para os dados brutos da Sprint 1.
+
+As hipóteses H5/H6 da pessoa B estão em
+[RELATORIO_LAB03.md](RELATORIO_LAB03.md).
