@@ -1,0 +1,3 @@
+# Respostas brutas da API: grandes e regeneráveis pelo pipeline.
+dados/cache/
+.coverage

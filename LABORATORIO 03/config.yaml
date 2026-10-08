@@ -1,0 +1,44 @@
+# Configuração do pipeline. Caminhos são relativos a este arquivo.
+
+github:
+  # Nome da variável de ambiente com o token. O token nunca vai para o repositório.
+  token_env: GITHUB_TOKEN
+
+janela:
+  # TODO: substituir pelas datas fixadas pelo professor na abertura do Lab03S01.
+  inicio: 2025-10-01
+  fim: 2026-09-30
+
+busca:
+  # Cada faixa é uma consulta separada à Search API (máx. 1.000 resultados cada).
+  # Limites inclusivos e sem sobreposição. Se o log avisar que uma faixa passou
+  # de 1.000, divida-a em faixas menores.
+  faixas_estrelas:
+    - {min: 1000, max: 1099}
+    - {min: 1100, max: 1249}
+    - {min: 1250, max: 1499}
+    - {min: 1500, max: 1799}
+    - {min: 1800, max: 2199}
+    - {min: 2200, max: 2799}
+    - {min: 2800, max: 3599}
+    - {min: 3600, max: 4999}
+    - {min: 5000, max: 7499}
+    - {min: 7500, max: 11999}
+    - {min: 12000, max: 24999}
+    - {min: 25000, max: 59999}
+    - {min: 60000}
+  # Repositórios sem push dentro da janela não podem ter releases nem runs nela.
+  filtro_extra: "archived:false pushed:>=2025-10-01"
+
+filtros:
+  releases: 5   # releases publicadas (draft = false, não pré-release) na janela
+  runs: 50      # workflow runs com event = push no default branch, conclusão válida
+
+amostra:
+  # Lab03S01: 100. Lab03S02: >= 300 (ou null para avaliar todos os candidatos).
+  tamanho: 100
+  semente: 42
+
+saida:
+  dir: dados
+  cache_dir: dados/cache
