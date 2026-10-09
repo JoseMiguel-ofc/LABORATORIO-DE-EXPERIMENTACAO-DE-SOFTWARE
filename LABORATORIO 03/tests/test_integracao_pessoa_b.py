@@ -74,6 +74,8 @@ def test_cli_integra_selecao_releases_commits_e_metricas_sprint1(
     cliente.chamadas_api, cliente.acertos_cache = 0, 0
     modulo_simulado = SimpleNamespace(ClienteGitHub=lambda token, cache_dir: cliente)
     monkeypatch.setitem(sys.modules, "pipeline.api_client", modulo_simulado)
+    # Este teste isola a coleta da Pessoa B; a coleta da Pessoa C tem testes próprios.
+    monkeypatch.setitem(sys.modules, "pipeline.runs", SimpleNamespace(coletar=lambda *args: None))
 
     main(["--config", str(caminho)])
 

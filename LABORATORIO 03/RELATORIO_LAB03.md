@@ -124,4 +124,15 @@ também acompanhar maior complexidade e ciclos de entrega mais longos. Não
 assumimos uma relação causal entre popularidade e qualidade. As comparações
 serão feitas entre quartis de estrelas, idade e contribuidores.
 
-<!-- Hipótese da RQ 07: Pessoa C. -->
+**H7 (RQ 07, sensibilidade à definição operacional).** Esperamos que a
+classificação DORA de uma parcela relevante dos repositórios mude ao trocar os
+proxies de deploy, lead time e falha. A inclusão de pré-releases ou tags tende
+a elevar a frequência medida; a mudança de lead time por release para lead
+time por commit tende a reduzir o valor mediano; e o CFR baseado em falhas de
+CI pode divergir do CFR baseado em releases corretivas em até sete dias.
+Nossa hipótese é que **ao menos 20%** dos repositórios classificados mudem de
+categoria em pelo menos uma comparação de cenários, e que a concordância
+ponderada (kappa de Cohen com pesos lineares) seja menor do que 0,80 em ao
+menos uma comparação. Esses limiares são expectativas a testar, não resultados.
+A análise considerará separadamente repositórios com métricas ausentes para
+não confundir mudança de categoria com ausência de dados.

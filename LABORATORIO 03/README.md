@@ -5,10 +5,9 @@ aplica os critérios de inclusão do laboratório e coleta os dados usados para
 calcular as métricas DORA (deployment frequency, lead time, change failure rate
 e tempo de recuperação).
 
-**Estado da entrega da pessoa B — Sprint 1:** coleta de releases, tags e
+**Estado inicial da entrega da pessoa B — Sprint 1:** coleta de releases, tags e
 commits, cálculo da frequência de releases e do lead time nas variantes (a)/(b),
-e hipóteses H5/H6 no relatório. A coleta real depende de `pipeline/api_client.py`
-da pessoa C, ausente nesta versão. Os testes usam exemplos controlados e não
+e hipóteses H5/H6 no relatório. A coleta real utiliza `pipeline/api_client.py` da pessoa C, agora incluído. Os testes usam exemplos controlados e não
 exigem acesso à API. A janela em `config.yaml` é provisória, aguardando as datas
 oficiais do professor.
 
@@ -29,11 +28,10 @@ python -m pipeline --config config.yaml
 O token é lido da variável de ambiente indicada em `github.token_env` no
 `config.yaml` e nunca é gravado em disco.
 
-Antes da coleta real, integre o cliente da pessoa C e substitua `janela.inicio`,
-`janela.fim` e a data de `busca.filtro_extra` pelas datas oficiais. A CLI explica
-a dependência caso o cliente ainda esteja ausente.
+Antes da coleta real, substitua `janela.inicio`,
+`janela.fim` e a data de `busca.filtro_extra` pelas datas oficiais. A CLI utiliza o cliente integrado da Pessoa C.
 
-**Infraestrutura prevista, pendente da pessoa C:** retomada por cache em
+**Infraestrutura implementada pela pessoa C:** retomada por cache em
 `dados/cache/`, paginação pelo cabeçalho `Link`, espera por rate limit e backoff
 exponencial em respostas 5xx. Os módulos da pessoa B recebem esse cliente como
 parâmetro; não criam outro cliente nem armazenam o token.
@@ -68,7 +66,7 @@ parâmetro; não criam outro cliente nem armazenam o token.
 4. **Coletas detalhadas**: os módulos `pipeline/releases.py` e `pipeline/runs.py`
    expõem `coletar(cliente, amostra, config)` e rodam só sobre a amostra
    aprovada. `releases.py` também chama `commits.py` e calcula frequência
-   e lead time. A etapa `runs.py` ainda está pendente da pessoa C.
+   e lead time. A etapa `runs.py` foi implementada pela pessoa C.
 
 ## Saídas (`dados/`)
 
@@ -150,3 +148,34 @@ apontados por elas para os dados brutos da Sprint 1.
 
 As hipóteses H5/H6 da pessoa B estão em
 [RELATORIO_LAB03.md](RELATORIO_LAB03.md).
+
+## Entrega da Pessoa C — Sprint 1
+
+- `pipeline/api_client.py`: autenticação pelo token de ambiente, interface
+  `ClienteGitHub.get()` / `paginar()`, paginação via `Link`, tentativas com
+  backoff 1, 2, 4, 8 segundos para HTTP 5xx e espera em rate limits.
+- `pipeline/cache.py`: cache JSON persistente, chaveada pela URL e parâmetros,
+  com escrita atômica. O token nunca é salvo. Execuções repetidas reutilizam
+  respostas HTTP 200 já coletadas.
+- `pipeline/runs.py`: coleta mensal de `workflow_runs` com `event=push`,
+  `branch=default_branch`, janela inclusiva e conclusões válidas. Se o período
+  atingir o teto de 1.000 runs, ele é subdividido até dias; se um único dia
+  atingir o teto, a coleta desse repositório é marcada como incompleta.
+- `metricas/cfr.py`: CFR(a) = falhas / (falhas + sucessos), como fração.
+- `metricas/recuperacao.py`: episódios por workflow; tempo da primeira falha
+  até `updated_at` do próximo sucesso; episódios sem recuperação são censurados.
+- `tests/test_pessoa_c.py`: testes simulados de paginação, cache, rate limit,
+  backoff, CFR, recuperação e coleta de runs, sem conexão com a API.
+
+A coleta detalhada cria `dados/runs.csv`, `dados/metricas_ci.csv` e
+`dados/episodios_recuperacao.csv`. A coluna `coleta_completa` sinaliza quando
+algum repositório não pôde ser coletado integralmente; suas métricas ficam
+vazias e não devem ser tratadas como zero.
+
+**GitHub Actions:** copie o arquivo `testes.yml` para `.github/workflows/`
+**na raiz do repositório Git**, um nível acima de `LABORATORIO 03/`. A CI
+executa `python -m pytest --cov=pipeline --cov=metricas --cov-fail-under=80`.
+
+**Atenção:** a janela em `config.yaml` é provisória; substitua as datas
+`janela.inicio`, `janela.fim` e `busca.filtro_extra` pelas oficiais antes
+da coleta de 100 repositórios.

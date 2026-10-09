@@ -1,3 +1,6 @@
 # Respostas brutas da API: grandes e regeneráveis pelo pipeline.
 dados/cache/
 .coverage
+__pycache__/
+.pytest_cache/
+.venv/
