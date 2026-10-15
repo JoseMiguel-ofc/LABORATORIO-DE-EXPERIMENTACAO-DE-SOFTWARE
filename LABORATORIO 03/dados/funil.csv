@@ -1,0 +1,8 @@
+etapa,restantes,descartados,motivo
+Candidatos da busca,37606,0,
+Candidatos avaliados,492,37114,não avaliados: a amostra-alvo já tinha sido atingida
+Repositórios acessíveis pela API,492,0,
+Com GitHub Actions,392,100,sem workflows do GitHub Actions (total_count = 0)
+Com >= 5 releases na janela,142,250,menos de 5 releases publicadas na janela
+Com >= 50 workflow runs válidos na janela,100,42,"menos de 50 workflow runs válidos (push, default branch) na janela"
+Amostra final,100,0,

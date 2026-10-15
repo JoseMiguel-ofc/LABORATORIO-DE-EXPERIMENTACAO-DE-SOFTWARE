@@ -4,3 +4,5 @@ dados/cache/
 __pycache__/
 .pytest_cache/
 .venv/
+# commits.csv passa de 100 MB (limite do GitHub); vai versionado como commits.csv.gz.
+dados/commits.csv
