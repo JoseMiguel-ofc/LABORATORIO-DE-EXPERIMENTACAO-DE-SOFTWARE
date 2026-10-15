@@ -44,14 +44,30 @@ def test_buscar_candidatos_une_faixas_sem_duplicatas(cliente_falso):
     assert candidatos[0]["linguagem"] == ""
 
 
-def test_buscar_candidatos_respeita_teto_de_1000(cliente_falso, caplog):
+def test_faixa_acima_de_1000_e_dividida_ao_meio_ate_caber(cliente_falso):
+    # 1000..1099 tem 1.500 repositórios; cada metade tem 750.
+    totais = {"stars:1000..1099": 1500, "stars:1000..1049": 750, "stars:1050..1099": 750}
+    paginas = {"stars:1000..1049": [{"items": [item("a/baixo", 1010)]}],
+               "stars:1050..1099": [{"items": [item("b/alto", 1090)]}]}
+    cliente = cliente_falso(
+        {"/search/repositories": lambda p: Resposta(200, {"total_count": totais[p["q"]]})},
+        {"/search/repositories": lambda p: paginas[p["q"]]},
+    )
+    candidatos = buscar_candidatos(cliente, [(1000, 1099)])
+    assert {c["full_name"] for c in candidatos} == {"a/baixo", "b/alto"}
+    paginadas = {params["q"] for _, params in cliente.chamadas if "page" in params}
+    assert paginadas == {"stars:1000..1049", "stars:1050..1099"}  # a faixa cheia não é baixada
+
+
+@pytest.mark.parametrize("faixa", [(1000, 1000), (60000, None)])
+def test_faixa_indivisivel_respeita_teto_de_1000(cliente_falso, caplog, faixa):
     cliente = cliente_falso(
         {"/search/repositories": Resposta(200, {"total_count": 5000})},
         {"/search/repositories": [{"items": [item(f"o/r{i}")]} for i in range(12)]},
     )
-    candidatos = buscar_candidatos(cliente, [(1000, 1099)])
+    candidatos = buscar_candidatos(cliente, [faixa])
     assert len(candidatos) == 10        # 1.000 resultados / 100 por página = 10 páginas
-    assert "Divida essa faixa" in caplog.text
+    assert "não pode ser dividida" in caplog.text
 
 
 def test_buscar_candidatos_ignora_faixa_com_erro(cliente_falso):

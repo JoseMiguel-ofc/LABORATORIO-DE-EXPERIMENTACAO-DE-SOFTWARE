@@ -41,7 +41,7 @@ parâmetro; não criam outro cliente nem armazenam o token.
 | Chave | Significado |
 |---|---|
 | `janela.inicio`, `janela.fim` | Janela de observação de 12 meses (datas inclusivas, UTC) |
-| `busca.faixas_estrelas` | Faixas de estrelas consultadas separadamente, para contornar o limite de 1.000 resultados da Search API. Se o log avisar que uma faixa passou de 1.000, divida-a |
+| `busca.faixas_estrelas` | Faixas de estrelas consultadas separadamente, para contornar o limite de 1.000 resultados da Search API. Faixas com mais de 1.000 repositórios são divididas ao meio automaticamente |
 | `tags.coletar` | Coleta as tags para a variante da RQ 07 (desligado por padrão: uma chamada à API por tag) |
 | `busca.filtro_extra` | Termos adicionais da busca (ex.: `archived:false`) |
 | `filtros.releases`, `filtros.runs` | Mínimos de inclusão: 5 releases e 50 workflow runs válidos na janela |

@@ -11,8 +11,8 @@ janela:
 
 busca:
   # Cada faixa é uma consulta separada à Search API (máx. 1.000 resultados cada).
-  # Limites inclusivos e sem sobreposição. Se o log avisar que uma faixa passou
-  # de 1.000, divida-a em faixas menores.
+  # Limites inclusivos e sem sobreposição. Faixas com mais de 1.000 repositórios
+  # são divididas ao meio automaticamente até caber.
   faixas_estrelas:
     - {min: 1000, max: 1099}
     - {min: 1100, max: 1249}

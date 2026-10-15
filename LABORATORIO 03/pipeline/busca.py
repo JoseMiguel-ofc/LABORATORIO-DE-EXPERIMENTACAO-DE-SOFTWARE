@@ -2,7 +2,8 @@
 
 A Search API devolve no máximo 1.000 resultados por consulta. Para passar desse
 teto, a busca é fatiada em faixas de estrelas que não se sobrepõem; cada faixa
-é uma consulta separada, e os resultados são unidos sem duplicatas.
+é uma consulta separada, e os resultados são unidos sem duplicatas. Uma faixa
+com mais de 1.000 repositórios é dividida ao meio automaticamente até caber.
 """
 
 import logging
@@ -46,23 +47,35 @@ def buscar_candidatos(cliente, faixas, filtro_extra=""):
     validar_faixas(faixas)
     candidatos = {}
     for minimo, maximo in faixas:
-        consulta = montar_consulta(minimo, maximo, filtro_extra)
-        params = {"q": consulta, "sort": "stars", "order": "desc", "per_page": POR_PAGINA}
-        primeira = cliente.get("/search/repositories", params)
-        if not primeira.ok:
-            log.warning("Busca '%s' retornou HTTP %s", consulta, primeira.status)
-            continue
-        total = primeira.dados["total_count"]
-        if total > LIMITE_BUSCA:
-            log.warning("Faixa '%s' tem %d repositórios; só os %d primeiros são acessíveis. "
-                        "Divida essa faixa no config.yaml.", consulta, total, LIMITE_BUSCA)
-        paginas = -(-min(total, LIMITE_BUSCA) // POR_PAGINA)
-        for item in cliente.paginar("/search/repositories", params, chave="items",
-                                    max_paginas=paginas):
-            candidatos.setdefault(item["full_name"], resumir_repositorio(item))
-        log.info("Faixa '%s': %d no total, %d candidatos acumulados",
-                 consulta, total, len(candidatos))
+        _buscar_faixa(cliente, minimo, maximo, filtro_extra, candidatos)
     return list(candidatos.values())
+
+
+def _buscar_faixa(cliente, minimo, maximo, filtro_extra, candidatos):
+    consulta = montar_consulta(minimo, maximo, filtro_extra)
+    params = {"q": consulta, "sort": "stars", "order": "desc", "per_page": POR_PAGINA}
+    primeira = cliente.get("/search/repositories", params)
+    if not primeira.ok:
+        log.warning("Busca '%s' retornou HTTP %s", consulta, primeira.status)
+        return
+    total = primeira.dados["total_count"]
+    if total > LIMITE_BUSCA:
+        if maximo is not None and maximo > minimo:
+            meio = (minimo + maximo) // 2
+            log.info("Faixa '%s' tem %d repositórios; dividindo em %d..%d e %d..%d",
+                     consulta, total, minimo, meio, meio + 1, maximo)
+            _buscar_faixa(cliente, minimo, meio, filtro_extra, candidatos)
+            _buscar_faixa(cliente, meio + 1, maximo, filtro_extra, candidatos)
+            return
+        # Faixa aberta (>=N) ou de um único valor: não há como dividir por estrelas.
+        log.warning("Faixa '%s' tem %d repositórios e não pode ser dividida; só os %d "
+                    "primeiros são acessíveis.", consulta, total, LIMITE_BUSCA)
+    paginas = -(-min(total, LIMITE_BUSCA) // POR_PAGINA)
+    for item in cliente.paginar("/search/repositories", params, chave="items",
+                                max_paginas=paginas):
+        candidatos.setdefault(item["full_name"], resumir_repositorio(item))
+    log.info("Faixa '%s': %d no total, %d candidatos acumulados",
+             consulta, total, len(candidatos))
 
 
 def tem_actions(cliente, full_name):
