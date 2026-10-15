@@ -116,6 +116,48 @@ O registro da execução e seus limites estão em
 | `tests/test_releases.py`, `test_commits.py` | Histórico, tags, paginação acima de 250 commits, erro 404 e CSVs |
 | `tests/test_frequencia.py`, `test_lead_time.py` | Janela inclusiva; exemplo de 13 dias em (a) e 13, 5, 1 dias em (b); primeiras releases e comparações vazias |
 | `tests/test_integracao_pessoa_b.py` | CLI com cliente simulado e comparação dos arquivos gerados com resultados esperados |
+| `tests/test_validacao.py` | Sorteio reproduzível da amostra-ouro, planilha de rotulagem, kappa de Fleiss (concordância total = 1; caso calculado à mão = 1/3), Landis & Koch e consenso |
+
+## Validação manual — amostra-ouro (`validacao/`)
+
+Comandos a partir de `LABORATORIO 03`, na ordem:
+
+```bash
+python -m validacao.sorteio     # 1. sorteia e gera a planilha (já executado; não precisa repetir)
+python -m validacao.kappa       # 2. depois que os três rotulos_*.xlsx estiverem commitados
+python -m validacao.consenso    # 3. consenso por maioria; empates vão para desempate.csv
+```
+
+1. **Sorteio** (`sorteio.py`): 60 repositórios com `random_state=42`, tirados dos
+   100 primeiros de `dados/repositorios.csv`. O pipeline grava os aprovados na
+   ordem embaralhada da avaliação, então esses 100 continuam os mesmos quando a
+   amostra cresce, e o sorteio é reproduzível sobre a amostra final. De cada
+   repositório saem 5 releases estáveis publicadas na janela, também com
+   `random_state=42`. Saídas: `amostra_ouro_repositorios.csv`,
+   `amostra_ouro_releases.csv` e `planilha_rotulagem.xlsx`.
+2. **Rotulagem**: cada integrante copia `planilha_rotulagem.xlsx` para
+   `rotulos_<letra>.xlsx` (A, B ou C), preenche **sozinho e sem ver a heurística**
+   e commita só o próprio arquivo. A planilha tem links para o repositório, a
+   release e a lista de commits, e listas suspensas com os valores permitidos.
+   As instruções estão na aba `instrucoes`.
+3. **Concordância** (`kappa.py`): kappa de Fleiss (`aggregate_raters` +
+   `fleiss_kappa` do statsmodels) para `tipo_projeto`, `entregas_reais` e
+   `corretiva`, com a interpretação de Landis & Koch (1977). Itens sem rótulo de
+   algum avaliador ficam fora do cálculo e aparecem em `itens_incompletos`.
+   Saída: `resultado_kappa.csv`.
+4. **Consenso** (`consenso.py`), com o protocolo de desempate:
+   1. maioria simples (2 de 3);
+   2. empates 1-1-1 vão para `desempate.csv`, e a coluna `decisao` é preenchida
+      na reunião dos três;
+   3. rodar o script de novo aplica as decisões, que são preservadas se a lista
+      for regenerada.
+
+   Saídas:
+   - `consenso_repositorios.csv`, com o tipo do projeto usado na RQ 06;
+   - `consenso_releases.csv`, com a release corretiva usada para avaliar a
+     heurística do CFR (b).
+
+   A coluna `metodo_*` diz se cada rótulo veio da maioria ou da reunião.
 
 ## Classificação DORA (`metricas/dora.py`)
 

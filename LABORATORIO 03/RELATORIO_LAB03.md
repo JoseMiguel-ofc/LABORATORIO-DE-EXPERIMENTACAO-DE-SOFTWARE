@@ -136,3 +136,66 @@ ponderada (kappa de Cohen com pesos lineares) seja menor do que 0,80 em ao
 menos uma comparação. Esses limiares são expectativas a testar, não resultados.
 A análise considerará separadamente repositórios com métricas ausentes para
 não confundir mudança de categoria com ausência de dados.
+
+## 2. Metodologia
+
+<!-- 2.1 Fonte de dados, janela e funil de seleção: Pessoa C. -->
+<!-- 2.2 Definições operacionais e variantes, incluindo a evolução da heurística de release corretiva: Pessoa B. -->
+
+### 2.3 Validação manual (amostra-ouro)
+
+Várias decisões do estudo dependem de critérios automáticos que podem errar.
+O caso principal é a heurística que identifica uma **release corretiva**, base
+do CFR de entrega (RQ 03 b). Para medir esse erro, construímos uma
+**amostra-ouro**: um subconjunto rotulado por pessoas que serve de referência
+para avaliar os critérios automáticos.
+
+**Sorteio.** Sorteamos 60 repositórios da amostra com semente fixa
+(`random_state = 42`), pelo script `validacao/sorteio.py`. O sorteio foi feito
+no início da coleta completa, sobre os 100 primeiros repositórios aprovados no
+funil. Como o pipeline avalia os candidatos numa ordem aleatória com semente
+fixa, esses 100 repositórios são um subconjunto aleatório da amostra final e
+permanecem nela quando a amostra cresce. Assim, os 60 sorteados também são uma
+amostra aleatória da amostra final. De cada repositório sorteamos 5 releases
+estáveis (sem rascunhos nem pré-releases) publicadas na janela, também com
+semente fixa, totalizando 300 releases.
+
+**Rotulagem independente.** Os três integrantes do grupo rotularam a amostra
+**de forma independente**, sem consultar os demais e sem acesso à saída da
+heurística automática. Cada avaliador recebeu uma planilha gerada
+automaticamente, com links para o repositório, para a página de cada release
+(com as *release notes*) e para a lista de commits incluídos nela. A planilha
+também restringe as respostas aos valores permitidos. Foram rotuladas três
+dimensões:
+
+1. **tipo do projeto** (por repositório): biblioteca/framework,
+   aplicação/serviço, ferramenta CLI ou outro. Esse rótulo é usado como fator na
+   RQ 06;
+2. **entregas reais** (por repositório): se as releases representam entregas
+   reais ao usuário (sim, não ou incerto). Essa dimensão avalia o proxy
+   "release = deploy";
+3. **release corretiva** (por release): se o objetivo principal da release é
+   corrigir um defeito recente (sim ou não).
+
+**Concordância.** Medimos a concordância entre os três avaliadores em cada
+dimensão pelo **kappa de Fleiss**, que desconta a concordância esperada por
+acaso. Usamos as funções `aggregate_raters` e `fleiss_kappa` do statsmodels
+(script `validacao/kappa.py`) e interpretamos os valores pela escala de Landis e
+Koch (1977): abaixo de 0 pobre; até 0,20 leve; até 0,40 razoável; até 0,60
+moderada; até 0,80 substancial; acima disso quase perfeita. Um kappa baixo
+indica que o próprio critério é ambíguo, mesmo para pessoas, e é discutido como
+achado e como ameaça à validade.
+
+**Consenso.** O rótulo de referência de cada item é definido por **maioria
+simples**: o rótulo dado por pelo menos dois dos três avaliadores. Os empates
+(1-1-1) foram discutidos em reunião pelos três, e a decisão de cada caso ficou
+registrada no repositório (`validacao/desempate.csv`), junto com a origem de
+cada rótulo de consenso, maioria ou reunião (script `validacao/consenso.py`).
+
+**Avaliação da heurística.** O rótulo de consenso de release corretiva é a
+referência para calcular a precisão, o recall e o F1 da heurística automática
+do CFR (b). Quando o F1 fica abaixo de 0,70, a heurística é refinada e avaliada
+de novo. As versões testadas e seus resultados são descritos na seção 2.2.
+
+<!-- Após a rotulagem: inserir a tabela com o kappa de cada dimensão
+     (validacao/resultado_kappa.csv) e o número de empates resolvidos em reunião. -->

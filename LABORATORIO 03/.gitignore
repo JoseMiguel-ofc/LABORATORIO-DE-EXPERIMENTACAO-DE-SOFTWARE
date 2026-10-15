@@ -6,3 +6,5 @@ __pycache__/
 .venv/
 # commits.csv passa de 100 MB (limite do GitHub); vai versionado como commits.csv.gz.
 dados/commits.csv
+# Arquivo de bloqueio criado pelo Excel enquanto uma planilha está aberta.
+~$*.xlsx
