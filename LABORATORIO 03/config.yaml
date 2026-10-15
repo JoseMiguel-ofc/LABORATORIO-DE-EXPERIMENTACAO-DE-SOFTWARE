@@ -30,6 +30,11 @@ busca:
   # Repositórios sem push dentro da janela não podem ter releases nem runs nela.
   filtro_extra: "archived:false pushed:>=2025-10-01"
 
+tags:
+  # Variante da RQ 07. Cada tag custa uma chamada à API (data do commit apontado),
+  # o que pode somar milhares de chamadas por repositório. Ligar só para a RQ 07.
+  coletar: false
+
 filtros:
   releases: 5   # releases publicadas (draft = false, não pré-release) na janela
   runs: 50      # workflow runs com event = push no default branch, conclusão válida

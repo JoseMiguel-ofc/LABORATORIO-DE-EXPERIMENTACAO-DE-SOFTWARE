@@ -42,6 +42,7 @@ parâmetro; não criam outro cliente nem armazenam o token.
 |---|---|
 | `janela.inicio`, `janela.fim` | Janela de observação de 12 meses (datas inclusivas, UTC) |
 | `busca.faixas_estrelas` | Faixas de estrelas consultadas separadamente, para contornar o limite de 1.000 resultados da Search API. Se o log avisar que uma faixa passou de 1.000, divida-a |
+| `tags.coletar` | Coleta as tags para a variante da RQ 07 (desligado por padrão: uma chamada à API por tag) |
 | `busca.filtro_extra` | Termos adicionais da busca (ex.: `archived:false`) |
 | `filtros.releases`, `filtros.runs` | Mínimos de inclusão: 5 releases e 50 workflow runs válidos na janela |
 | `amostra.tamanho` | Quantos repositórios aprovados buscar (`null` = avaliar todos os candidatos) |
@@ -133,8 +134,8 @@ sem episódios de falha) ficam fora da mediana.
 | `commits.csv` | Um commit por comparação, mensagem, datas de autoria/integração e intervalos até a release |
 | `metricas_entrega.csv` | Frequência de releases estáveis por semana, medianas de lead time (a)/(b) e contagens de diagnóstico e exclusões |
 
-O lead time usa `commit.committer.date` como referência e preserva também
-`commit.author.date` nos dados coletados. A variante (a) mede o commit mais antigo
+O lead time usa `commit.author.date` como referência (seção 3 do enunciado) e
+preserva também `commit.committer.date` nos dados coletados. A variante (a) mede o commit mais antigo
 de cada release; (b) agrega todos os commits das comparações. As saídas estão
 em **horas**: o exemplo do PDF produz 312 h em (a), `[312, 120, 24]` h em (b),
 com mediana de 120 h para (b). A primeira release da história e comparações
@@ -143,8 +144,10 @@ Falhas 404 e outras indisponibilidades são contadas e não viram zeros.
 
 A frequência considera releases publicadas, sem rascunhos nem pré-releases,
 divididas pelas semanas da janela inclusiva, incluindo semanas sem release.
-A coleta preserva as flags `draft`/`prerelease`, as tags e as datas dos commits
-apontados por elas para os dados brutos da Sprint 1.
+A coleta preserva as flags `draft`/`prerelease`. As tags (variante da RQ 07) usam a
+data de autoria do commit apontado e só são coletadas com `tags.coletar: true` no
+`config.yaml`, porque cada tag custa uma chamada à API; com a opção desligada,
+`tags.csv` sai vazio e `tags_status` fica `nao_coletado`.
 
 As hipóteses H5/H6 da pessoa B estão em
 [RELATORIO_LAB03.md](RELATORIO_LAB03.md).

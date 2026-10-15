@@ -12,8 +12,8 @@ def release(tag, data, **extra):
 
 
 def commit(sha, data="2026-01-01T00:00:00Z"):
-    return {"sha": sha, "commit": {"message": "fix bug", "committer": {"date": data},
-                                   "author": {"date": "2025-12-31T00:00:00Z"}}}
+    return {"sha": sha, "commit": {"message": "fix bug", "author": {"date": data},
+                                   "committer": {"date": "2025-12-31T00:00:00Z"}}}
 
 
 def cliente_coleta(cliente_falso, releases, tags=None, outras=None):
@@ -25,7 +25,7 @@ def cliente_coleta(cliente_falso, releases, tags=None, outras=None):
 
 def config(tmp_path):
     return {"janela": {"inicio": "2026-01-01", "fim": "2026-01-14"},
-            "saida": {"dir": tmp_path}}
+            "saida": {"dir": tmp_path}, "tags": {"coletar": True}}
 
 
 def test_coleta_com_predecessora_pre_janela_e_exportacao(cliente_falso, tmp_path):
@@ -135,3 +135,15 @@ def test_amostra_vazia_gera_csvs_com_cabecalho(cliente_falso, tmp_path):
     }
     for nome in ["releases", "tags", "commits", "metricas_entrega"]:
         assert (tmp_path / f"{nome}.csv").read_text().startswith("full_name,")
+
+
+def test_tags_nao_sao_coletadas_quando_desativadas(cliente_falso, tmp_path):
+    tags = [{"name": "v1", "commit": {"sha": "a"}}]
+    cliente = cliente_coleta(cliente_falso, [], tags)
+    configuracao = {**config(tmp_path), "tags": {"coletar": False}}
+    tabelas = coletar(cliente, [{"full_name": "o/r"}], configuracao)
+    assert not any(c.endswith(("/tags", "/commits/a")) for c, _ in cliente.chamadas)
+    resumo = tabelas["metricas_entrega"][0]
+    assert resumo["tags_status"] == "nao_coletado"
+    assert resumo["tags_janela"] is None
+    assert (tmp_path / "tags.csv").read_text().startswith("full_name,")

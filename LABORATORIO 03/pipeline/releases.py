@@ -82,7 +82,7 @@ def coletar_releases(cliente, full_name, inicio, fim):
 
 
 def coletar_tags(cliente, full_name, inicio, fim):
-    """A janela de tags usa a data do commit apontado, nunca a data da tag."""
+    """A janela de tags usa a data de autoria do commit apontado, nunca a data da tag."""
     inicio, fim = _limites(inicio, fim)
     itens, status = _listar(cliente, f"/repos/{full_name}/tags")
     if itens is None:
@@ -106,7 +106,7 @@ def coletar_tags(cliente, full_name, inicio, fim):
                     por_sha[sha] = {}, f"http_{resposta.status}" if not resposta.ok else "dados_invalidos"
             commit, linha["status"] = por_sha[sha]
             linha.update({campo: commit.get(campo) for campo in ("committer_date", "author_date")})
-            data = instante(linha["committer_date"])
+            data = instante(linha["author_date"])
             if linha["status"] == "ok" and data is None:
                 linha["status"] = "data_ausente"
             linha["na_janela"] = data is not None and inicio <= data <= fim
@@ -182,6 +182,9 @@ def coletar(cliente, amostra, config):
     """
     inicio, fim = config["janela"]["inicio"], config["janela"]["fim"]
     _limites(inicio, fim)
+    # Tags custam uma chamada por tag (data do commit apontado) e só servem à
+    # variante da RQ 07; por isso a coleta é opcional.
+    coletar_tags_ativo = (config.get("tags") or {}).get("coletar", False)
     tabelas = {"releases": [], "tags": [], "commits": [], "metricas_entrega": []}
     vistos = set()
     for repositorio in amostra:
@@ -190,7 +193,10 @@ def coletar(cliente, amostra, config):
             continue
         vistos.add(nome)
         releases, status_releases = coletar_releases(cliente, nome, inicio, fim)
-        tags, status_tags = coletar_tags(cliente, nome, inicio, fim)
+        if coletar_tags_ativo:
+            tags, status_tags = coletar_tags(cliente, nome, inicio, fim)
+        else:
+            tags, status_tags = [], "nao_coletado"
         commits = enriquecer_commits(cliente, nome, releases)
         resumo = _resumir(nome, releases, tags, status_releases, status_tags, inicio, fim)
         tabelas["releases"].extend(releases)

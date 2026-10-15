@@ -1,7 +1,7 @@
 """Lead time em horas: (a) commit mais antigo por release; (b) cada commit.
 
-A referência usa ``commit.committer.date``. A data de autoria é preservada para
-análises de sensibilidade. Datas ausentes ou posteriores à publicação não viram
+A referência usa ``commit.author.date``, como manda a seção 3 do enunciado. A
+data do committer é preservada para análises de sensibilidade. Datas ausentes ou posteriores à publicação não viram
 zeros: os commits são contados como inválidos e omitidos das duas variantes.
 """
 
@@ -22,7 +22,7 @@ def instante(valor):
     return resultado.astimezone(timezone.utc)
 
 
-def data_commit(commit, campo_data="committer_date"):
+def data_commit(commit, campo_data="author_date"):
     if campo_data not in {"committer_date", "author_date"}:
         raise ValueError("campo_data deve ser committer_date ou author_date")
     pessoa = "committer" if campo_data == "committer_date" else "author"
@@ -32,14 +32,14 @@ def data_commit(commit, campo_data="committer_date"):
     return instante(valor)
 
 
-def horas_ate_publicacao(publicada, commit, campo_data="committer_date"):
+def horas_ate_publicacao(publicada, commit, campo_data="author_date"):
     publicada, criada = instante(publicada), data_commit(commit, campo_data)
     if publicada is None or criada is None or criada > publicada:
         return None
     return (publicada - criada).total_seconds() / 3600
 
 
-def calcular_lead_times(publicada, commits, campo_data="committer_date"):
+def calcular_lead_times(publicada, commits, campo_data="author_date"):
     """Retorna a observação (a), todas as observações (b) e sua qualidade.
 
     ``commits=None`` significa comparação indisponível; ``[]`` significa uma
@@ -65,7 +65,7 @@ def calcular_lead_times(publicada, commits, campo_data="committer_date"):
             "commits_invalidos": invalidos}
 
 
-def resumir_lead_times(releases, campo_data="committer_date"):
+def resumir_lead_times(releases, campo_data="author_date"):
     """Mediana de (a) por release e mediana de (b) sobre todos os commits.
 
     A variante (b) não é a mediana das medianas de cada release.
