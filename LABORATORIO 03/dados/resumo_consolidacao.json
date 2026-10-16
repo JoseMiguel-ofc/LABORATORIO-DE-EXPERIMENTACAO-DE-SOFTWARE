@@ -1,0 +1,14 @@
+{
+  "repositorios": 100,
+  "meta_sprint2": 300,
+  "meta_atingida": false,
+  "classificacao_completa": 93,
+  "sem_tempo_recuperacao": 7,
+  "categorias_gerais": {
+    "Elite": 9,
+    "High": 45,
+    "Medium": 42,
+    "Low": 4
+  },
+  "avisos": []
+}
