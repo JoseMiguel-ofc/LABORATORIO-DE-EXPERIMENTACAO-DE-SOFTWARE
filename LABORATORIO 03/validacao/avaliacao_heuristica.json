@@ -1,0 +1,128 @@
+{
+  "executado_em_utc": "2026-10-15T23:14:37.244717+00:00",
+  "entradas": {
+    "releases": {
+      "caminho": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 03/dados/releases.csv",
+      "presente": true,
+      "sha256": "6a06c9a65973f6e86ef403b8674a156539ce730e586e1d23fc23edc6a3f9ac2a"
+    },
+    "consenso": {
+      "caminho": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 03/validacao/consenso_releases.csv",
+      "presente": false,
+      "sha256": null
+    },
+    "commits": {
+      "caminho": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 03/dados/commits.csv.gz",
+      "presente": true,
+      "sha256": "2716ecb2a1c608b28836b9bf26149f9616dea1454dd1478e5e570078d5c74121"
+    },
+    "codigo_cfr": {
+      "caminho": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 03/metricas/cfr.py",
+      "presente": true,
+      "sha256": "cb9cc04f3b3672be6b891a8246fcf43523caedc0ffc3841a024d123622e18f57"
+    }
+  },
+  "parametros": {
+    "inicio": "2025-10-01",
+    "fim": "2026-09-30",
+    "limiar_f1": 0.7,
+    "limite_dias_corretiva": 7,
+    "versoes": [
+      "v1",
+      "v2"
+    ]
+  },
+  "avaliacoes": [
+    {
+      "versao": "v1",
+      "definicao": {
+        "dias_corretiva": 7,
+        "conjuncao": "AND",
+        "sequencia": "proxima release estavel do mesmo repositorio",
+        "patch": "major e minor iguais; patch estritamente maior; prefixo v opcional",
+        "fonte_textual": "mensagens de commits entre tags consecutivas",
+        "palavras": [
+          "fix",
+          "hotfix",
+          "revert"
+        ],
+        "palavras_inteiras": true,
+        "ignora_maiusculas": true,
+        "censura": "originais sem sete dias completos ate o fim da janela",
+        "validada": false
+      },
+      "status": "pendente_consenso",
+      "alvo": "corretiva_da_propria_release",
+      "n_consenso": 0,
+      "n_rotulados": 0,
+      "n_pendentes": 0,
+      "n_avaliados": 0,
+      "n_ausentes": 0,
+      "n_inconclusivas": 0,
+      "n_previsoes": 3775,
+      "precisao": null,
+      "recall": null,
+      "f1": null,
+      "cobertura": null,
+      "limiar_f1": 0.7,
+      "atingiu_meta": null,
+      "matriz_confusao": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 0
+      }
+    },
+    {
+      "versao": "v2",
+      "definicao": {
+        "dias_corretiva": 7,
+        "conjuncao": "AND",
+        "sequencia": "proxima release estavel do mesmo repositorio",
+        "patch": "major e minor iguais; patch estritamente maior; prefixo v opcional",
+        "fonte_textual": "mensagens de commits entre tags consecutivas",
+        "palavras": [
+          "fix",
+          "fixes",
+          "fixed",
+          "fixing",
+          "hotfix",
+          "hotfixes",
+          "hotfixed",
+          "hotfixing",
+          "revert",
+          "reverts",
+          "reverted",
+          "reverting"
+        ],
+        "palavras_inteiras": true,
+        "ignora_maiusculas": true,
+        "censura": "originais sem sete dias completos ate o fim da janela",
+        "validada": false
+      },
+      "status": "pendente_consenso",
+      "alvo": "corretiva_da_propria_release",
+      "n_consenso": 0,
+      "n_rotulados": 0,
+      "n_pendentes": 0,
+      "n_avaliados": 0,
+      "n_ausentes": 0,
+      "n_inconclusivas": 0,
+      "n_previsoes": 3775,
+      "precisao": null,
+      "recall": null,
+      "f1": null,
+      "cobertura": null,
+      "limiar_f1": 0.7,
+      "atingiu_meta": null,
+      "matriz_confusao": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 0
+      }
+    }
+  ],
+  "versao_selecionada": null,
+  "observacao": "Amostra sintética não substitui consenso humano. Métricas excluem previsões ausentes/inconclusivas; consulte a cobertura."
+}

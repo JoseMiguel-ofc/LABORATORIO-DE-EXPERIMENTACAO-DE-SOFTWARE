@@ -1,4 +1,4 @@
-LAB03 - Validação técnica da Sprint 1 da pessoa B
+LAB03 - Validação técnica da Sprint 1 Eddie
 Data: 08/10/2026 (America/Sao_Paulo)
 Ambiente: macOS, CPython 3.12.15, ambiente local .venv
 

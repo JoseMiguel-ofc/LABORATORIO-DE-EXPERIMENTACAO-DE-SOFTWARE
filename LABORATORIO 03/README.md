@@ -11,6 +11,12 @@ e hipóteses H5/H6 no relatório. A coleta real utiliza `pipeline/api_client.py`
 exigem acesso à API. A janela em `config.yaml` é provisória, aguardando as datas
 oficiais do professor.
 
+**Sprint 2 da pessoa B:** implementados o CFR de entrega (b), a avaliação de
+releases corretivas contra o consenso da pessoa A e o histórico de versões da
+heurística. O cálculo local aproveita a coleta existente, inclusive
+`dados/commits.csv.gz`, sem acesso à rede. A rotulagem humana e o F1 real ainda
+estão pendentes; os arquivos de previsão automática não substituem o consenso.
+
 ## Como executar
 
 Requer Python 3.12+ e um token do GitHub (um *fine-grained token* só com acesso
@@ -47,6 +53,7 @@ parâmetro; não criam outro cliente nem armazenam o token.
 | `filtros.releases`, `filtros.runs` | Mínimos de inclusão: 5 releases e 50 workflow runs válidos na janela |
 | `amostra.tamanho` | Quantos repositórios aprovados buscar (`null` = avaliar todos os candidatos) |
 | `amostra.semente` | Semente que embaralha os candidatos antes da avaliação |
+| `heuristica.versao` | Regra usada no CFR (b): `v1` (referência) ou `v2` (flexões das palavras corretivas); nenhuma declarada validada sem consenso |
 
 ## Etapas
 
@@ -67,7 +74,8 @@ parâmetro; não criam outro cliente nem armazenam o token.
 4. **Coletas detalhadas**: os módulos `pipeline/releases.py` e `pipeline/runs.py`
    expõem `coletar(cliente, amostra, config)` e rodam só sobre a amostra
    aprovada. `releases.py` também chama `commits.py` e calcula frequência
-   e lead time. A etapa `runs.py` foi implementada pela pessoa C.
+   e lead time. A partir da Sprint 2, também exporta CFR (b) e previsões por
+   release. A etapa `runs.py` foi implementada pela pessoa C.
 
 ## Saídas (`dados/`)
 
@@ -96,16 +104,17 @@ Colunas de `repositorios.csv`:
 ## Testes
 
 ```bash
-python -m compileall -q pipeline metricas tests
-python -m pytest --cov=pipeline --cov=metricas --cov-report=term-missing --cov-fail-under=80
+python -m compileall -q pipeline metricas validacao tests
+python -m pytest --cov=pipeline --cov=metricas --cov=validacao --cov-report=term-missing --cov-fail-under=80
 ```
 
 Os testes usam um cliente falso (`tests/conftest.py`) e não acessam a rede.
 Não é necessário token para compilar ou executar os testes. O teste de integração
 executa a CLI com o cliente da pessoa C simulado, passa pelo funil e confere os
-quatro CSVs da pessoa B com os resultados esperados.
-O registro da execução e seus limites estão em
-[VALIDACAO_PESSOA_B.txt](VALIDACAO_PESSOA_B.txt).
+CSVs da pessoa B, incluindo CFR (b), com os resultados esperados.
+O registro histórico da Sprint 1 está em
+[VALIDACAO_Eddie.txt](VALIDACAO_Eddie.txt); a verificação atual da Sprint 2
+está em [VALIDACAO_SPRINT2_Eddie.txt](VALIDACAO_SPRINT2_Eddie.txt).
 
 | Arquivo | O que cobre |
 |---|---|
@@ -117,6 +126,10 @@ O registro da execução e seus limites estão em
 | `tests/test_frequencia.py`, `test_lead_time.py` | Janela inclusiva; exemplo de 13 dias em (a) e 13, 5, 1 dias em (b); primeiras releases e comparações vazias |
 | `tests/test_integracao_pessoa_b.py` | CLI com cliente simulado e comparação dos arquivos gerados com resultados esperados |
 | `tests/test_validacao.py` | Sorteio reproduzível da amostra-ouro, planilha de rotulagem, kappa de Fleiss (concordância total = 1; caso calculado à mão = 1/3), Landis & Koch e consenso |
+| `tests/test_cfr_b.py` | Patch + palavra corretiva + até sete dias; censura; separação entre corretiva e falhou; preservação de CFR (a) |
+| `tests/test_dados_entrega.py` | Leitura de CSV/gzip, duplicatas, divergências de contagens, mensagens e comparação entre tags |
+| `tests/test_avaliar_heuristica.py` | Precisão, recall e F1 conhecidos; compatibilidade com consenso; ausência de rótulos; histórico auditável |
+| `tests/test_cfr_entrega.py` | CLI local, CSVs, hashes das fontes e preservação das entradas |
 
 ## Validação manual — amostra-ouro (`validacao/`)
 
@@ -193,6 +206,84 @@ data de autoria do commit apontado e só são coletadas com `tags.coletar: true`
 
 As hipóteses H5/H6 da pessoa B estão em
 [RELATORIO_LAB03.md](RELATORIO_LAB03.md).
+
+## Pessoa B — Sprint 2: release corretiva e CFR (b)
+
+Recalcule usando os dados já coletados, sem token e sem nova coleta:
+
+```bash
+python -m pipeline.cfr_entrega --config config.yaml
+```
+
+O comando detecta `commits.csv` ou, se ele não existir, `commits.csv.gz`. Lê
+as mensagens em fluxo e verifica a contagem por release; não descompacta uma
+cópia permanente nem mantém todas as mensagens na memória. As datas usadas são
+as do config, que ainda precisam de confirmação oficial. Para testar outra
+versão preservando as saídas da referência:
+
+```bash
+python -m pipeline.cfr_entrega --config config.yaml --versao v2 --saida dados/cfr_b_v2
+```
+
+| Saída | Conteúdo |
+|---|---|
+| `dados/metricas_cfr_b.csv` | Uma linha por repositório: CFR (b), falhas, denominador, censuras, inconclusivos, versão e estado da coleta |
+| `dados/previsoes_cfr_b.csv` | Previsões automáticas por release: `corretiva` da própria release e `falhou` da original anterior, com motivos e contexto |
+| `dados/cfr_b_execucao.json` | Manifesto da execução local: janela, definição da regra, totais e hashes das fontes |
+
+Os dois CSVs também são produzidos pelo pipeline de coleta completo. Os arquivos
+originais de releases/commits e as métricas de CI da pessoa C são preservados
+no recálculo local. As previsões automáticas devem ser consultadas **depois da
+rotulagem independente**, para respeitar o protocolo da amostra-ouro.
+
+A regra exige a **próxima release estável** publicada em até sete dias, aumento
+somente do patch de SemVer e uma palavra corretiva nos commits entre as tags.
+`v1` reconhece palavras inteiras `fix`, `hotfix`, `revert`, sem distinguir
+maiúsculas. `v2` acrescenta flexões, como `fixed`, `fixes`, `hotfixed` e
+`reverted`. As duas regras são candidatas, ainda sem validação humana.
+
+Exemplo: `v2.3.0 → v2.3.1` em dois dias, com `fix`, torna `v2.3.1` corretiva
+e atribui a falha a `v2.3.0`. `v2.4.0 → v2.5.0` não satisfaz a regra de patch.
+Originais dos últimos sete dias ficam fora do denominador, mesmo com correção
+já observada. Ausências/ambiguidades necessárias à regra são inconclusivas,
+não negativas. Sem denominador elegível, CFR (b) fica vazio. As contagens de
+censura e inconclusivos permitem conferir quais observações foram excluídas.
+
+### Avaliação contra consenso
+
+Depois que o grupo preencher suas planilhas individualmente e executar
+`python -m validacao.consenso`, rode:
+
+```bash
+python -m validacao.avaliar_heuristica --config config.yaml
+```
+
+O avaliador lê `validacao/consenso_releases.csv`, com colunas
+`full_name,tag_name,corretiva,metodo_corretiva`, no formato da pessoa A.
+Compara o rótulo humano com `corretiva` da **mesma release**, e não com `falhou`.
+A censura de uma original não impede avaliar se essa própria release corrigia
+a anterior. São avaliadas as duas versões, registrando precisão, recall, F1,
+matriz de confusão, cobertura dos rótulos e casos ausentes/inconclusivos.
+
+Saídas: `validacao/avaliacao_heuristica.json` (execução mais recente) e
+`validacao/historico_heuristica.jsonl` (uma linha por versão e execução,
+preservando as anteriores). Os registros incluem definições, parâmetros e
+hashes dos arquivos usados. O comando pode ser repetido após completar os
+rótulos ou refinar a regra; não altera nenhum rótulo humano.
+
+Sem consenso, o estado é `pendente_consenso` e F1 é `null`. Abaixo de 0,70,
+é `requer_refinamento`; acrescente uma nova versão identificada, seus testes
+e sua definição antes de reavaliar. Se o F1 dos casos avaliados atingir a meta,
+mas houver rótulos pendentes ou previsões ausentes/inconclusivas, o estado
+continua `avaliacao_parcial`. Consulte os totais e a cobertura antes de concluir
+que a meta foi atingida. O avaliador não seleciona uma versão automaticamente;
+registre a decisão e, se aprovada pelo grupo, ajuste `heuristica.versao`.
+
+O código não substitui a rotulagem manual da pessoa B. Use uma cópia de
+`validacao/planilha_rotulagem.xlsx` chamada `rotulos_B.xlsx` e preencha-a sem
+consultar as previsões, conforme as instruções da planilha. Não foi criado
+nenhum rótulo humano artificial. A ampliação para pelo menos 300 repositórios
+e a consolidação final pertencem à entrega da pessoa C.
 
 ## Entrega da Pessoa C — Sprint 1
 

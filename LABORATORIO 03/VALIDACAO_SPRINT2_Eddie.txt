@@ -1,0 +1,70 @@
+LAB03 - Validação técnica da Sprint 2 Eddie
+Data: 15/10/2026 (America/Sao_Paulo)
+Ambiente: CPython 3.12.15, macOS, ambiente local .venv
+
+Escopo implementado:
+- CFR de entrega (b): próxima release estável, somente patch de SemVer,
+  mensagem corretiva nos commits e intervalo de até sete dias.
+- Censura das originais sem sete dias completos de acompanhamento.
+- Separação entre corretiva (própria release) e falhou (original anterior).
+- Leitura streaming de commits.csv ou commits.csv.gz e verificação de integridade.
+- Avaliação contra consenso_releases.csv da pessoa A: precisão, recall, F1,
+  matriz de confusão, cobertura, histórico de versões e hashes das fontes.
+- Versões candidatas v1 (palavras inteiras) e v2 (inclui flexões).
+- Integração na coleta existente e comando offline de recálculo.
+- Metodologia atualizada; nenhuma análise da Sprint 3 foi implementada.
+
+Validação automatizada (comandos dentro de LABORATORIO 03):
+
+.venv/bin/python -m compileall -q pipeline metricas validacao tests
+Resultado: saída 0, sem erros de compilação.
+
+.venv/bin/python -m pytest -q --cov=pipeline --cov=metricas --cov=validacao --cov-report=term-missing --cov-fail-under=80
+Resultado: 331 passed in 3.18s
+Cobertura: 95.90% (1636 instruções; 67 não cobertas); mínimo de 80% atingido.
+Inclui a regressão dos módulos das pessoas A e C e da Sprint 1 da pessoa B.
+
+Casos esperados verificados:
+- v2.3.0 -> v2.3.1 com fix e dentro de sete dias: original falhou,
+  sucessora corretiva.
+- v2.4.0 -> v2.5.0: regra de patch não satisfeita.
+- Últimos sete dias: original fora do denominador.
+- Primeira release, pré-release, rascunho, fronteira de sete dias, empates,
+  datas inválidas, erro de compare, mensagens/contagens incompletas.
+- Confusão, precisão, recall e F1 com valores calculados à mão.
+- Consenso da pessoa A associado à mesma tag; pendentes não viram negativos.
+- Reexecução atualiza JSON latest atomicamente e preserva histórico JSONL.
+- Arquivos de entrada preservados; testes automatizados sem acesso à rede.
+
+Execução local sobre a coleta existente:
+
+.venv/bin/python -m pipeline.cfr_entrega --config config.yaml
+Resultado: concluído para 100 repositórios, sem refazer coleta.
+Fontes: 14.157 releases históricas e 515.067 linhas de commits compactados.
+Release estável na janela: 3.775.
+Versão v1: denominador 2.974; censuradas 74; inconclusivas 727.
+Falhas previstas: 1.127. Essas previsões NÃO são rótulos humanos validados.
+Conferências: 2.974 + 74 + 727 = 3.775; falhas do detalhe reconciliadas com
+o resumo; todas as taxas definidas estão entre 0 e 1.
+
+Saídas:
+- dados/metricas_cfr_b.csv
+- dados/previsoes_cfr_b.csv
+- dados/cfr_b_execucao.json (definição, janela e hashes)
+
+.venv/bin/python -m validacao.avaliar_heuristica --config config.yaml
+Resultado nas duas versões: pendente_consenso; F1=null; avaliados=0.
+Saídas:
+- validacao/avaliacao_heuristica.json
+- validacao/historico_heuristica.jsonl
+
+Pendências empíricas:
+- Preencher rotulos_B.xlsx de forma independente, sem consultar previsões.
+- Obter rótulos A/C e consenso; só então medir F1 e refinar se ficar abaixo de 0,70.
+- A janela atual permanece provisória, conforme o config do grupo.
+- A coleta atual tem 100 repositórios; a ampliação para pelo menos 300 e a
+  consolidação final são responsabilidade da pessoa C nesta divisão.
+
+O código e os casos esperados foram validados. Não foi alegado F1 empírico,
+concordância humana nem cumprimento da meta de 0,70 sem os rótulos necessários.
+Consulte README.md e a seção 2.2 de RELATORIO_LAB03.md.

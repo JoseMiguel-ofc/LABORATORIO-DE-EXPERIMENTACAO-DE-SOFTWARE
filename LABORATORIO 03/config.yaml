@@ -44,6 +44,11 @@ amostra:
   tamanho: 100
   semente: 42
 
+heuristica:
+  # Regra de referência da Sprint 2 B; ainda depende de consenso para validação.
+  # v1: fix/hotfix/revert; v2: acrescenta flexões. Ambas exigem patch e até 7 dias.
+  versao: v1
+
 saida:
   dir: dados
   cache_dir: dados/cache

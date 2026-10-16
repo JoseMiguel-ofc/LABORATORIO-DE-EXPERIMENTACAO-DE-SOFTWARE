@@ -1,0 +1,3441 @@
+{
+  "revisao_humana_realizada": false,
+  "consenso_gerado": false,
+  "gerado_em": "2026-10-16T01:19:55.322Z",
+  "criterio_corretiva": "Objetivo principal da release: corrigir defeito recente. Avaliação semântica das notas, changelogs e commits; não usa as previsões CFR.",
+  "repositorios": [
+    {
+      "full_name": "Byron/dua-cli",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Analisador de uso de disco com interface de terminal; releases distribuem executáveis para Linux, Windows e macOS, com mudanças funcionais descritas.",
+      "fontes": [
+        "https://github.com/Byron/dua-cli"
+      ]
+    },
+    {
+      "full_name": "CoderLine/alphaTab",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca de renderização de partituras e tablaturas; releases versionam APIs, importadores e reprodução musical para integração em aplicações.",
+      "fontes": [
+        "https://github.com/CoderLine/alphaTab"
+      ]
+    },
+    {
+      "full_name": "Crementif/BotW-BetterVR",
+      "tipo_projeto": "outro",
+      "entregas_reais": "sim",
+      "observacoes": "Mod de realidade virtual para Breath of the Wild no emulador Cemu; releases entregam arquivos do mod ou instalador executável para jogadores.",
+      "fontes": [
+        "https://github.com/Crementif/BotW-BetterVR"
+      ]
+    },
+    {
+      "full_name": "DataDog/guarddog",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Ferramenta de linha de comando para identificar pacotes maliciosos; releases documentam regras de detecção, comandos e mudanças de dependências.",
+      "fontes": [
+        "https://github.com/DataDog/guarddog"
+      ]
+    },
+    {
+      "full_name": "KittyCAD/modeling-app",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Zoo Design Studio é uma aplicação CAD; as releases incluem instaladores de desktop e, em algumas tags, componentes KCL e servidor de linguagem.",
+      "fontes": [
+        "https://github.com/KittyCAD/modeling-app"
+      ]
+    },
+    {
+      "full_name": "Livinglist/Hacki",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Cliente Hacker News para dispositivos móveis; releases entregam APKs Android e descrevem alterações concretas de navegação, comentários e interface.",
+      "fontes": [
+        "https://github.com/Livinglist/Hacki"
+      ]
+    },
+    {
+      "full_name": "Martian-Engineering/lossless-claw",
+      "tipo_projeto": "outro",
+      "entregas_reais": "sim",
+      "observacoes": "Plugin instalável de gerenciamento de contexto para OpenClaw, acompanhado de ferramentas CLI; releases identificam o pacote npm e mudanças do plugin.",
+      "fontes": [
+        "https://github.com/Martian-Engineering/lossless-claw",
+        "https://github.com/Martian-Engineering/lossless-claw#readme"
+      ]
+    },
+    {
+      "full_name": "OpenMind/OM1",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Runtime modular para criar agentes multimodais e controlar robôs; releases documentam capacidades de execução, configuração e integração com hardware.",
+      "fontes": [
+        "https://github.com/OpenMind/OM1",
+        "https://github.com/OpenMind/OM1#readme"
+      ]
+    },
+    {
+      "full_name": "PHPOffice/PhpSpreadsheet",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca PHP de leitura e escrita de planilhas; releases versionam código utilizável como dependência e incluem manutenção de branches suportadas.",
+      "fontes": [
+        "https://github.com/PHPOffice/PhpSpreadsheet"
+      ]
+    },
+    {
+      "full_name": "Panniantong/Agent-Reach",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "CLI para agentes acessarem e pesquisarem fontes da internet; releases publicam novos comandos, integrações e correções do pacote Python instalável.",
+      "fontes": [
+        "https://github.com/Panniantong/Agent-Reach"
+      ]
+    },
+    {
+      "full_name": "Unpackerr/unpackerr",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Serviço que monitora downloads e extrai arquivos para outros aplicativos; README descreve execução como daemon e releases distribuem pacotes instaláveis.",
+      "fontes": [
+        "https://github.com/Unpackerr/unpackerr",
+        "https://github.com/Unpackerr/unpackerr#readme"
+      ]
+    },
+    {
+      "full_name": "alloy-rs/alloy",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Conjunto de bibliotecas Rust para Ethereum, incluindo transporte, RPC e consenso; releases apresentam mudanças nas crates consumidas por outros projetos.",
+      "fontes": [
+        "https://github.com/alloy-rs/alloy"
+      ]
+    },
+    {
+      "full_name": "almeidapaulopt/tsdproxy",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Serviço de proxy reverso para expor contêineres Docker pela rede Tailscale; releases distribuem binários e documentam mudanças de configuração e rede.",
+      "fontes": [
+        "https://github.com/almeidapaulopt/tsdproxy"
+      ]
+    },
+    {
+      "full_name": "babashka/sci",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Interpretador Clojure incorporável por API; README demonstra uso como dependência e releases alteram recursos de avaliação e protocolos do interpretador.",
+      "fontes": [
+        "https://github.com/babashka/sci",
+        "https://github.com/babashka/sci#readme"
+      ]
+    },
+    {
+      "full_name": "carvel-dev/ytt",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Ferramenta de terminal para gerar e transformar YAML; releases distribuem binários por plataforma com instruções de instalação e verificação.",
+      "fontes": [
+        "https://github.com/carvel-dev/ytt"
+      ]
+    },
+    {
+      "full_name": "cockroachdb/pebble",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Motor embutido de armazenamento chave-valor em Go; releases declaram uso em produção pelo CockroachDB e versionam o módulo para integração.",
+      "fontes": [
+        "https://github.com/cockroachdb/pebble"
+      ]
+    },
+    {
+      "full_name": "coreruleset/coreruleset",
+      "tipo_projeto": "outro",
+      "entregas_reais": "sim",
+      "observacoes": "Conjunto de regras de detecção para firewalls ModSecurity e Coraza; releases entregam arquivos de regras versionados, não apenas documentação.",
+      "fontes": [
+        "https://github.com/coreruleset/coreruleset",
+        "https://github.com/coreruleset/coreruleset#readme"
+      ]
+    },
+    {
+      "full_name": "crewAIInc/crewAI",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Framework Python de orquestração de agentes e fluxos; releases versionam APIs, integrações e ferramentas usadas para construir aplicações.",
+      "fontes": [
+        "https://github.com/crewAIInc/crewAI"
+      ]
+    },
+    {
+      "full_name": "dart-frog-dev/dart_frog",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Framework backend Dart com pacotes auxiliares de geração, autenticação e CLI; releases identificam versões dos componentes efetivamente distribuídos.",
+      "fontes": [
+        "https://github.com/dart-frog-dev/dart_frog"
+      ]
+    },
+    {
+      "full_name": "eez-open/studio",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Editor visual de interfaces e automação; releases incluem instaladores para Windows, Linux e macOS com mudanças no ambiente de desenvolvimento.",
+      "fontes": [
+        "https://github.com/eez-open/studio"
+      ]
+    },
+    {
+      "full_name": "exoframejs/exoframe",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Ferramenta de implantação Docker por comando, acompanhada de servidor; README e releases documentam versões instaláveis do CLI e servidor.",
+      "fontes": [
+        "https://github.com/exoframejs/exoframe",
+        "https://github.com/exoframejs/exoframe/releases"
+      ]
+    },
+    {
+      "full_name": "foru17/neko-master",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Painel de monitoramento e análise de tráfego de rede, com serviço coletor e agentes; releases entregam versões funcionais desses componentes.",
+      "fontes": [
+        "https://github.com/foru17/neko-master",
+        "https://github.com/foru17/neko-master/releases"
+      ]
+    },
+    {
+      "full_name": "gabehf/Koito",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Aplicação auto-hospedada de histórico musical compatível com ListenBrainz; fornece interface web e imagem Docker com versões publicadas.",
+      "fontes": [
+        "https://github.com/gabehf/Koito",
+        "https://github.com/gabehf/Koito/releases"
+      ]
+    },
+    {
+      "full_name": "github/gh-aw",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Extensão do GitHub CLI que compila workflows de agentes; instalação e comandos gh aw documentados, com binários e versões de software.",
+      "fontes": [
+        "https://github.com/github/gh-aw",
+        "https://github.com/github/gh-aw/releases"
+      ]
+    },
+    {
+      "full_name": "glpi-project/glpi",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Sistema de gestão de ativos e atendimento de TI; releases fornecem arquivos instaláveis e imagens Docker, incluindo atualizações de segurança.",
+      "fontes": [
+        "https://github.com/glpi-project/glpi",
+        "https://github.com/glpi-project/glpi/releases"
+      ]
+    },
+    {
+      "full_name": "googleapis/js-genai",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "SDK JavaScript/TypeScript para integrar Gemini e Vertex AI em aplicações; pacote instalável com APIs e versões publicadas.",
+      "fontes": [
+        "https://github.com/googleapis/js-genai",
+        "https://github.com/googleapis/js-genai/releases"
+      ]
+    },
+    {
+      "full_name": "goproxy/goproxy",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca Go que implementa handler do protocolo GOPROXY, também oferecendo CLI; releases publicam a biblioteca e executáveis utilizáveis.",
+      "fontes": [
+        "https://github.com/goproxy/goproxy",
+        "https://github.com/goproxy/goproxy/releases"
+      ]
+    },
+    {
+      "full_name": "gruntwork-io/terragrunt",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Ferramenta de linha de comando que orquestra infraestrutura OpenTofu/Terraform; notas e binários documentam entregas versionadas.",
+      "fontes": [
+        "https://github.com/gruntwork-io/terragrunt",
+        "https://github.com/gruntwork-io/terragrunt/releases"
+      ]
+    },
+    {
+      "full_name": "harry7557558/spirula-studio",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Aplicação de reconstrução e treinamento 3D com interface gráfica e CLI; releases distribuem binários Windows/Linux e funcionalidades concretas.",
+      "fontes": [
+        "https://github.com/harry7557558/spirula-studio",
+        "https://github.com/harry7557558/spirula-studio/releases"
+      ]
+    },
+    {
+      "full_name": "huggingface/transformers.js",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca JavaScript de inferência de modelos Transformers em navegador/Node; versões publicam APIs, modelos suportados e correções.",
+      "fontes": [
+        "https://github.com/huggingface/transformers.js",
+        "https://github.com/huggingface/transformers.js/releases"
+      ]
+    },
+    {
+      "full_name": "hzm0321/real-time-fund",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Aplicação web para estimativas e acompanhamento de fundos, carteira e sincronização; releases descrevem funcionalidades efetivamente entregues.",
+      "fontes": [
+        "https://github.com/hzm0321/real-time-fund",
+        "https://github.com/hzm0321/real-time-fund/releases"
+      ]
+    },
+    {
+      "full_name": "image-js/image-js",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca de processamento de imagens JavaScript, instalada pelo npm; releases alteram decodificadores, métodos e algoritmos da API.",
+      "fontes": [
+        "https://github.com/image-js/image-js",
+        "https://github.com/image-js/image-js/releases"
+      ]
+    },
+    {
+      "full_name": "ipfs/ipfs-desktop",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Aplicação desktop para operar nó IPFS e gerenciar arquivos; releases oferecem instaladores para sistemas operacionais e componentes atualizados.",
+      "fontes": [
+        "https://github.com/ipfs/ipfs-desktop",
+        "https://github.com/ipfs/ipfs-desktop/releases"
+      ]
+    },
+    {
+      "full_name": "jaegertracing/jaeger-ui",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Interface web do Jaeger para pesquisar e visualizar rastreamentos distribuídos; releases entregam mudanças do produto visual utilizado com o backend.",
+      "fontes": [
+        "https://github.com/jaegertracing/jaeger-ui",
+        "https://github.com/jaegertracing/jaeger-ui/releases"
+      ]
+    },
+    {
+      "full_name": "kimdre/doco-cd",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Serviço GitOps de implantação contínua para Docker Compose e Swarm, executado em contêiner e acionado por polling ou webhooks.",
+      "fontes": [
+        "https://github.com/kimdre/doco-cd",
+        "https://github.com/kimdre/doco-cd/releases"
+      ]
+    },
+    {
+      "full_name": "kotest/kotest",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Framework multiplataforma de testes Kotlin com asserções e testes de propriedades; releases distribuem bibliotecas e integrações de execução.",
+      "fontes": [
+        "https://github.com/kotest/kotest",
+        "https://github.com/kotest/kotest/releases"
+      ]
+    },
+    {
+      "full_name": "kube-logging/logging-operator",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Operador executado em Kubernetes para configurar coleta e encaminhamento de logs; releases fornecem imagens e chart Helm instaláveis.",
+      "fontes": [
+        "https://github.com/kube-logging/logging-operator",
+        "https://github.com/kube-logging/logging-operator/releases"
+      ]
+    },
+    {
+      "full_name": "kubermatic/kubeone",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Ferramenta de linha de comando para instalar e administrar clusters Kubernetes; releases distribuem executáveis e configurações versionadas.",
+      "fontes": [
+        "https://github.com/kubermatic/kubeone",
+        "https://github.com/kubermatic/kubeone/releases"
+      ]
+    },
+    {
+      "full_name": "lancedb/lancedb",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca embarcada de busca vetorial e dados multimodais com SDKs Python/Node/Rust; releases publicam versões utilizáveis, incluindo algumas beta.",
+      "fontes": [
+        "https://github.com/lancedb/lancedb",
+        "https://github.com/lancedb/lancedb/releases"
+      ]
+    },
+    {
+      "full_name": "lotus-data/lotus",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca Python LOTUS de operadores semânticos e processamento de dados com LLMs; possui instalação via pacote lotus-ai e versões publicadas.",
+      "fontes": [
+        "https://github.com/lotus-data/lotus",
+        "https://github.com/lotus-data/lotus/releases"
+      ]
+    },
+    {
+      "full_name": "lwouis/alt-tab-macos",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Aplicativo macOS para alternar janelas; as releases distribuem instaladores e registram mudanças percebidas por usuários.",
+      "fontes": [
+        "https://github.com/lwouis/alt-tab-macos",
+        "https://github.com/lwouis/alt-tab-macos/releases"
+      ]
+    },
+    {
+      "full_name": "micronaut-projects/micronaut-core",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Framework JVM para aplicações; versões publicam APIs, correções e dependências consumidas por desenvolvedores.",
+      "fontes": [
+        "https://github.com/micronaut-projects/micronaut-core",
+        "https://github.com/micronaut-projects/micronaut-core/releases"
+      ]
+    },
+    {
+      "full_name": "moul/assh",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Cliente de linha de comando que organiza conexões SSH; há binários publicados para várias plataformas.",
+      "fontes": [
+        "https://github.com/moul/assh",
+        "https://github.com/moul/assh/releases"
+      ]
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Plataforma de automação de fluxos com editor web e execução de integrações; releases entregam versões utilizáveis do serviço.",
+      "fontes": [
+        "https://github.com/n8n-io/n8n",
+        "https://github.com/n8n-io/n8n/releases"
+      ]
+    },
+    {
+      "full_name": "ocrmypdf/OCRmyPDF",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Ferramenta que adiciona OCR a PDFs, também acessível por API Python; releases oferecem pacotes e alterações funcionais.",
+      "fontes": [
+        "https://github.com/ocrmypdf/OCRmyPDF",
+        "https://github.com/ocrmypdf/OCRmyPDF/releases"
+      ]
+    },
+    {
+      "full_name": "odigos-io/odigos",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Plataforma de observabilidade e instrumentação de aplicações; releases publicam artefatos implantáveis e correções operacionais.",
+      "fontes": [
+        "https://github.com/odigos-io/odigos",
+        "https://github.com/odigos-io/odigos/releases"
+      ]
+    },
+    {
+      "full_name": "plugin87/ux-ui-agent-skills",
+      "tipo_projeto": "outro",
+      "entregas_reais": "sim",
+      "observacoes": "Kit de instruções, tokens e scripts para agentes de design, distribuído como pacote npm/plugin; não é aplicação ou framework convencional.",
+      "fontes": [
+        "https://github.com/plugin87/ux-ui-agent-skills",
+        "https://github.com/plugin87/ux-ui-agent-skills/releases"
+      ]
+    },
+    {
+      "full_name": "protontypes/open-sustainable-technology",
+      "tipo_projeto": "outro",
+      "entregas_reais": "sim",
+      "observacoes": "Catálogo de projetos sustentáveis; releases entregam snapshots mensais de dados em CSV ao usuário, não deploys de uma aplicação.",
+      "fontes": [
+        "https://github.com/protontypes/open-sustainable-technology",
+        "https://github.com/protontypes/open-sustainable-technology/releases"
+      ]
+    },
+    {
+      "full_name": "psygreg/linuxtoys",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Aplicativo gráfico para instalar e administrar software Linux; releases disponibilizam pacotes e AppImage para uso real.",
+      "fontes": [
+        "https://github.com/psygreg/linuxtoys",
+        "https://github.com/psygreg/linuxtoys/releases"
+      ]
+    },
+    {
+      "full_name": "rerun-io/rerun",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Conjunto de SDKs Python/Rust/C++ para dados e visualização, acompanhado de Viewer; releases distribuem bibliotecas e binários utilizáveis.",
+      "fontes": [
+        "https://github.com/rerun-io/rerun",
+        "https://github.com/rerun-io/rerun/releases"
+      ]
+    },
+    {
+      "full_name": "rust-cross/cargo-zigbuild",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Subcomando Cargo para compilar usando Zig como linker; as releases fornecem binários e pacote instalável.",
+      "fontes": [
+        "https://github.com/rust-cross/cargo-zigbuild",
+        "https://github.com/rust-cross/cargo-zigbuild/releases"
+      ]
+    },
+    {
+      "full_name": "sbt/sbt",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Ferramenta de compilação para Scala/JVM; releases entregam executáveis e alterações no build usadas por desenvolvedores.",
+      "fontes": [
+        "https://github.com/sbt/sbt",
+        "https://github.com/sbt/sbt/releases"
+      ]
+    },
+    {
+      "full_name": "serverless-operations/serverless-step-functions",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Plugin do Serverless Framework que gera recursos AWS Step Functions; versões entregam funcionalidades consumidas pelo framework.",
+      "fontes": [
+        "https://github.com/serverless-operations/serverless-step-functions",
+        "https://github.com/serverless-operations/serverless-step-functions/releases"
+      ]
+    },
+    {
+      "full_name": "sipeed/picoclaw",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Assistente de IA executável com gateway, canais e interface web; versões oferecem binários para múltiplas arquiteturas.",
+      "fontes": [
+        "https://github.com/sipeed/picoclaw",
+        "https://github.com/sipeed/picoclaw/releases"
+      ]
+    },
+    {
+      "full_name": "sirmalloc/ccstatusline",
+      "tipo_projeto": "ferramenta CLI",
+      "entregas_reais": "sim",
+      "observacoes": "Utilitário de terminal para configurar e renderizar a barra de status do Claude Code; releases são publicadas no npm.",
+      "fontes": [
+        "https://github.com/sirmalloc/ccstatusline",
+        "https://github.com/sirmalloc/ccstatusline/releases"
+      ]
+    },
+    {
+      "full_name": "spatie/laravel-activitylog",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca Laravel para registrar atividades e alterações de modelos; versões distribuem API utilizável e correções.",
+      "fontes": [
+        "https://github.com/spatie/laravel-activitylog",
+        "https://github.com/spatie/laravel-activitylog/releases"
+      ]
+    },
+    {
+      "full_name": "sveltejs/kit",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Framework web e seus adaptadores/pacotes; releases identificam versões instaláveis com mudanças concretas para desenvolvedores.",
+      "fontes": [
+        "https://github.com/sveltejs/kit",
+        "https://github.com/sveltejs/kit/releases"
+      ]
+    },
+    {
+      "full_name": "the-momentum/open-wearables",
+      "tipo_projeto": "aplicacao/servico",
+      "entregas_reais": "sim",
+      "observacoes": "Plataforma auto-hospedada com API e painel para dados de wearables; releases entregam integrações e backend/frontend utilizáveis.",
+      "fontes": [
+        "https://github.com/the-momentum/open-wearables",
+        "https://github.com/the-momentum/open-wearables/releases"
+      ]
+    },
+    {
+      "full_name": "tokio-rs/toasty",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "ORM assíncrono para Rust com drivers de bancos; releases entregam crates e novas capacidades de consulta e persistência.",
+      "fontes": [
+        "https://github.com/tokio-rs/toasty",
+        "https://github.com/tokio-rs/toasty/releases"
+      ]
+    },
+    {
+      "full_name": "uNetworking/uWebSockets.js",
+      "tipo_projeto": "biblioteca/framework",
+      "entregas_reais": "sim",
+      "observacoes": "Biblioteca nativa de HTTP/WebSocket para Node.js; releases atualizam APIs e binários compatíveis com versões do Node.",
+      "fontes": [
+        "https://github.com/uNetworking/uWebSockets.js",
+        "https://github.com/uNetworking/uWebSockets.js/releases"
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "full_name": "Byron/dua-cli",
+      "tag_name": "v2.38.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona notificações de conclusão quando o terminal está sem foco, com estatísticas e opções de configuração; objetivo principal é novo recurso.",
+      "fontes": [
+        "https://github.com/Byron/dua-cli/releases/tag/v2.38.0"
+      ]
+    },
+    {
+      "full_name": "Byron/dua-cli",
+      "tag_name": "v2.41.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige a lentidão da interface no Windows ao armazenar a saída de cada quadro em buffer; as notas identificam diretamente o problema resolvido.",
+      "fontes": [
+        "https://github.com/Byron/dua-cli/releases/tag/v2.41.1"
+      ]
+    },
+    {
+      "full_name": "Byron/dua-cli",
+      "tag_name": "v2.42.0",
+      "corretiva": "nao",
+      "observacoes": "O destaque é acelerar em cerca de 30% a varredura no macOS e reorganizar o caminhador; inclui correção de caracteres de controle, mas tem escopo mais amplo.",
+      "fontes": [
+        "https://github.com/Byron/dua-cli/releases/tag/v2.42.0"
+      ]
+    },
+    {
+      "full_name": "Byron/dua-cli",
+      "tag_name": "v2.43.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige crescimento de memória no modo --stack sem limite de profundidade, emitindo resultados durante a travessia em vez de reter todos os nós.",
+      "fontes": [
+        "https://github.com/Byron/dua-cli/releases/tag/v2.43.1"
+      ]
+    },
+    {
+      "full_name": "Byron/dua-cli",
+      "tag_name": "dua-core-v4.1.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz envio contínuo de raízes e caminhadas canceláveis, além de paralelismo de leitura no macOS; trata-se de ampliação da API e desempenho.",
+      "fontes": [
+        "https://github.com/Byron/dua-cli/releases/tag/dua-core-v4.1.0"
+      ]
+    },
+    {
+      "full_name": "CoderLine/alphaTab",
+      "tag_name": "v1.7.1",
+      "corretiva": "nao",
+      "observacoes": "Adiciona exportador alphaTex, letras por batida, suporte a bancos MIDI e novo parser; correções acompanham uma entrega de funcionalidades.",
+      "fontes": [
+        "https://github.com/CoderLine/alphaTab/releases/tag/v1.7.1"
+      ]
+    },
+    {
+      "full_name": "CoderLine/alphaTab",
+      "tag_name": "v1.8.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia renderização, seleção, múltiplas vozes, diagramas e personalização visual; o conjunto é uma atualização funcional ampla, apesar das correções.",
+      "fontes": [
+        "https://github.com/CoderLine/alphaTab/releases/tag/v1.8.0"
+      ]
+    },
+    {
+      "full_name": "CoderLine/alphaTab",
+      "tag_name": "v1.8.1",
+      "corretiva": "sim",
+      "observacoes": "Hotfix corrige regressão da versão 1.8.0 que mostrava clave de baixo em guitarras, além de percussão GP5 e limites do cursor de reprodução.",
+      "fontes": [
+        "https://github.com/CoderLine/alphaTab/releases/tag/v1.8.1"
+      ]
+    },
+    {
+      "full_name": "CoderLine/alphaTab",
+      "tag_name": "v1.8.3",
+      "corretiva": "nao",
+      "observacoes": "Combina novos fluxos de gravação e rótulos H/P com correções de importação, reprodução e segurança; a entrega tem escopo funcional e estrutural amplo.",
+      "fontes": [
+        "https://github.com/CoderLine/alphaTab/releases/tag/v1.8.3"
+      ]
+    },
+    {
+      "full_name": "CoderLine/alphaTab",
+      "tag_name": "v1.8.4",
+      "corretiva": "sim",
+      "observacoes": "Corrige alocações excessivas de áudio, eventos de reprodução, pareamento de swing e limpeza de informações de desenho; não anuncia novos recursos.",
+      "fontes": [
+        "https://github.com/CoderLine/alphaTab/releases/tag/v1.8.4"
+      ]
+    },
+    {
+      "full_name": "Crementif/BotW-BetterVR",
+      "tag_name": "0.9",
+      "corretiva": "nao",
+      "observacoes": "Primeira disponibilização do mod BetterVR, acompanhada de instruções de instalação e arquivos para jogar em realidade virtual; não é reparo de versão anterior.",
+      "fontes": [
+        "https://github.com/Crementif/BotW-BetterVR/releases/tag/0.9"
+      ]
+    },
+    {
+      "full_name": "Crementif/BotW-BetterVR",
+      "tag_name": "0.9.8",
+      "corretiva": "sim",
+      "observacoes": "As notas descrevem hotfix da release do dia anterior: altura do jogador, menus SteamVR, natação e funcionamento de controles em diferentes runtimes OpenXR.",
+      "fontes": [
+        "https://github.com/Crementif/BotW-BetterVR/releases/tag/0.9.8"
+      ]
+    },
+    {
+      "full_name": "Crementif/BotW-BetterVR",
+      "tag_name": "0.9.11",
+      "corretiva": "sim",
+      "observacoes": "A finalidade declarada é corrigir problemas do novo esquema de controles, incluindo braços esticados e arremessos indevidos ao usar arco; inclui otimizações.",
+      "fontes": [
+        "https://github.com/Crementif/BotW-BetterVR/releases/tag/0.9.11"
+      ]
+    },
+    {
+      "full_name": "Crementif/BotW-BetterVR",
+      "tag_name": "0.9.16",
+      "corretiva": "nao",
+      "observacoes": "Entrega suporte físico a roomscale, modo de gravação, novas opções de resolução e ferramentas de depuração; as correções integram uma evolução maior.",
+      "fontes": [
+        "https://github.com/Crementif/BotW-BetterVR/releases/tag/0.9.16"
+      ]
+    },
+    {
+      "full_name": "Crementif/BotW-BetterVR",
+      "tag_name": "0.9.18",
+      "corretiva": "nao",
+      "observacoes": "Introduz armas de duas mãos, giro em saltos e novas opções de mira e qualidade; inclui ajustes de câmera e regressões, mas prioriza novos recursos.",
+      "fontes": [
+        "https://github.com/Crementif/BotW-BetterVR/releases/tag/0.9.18"
+      ]
+    },
+    {
+      "full_name": "DataDog/guarddog",
+      "tag_name": "v2.7.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia a detecção com carregamento de DLL, ofuscação de API e ecossistema de extensões; correções e dependências acompanham novas capacidades.",
+      "fontes": [
+        "https://github.com/DataDog/guarddog/releases/tag/v2.7.0"
+      ]
+    },
+    {
+      "full_name": "DataDog/guarddog",
+      "tag_name": "v2.9.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona detecção de captura de tela e atualiza dependências, junto de ajuste de typosquatting; não se apresenta como reparo concentrado de uma falha.",
+      "fontes": [
+        "https://github.com/DataDog/guarddog/releases/tag/v2.9.0"
+      ]
+    },
+    {
+      "full_name": "DataDog/guarddog",
+      "tag_name": "v3.0.0",
+      "corretiva": "nao",
+      "observacoes": "Reestrutura a versão principal com sandbox no kernel, novo motor de risco e análise de arquivos locais, remotos e S3; inclui mudanças incompatíveis.",
+      "fontes": [
+        "https://github.com/DataDog/guarddog/releases/tag/v3.0.0"
+      ]
+    },
+    {
+      "full_name": "DataDog/guarddog",
+      "tag_name": "v3.0.1",
+      "corretiva": "sim",
+      "observacoes": "A única mudança anunciada é adicionar dependência ausente para Python 3.10, reparando o funcionamento da nova versão 3.0.0 nesse ambiente.",
+      "fontes": [
+        "https://github.com/DataDog/guarddog/releases/tag/v3.0.1"
+      ]
+    },
+    {
+      "full_name": "DataDog/guarddog",
+      "tag_name": "v3.1.0",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta link para PyPI Inspector e regra de dependência npm arriscada; correções de sandbox e versões legadas acompanham a ampliação funcional.",
+      "fontes": [
+        "https://github.com/DataDog/guarddog/releases/tag/v3.1.0"
+      ]
+    },
+    {
+      "full_name": "KittyCAD/modeling-app",
+      "tag_name": "v1.1.1",
+      "corretiva": "nao",
+      "observacoes": "Combina novos recursos KCL, como funções nomeadas e operador unário +, com reparos de conversa e editor; não é uma entrega dedicada a correção.",
+      "fontes": [
+        "https://github.com/KittyCAD/modeling-app/releases/tag/v1.1.1"
+      ]
+    },
+    {
+      "full_name": "KittyCAD/modeling-app",
+      "tag_name": "v1.1.11",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta clone() de arrays de objetos e inserção de arquivos na árvore de recursos; reparos de autocomplete e tutorial são parte de uma entrega mista.",
+      "fontes": [
+        "https://github.com/KittyCAD/modeling-app/releases/tag/v1.1.11"
+      ]
+    },
+    {
+      "full_name": "KittyCAD/modeling-app",
+      "tag_name": "v1.2.0",
+      "corretiva": "nao",
+      "observacoes": "O destaque é a nova experiência de esboço com solucionador de restrições e estabilização das funções solver; inclui correções pontuais adicionais.",
+      "fontes": [
+        "https://github.com/KittyCAD/modeling-app/releases/tag/v1.2.0"
+      ]
+    },
+    {
+      "full_name": "KittyCAD/modeling-app",
+      "tag_name": "v1.3.1",
+      "corretiva": "nao",
+      "observacoes": "As notas anunciam anotação de concentricidade GD&T e opções de transformação de perfil em sweep; são adições funcionais, sem correção descrita.",
+      "fontes": [
+        "https://github.com/KittyCAD/modeling-app/releases/tag/v1.3.1"
+      ]
+    },
+    {
+      "full_name": "KittyCAD/modeling-app",
+      "tag_name": "kcl-180",
+      "corretiva": null,
+      "observacoes": "Notas ausentes; commits ativam o executor CEK por padrão e chamam a publicação de hotfix, mas não identificam o defeito corrigido. Requer revisão do propósito.",
+      "fontes": [
+        "https://github.com/KittyCAD/modeling-app/releases/tag/kcl-180",
+        "https://github.com/KittyCAD/modeling-app/commit/ce9eebfbc9a02fe28a5f23c5c3b27281b33243c6",
+        "https://github.com/KittyCAD/modeling-app/commit/884a3454d4bf02a73ca421eec70be50aa2a60ae9"
+      ]
+    },
+    {
+      "full_name": "Livinglist/Hacki",
+      "tag_name": "v3.0.0",
+      "corretiva": "nao",
+      "observacoes": "Atualiza Flutter e amplia a experiência offline, Split View, compartilhamento e tema Hacker News; a correção de favoritos é parte de uma entrega maior.",
+      "fontes": [
+        "https://github.com/Livinglist/Hacki/releases/tag/v3.0.0"
+      ]
+    },
+    {
+      "full_name": "Livinglist/Hacki",
+      "tag_name": "v3.4.2",
+      "corretiva": "sim",
+      "observacoes": "Corrige falha de busca web, cor do botão de saída no aviso offline e animação de destaque duplicada; notas restritas a reparos de comportamento.",
+      "fontes": [
+        "https://github.com/Livinglist/Hacki/releases/tag/v3.4.2"
+      ]
+    },
+    {
+      "full_name": "Livinglist/Hacki",
+      "tag_name": "v3.4.5",
+      "corretiva": "sim",
+      "observacoes": "Predominam reparos de comentários ocultos ou recolhidos incorretamente e bloqueio de atualização, com ajustes de cache; inclui pequenas opções de preferência.",
+      "fontes": [
+        "https://github.com/Livinglist/Hacki/releases/tag/v3.4.5"
+      ]
+    },
+    {
+      "full_name": "Livinglist/Hacki",
+      "tag_name": "v3.6.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige gesto de rolagem ao topo no iOS, estouro de layout e descoberta de recursos na tela de discussão; todas as alterações anunciadas são reparos.",
+      "fontes": [
+        "https://github.com/Livinglist/Hacki/releases/tag/v3.6.1"
+      ]
+    },
+    {
+      "full_name": "Livinglist/Hacki",
+      "tag_name": "v3.8.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona botões arrastáveis, gestos de votação, compartilhamento e tela de pins; a otimização de prévias acompanha novos recursos de navegação.",
+      "fontes": [
+        "https://github.com/Livinglist/Hacki/releases/tag/v3.8.0"
+      ]
+    },
+    {
+      "full_name": "Martian-Engineering/lossless-claw",
+      "tag_name": "v0.5.2",
+      "corretiva": "sim",
+      "observacoes": "Corrige marcações de truncamento, contaminação do resumo pelo diretório de trabalho, falhas de autenticação e respeito ao endpoint configurado; inclui ajuste visual.",
+      "fontes": [
+        "https://github.com/Martian-Engineering/lossless-claw/releases/tag/v0.5.2"
+      ]
+    },
+    {
+      "full_name": "Martian-Engineering/lossless-claw",
+      "tag_name": "v0.8.2",
+      "corretiva": "sim",
+      "observacoes": "Remove comentários do pacote compilado que provocavam falso positivo no scanner de instalação do OpenClaw e impediam a instalação do plugin.",
+      "fontes": [
+        "https://github.com/Martian-Engineering/lossless-claw/releases/tag/v0.8.2"
+      ]
+    },
+    {
+      "full_name": "Martian-Engineering/lossless-claw",
+      "tag_name": "v0.15.1",
+      "corretiva": "sim",
+      "observacoes": "Predominam correções de persistência, reconciliação e compactação: resolve corrida no bootstrap, perda de contexto injetado e repetição de drenagens.",
+      "fontes": [
+        "https://github.com/Martian-Engineering/lossless-claw/releases/tag/v0.15.1"
+      ]
+    },
+    {
+      "full_name": "Martian-Engineering/lossless-claw",
+      "tag_name": "v0.15.4",
+      "corretiva": "sim",
+      "observacoes": "Corrige preservação dos papéis em resumos reparados e metadados de projeção, além de reduzir custo de reconciliação; acrescenta diagnóstico administrativo.",
+      "fontes": [
+        "https://github.com/Martian-Engineering/lossless-claw/releases/tag/v0.15.4"
+      ]
+    },
+    {
+      "full_name": "Martian-Engineering/lossless-claw",
+      "tag_name": "v1.0.0",
+      "corretiva": "nao",
+      "observacoes": "A versão estável muda a responsabilidade pelo armazenamento de transcrições e remove opções incompatíveis; agrega novos contratos e ferramentas a várias correções.",
+      "fontes": [
+        "https://github.com/Martian-Engineering/lossless-claw/releases/tag/v1.0.0"
+      ]
+    },
+    {
+      "full_name": "OpenMind/OM1",
+      "tag_name": "v1.0.0-beta.4",
+      "corretiva": "nao",
+      "observacoes": "Adiciona provedores OpenRouter, cinco modos autônomos, detecção de faces, múltiplas entradas RTSP e navegação; propósito principal é ampliar a plataforma.",
+      "fontes": [
+        "https://github.com/OpenMind/OM1/releases/tag/v1.0.0-beta.4"
+      ]
+    },
+    {
+      "full_name": "OpenMind/OM1",
+      "tag_name": "v1.0.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz simulação Gazebo, autonomia Unitree G1, recarga de configuração e atualizações OTA; consolida uma versão funcional ampla do runtime.",
+      "fontes": [
+        "https://github.com/OpenMind/OM1/releases/tag/v1.0.0"
+      ]
+    },
+    {
+      "full_name": "OpenMind/OM1",
+      "tag_name": "v1.0.1-beta.1",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta LimX TRON, inferência local Ollama, modos de execução de ações e acompanhamento de pessoas; inclui documentação e expansão de integrações.",
+      "fontes": [
+        "https://github.com/OpenMind/OM1/releases/tag/v1.0.1-beta.1"
+      ]
+    },
+    {
+      "full_name": "OpenMind/OM1",
+      "tag_name": "v1.0.1",
+      "corretiva": "nao",
+      "observacoes": "Unifica modos de execução e amplia histórico de conversa, descrições de ações e configuração de voz; reparos de nome do robô não definem o objetivo geral.",
+      "fontes": [
+        "https://github.com/OpenMind/OM1/releases/tag/v1.0.1"
+      ]
+    },
+    {
+      "full_name": "OpenMind/OM1",
+      "tag_name": "v1.0.2-beta.2",
+      "corretiva": "nao",
+      "observacoes": "Adiciona patrulha autônoma, acompanhamento de pessoas, conector ElevenLabs e configurações G1; correções de despedida e áudio acompanham novos recursos.",
+      "fontes": [
+        "https://github.com/OpenMind/OM1/releases/tag/v1.0.2-beta.2"
+      ]
+    },
+    {
+      "full_name": "PHPOffice/PhpSpreadsheet",
+      "tag_name": "3.10.2",
+      "corretiva": "sim",
+      "observacoes": "Corrige incompatibilidade com índices null no PHP 8.5 e aviso de chave x indefinida; o suporte formal a PHP 8.5 acompanha esses ajustes de compatibilidade.",
+      "fontes": [
+        "https://github.com/PHPOffice/PhpSpreadsheet/releases/tag/3.10.2"
+      ]
+    },
+    {
+      "full_name": "PHPOffice/PhpSpreadsheet",
+      "tag_name": "2.4.4",
+      "corretiva": "sim",
+      "observacoes": "As notas identificam patches de segurança e controle de imagens externas, incluindo backport de correção; a finalidade principal é mitigar vulnerabilidades.",
+      "fontes": [
+        "https://github.com/PHPOffice/PhpSpreadsheet/releases/tag/2.4.4"
+      ]
+    },
+    {
+      "full_name": "PHPOffice/PhpSpreadsheet",
+      "tag_name": "1.30.6",
+      "corretiva": "sim",
+      "observacoes": "A release declara exclusivamente patches de segurança, indicando manutenção corretiva da branch 1.30, sem novos recursos anunciados.",
+      "fontes": [
+        "https://github.com/PHPOffice/PhpSpreadsheet/releases/tag/1.30.6"
+      ]
+    },
+    {
+      "full_name": "PHPOffice/PhpSpreadsheet",
+      "tag_name": "1.30.7",
+      "corretiva": "sim",
+      "observacoes": "Publica patches de segurança na branch 1.30 e aviso de prazo de suporte; a alteração de software descrita é exclusivamente corretiva.",
+      "fontes": [
+        "https://github.com/PHPOffice/PhpSpreadsheet/releases/tag/1.30.7"
+      ]
+    },
+    {
+      "full_name": "PHPOffice/PhpSpreadsheet",
+      "tag_name": "3.10.8",
+      "corretiva": "sim",
+      "observacoes": "As notas anunciam somente patches de segurança para a branch 3.10; há evidência direta de objetivo corretivo, sem adições funcionais descritas.",
+      "fontes": [
+        "https://github.com/PHPOffice/PhpSpreadsheet/releases/tag/3.10.8"
+      ]
+    },
+    {
+      "full_name": "Panniantong/Agent-Reach",
+      "tag_name": "v1.1.0",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta canais Instagram, LinkedIn e Boss Zhipin, comandos de pesquisa e instruções de instalação; a finalidade é expandir fontes disponíveis.",
+      "fontes": [
+        "https://github.com/Panniantong/Agent-Reach/releases/tag/v1.1.0"
+      ]
+    },
+    {
+      "full_name": "Panniantong/Agent-Reach",
+      "tag_name": "v1.2.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz o canal Douyin e remove Instagram por limitações do fornecedor, com atualização de instruções; representa alteração de capacidades disponíveis.",
+      "fontes": [
+        "https://github.com/Panniantong/Agent-Reach/releases/tag/v1.2.0"
+      ]
+    },
+    {
+      "full_name": "Panniantong/Agent-Reach",
+      "tag_name": "v1.3.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona pesquisa e leitura de artigos WeChat como novo canal, junto de correções de codificação e resolução de comandos no Windows.",
+      "fontes": [
+        "https://github.com/Panniantong/Agent-Reach/releases/tag/v1.3.0"
+      ]
+    },
+    {
+      "full_name": "Panniantong/Agent-Reach",
+      "tag_name": "v1.4.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige falha de instalação do código-fonte causada por arquivos duplicados no wheel; remove inclusão redundante e adiciona validação do empacotamento.",
+      "fontes": [
+        "https://github.com/Panniantong/Agent-Reach/releases/tag/v1.4.1"
+      ]
+    },
+    {
+      "full_name": "Panniantong/Agent-Reach",
+      "tag_name": "v1.4.2",
+      "corretiva": "nao",
+      "observacoes": "Remove canais sem manutenção e adiciona transcrição de áudio e saída JSON de diagnóstico; correções de instalação e codificação acompanham mudanças funcionais.",
+      "fontes": [
+        "https://github.com/Panniantong/Agent-Reach/releases/tag/v1.4.2"
+      ]
+    },
+    {
+      "full_name": "Unpackerr/unpackerr",
+      "tag_name": "v0.15.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia extração com arquivos 7z multipartes, ISO/UDF, FLAC/CUE, filtros de pastas e progresso; reparos de extração integram uma atualização funcional ampla.",
+      "fontes": [
+        "https://github.com/Unpackerr/unpackerr/releases/tag/v0.15.0"
+      ]
+    },
+    {
+      "full_name": "Unpackerr/unpackerr",
+      "tag_name": "v0.15.1",
+      "corretiva": "sim",
+      "observacoes": "Restaura compatibilidade dos protocolos Lidarr, corrige scripts pós-instalação e divisão/importação FLAC; objetivo descrito é reparar falhas de uso.",
+      "fontes": [
+        "https://github.com/Unpackerr/unpackerr/releases/tag/v0.15.1"
+      ]
+    },
+    {
+      "full_name": "Unpackerr/unpackerr",
+      "tag_name": "v0.15.2",
+      "corretiva": "sim",
+      "observacoes": "Republicada minutos após 0.15.1 para corrigir falha de envio do pacote Arch Linux; as notas distinguem explicitamente o conserto do empacotamento.",
+      "fontes": [
+        "https://github.com/Unpackerr/unpackerr/releases/tag/v0.15.2"
+      ]
+    },
+    {
+      "full_name": "Unpackerr/unpackerr",
+      "tag_name": "v0.16.0",
+      "corretiva": "sim",
+      "observacoes": "A finalidade destacada é corrigir extração insegura e falso sucesso após interrupções, incluindo proteção contra escape de diretório e esgotamento de disco.",
+      "fontes": [
+        "https://github.com/Unpackerr/unpackerr/releases/tag/v0.16.0"
+      ]
+    },
+    {
+      "full_name": "Unpackerr/unpackerr",
+      "tag_name": "v0.16.1",
+      "corretiva": "sim",
+      "observacoes": "Publicada uma hora após 0.16.0 porque imagens Docker e pacote Arch não funcionavam; as notas afirmam que há apenas reparos de build e publicação.",
+      "fontes": [
+        "https://github.com/Unpackerr/unpackerr/releases/tag/v0.16.1"
+      ]
+    },
+    {
+      "full_name": "alloy-rs/alloy",
+      "tag_name": "v1.7.3",
+      "corretiva": "nao",
+      "observacoes": "Remove alocações intermediárias na desserialização de payloads para otimizar desempenho; o PR descreve redução de custo, sem regressão funcional identificada.",
+      "fontes": [
+        "https://github.com/alloy-rs/alloy/releases/tag/v1.7.3",
+        "https://github.com/alloy-rs/alloy/pull/3713"
+      ]
+    },
+    {
+      "full_name": "alloy-rs/alloy",
+      "tag_name": "v1.7.4",
+      "corretiva": "nao",
+      "observacoes": "Combina diversos reparos com autenticação WebSocket, consultas em blocos, assinatura genérica e suporte no_std; é uma expansão ampla, não reparo concentrado.",
+      "fontes": [
+        "https://github.com/alloy-rs/alloy/releases/tag/v1.7.4"
+      ]
+    },
+    {
+      "full_name": "alloy-rs/alloy",
+      "tag_name": "v2.0.4",
+      "corretiva": "sim",
+      "observacoes": "Remove non_exhaustive da estrutura de requisição de build usada em testes; essa correção específica é a única mudança funcional anunciada.",
+      "fontes": [
+        "https://github.com/alloy-rs/alloy/releases/tag/v2.0.4"
+      ]
+    },
+    {
+      "full_name": "alloy-rs/alloy",
+      "tag_name": "v2.1.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona observação de blocos e logs, codificação SSZ e novas APIs de estado; correções de transporte e assinaturas acompanham novos recursos.",
+      "fontes": [
+        "https://github.com/alloy-rs/alloy/releases/tag/v2.1.0"
+      ]
+    },
+    {
+      "full_name": "alloy-rs/alloy",
+      "tag_name": "v2.1.1",
+      "corretiva": "sim",
+      "observacoes": "Predominam reparos de overflow, serialização, cursor de decodificação e aceitação indevida de dados RLP; novos helpers são complementares à manutenção.",
+      "fontes": [
+        "https://github.com/alloy-rs/alloy/releases/tag/v2.1.1"
+      ]
+    },
+    {
+      "full_name": "almeidapaulopt/tsdproxy",
+      "tag_name": "v2.1.0",
+      "corretiva": "sim",
+      "observacoes": "Corrige concorrência na emissão de certificados TLS, transmissão SSE pelo proxy e ordem de argumentos de build; notas não anunciam novas funcionalidades.",
+      "fontes": [
+        "https://github.com/almeidapaulopt/tsdproxy/releases/tag/v2.1.0"
+      ]
+    },
+    {
+      "full_name": "almeidapaulopt/tsdproxy",
+      "tag_name": "v2.2.1",
+      "corretiva": "sim",
+      "observacoes": "Sem notas na release; os commits corrigem acesso ao dashboard em Docker, hostname padrão, mensagens OAuth e variáveis do fluxo de publicação.",
+      "fontes": [
+        "https://github.com/almeidapaulopt/tsdproxy/releases/tag/v2.2.1",
+        "https://github.com/almeidapaulopt/tsdproxy/commit/5061281053534c1a2c3cf4095d4ee71deec702cc",
+        "https://github.com/almeidapaulopt/tsdproxy/commit/547bc56cc1f3ccbf4e34b0a6c4e04076669b6e19",
+        "https://github.com/almeidapaulopt/tsdproxy/commit/3ad527b960c39ceb040a7f1308185c4763388ebc",
+        "https://github.com/almeidapaulopt/tsdproxy/commit/2ce8e33ba2c59bda5b00e4cc383e9a2f1ba52610",
+        "https://github.com/almeidapaulopt/tsdproxy/commit/0f11fa54d74173e4b90ae3c02b57d92a94a969a4",
+        "https://github.com/almeidapaulopt/tsdproxy/commit/677a744d0736915f9fd984bb6de1d740b14b169f"
+      ]
+    },
+    {
+      "full_name": "almeidapaulopt/tsdproxy",
+      "tag_name": "v2.3.2",
+      "corretiva": "sim",
+      "observacoes": "Corrige configuração padrão de logs de acesso e passagem de variáveis ao GoReleaser; a entrega também documenta esses reparos de configuração e publicação.",
+      "fontes": [
+        "https://github.com/almeidapaulopt/tsdproxy/releases/tag/v2.3.2"
+      ]
+    },
+    {
+      "full_name": "almeidapaulopt/tsdproxy",
+      "tag_name": "v3.0.0-beta.3",
+      "corretiva": "nao",
+      "observacoes": "Introduz sistema de ícones, métricas, templates de webhooks e opções de configuração; numerosas correções acompanham uma ampliação funcional da versão beta.",
+      "fontes": [
+        "https://github.com/almeidapaulopt/tsdproxy/releases/tag/v3.0.0-beta.3"
+      ]
+    },
+    {
+      "full_name": "almeidapaulopt/tsdproxy",
+      "tag_name": "v3.0.0-beta.4",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta provedores Proxmox VE e Incus e atributos de rastreamento; a correção de teste com acesso indevido à API é secundária aos novos recursos.",
+      "fontes": [
+        "https://github.com/almeidapaulopt/tsdproxy/releases/tag/v3.0.0-beta.4"
+      ]
+    },
+    {
+      "full_name": "babashka/sci",
+      "tag_name": "v0.11.50",
+      "corretiva": "sim",
+      "observacoes": "Predominam reparos de resolução de variáveis, nomes CLJS, registros e metadados de namespaces; acrescenta também opções de importação global.",
+      "fontes": [
+        "https://github.com/babashka/sci/releases/tag/v0.11.50"
+      ]
+    },
+    {
+      "full_name": "babashka/sci",
+      "tag_name": "v0.11.51",
+      "corretiva": "nao",
+      "observacoes": "Adiciona async/await e hashCode em deftype; a correção de múltiplos catch acompanha novas capacidades do interpretador.",
+      "fontes": [
+        "https://github.com/babashka/sci/releases/tag/v0.11.51"
+      ]
+    },
+    {
+      "full_name": "babashka/sci",
+      "tag_name": "v0.14.55",
+      "corretiva": "nao",
+      "observacoes": "Sem notas; commits ampliam protocolos nativos CLJS em deftype, reify, defrecord e extend, além de otimizações. Evidência aponta evolução funcional.",
+      "fontes": [
+        "https://github.com/babashka/sci/releases/tag/v0.14.55",
+        "https://github.com/babashka/sci/commit/f8703c494160f777471ea8f25aea7312dd3cb7b4",
+        "https://github.com/babashka/sci/commit/1f1e82197883ba67417d80494235938a079143e4",
+        "https://github.com/babashka/sci/commit/4d8cc7a3bdac759c8547276dc1e001b85dce666c",
+        "https://github.com/babashka/sci/commit/7dd6fac6e2fc8f880583e5e6b0f25d5669ff6295",
+        "https://github.com/babashka/sci/commit/1f758f954528524a7471722c561ca7fdca724ea3",
+        "https://github.com/babashka/sci/commit/4ea4874db0be7816570e4be9c5f60cf2548c8be6",
+        "https://github.com/babashka/sci/commit/748a8dbf302745aef36007b0a054f32b1d6f6722",
+        "https://github.com/babashka/sci/commit/9c3b7a4f1b7e95bd34226e340994b2d56ab9695b",
+        "https://github.com/babashka/sci/commit/b4c92bd2bddb63cf19f763985ca037977a3f6a01",
+        "https://github.com/babashka/sci/commit/a3d0fe59c819b61bdd30cd0c7ef0de332e9041c3",
+        "https://github.com/babashka/sci/commit/b723ebf60d57cef127d8dcf38730f2fc880fba81",
+        "https://github.com/babashka/sci/commit/b72271c969336733452876cbf9fd6a3e1c678ff1",
+        "https://github.com/babashka/sci/commit/8b3bc12fc59a0226b0075b9339ce53c1a102a39d",
+        "https://github.com/babashka/sci/commit/c6d76e59d9483b40ae80c1461c16054cc8c59108",
+        "https://github.com/babashka/sci/commit/c7688375e1afdf2639abdc9f2050ae3dbb228e43"
+      ]
+    },
+    {
+      "full_name": "babashka/sci",
+      "tag_name": "v0.15.57",
+      "corretiva": "nao",
+      "observacoes": "Adiciona destructuring Clojure 1.13 e otimizações de compilação JIT, incluindo chamadas de keywords e operadores JavaScript; foco em capacidades e desempenho.",
+      "fontes": [
+        "https://github.com/babashka/sci/releases/tag/v0.15.57"
+      ]
+    },
+    {
+      "full_name": "babashka/sci",
+      "tag_name": "v0.15.58",
+      "corretiva": "nao",
+      "observacoes": "Sem notas; commits acrescentam funções assíncronas via atributo :async em defn e registram decisões de otimização; não descrevem reparo de defeito.",
+      "fontes": [
+        "https://github.com/babashka/sci/releases/tag/v0.15.58",
+        "https://github.com/babashka/sci/commit/24a94f2ec805308298e4f5a5fcf3cbe1fc5921a7",
+        "https://github.com/babashka/sci/commit/76c61acd45bba9013770312ba1a2f981b1853681",
+        "https://github.com/babashka/sci/commit/5ba0a3afbc8c0cb0874aab4c76730f6fc9bcb015"
+      ]
+    },
+    {
+      "full_name": "carvel-dev/ytt",
+      "tag_name": "v0.52.2",
+      "corretiva": "sim",
+      "observacoes": "O PR 970 esclarece que a atualização do Go para 1.24.11 foi feita para corrigir CVEs na branch 0.52; não se trata apenas de inferência pelo número da versão.",
+      "fontes": [
+        "https://github.com/carvel-dev/ytt/releases/tag/v0.52.2",
+        "https://github.com/carvel-dev/ytt/pull/970"
+      ]
+    },
+    {
+      "full_name": "carvel-dev/ytt",
+      "tag_name": "v0.53.0",
+      "corretiva": "sim",
+      "observacoes": "As notas vinculam a atualização para Go 1.25.6 à correção de CVEs; a otimização de comparação de chaves é complementar à manutenção de segurança.",
+      "fontes": [
+        "https://github.com/carvel-dev/ytt/releases/tag/v0.53.0"
+      ]
+    },
+    {
+      "full_name": "carvel-dev/ytt",
+      "tag_name": "v0.55.0",
+      "corretiva": "nao",
+      "observacoes": "Atualiza a dependência Cobra de 1.7.0 para 1.10.2; o PR registra validações de build e testes, mas não identifica defeito ou vulnerabilidade como motivação.",
+      "fontes": [
+        "https://github.com/carvel-dev/ytt/releases/tag/v0.55.0",
+        "https://github.com/carvel-dev/ytt/pull/985"
+      ]
+    },
+    {
+      "full_name": "carvel-dev/ytt",
+      "tag_name": "v0.55.2",
+      "corretiva": "sim",
+      "observacoes": "Corrige panic de md5.sum() sob FIPS estrito e retenção excessiva de eventos YAML; atualizações de dependências acompanham esses reparos documentados.",
+      "fontes": [
+        "https://github.com/carvel-dev/ytt/releases/tag/v0.55.2"
+      ]
+    },
+    {
+      "full_name": "carvel-dev/ytt",
+      "tag_name": "v0.55.3",
+      "corretiva": "sim",
+      "observacoes": "Corrige tratamento de BOM UTF-8 e qualidade dos erros Starlark, além de descontinuar MD5; predomina manutenção de entrada e diagnóstico, sem novo fluxo principal.",
+      "fontes": [
+        "https://github.com/carvel-dev/ytt/releases/tag/v0.55.3"
+      ]
+    },
+    {
+      "full_name": "cockroachdb/pebble",
+      "tag_name": "v2.1.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige erro de limite nas estatísticas de compressão e adiciona opção para recuperação após perda ou mudança do diretório WAL, vinculada à issue 5421.",
+      "fontes": [
+        "https://github.com/cockroachdb/pebble/releases/tag/v2.1.1",
+        "https://github.com/cockroachdb/pebble/pull/5487"
+      ]
+    },
+    {
+      "full_name": "cockroachdb/pebble",
+      "tag_name": "v2.1.2",
+      "corretiva": "nao",
+      "observacoes": "A única mudança é adicionar uma build tag para selecionar a implementação zstd; trata-se de nova opção de configuração da compilação.",
+      "fontes": [
+        "https://github.com/cockroachdb/pebble/releases/tag/v2.1.2"
+      ]
+    },
+    {
+      "full_name": "cockroachdb/pebble",
+      "tag_name": "v2.1.5",
+      "corretiva": "sim",
+      "observacoes": "Corrige inclusão de arquivos SST no checkpoint e rejeição de formato antigo incompatível ao abrir banco; mudanças específicas de integridade e validação.",
+      "fontes": [
+        "https://github.com/cockroachdb/pebble/releases/tag/v2.1.5"
+      ]
+    },
+    {
+      "full_name": "cockroachdb/pebble",
+      "tag_name": "v2.1.6",
+      "corretiva": "sim",
+      "observacoes": "A única mudança anunciada corrige IsLowerBound para considerar sufixos sintéticos, reparando a lógica de comparação dos blocos.",
+      "fontes": [
+        "https://github.com/cockroachdb/pebble/releases/tag/v2.1.6"
+      ]
+    },
+    {
+      "full_name": "cockroachdb/pebble",
+      "tag_name": "v2.1.7",
+      "corretiva": "nao",
+      "observacoes": "Atualiza swiss para suportar Go 1.27; o commit e o PR descrevem compatibilidade com novo compilador, sem apontar defeito anterior ou vulnerabilidade.",
+      "fontes": [
+        "https://github.com/cockroachdb/pebble/releases/tag/v2.1.7",
+        "https://github.com/cockroachdb/pebble/pull/6178"
+      ]
+    },
+    {
+      "full_name": "coreruleset/coreruleset",
+      "tag_name": "v4.19.0",
+      "corretiva": "sim",
+      "observacoes": "Predominam correções de pontuação de regras e falsos positivos em SQLSTATE, respostas PHP e caracteres ?, com ajustes menores de cobertura de detecção.",
+      "fontes": [
+        "https://github.com/coreruleset/coreruleset/releases/tag/v4.19.0"
+      ]
+    },
+    {
+      "full_name": "coreruleset/coreruleset",
+      "tag_name": "v4.20.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia detecção de extensões, configurações de lojas e cabeçalho Expect, junto de reparos de falsos positivos; é uma atualização funcional de regras.",
+      "fontes": [
+        "https://github.com/coreruleset/coreruleset/releases/tag/v4.20.0"
+      ]
+    },
+    {
+      "full_name": "coreruleset/coreruleset",
+      "tag_name": "v4.23.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona várias detecções, como content-type obrigatório, traversal Vite e sobrescrita de métodos; correções fazem parte de expansão ampla do conjunto.",
+      "fontes": [
+        "https://github.com/coreruleset/coreruleset/releases/tag/v4.23.0"
+      ]
+    },
+    {
+      "full_name": "coreruleset/coreruleset",
+      "tag_name": "v3.3.10",
+      "corretiva": "sim",
+      "observacoes": "Aplica correções de segurança identificadas por advisories, incluindo inspeção de atributos XML; a exigência de versão do ModSecurity decorre desses reparos.",
+      "fontes": [
+        "https://github.com/coreruleset/coreruleset/releases/tag/v3.3.10"
+      ]
+    },
+    {
+      "full_name": "coreruleset/coreruleset",
+      "tag_name": "v4.25.1",
+      "corretiva": "sim",
+      "observacoes": "Concentra backports de segurança contra ReDoS e evasão, além de falsos positivos e validação HTTP; objetivo explícito é manutenção corretiva da versão LTS.",
+      "fontes": [
+        "https://github.com/coreruleset/coreruleset/releases/tag/v4.25.1"
+      ]
+    },
+    {
+      "full_name": "crewAIInc/crewAI",
+      "tag_name": "0.203.0",
+      "corretiva": "nao",
+      "observacoes": "Combina novas capacidades de eventos e tracing com documentação e reparos de PATH e estados JSON; a entrega não está centrada em um defeito recente.",
+      "fontes": [
+        "https://github.com/crewAIInc/crewAI/releases/tag/0.203.0"
+      ]
+    },
+    {
+      "full_name": "crewAIInc/crewAI",
+      "tag_name": "1.2.1",
+      "corretiva": "nao",
+      "observacoes": "Adiciona integração Datadog e suporte a apps e MCPs no LiteAgent; as notas listam recursos e documentação, sem correção de defeito.",
+      "fontes": [
+        "https://github.com/crewAIInc/crewAI/releases/tag/1.2.1"
+      ]
+    },
+    {
+      "full_name": "crewAIInc/crewAI",
+      "tag_name": "1.15.12",
+      "corretiva": "nao",
+      "observacoes": "Introduz URLReadTool, metadados de ferramentas e criação unificada de recursos pela CLI; melhora uma mensagem de erro como mudança secundária.",
+      "fontes": [
+        "https://github.com/crewAIInc/crewAI/releases/tag/1.15.12"
+      ]
+    },
+    {
+      "full_name": "crewAIInc/crewAI",
+      "tag_name": "1.15.18",
+      "corretiva": "nao",
+      "observacoes": "Estabiliza fluxos conversacionais e amplia configuração de estado, roteamento e LLM; vários reparos acompanham a consolidação dessa nova funcionalidade.",
+      "fontes": [
+        "https://github.com/crewAIInc/crewAI/releases/tag/1.15.18"
+      ]
+    },
+    {
+      "full_name": "crewAIInc/crewAI",
+      "tag_name": "1.15.19",
+      "corretiva": "nao",
+      "observacoes": "Combina novo cliente de integrações Clipper, função now() e cliente injetável com correções e atualizações de segurança; é uma entrega funcional mista.",
+      "fontes": [
+        "https://github.com/crewAIInc/crewAI/releases/tag/1.15.19"
+      ]
+    },
+    {
+      "full_name": "dart-frog-dev/dart_frog",
+      "tag_name": "dart_frog_auth-v1.2.2",
+      "corretiva": "nao",
+      "observacoes": "Atualiza link do Discord, padroniza opções de análise e adiciona arquivo de override; as notas indicam documentação e organização, sem defeito funcional.",
+      "fontes": [
+        "https://github.com/dart-frog-dev/dart_frog/releases/tag/dart_frog_auth-v1.2.2"
+      ]
+    },
+    {
+      "full_name": "dart-frog-dev/dart_frog",
+      "tag_name": "dart_frog_lint-v0.1.2",
+      "corretiva": "nao",
+      "observacoes": "A única alteração anunciada é atualizar o link do servidor Discord; é manutenção documental, não correção de comportamento do software.",
+      "fontes": [
+        "https://github.com/dart-frog-dev/dart_frog/releases/tag/dart_frog_lint-v0.1.2"
+      ]
+    },
+    {
+      "full_name": "dart-frog-dev/dart_frog",
+      "tag_name": "dart_frog-v1.2.6",
+      "corretiva": "sim",
+      "observacoes": "Reverte otimização com Expando que causava regressão ao ler a requisição várias vezes entre middleware e handler; a causa está explícita nas notas.",
+      "fontes": [
+        "https://github.com/dart-frog-dev/dart_frog/releases/tag/dart_frog-v1.2.6"
+      ]
+    },
+    {
+      "full_name": "dart-frog-dev/dart_frog",
+      "tag_name": "dart_frog_gen-v2.1.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona precedência de rotas estáticas sobre dinâmicas no gerador; as notas apresentam uma nova regra funcional de roteamento.",
+      "fontes": [
+        "https://github.com/dart-frog-dev/dart_frog/releases/tag/dart_frog_gen-v2.1.0"
+      ]
+    },
+    {
+      "full_name": "dart-frog-dev/dart_frog",
+      "tag_name": "dart_frog_cli-v1.2.13",
+      "corretiva": "sim",
+      "observacoes": "Remove mensagem de log indevida da saída do servidor de desenvolvimento; a release é dedicada a corrigir esse comportamento da CLI.",
+      "fontes": [
+        "https://github.com/dart-frog-dev/dart_frog/releases/tag/dart_frog_cli-v1.2.13"
+      ]
+    },
+    {
+      "full_name": "eez-open/studio",
+      "tag_name": "v0.25.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona suporte LVGL 9.3/9.4, fontes FreeType e templates locais, junto de correções de widgets e compilação; escopo funcional amplo.",
+      "fontes": [
+        "https://github.com/eez-open/studio/releases/tag/v0.25.0"
+      ]
+    },
+    {
+      "full_name": "eez-open/studio",
+      "tag_name": "v0.25.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige slider RANGE e animação de spinner em LVGL 9.x; inclui opção de valores de enum, mas o foco das mudanças é reparar widgets recém-suportados.",
+      "fontes": [
+        "https://github.com/eez-open/studio/releases/tag/v0.25.1"
+      ]
+    },
+    {
+      "full_name": "eez-open/studio",
+      "tag_name": "v0.27.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia suporte LVGL 9.5, fontes, calendário, widgets e ações de diálogo; correções de editor e geração acompanham novos recursos.",
+      "fontes": [
+        "https://github.com/eez-open/studio/releases/tag/v0.27.0"
+      ]
+    },
+    {
+      "full_name": "eez-open/studio",
+      "tag_name": "v0.28.0",
+      "corretiva": "sim",
+      "observacoes": "Predominam reparos de geração e compilação LVGL, regressão em fontes, estilos e detecção de Docker; inclui pequenas opções de widgets.",
+      "fontes": [
+        "https://github.com/eez-open/studio/releases/tag/v0.28.0"
+      ]
+    },
+    {
+      "full_name": "eez-open/studio",
+      "tag_name": "v0.29.0",
+      "corretiva": "sim",
+      "observacoes": "Corrige regressão de seleção após alternar Run/Edit, falhas de build com Electron e texto estático LVGL; conjunto voltado à restauração do funcionamento.",
+      "fontes": [
+        "https://github.com/eez-open/studio/releases/tag/v0.29.0"
+      ]
+    },
+    {
+      "full_name": "exoframejs/exoframe",
+      "tag_name": "7.0.0",
+      "corretiva": "nao",
+      "observacoes": "Reescrita ampla para ESM, mudança de configuração e remoção de plugins, Swarm e Compose; objetivo principal é evolução arquitetural da versão 7.",
+      "fontes": [
+        "https://github.com/exoframejs/exoframe/releases/tag/7.0.0"
+      ]
+    },
+    {
+      "full_name": "exoframejs/exoframe",
+      "tag_name": "7.0.1",
+      "corretiva": "sim",
+      "observacoes": "Notas descrevem hotfix do CLI: restaura a seleção de itens usando um componente de seleção novo, sem anunciar funcionalidades adicionais.",
+      "fontes": [
+        "https://github.com/exoframejs/exoframe/releases/tag/7.0.1"
+      ]
+    },
+    {
+      "full_name": "exoframejs/exoframe",
+      "tag_name": "7.0.2",
+      "corretiva": "sim",
+      "observacoes": "Hotfix destinado à saída detalhada de logs durante a implantação pelo CLI; a nota identifica especificamente esse comportamento quebrado.",
+      "fontes": [
+        "https://github.com/exoframejs/exoframe/releases/tag/7.0.2"
+      ]
+    },
+    {
+      "full_name": "exoframejs/exoframe",
+      "tag_name": "7.0.4",
+      "corretiva": "sim",
+      "observacoes": "Corrige o servidor que removia implantações existentes quando a construção da nova imagem falhava; a release trata desse defeito específico.",
+      "fontes": [
+        "https://github.com/exoframejs/exoframe/releases/tag/7.0.4"
+      ]
+    },
+    {
+      "full_name": "exoframejs/exoframe",
+      "tag_name": "v8.0.0",
+      "corretiva": "nao",
+      "observacoes": "Entrega reescrita em TypeScript, estratégia de implantação, schema JSON e filtros de logs; as correções fazem parte de uma evolução funcional ampla.",
+      "fontes": [
+        "https://github.com/exoframejs/exoframe/releases/tag/v8.0.0"
+      ]
+    },
+    {
+      "full_name": "foru17/neko-master",
+      "tag_name": "agent-v1.3.1",
+      "corretiva": "nao",
+      "observacoes": "Introduz estatísticas interativas de dispositivos, filtros por intervalo e integração de desenvolvimento; as notas indicam entrega de funcionalidades.",
+      "fontes": [
+        "https://github.com/foru17/neko-master/releases/tag/agent-v1.3.1"
+      ]
+    },
+    {
+      "full_name": "foru17/neko-master",
+      "tag_name": "agent-v1.3.2",
+      "corretiva": "nao",
+      "observacoes": "O único commit da comparação introduz o CLI nekoagent para administrar instâncias e adapta o instalador; trata-se de recurso novo.",
+      "fontes": [
+        "https://github.com/foru17/neko-master/releases/tag/agent-v1.3.2",
+        "https://github.com/foru17/neko-master/compare/agent-v1.3.1...agent-v1.3.2"
+      ]
+    },
+    {
+      "full_name": "foru17/neko-master",
+      "tag_name": "agent-v1.3.4",
+      "corretiva": "nao",
+      "observacoes": "Commits introduzem armazenamento ClickHouse, métricas, sincronização de políticas e melhorias do instalador; predomina expansão funcional do agente.",
+      "fontes": [
+        "https://github.com/foru17/neko-master/releases/tag/agent-v1.3.4",
+        "https://github.com/foru17/neko-master/compare/agent-v1.3.3...agent-v1.3.4"
+      ]
+    },
+    {
+      "full_name": "foru17/neko-master",
+      "tag_name": "agent-v1.3.6",
+      "corretiva": "nao",
+      "observacoes": "Commits combinam correção de dupla contagem com novas métricas de conexões, intervalos de consulta e comando de atualização; entrega funcional mista.",
+      "fontes": [
+        "https://github.com/foru17/neko-master/releases/tag/agent-v1.3.6",
+        "https://github.com/foru17/neko-master/compare/agent-v1.3.5...agent-v1.3.6"
+      ]
+    },
+    {
+      "full_name": "foru17/neko-master",
+      "tag_name": "agent-v1.3.9",
+      "corretiva": "nao",
+      "observacoes": "A comparação introduz inicialização automática por systemd, launchd, OpenWrt e cron, com ajustes auxiliares; o objetivo central é um recurso novo.",
+      "fontes": [
+        "https://github.com/foru17/neko-master/releases/tag/agent-v1.3.9",
+        "https://github.com/foru17/neko-master/compare/agent-v1.3.8...agent-v1.3.9"
+      ]
+    },
+    {
+      "full_name": "gabehf/Koito",
+      "tag_name": "v0.1.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona gráfico de interesse ao longo do tempo, rankings e retrospectivas mensais; as correções de associação e fuso acompanham novas funcionalidades.",
+      "fontes": [
+        "https://github.com/gabehf/Koito/releases/tag/v0.1.0"
+      ]
+    },
+    {
+      "full_name": "gabehf/Koito",
+      "tag_name": "v0.1.1",
+      "corretiva": "sim",
+      "observacoes": "A nota informa exclusivamente a correção de um defeito na interface da página de retrospectiva; não apresenta expansão funcional da aplicação.",
+      "fontes": [
+        "https://github.com/gabehf/Koito/releases/tag/v0.1.1"
+      ]
+    },
+    {
+      "full_name": "gabehf/Koito",
+      "tag_name": "v0.1.5",
+      "corretiva": "nao",
+      "observacoes": "Destaques são busca de imagens no LastFM, posição histórica de itens e recuperação de imagens; inclui correções, mas entrega novas funcionalidades.",
+      "fontes": [
+        "https://github.com/gabehf/Koito/releases/tag/v0.1.5"
+      ]
+    },
+    {
+      "full_name": "gabehf/Koito",
+      "tag_name": "v0.3.0",
+      "corretiva": "nao",
+      "observacoes": "Embora a nota peça atualizar para 0.3.1, os commits desta versão implementam reformulação da interface, API e estatísticas; não é uma correção isolada.",
+      "fontes": [
+        "https://github.com/gabehf/Koito/releases/tag/v0.3.0",
+        "https://github.com/gabehf/Koito/compare/v0.2.1...v0.3.0"
+      ]
+    },
+    {
+      "full_name": "gabehf/Koito",
+      "tag_name": "v0.3.1",
+      "corretiva": "sim",
+      "observacoes": "Notas reaproveitam mudanças amplas, mas o único commit desde 0.3.0 corrige erro de escopo de variável na tarefa de limpeza de imagens.",
+      "fontes": [
+        "https://github.com/gabehf/Koito/releases/tag/v0.3.1",
+        "https://github.com/gabehf/Koito/compare/v0.3.0...v0.3.1"
+      ]
+    },
+    {
+      "full_name": "github/gh-aw",
+      "tag_name": "v0.13.1",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta filtro de eventos ao gatilho de comandos e reorganiza gerenciamento de workflows; objetivo principal é adicionar capacidade de configuração.",
+      "fontes": [
+        "https://github.com/github/gh-aw/releases/tag/v0.13.1"
+      ]
+    },
+    {
+      "full_name": "github/gh-aw",
+      "tag_name": "v0.22.2",
+      "corretiva": "nao",
+      "observacoes": "Entrega resolução alternativa de workflows, cabeçalhos secretos MCP e comando de transferência de PR; correções de segurança acompanham essas novidades.",
+      "fontes": [
+        "https://github.com/github/gh-aw/releases/tag/v0.22.2"
+      ]
+    },
+    {
+      "full_name": "github/gh-aw",
+      "tag_name": "v0.30.5",
+      "corretiva": "nao",
+      "observacoes": "Inclui integração Serena, novos safe outputs, limiar de skip-if-match e refatoração do MCP; escopo amplo de funcionalidades, apesar de correções.",
+      "fontes": [
+        "https://github.com/github/gh-aw/releases/tag/v0.30.5"
+      ]
+    },
+    {
+      "full_name": "github/gh-aw",
+      "tag_name": "v0.31.3",
+      "corretiva": "nao",
+      "observacoes": "Adiciona importação de safe outputs, filtro por referência no CLI e saídas de jobs; as correções de firewall acompanham uma entrega de recursos.",
+      "fontes": [
+        "https://github.com/github/gh-aw/releases/tag/v0.31.3"
+      ]
+    },
+    {
+      "full_name": "github/gh-aw",
+      "tag_name": "v0.74.8",
+      "corretiva": "nao",
+      "observacoes": "Introduz revisão diária de confiabilidade, sugestões de validação e apresentação de raciocínio; a telemetria corrigida integra uma release de recursos.",
+      "fontes": [
+        "https://github.com/github/gh-aw/releases/tag/v0.74.8"
+      ]
+    },
+    {
+      "full_name": "glpi-project/glpi",
+      "tag_name": "11.0.0",
+      "corretiva": "nao",
+      "observacoes": "Nova versão principal com ativos personalizados, formulários, portal de autoatendimento, autenticação em dois fatores e webhooks; foco em funcionalidades.",
+      "fontes": [
+        "https://github.com/glpi-project/glpi/releases/tag/11.0.0"
+      ]
+    },
+    {
+      "full_name": "glpi-project/glpi",
+      "tag_name": "11.0.1",
+      "corretiva": "sim",
+      "observacoes": "Anunciada como primeira versão de correções após GLPI 11; resolve regressões em inventário, dashboards, pesquisas e associação de técnicos.",
+      "fontes": [
+        "https://github.com/glpi-project/glpi/releases/tag/11.0.1"
+      ]
+    },
+    {
+      "full_name": "glpi-project/glpi",
+      "tag_name": "10.0.22",
+      "corretiva": "sim",
+      "observacoes": "Notas relacionam o lançamento a regressões detectadas no dia seguinte à 10.0.21 e a vulnerabilidades de acesso indevido e XSS; objetivo corretivo explícito.",
+      "fontes": [
+        "https://github.com/glpi-project/glpi/releases/tag/10.0.22"
+      ]
+    },
+    {
+      "full_name": "glpi-project/glpi",
+      "tag_name": "11.0.5",
+      "corretiva": "sim",
+      "observacoes": "Release de segurança destinada a corrigir roubo de sessão, execução remota via upload e SSRF em webhooks; os defeitos são identificados nas notas.",
+      "fontes": [
+        "https://github.com/glpi-project/glpi/releases/tag/11.0.5"
+      ]
+    },
+    {
+      "full_name": "glpi-project/glpi",
+      "tag_name": "10.0.25",
+      "corretiva": "sim",
+      "observacoes": "Release de segurança corrige acesso e exclusão indevidos de arquivos, XSS e alterações não autorizadas; recomenda atualização por essas vulnerabilidades.",
+      "fontes": [
+        "https://github.com/glpi-project/glpi/releases/tag/10.0.25"
+      ]
+    },
+    {
+      "full_name": "googleapis/js-genai",
+      "tag_name": "v1.22.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona configuração de imagens, configuração de raciocínio no modo ao vivo e alterações na ferramenta ComputerUse; o conteúdo é de funcionalidades.",
+      "fontes": [
+        "https://github.com/googleapis/js-genai/releases/tag/v1.22.0"
+      ]
+    },
+    {
+      "full_name": "googleapis/js-genai",
+      "tag_name": "v1.27.0",
+      "corretiva": "sim",
+      "observacoes": "A única mudança funcional documentada corrige erro de autenticação ADC do Google; a outra alteração apenas acelera a execução interna de testes.",
+      "fontes": [
+        "https://github.com/googleapis/js-genai/releases/tag/v1.27.0"
+      ]
+    },
+    {
+      "full_name": "googleapis/js-genai",
+      "tag_name": "v1.34.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia níveis de raciocínio, resolução de mídia e suporte a conteúdo estruturado e múltiplos locutores; as notas descrevem capacidades novas do SDK.",
+      "fontes": [
+        "https://github.com/googleapis/js-genai/releases/tag/v1.34.0"
+      ]
+    },
+    {
+      "full_name": "googleapis/js-genai",
+      "tag_name": "v1.51.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona modelos, parâmetros de vídeo, entrada e saída de datasets e opção empresarial; entrega expansão de APIs, sem foco principal corretivo.",
+      "fontes": [
+        "https://github.com/googleapis/js-genai/releases/tag/v1.51.0"
+      ]
+    },
+    {
+      "full_name": "googleapis/js-genai",
+      "tag_name": "v2.12.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz configuração de agentes, histórico, triggers e novas informações de embeddings; as notas tratam de extensões de funcionalidade do SDK.",
+      "fontes": [
+        "https://github.com/googleapis/js-genai/releases/tag/v2.12.0"
+      ]
+    },
+    {
+      "full_name": "goproxy/goproxy",
+      "tag_name": "v0.23.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona endpoint de saúde ao comando server e também corrige vazamento de memória; a release combina nova funcionalidade e manutenção.",
+      "fontes": [
+        "https://github.com/goproxy/goproxy/releases/tag/v0.23.0"
+      ]
+    },
+    {
+      "full_name": "goproxy/goproxy",
+      "tag_name": "v0.24.0",
+      "corretiva": "sim",
+      "observacoes": "A mudança funcional central libera recursos nos caminhos de erro; refatoração de retries e ajustes de build acompanham a correção, sem novas APIs.",
+      "fontes": [
+        "https://github.com/goproxy/goproxy/releases/tag/v0.24.0"
+      ]
+    },
+    {
+      "full_name": "goproxy/goproxy",
+      "tag_name": "v0.25.0",
+      "corretiva": "sim",
+      "observacoes": "Corrige a perda de timestamps ao copiar artefatos para a imagem Docker; as demais mudanças atualizam dependências e imagem base, sem novos recursos.",
+      "fontes": [
+        "https://github.com/goproxy/goproxy/releases/tag/v0.25.0"
+      ]
+    },
+    {
+      "full_name": "goproxy/goproxy",
+      "tag_name": "v0.26.0",
+      "corretiva": "sim",
+      "observacoes": "Corrige o GoFetcher que desabilitava à força a verificação GOSUMDB nos subprocessos; as outras alterações são atualização de Go, testes e CI.",
+      "fontes": [
+        "https://github.com/goproxy/goproxy/releases/tag/v0.26.0"
+      ]
+    },
+    {
+      "full_name": "goproxy/goproxy",
+      "tag_name": "v0.26.1",
+      "corretiva": "nao",
+      "observacoes": "Notas incluem apenas atualização do Codecov e separação entre criação de tags e publicação no workflow; não identificam defeito no produto entregue.",
+      "fontes": [
+        "https://github.com/goproxy/goproxy/releases/tag/v0.26.1"
+      ]
+    },
+    {
+      "full_name": "gruntwork-io/terragrunt",
+      "tag_name": "v0.89.0",
+      "corretiva": "nao",
+      "observacoes": "Promove runner pool, relatórios e cache de provedores a funcionalidades estáveis e padrão; correção de destroy acompanha essa mudança de produto.",
+      "fontes": [
+        "https://github.com/gruntwork-io/terragrunt/releases/tag/v0.89.0"
+      ]
+    },
+    {
+      "full_name": "gruntwork-io/terragrunt",
+      "tag_name": "v0.90.0",
+      "corretiva": "nao",
+      "observacoes": "Conclui redesenho do CLI removendo comandos obsoletos e definindo substitutos; a finalidade é migração da interface de comandos, não reparar defeito.",
+      "fontes": [
+        "https://github.com/gruntwork-io/terragrunt/releases/tag/v0.90.0"
+      ]
+    },
+    {
+      "full_name": "gruntwork-io/terragrunt",
+      "tag_name": "v0.91.5",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta suporte ao filtro experimental no comando run, com exemplos de seleção de unidades; manutenção de testes é secundária ao recurso novo.",
+      "fontes": [
+        "https://github.com/gruntwork-io/terragrunt/releases/tag/v0.91.5"
+      ]
+    },
+    {
+      "full_name": "gruntwork-io/terragrunt",
+      "tag_name": "v0.95.0",
+      "corretiva": "nao",
+      "observacoes": "Muda inclusão de dependências externas e adiciona filtros baseados em Git; inclui correções de filas e logs, mas apresenta evolução funcional ampla.",
+      "fontes": [
+        "https://github.com/gruntwork-io/terragrunt/releases/tag/v0.95.0"
+      ]
+    },
+    {
+      "full_name": "gruntwork-io/terragrunt",
+      "tag_name": "v1.0.1",
+      "corretiva": "nao",
+      "observacoes": "Entrega novos experimentos de visualização DAG, progresso e dependências de stacks; corrige regressões também, mas não é uma release só de reparação.",
+      "fontes": [
+        "https://github.com/gruntwork-io/terragrunt/releases/tag/v1.0.1"
+      ]
+    },
+    {
+      "full_name": "harry7557558/spirula-studio",
+      "tag_name": "v2026.8.1",
+      "corretiva": "nao",
+      "observacoes": "Primeira release sem notas, mas README no tag anuncia fluxo completo de vídeo a modelo e suporte multilíngue; distribui binários Windows/Linux.",
+      "fontes": [
+        "https://github.com/harry7557558/spirula-studio/releases/tag/v2026.8.1",
+        "https://github.com/harry7557558/spirula-studio/blob/v2026.8.1/README.md"
+      ]
+    },
+    {
+      "full_name": "harry7557558/spirula-studio",
+      "tag_name": "v2026.8.28",
+      "corretiva": "nao",
+      "observacoes": "Melhora velocidade, qualidade do treinamento e consumo de RAM, além de corrigir blackout e mapas ausentes; entrega mista de evolução do processamento.",
+      "fontes": [
+        "https://github.com/harry7557558/spirula-studio/releases/tag/v2026.8.28"
+      ]
+    },
+    {
+      "full_name": "harry7557558/spirula-studio",
+      "tag_name": "v2026.9.13",
+      "corretiva": "nao",
+      "observacoes": "Adiciona escala por telemetria, retomada de datasets, restrições de câmeras e entrada GoPro; correções de orientação acompanham funcionalidades novas.",
+      "fontes": [
+        "https://github.com/harry7557558/spirula-studio/releases/tag/v2026.9.13"
+      ]
+    },
+    {
+      "full_name": "harry7557558/spirula-studio",
+      "tag_name": "v2026.9.20",
+      "corretiva": "nao",
+      "observacoes": "Introduz extração adaptativa, treinamento a partir de PLY, processamento em lote, escolha de GPU e imagens RGBA; correções são parte dessa expansão.",
+      "fontes": [
+        "https://github.com/harry7557558/spirula-studio/releases/tag/v2026.9.20"
+      ]
+    },
+    {
+      "full_name": "harry7557558/spirula-studio",
+      "tag_name": "v2026.9.24",
+      "corretiva": "nao",
+      "observacoes": "Adiciona edição de modelos e máscaras, exportação de renders, novos formatos e servidor MCP; a finalidade principal é ampliar funcionalidades.",
+      "fontes": [
+        "https://github.com/harry7557558/spirula-studio/releases/tag/v2026.9.24"
+      ]
+    },
+    {
+      "full_name": "huggingface/transformers.js",
+      "tag_name": "3.7.5",
+      "corretiva": "nao",
+      "observacoes": "Adiciona suporte à arquitetura GraniteMoeHybrid; a nota apresenta integração de um modelo novo, sem descrever correção de defeito.",
+      "fontes": [
+        "https://github.com/huggingface/transformers.js/releases/tag/3.7.5"
+      ]
+    },
+    {
+      "full_name": "huggingface/transformers.js",
+      "tag_name": "3.7.6",
+      "corretiva": "nao",
+      "observacoes": "Introduz NanoChat e Parakeet CTC junto com correções de temperatura e tipos; a entrega tem expansão de modelos, não finalidade principalmente corretiva.",
+      "fontes": [
+        "https://github.com/huggingface/transformers.js/releases/tag/3.7.6"
+      ]
+    },
+    {
+      "full_name": "huggingface/transformers.js",
+      "tag_name": "4.1.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona Gemma 4, tipos de quantização e melhorias de geração com cache; as mudanças representam ampliação de capacidades da biblioteca.",
+      "fontes": [
+        "https://github.com/huggingface/transformers.js/releases/tag/4.1.0"
+      ]
+    },
+    {
+      "full_name": "huggingface/transformers.js",
+      "tag_name": "4.0.1",
+      "corretiva": "nao",
+      "observacoes": "Apesar da numeração patch, a única novidade documentada é suporte a Gemma 4; não há indicação de objetivo corretivo nesta entrega.",
+      "fontes": [
+        "https://github.com/huggingface/transformers.js/releases/tag/4.0.1"
+      ]
+    },
+    {
+      "full_name": "huggingface/transformers.js",
+      "tag_name": "4.3.0",
+      "corretiva": "nao",
+      "observacoes": "Entrega saída estruturada, arquiteturas novas e WebGPU no Safari, além de extensa documentação; as correções integram uma atualização funcional ampla.",
+      "fontes": [
+        "https://github.com/huggingface/transformers.js/releases/tag/4.3.0"
+      ]
+    },
+    {
+      "full_name": "hzm0321/real-time-fund",
+      "tag_name": "v0.1.4",
+      "corretiva": "nao",
+      "observacoes": "Notas em chinês anunciam login por e-mail, sincronização na nuvem, operações na carteira e aviso de atualização; são funcionalidades novas.",
+      "fontes": [
+        "https://github.com/hzm0321/real-time-fund/releases/tag/v0.1.4"
+      ]
+    },
+    {
+      "full_name": "hzm0321/real-time-fund",
+      "tag_name": "v0.1.8",
+      "corretiva": "nao",
+      "observacoes": "Refaz a tabela para computador e permite arrastar e persistir a largura das colunas; objetivo principal é melhorar a interação da interface.",
+      "fontes": [
+        "https://github.com/hzm0321/real-time-fund/releases/tag/v0.1.8"
+      ]
+    },
+    {
+      "full_name": "hzm0321/real-time-fund",
+      "tag_name": "v1.3.1",
+      "corretiva": "nao",
+      "observacoes": "Troca a solução de IA para reconhecer capturas e adiciona etiquetas e botão de redefinição; correções de grupos acompanham essas novidades.",
+      "fontes": [
+        "https://github.com/hzm0321/real-time-fund/releases/tag/v1.3.1"
+      ]
+    },
+    {
+      "full_name": "hzm0321/real-time-fund",
+      "tag_name": "v2.5.1-pro",
+      "corretiva": "sim",
+      "observacoes": "A única nota identifica e corrige a falha do endpoint usado para obter o valor patrimonial dos fundos; não há funcionalidades adicionais anunciadas.",
+      "fontes": [
+        "https://github.com/hzm0321/real-time-fund/releases/tag/v2.5.1-pro"
+      ]
+    },
+    {
+      "full_name": "hzm0321/real-time-fund",
+      "tag_name": "v2.6.0-pro",
+      "corretiva": "nao",
+      "observacoes": "Introduz atualização por gesto no celular e preferências persistentes, além de opções Pro; correções de ordenação e variação acompanham novos recursos.",
+      "fontes": [
+        "https://github.com/hzm0321/real-time-fund/releases/tag/v2.6.0-pro"
+      ]
+    },
+    {
+      "full_name": "image-js/image-js",
+      "tag_name": "v1.1.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia suporte de decodificação BMP, TIFF e PNG; a correção de transparência de PNG é parte de uma entrega centrada em novos recursos.",
+      "fontes": [
+        "https://github.com/image-js/image-js/releases/tag/v1.1.0"
+      ]
+    },
+    {
+      "full_name": "image-js/image-js",
+      "tag_name": "v1.2.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona o método drawText à biblioteca; a nota descreve uma API nova, sem indicar que o lançamento foi feito para corrigir um defeito.",
+      "fontes": [
+        "https://github.com/image-js/image-js/releases/tag/v1.2.0"
+      ]
+    },
+    {
+      "full_name": "image-js/image-js",
+      "tag_name": "v1.6.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona extração de contorno externo em imagens e regiões; correção do algoritmo Pavlidis acompanha a nova funcionalidade.",
+      "fontes": [
+        "https://github.com/image-js/image-js/releases/tag/v1.6.0"
+      ]
+    },
+    {
+      "full_name": "image-js/image-js",
+      "tag_name": "v1.6.2",
+      "corretiva": "sim",
+      "observacoes": "Corrige resolução BMP, importação da profundidade de bits em Stack e imports Node inadequados; as notas agrupam somente reparações de comportamento.",
+      "fontes": [
+        "https://github.com/image-js/image-js/releases/tag/v1.6.2"
+      ]
+    },
+    {
+      "full_name": "image-js/image-js",
+      "tag_name": "v1.7.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona detecção de defeitos de convexidade e corrige getFastKeypoints; o novo algoritmo torna a entrega funcional mista, não apenas corretiva.",
+      "fontes": [
+        "https://github.com/image-js/image-js/releases/tag/v1.7.0"
+      ]
+    },
+    {
+      "full_name": "ipfs/ipfs-desktop",
+      "tag_name": "v0.46.0",
+      "corretiva": "nao",
+      "observacoes": "Atualiza WebUI com diagnóstico, inspeção de recuperação e ordenação de arquivos, além de componentes; inclui correções, mas amplia a aplicação.",
+      "fontes": [
+        "https://github.com/ipfs/ipfs-desktop/releases/tag/v0.46.0"
+      ]
+    },
+    {
+      "full_name": "ipfs/ipfs-desktop",
+      "tag_name": "v0.46.1",
+      "corretiva": "sim",
+      "observacoes": "Atualiza exclusivamente Kubo para 0.38.2, cujo changelog descreve patch de recuperação, propagação de rastreamentos e uso indevido de memória.",
+      "fontes": [
+        "https://github.com/ipfs/ipfs-desktop/releases/tag/v0.46.1",
+        "https://github.com/ipfs/kubo/releases/tag/v0.38.2"
+      ]
+    },
+    {
+      "full_name": "ipfs/ipfs-desktop",
+      "tag_name": "v0.49.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona menus para formato CID e estratégia de anúncio, com novas versões de Kubo/Electron; correções visuais acompanham funcionalidades novas.",
+      "fontes": [
+        "https://github.com/ipfs/ipfs-desktop/releases/tag/v0.49.0"
+      ]
+    },
+    {
+      "full_name": "ipfs/ipfs-desktop",
+      "tag_name": "v0.50.0",
+      "corretiva": "nao",
+      "observacoes": "Entrega novos padrões de anúncio e importação CIDv1, opções de compartilhamento e WebUI atualizada; também corrige segurança, mas tem escopo funcional.",
+      "fontes": [
+        "https://github.com/ipfs/ipfs-desktop/releases/tag/v0.50.0"
+      ]
+    },
+    {
+      "full_name": "ipfs/ipfs-desktop",
+      "tag_name": "v0.50.1",
+      "corretiva": "sim",
+      "observacoes": "Notas priorizam vulnerabilidades e regressões em Kubo/Electron, inicialização duplicada e autostart Linux; objetivo principal é corrigir a linha 0.50.",
+      "fontes": [
+        "https://github.com/ipfs/ipfs-desktop/releases/tag/v0.50.1"
+      ]
+    },
+    {
+      "full_name": "jaegertracing/jaeger-ui",
+      "tag_name": "v1.74.0",
+      "corretiva": "nao",
+      "observacoes": "Predomina conversão de componentes para funções e modernização de JSX; pequenos reparos e melhorias visuais acompanham a reorganização técnica.",
+      "fontes": [
+        "https://github.com/jaegertracing/jaeger-ui/releases/tag/v1.74.0"
+      ]
+    },
+    {
+      "full_name": "jaegertracing/jaeger-ui",
+      "tag_name": "v2.15.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz cores e hierarquia de traces, migração OpenTelemetry e várias refatorações; as correções visuais fazem parte de evolução abrangente.",
+      "fontes": [
+        "https://github.com/jaegertracing/jaeger-ui/releases/tag/v2.15.0"
+      ]
+    },
+    {
+      "full_name": "jaegertracing/jaeger-ui",
+      "tag_name": "v2.18.0",
+      "corretiva": "nao",
+      "observacoes": "Muda suporte a navegadores, autodetecção de prefixo e filtro de serviços, com migração de estado e testes; não se restringe a corrigir regressões.",
+      "fontes": [
+        "https://github.com/jaegertracing/jaeger-ui/releases/tag/v2.18.0"
+      ]
+    },
+    {
+      "full_name": "jaegertracing/jaeger-ui",
+      "tag_name": "v2.19.0",
+      "corretiva": "nao",
+      "observacoes": "Migra busca para API v3, adiciona visualização em tabela, filtros e painel redimensionável; correções de busca acompanham esses recursos.",
+      "fontes": [
+        "https://github.com/jaegertracing/jaeger-ui/releases/tag/v2.19.0"
+      ]
+    },
+    {
+      "full_name": "jaegertracing/jaeger-ui",
+      "tag_name": "v2.20.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona visualização GenAI, flamegraph novo, exportação de traces e recursos de busca; várias correções acompanham uma entrega extensa de novidades.",
+      "fontes": [
+        "https://github.com/jaegertracing/jaeger-ui/releases/tag/v2.20.0"
+      ]
+    },
+    {
+      "full_name": "kimdre/doco-cd",
+      "tag_name": "v0.42.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona Infisical como provedor de segredos e corrige persistência de arquivos SOPS; a integração nova é o destaque funcional da release.",
+      "fontes": [
+        "https://github.com/kimdre/doco-cd/releases/tag/v0.42.0"
+      ]
+    },
+    {
+      "full_name": "kimdre/doco-cd",
+      "tag_name": "v0.61.0",
+      "corretiva": "sim",
+      "observacoes": "As alterações de execução corrigem identificação do gatilho e cálculo do hash de implantação; novidade sobre scripts é apenas documentação.",
+      "fontes": [
+        "https://github.com/kimdre/doco-cd/releases/tag/v0.61.0"
+      ]
+    },
+    {
+      "full_name": "kimdre/doco-cd",
+      "tag_name": "v0.73.0",
+      "corretiva": "sim",
+      "observacoes": "Autor declara reescrita da detecção de mudanças para resolver reimplantações constantes ou inconsistentes; finalidade corretiva explícita nas notas.",
+      "fontes": [
+        "https://github.com/kimdre/doco-cd/releases/tag/v0.73.0"
+      ]
+    },
+    {
+      "full_name": "kimdre/doco-cd",
+      "tag_name": "v0.81.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz notificação de nova versão e reorganiza documentação, junto com ajuste de lock no Swarm; o lançamento inclui uma capacidade nova.",
+      "fontes": [
+        "https://github.com/kimdre/doco-cd/releases/tag/v0.81.0"
+      ]
+    },
+    {
+      "full_name": "kimdre/doco-cd",
+      "tag_name": "v0.104.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona interrupção temporária de serviços em jobs, acompanhamento de implantações e campos de notificações; a correção Git acompanha novos recursos.",
+      "fontes": [
+        "https://github.com/kimdre/doco-cd/releases/tag/v0.104.0"
+      ]
+    },
+    {
+      "full_name": "kotest/kotest",
+      "tag_name": "v6.0.4",
+      "corretiva": "sim",
+      "observacoes": "Predominam restauração de APIs e reparos de extensões, contadores, hooks e compatibilidade Kotlin; um gerador novo acompanha a estabilização da linha 6.",
+      "fontes": [
+        "https://github.com/kotest/kotest/releases/tag/v6.0.4"
+      ]
+    },
+    {
+      "full_name": "kotest/kotest",
+      "tag_name": "v6.0.5",
+      "corretiva": "sim",
+      "observacoes": "Predominam reparos de execução e asserções, incluindo InstancePerLeaf, JS/Wasm e estouro de pilha em ciclos; há melhorias auxiliares, exigindo revisão humana.",
+      "fontes": [
+        "https://github.com/kotest/kotest/releases/tag/v6.0.5"
+      ]
+    },
+    {
+      "full_name": "kotest/kotest",
+      "tag_name": "v6.1.4",
+      "corretiva": "nao",
+      "observacoes": "Combina novas opções de configuração, suporte a regras JUnit4 e navegação JSON com refatorações e reparos; escopo amplo de evolução, não patch isolado.",
+      "fontes": [
+        "https://github.com/kotest/kotest/releases/tag/v6.1.4"
+      ]
+    },
+    {
+      "full_name": "kotest/kotest",
+      "tag_name": "v6.1.9",
+      "corretiva": "sim",
+      "observacoes": "Repõe a mudança de filtro --tests do Gradle 9.4 que ficou fora da versão anterior e impedia executar um teste individual pela IDE.",
+      "fontes": [
+        "https://github.com/kotest/kotest/releases/tag/v6.1.9"
+      ]
+    },
+    {
+      "full_name": "kotest/kotest",
+      "tag_name": "6.1.11",
+      "corretiva": "sim",
+      "observacoes": "Notas contêm duas reparações: crash de compilação nativa por OnlyInputTypes e timeout em testes wasmJsD8 com delay; objetivo corretivo explícito.",
+      "fontes": [
+        "https://github.com/kotest/kotest/releases/tag/6.1.11"
+      ]
+    },
+    {
+      "full_name": "kube-logging/logging-operator",
+      "tag_name": "6.1.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona namespace dedicado, saída RabbitMQ, serviços dual-stack e tratamento de recursos inválidos; as correções acompanham novos recursos do operador.",
+      "fontes": [
+        "https://github.com/kube-logging/logging-operator/releases/tag/6.1.0"
+      ]
+    },
+    {
+      "full_name": "kube-logging/logging-operator",
+      "tag_name": "6.3.1",
+      "corretiva": "sim",
+      "observacoes": "A única alteração anunciada corrige acesso a ponteiro nulo ao consultar PrometheusRulesLabels de BufferVolumeMetrics; release de reparação específica.",
+      "fontes": [
+        "https://github.com/kube-logging/logging-operator/releases/tag/6.3.1"
+      ]
+    },
+    {
+      "full_name": "kube-logging/logging-operator",
+      "tag_name": "6.5.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige aplicação de stderrthreshold e preservação do agregador em configurações destacadas, com atualizações de segurança; não anuncia recursos novos.",
+      "fontes": [
+        "https://github.com/kube-logging/logging-operator/releases/tag/6.5.1"
+      ]
+    },
+    {
+      "full_name": "kube-logging/logging-operator",
+      "tag_name": "6.6.0",
+      "corretiva": "sim",
+      "observacoes": "PR 2247 esclarece que faltava template FluentdConfig no Helm: configurações eram ignoradas e o recurso não era criado; o lançamento repara essa ausência.",
+      "fontes": [
+        "https://github.com/kube-logging/logging-operator/releases/tag/6.6.0",
+        "https://github.com/kube-logging/logging-operator/pull/2247"
+      ]
+    },
+    {
+      "full_name": "kube-logging/logging-operator",
+      "tag_name": "6.8.0",
+      "corretiva": "nao",
+      "observacoes": "Reúne mudanças de IPv6, métricas e imagens com novas opções, filtro Fluentd bruto e pinagem por digest; entrega ampla de capacidades e manutenção.",
+      "fontes": [
+        "https://github.com/kube-logging/logging-operator/releases/tag/6.8.0"
+      ]
+    },
+    {
+      "full_name": "kubermatic/kubeone",
+      "tag_name": "v1.12.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz suporte Kubernetes 1.34, renovação de certificados, configuração de kubelet e opções de reset; correções acompanham uma atualização funcional.",
+      "fontes": [
+        "https://github.com/kubermatic/kubeone/releases/tag/v1.12.0"
+      ]
+    },
+    {
+      "full_name": "kubermatic/kubeone",
+      "tag_name": "v1.12.1",
+      "corretiva": "sim",
+      "observacoes": "A única mudança documentada corrige a referência da imagem cilium-envoy, reparando a configuração que impedia utilizar o componente corretamente.",
+      "fontes": [
+        "https://github.com/kubermatic/kubeone/releases/tag/v1.12.1"
+      ]
+    },
+    {
+      "full_name": "kubermatic/kubeone",
+      "tag_name": "v1.13.3",
+      "corretiva": "sim",
+      "observacoes": "Restaura arquivos ZIP nos artefatos de distribuição após mudança indevida de formatos; as notas identificam a regressão de empacotamento.",
+      "fontes": [
+        "https://github.com/kubermatic/kubeone/releases/tag/v1.13.3"
+      ]
+    },
+    {
+      "full_name": "kubermatic/kubeone",
+      "tag_name": "v1.13.6",
+      "corretiva": "sim",
+      "observacoes": "Corrige recriação de LoadBalancers durante reset e estratégia de dry run em upgrades Helm; atualizações de componentes acompanham os reparos.",
+      "fontes": [
+        "https://github.com/kubermatic/kubeone/releases/tag/v1.13.6"
+      ]
+    },
+    {
+      "full_name": "kubermatic/kubeone",
+      "tag_name": "v1.13.7",
+      "corretiva": "sim",
+      "observacoes": "Corrige overridePath e loop ocupado durante drenagem bloqueada por despejo de pods; as duas mudanças documentadas reparam comportamentos existentes.",
+      "fontes": [
+        "https://github.com/kubermatic/kubeone/releases/tag/v1.13.7"
+      ]
+    },
+    {
+      "full_name": "lancedb/lancedb",
+      "tag_name": "python-v0.25.4-beta.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona fornecimento de credenciais por namespace e cálculo de partições pelo Lance; mudanças documentais e de dependência acompanham recursos novos.",
+      "fontes": [
+        "https://github.com/lancedb/lancedb/releases/tag/python-v0.25.4-beta.0"
+      ]
+    },
+    {
+      "full_name": "lancedb/lancedb",
+      "tag_name": "python-v0.26.0-beta.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona consultas no servidor de namespaces e índices IVF SQ, além de mudanças incompatíveis; reparo de table_names é secundário à expansão.",
+      "fontes": [
+        "https://github.com/lancedb/lancedb/releases/tag/python-v0.26.0-beta.0"
+      ]
+    },
+    {
+      "full_name": "lancedb/lancedb",
+      "tag_name": "v0.24.1",
+      "corretiva": "nao",
+      "observacoes": "Adiciona reconhecimento de AZURE_STORAGE_ACCOUNT_NAME em conexões remotas e atualiza Lance; ajuste de CI não caracteriza reparação do produto.",
+      "fontes": [
+        "https://github.com/lancedb/lancedb/releases/tag/v0.24.1"
+      ]
+    },
+    {
+      "full_name": "lancedb/lancedb",
+      "tag_name": "v0.27.2-beta.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona inserções paralelas e barra de progresso; reversão de credenciais Azure e reparos de CI acompanham a entrega de funcionalidades.",
+      "fontes": [
+        "https://github.com/lancedb/lancedb/releases/tag/v0.27.2-beta.0"
+      ]
+    },
+    {
+      "full_name": "lancedb/lancedb",
+      "tag_name": "v0.33.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia dataloaders, APIs de blobs, telemetria e fontes de armazenamento; correções numerosas integram atualização extensa de funcionalidades.",
+      "fontes": [
+        "https://github.com/lancedb/lancedb/releases/tag/v0.33.0"
+      ]
+    },
+    {
+      "full_name": "lotus-data/lotus",
+      "tag_name": "v1.1.4",
+      "corretiva": "nao",
+      "observacoes": "Adiciona controle de taxa, fragmentação de documentos e raciocínio em filtros, além de suíte de avaliação; correções acompanham recursos novos.",
+      "fontes": [
+        "https://github.com/lotus-data/lotus/releases/tag/v1.1.4"
+      ]
+    },
+    {
+      "full_name": "lotus-data/lotus",
+      "tag_name": "v1.2.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz avaliação preguiçosa por AST, novos operadores e busca PubMed/web, além de limitação de taxa; os reparos fazem parte de uma versão funcional.",
+      "fontes": [
+        "https://github.com/lotus-data/lotus/releases/tag/v1.2.0"
+      ]
+    },
+    {
+      "full_name": "lotus-data/lotus",
+      "tag_name": "v1.2.1",
+      "corretiva": "sim",
+      "observacoes": "PR 257 confirma que placeholders antigos permaneciam no nó AST e quebravam a cascata pairwise_judge; a correção afeta runtime, apesar do título citar testes.",
+      "fontes": [
+        "https://github.com/lotus-data/lotus/releases/tag/v1.2.1",
+        "https://github.com/lotus-data/lotus/pull/257"
+      ]
+    },
+    {
+      "full_name": "lotus-data/lotus",
+      "tag_name": "v1.2.3",
+      "corretiva": "nao",
+      "observacoes": "Introduz processamento agentic map-reduce com Corpus, ferramentas e REPL, acompanhado de documentação; trata-se de funcionalidade nova.",
+      "fontes": [
+        "https://github.com/lotus-data/lotus/releases/tag/v1.2.3"
+      ]
+    },
+    {
+      "full_name": "lotus-data/lotus",
+      "tag_name": "v1.2.4",
+      "corretiva": "nao",
+      "observacoes": "Altera apenas nomes, ordem e títulos da documentação da suíte de avaliação, mais número de versão; não identifica reparação do comportamento do produto.",
+      "fontes": [
+        "https://github.com/lotus-data/lotus/releases/tag/v1.2.4"
+      ]
+    },
+    {
+      "full_name": "lwouis/alt-tab-macos",
+      "tag_name": "v11.0.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz Alt-Tab Pro, alterações incompatíveis e melhorias gerais de desempenho; o objetivo central é uma nova oferta funcional.",
+      "fontes": [
+        "https://github.com/lwouis/alt-tab-macos/releases/tag/v11.0.0"
+      ]
+    },
+    {
+      "full_name": "lwouis/alt-tab-macos",
+      "tag_name": "v11.0.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige a tecla Command que podia permanecer pressionada após alternar janelas; mudança específica para um defeito de uso.",
+      "fontes": [
+        "https://github.com/lwouis/alt-tab-macos/releases/tag/v11.0.1",
+        "https://github.com/lwouis/alt-tab-macos/compare/v11.0.0...v11.0.1"
+      ]
+    },
+    {
+      "full_name": "lwouis/alt-tab-macos",
+      "tag_name": "v11.3.1",
+      "corretiva": "sim",
+      "observacoes": "Predominam reparos de foco, janelas ausentes, permissões e crashes; a melhoria de desempenho acompanha a estabilização do aplicativo.",
+      "fontes": [
+        "https://github.com/lwouis/alt-tab-macos/releases/tag/v11.3.1",
+        "https://github.com/lwouis/alt-tab-macos/compare/v11.3.0...v11.3.1"
+      ]
+    },
+    {
+      "full_name": "lwouis/alt-tab-macos",
+      "tag_name": "v11.5.0",
+      "corretiva": "sim",
+      "observacoes": "Predominam correções de janelas, gestos e crashes; redução de tamanho e refinamento de ícones são mudanças complementares.",
+      "fontes": [
+        "https://github.com/lwouis/alt-tab-macos/releases/tag/v11.5.0",
+        "https://github.com/lwouis/alt-tab-macos/compare/v11.4.4...v11.5.0"
+      ]
+    },
+    {
+      "full_name": "lwouis/alt-tab-macos",
+      "tag_name": "v11.7.1",
+      "corretiva": "sim",
+      "observacoes": "Repara crescimento de memória/CPU, seleção instável, títulos incorretos e janelas ausentes; foco explícito em estabilidade.",
+      "fontes": [
+        "https://github.com/lwouis/alt-tab-macos/releases/tag/v11.7.1",
+        "https://github.com/lwouis/alt-tab-macos/compare/v11.7.0...v11.7.1"
+      ]
+    },
+    {
+      "full_name": "micronaut-projects/micronaut-core",
+      "tag_name": "v4.10.0",
+      "corretiva": "nao",
+      "observacoes": "Amplia APIs de certificados, buffers, recursos e configuração HTTP, além de correções; lançamento amplo de funcionalidades.",
+      "fontes": [
+        "https://github.com/micronaut-projects/micronaut-core/releases/tag/v4.10.0",
+        "https://github.com/micronaut-projects/micronaut-core/compare/v4.9.12...v4.10.0"
+      ]
+    },
+    {
+      "full_name": "micronaut-projects/micronaut-core",
+      "tag_name": "v4.10.4",
+      "corretiva": "sim",
+      "observacoes": "Repara exceções no processamento de anotações/Groovy e restaura comportamento de documentação; predominam correções de regressões.",
+      "fontes": [
+        "https://github.com/micronaut-projects/micronaut-core/releases/tag/v4.10.4",
+        "https://github.com/micronaut-projects/micronaut-core/compare/v4.10.3...v4.10.4"
+      ]
+    },
+    {
+      "full_name": "micronaut-projects/micronaut-core",
+      "tag_name": "v4.10.10",
+      "corretiva": "nao",
+      "observacoes": "Combina nova configuração do limite de cabeçalhos HTTP/2 com correção de introspecção; escopo misto, sem predominância corretiva clara.",
+      "fontes": [
+        "https://github.com/micronaut-projects/micronaut-core/releases/tag/v4.10.10",
+        "https://github.com/micronaut-projects/micronaut-core/compare/v4.10.9...v4.10.10"
+      ]
+    },
+    {
+      "full_name": "micronaut-projects/micronaut-core",
+      "tag_name": "v3.8.15",
+      "corretiva": "sim",
+      "observacoes": "Entrega mitigação de segurança em redirecionamentos HTTP: limita saltos e evita encaminhar cabeçalhos sensíveis entre origens.",
+      "fontes": [
+        "https://github.com/micronaut-projects/micronaut-core/releases/tag/v3.8.15",
+        "https://github.com/micronaut-projects/micronaut-core/compare/v3.10.8...v3.8.15"
+      ]
+    },
+    {
+      "full_name": "micronaut-projects/micronaut-core",
+      "tag_name": "v5.1.4",
+      "corretiva": "sim",
+      "observacoes": "Corrige introspecção de modelos Jackson e liberação de recursos ByteBuf/JRT; manutenção concentra-se em comportamento e limpeza de recursos.",
+      "fontes": [
+        "https://github.com/micronaut-projects/micronaut-core/releases/tag/v5.1.4",
+        "https://github.com/micronaut-projects/micronaut-core/compare/v4.10.26...v5.1.4"
+      ]
+    },
+    {
+      "full_name": "moul/assh",
+      "tag_name": "v2.16.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige a execução do hook no Git Bash; a nota aponta uma falha específica de funcionamento nessa plataforma.",
+      "fontes": [
+        "https://github.com/moul/assh/releases/tag/v2.16.1",
+        "https://github.com/moul/assh/compare/v2.16.0...v2.16.1"
+      ]
+    },
+    {
+      "full_name": "moul/assh",
+      "tag_name": "v2.17.0",
+      "corretiva": "nao",
+      "observacoes": "A tag introduz suporte à opção SSH SetEnv; o commit principal acrescenta configuração funcional, apesar de notas de release vazias.",
+      "fontes": [
+        "https://github.com/moul/assh/releases/tag/v2.17.0",
+        "https://github.com/moul/assh/compare/v2.16.1...v2.17.0",
+        "https://github.com/moul/assh/commit/700e5cfb"
+      ]
+    },
+    {
+      "full_name": "moul/assh",
+      "tag_name": "v2.17.1",
+      "corretiva": "nao",
+      "observacoes": "Atualiza links da documentação e ano de copyright; não há correção funcional recente do cliente descrita nas notas.",
+      "fontes": [
+        "https://github.com/moul/assh/releases/tag/v2.17.1",
+        "https://github.com/moul/assh/compare/v2.17.0...v2.17.1"
+      ]
+    },
+    {
+      "full_name": "moul/assh",
+      "tag_name": "v2.17.2",
+      "corretiva": "sim",
+      "observacoes": "Configura ldflags do GoReleaser para que --version mostre versão e commit, corrigindo o retorno incorreto n/a dos binários.",
+      "fontes": [
+        "https://github.com/moul/assh/releases/tag/v2.17.2",
+        "https://github.com/moul/assh/compare/v2.17.1...v2.17.2",
+        "https://github.com/moul/assh/commit/158e7de657b25d685db62f1e560053249ca032c3"
+      ]
+    },
+    {
+      "full_name": "moul/assh",
+      "tag_name": "v2.17.3",
+      "corretiva": "nao",
+      "observacoes": "Mudanças concentram-se em lint, pré-alocação e organização do código; o ajuste de endereço no ping é secundário nesse conjunto.",
+      "fontes": [
+        "https://github.com/moul/assh/releases/tag/v2.17.3",
+        "https://github.com/moul/assh/compare/v2.17.2...v2.17.3",
+        "https://github.com/moul/assh/commit/071ef8e505300d3af325ed8c9432385c34008e50"
+      ]
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "tag_name": "n8n@1.117.1",
+      "corretiva": "nao",
+      "observacoes": "Combina correção de chamadas de função com remoção de completions do OpenAI V2; conjunto misto de ajuste funcional e correção.",
+      "fontes": [
+        "https://github.com/n8n-io/n8n/releases/tag/n8n%401.117.1",
+        "https://github.com/n8n-io/n8n/compare/n8n%401.115.4...n8n%401.117.1"
+      ]
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "tag_name": "n8n@2.0.0",
+      "corretiva": "nao",
+      "observacoes": "Lançamento amplo com mudanças incompatíveis, remoções de recursos, novo Python para agentes e redesenho do editor, além de correções.",
+      "fontes": [
+        "https://github.com/n8n-io/n8n/releases/tag/n8n%402.0.0",
+        "https://github.com/n8n-io/n8n/compare/n8n%401.123.4...n8n%402.0.0"
+      ]
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "tag_name": "n8n@2.11.3",
+      "corretiva": "sim",
+      "observacoes": "Corrige importação ZIP em Kubernetes, falha de segmentação em ARM64 e tamanho de controles; notas são predominantemente reparos.",
+      "fontes": [
+        "https://github.com/n8n-io/n8n/releases/tag/n8n%402.11.3",
+        "https://github.com/n8n-io/n8n/compare/n8n%402.11.2...n8n%402.11.3"
+      ]
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "tag_name": "n8n@2.26.5",
+      "corretiva": "nao",
+      "observacoes": "Adiciona telemetria de importação/exportação na CLI do servidor; não descreve reparo de um defeito recente como objetivo.",
+      "fontes": [
+        "https://github.com/n8n-io/n8n/releases/tag/n8n%402.26.5",
+        "https://github.com/n8n-io/n8n/compare/n8n%401.123.57...n8n%402.26.5"
+      ]
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "tag_name": "n8n@2.29.8",
+      "corretiva": "sim",
+      "observacoes": "Repara acesso a dados de execução nulos e restringe recuperação de conexão ao PostgreSQL; ambas mudanças corrigem comportamento.",
+      "fontes": [
+        "https://github.com/n8n-io/n8n/releases/tag/n8n%402.29.8",
+        "https://github.com/n8n-io/n8n/compare/n8n%401.123.64...n8n%402.29.8"
+      ]
+    },
+    {
+      "full_name": "ocrmypdf/OCRmyPDF",
+      "tag_name": "v16.11.1",
+      "corretiva": "sim",
+      "observacoes": "Adapta o tratamento de erro de deskew à mensagem emitida por Tesseract recente; commits também ajustam testes/plataformas.",
+      "fontes": [
+        "https://github.com/ocrmypdf/OCRmyPDF/releases/tag/v16.11.1",
+        "https://github.com/ocrmypdf/OCRmyPDF/compare/v16.11.0...v16.11.1"
+      ]
+    },
+    {
+      "full_name": "ocrmypdf/OCRmyPDF",
+      "tag_name": "v17.4.1",
+      "corretiva": "sim",
+      "observacoes": "Repara texto árabe/RTL corrompido na extração e work_folder ausente na API Python; alterações restantes são manutenção.",
+      "fontes": [
+        "https://github.com/ocrmypdf/OCRmyPDF/releases/tag/v17.4.1",
+        "https://github.com/ocrmypdf/OCRmyPDF/compare/v17.2.0...v17.4.1"
+      ]
+    },
+    {
+      "full_name": "ocrmypdf/OCRmyPDF",
+      "tag_name": "v17.8.1",
+      "corretiva": "nao",
+      "observacoes": "Changelog na tag destaca tipagem, refatoração, ajuda e processo de release; correções de casos extremos são incidentais à manutenção interna.",
+      "fontes": [
+        "https://github.com/ocrmypdf/OCRmyPDF/releases/tag/v17.8.1",
+        "https://github.com/ocrmypdf/OCRmyPDF/compare/v17.4.1...v17.8.1",
+        "https://github.com/ocrmypdf/OCRmyPDF/blob/v17.8.1/docs/releasenotes/version17.md"
+      ]
+    },
+    {
+      "full_name": "ocrmypdf/OCRmyPDF",
+      "tag_name": "v17.7.0",
+      "corretiva": "nao",
+      "observacoes": "Muda padrões e bases dos contêineres Docker para usuário sem privilégios e /data; evolução de implantação, com pequeno reparo de mensagem.",
+      "fontes": [
+        "https://github.com/ocrmypdf/OCRmyPDF/releases/tag/v17.7.0",
+        "https://github.com/ocrmypdf/OCRmyPDF/compare/v17.6.0...v17.7.0"
+      ]
+    },
+    {
+      "full_name": "ocrmypdf/OCRmyPDF",
+      "tag_name": "v17.8.0",
+      "corretiva": "sim",
+      "observacoes": "Restaura PDF/A por padrão e evita corrupção de texto CJK/stdout, falha de detecção do veraPDF e crash de metadados; foco em reparos.",
+      "fontes": [
+        "https://github.com/ocrmypdf/OCRmyPDF/releases/tag/v17.8.0",
+        "https://github.com/ocrmypdf/OCRmyPDF/compare/v17.7.1...v17.8.0"
+      ]
+    },
+    {
+      "full_name": "odigos-io/odigos",
+      "tag_name": "v1.10.2",
+      "corretiva": "sim",
+      "observacoes": "Corrige omissão de imagePullSecrets no deployment do proxy; PR de emergência inclui o renderizador já existente para permitir autenticação ao obter imagens.",
+      "fontes": [
+        "https://github.com/odigos-io/odigos/releases/tag/v1.10.2",
+        "https://github.com/odigos-io/odigos/compare/v1.10.1...v1.10.2",
+        "https://github.com/odigos-io/odigos/pull/3814",
+        "https://github.com/odigos-io/odigos/pull/3814/files"
+      ]
+    },
+    {
+      "full_name": "odigos-io/odigos",
+      "tag_name": "v1.19.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige tratamento de eventos exec e fork ocorridos após reinícios do odiglet, restaurando acompanhamento correto de processos.",
+      "fontes": [
+        "https://github.com/odigos-io/odigos/releases/tag/v1.19.1",
+        "https://github.com/odigos-io/odigos/compare/v1.17.7...v1.19.1"
+      ]
+    },
+    {
+      "full_name": "odigos-io/odigos",
+      "tag_name": "v1.20.1",
+      "corretiva": "nao",
+      "observacoes": "Reduz alocações de memória durante detecção de runtime; nota apresenta otimização de desempenho, sem defeito recente identificado.",
+      "fontes": [
+        "https://github.com/odigos-io/odigos/releases/tag/v1.20.1",
+        "https://github.com/odigos-io/odigos/compare/v1.20.0...v1.20.1"
+      ]
+    },
+    {
+      "full_name": "odigos-io/odigos",
+      "tag_name": "v1.20.2",
+      "corretiva": "sim",
+      "observacoes": "Repara divergências no schema Helm que impediam upgrades ao usar tolerations e opções de métricas/histogramas.",
+      "fontes": [
+        "https://github.com/odigos-io/odigos/releases/tag/v1.20.2",
+        "https://github.com/odigos-io/odigos/compare/v1.17.9...v1.20.2"
+      ]
+    },
+    {
+      "full_name": "odigos-io/odigos",
+      "tag_name": "v1.28.5",
+      "corretiva": "nao",
+      "observacoes": "Release sem notas funcionais; comparação contém apenas o commit automático de publicação, e o PR correspondente não altera arquivos.",
+      "fontes": [
+        "https://github.com/odigos-io/odigos/releases/tag/v1.28.5",
+        "https://github.com/odigos-io/odigos/compare/v1.28.4...v1.28.5",
+        "https://github.com/odigos-io/odigos/pull/5055"
+      ]
+    },
+    {
+      "full_name": "plugin87/ux-ui-agent-skills",
+      "tag_name": "v1.2.0",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta componentes, tokens de visualização, adaptadores e guias de acessibilidade/pipeline; expansão de capacidades do kit.",
+      "fontes": [
+        "https://github.com/plugin87/ux-ui-agent-skills/releases/tag/v1.2.0"
+      ]
+    },
+    {
+      "full_name": "plugin87/ux-ui-agent-skills",
+      "tag_name": "v1.1.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz pacote npm, CLI, skills executáveis, adaptadores e biblioteca de estilos; objetivo principal é disponibilizar novos recursos.",
+      "fontes": [
+        "https://github.com/plugin87/ux-ui-agent-skills/releases/tag/v1.1.0",
+        "https://github.com/plugin87/ux-ui-agent-skills/compare/v1.2.0...v1.1.0"
+      ]
+    },
+    {
+      "full_name": "plugin87/ux-ui-agent-skills",
+      "tag_name": "v2.2.3",
+      "corretiva": "nao",
+      "observacoes": "Adiciona validações de focus trap e RTL e geração de CSS a partir de tokens; entrega novas ferramentas de verificação.",
+      "fontes": [
+        "https://github.com/plugin87/ux-ui-agent-skills/releases/tag/v2.2.3",
+        "https://github.com/plugin87/ux-ui-agent-skills/compare/v2.2.2...v2.2.3"
+      ]
+    },
+    {
+      "full_name": "plugin87/ux-ui-agent-skills",
+      "tag_name": "v2.5.1",
+      "corretiva": "sim",
+      "observacoes": "Repara aprovações falsas das validações (tokens/arquivos ausentes e navegador indisponível) e regras ineficazes, com testes de regressão.",
+      "fontes": [
+        "https://github.com/plugin87/ux-ui-agent-skills/releases/tag/v2.5.1",
+        "https://github.com/plugin87/ux-ui-agent-skills/compare/v2.5.0...v2.5.1"
+      ]
+    },
+    {
+      "full_name": "plugin87/ux-ui-agent-skills",
+      "tag_name": "v2.7.0",
+      "corretiva": "nao",
+      "observacoes": "Entrega demonstração pública, comando demo, capturas e nova documentação; também corrige validações, mas o escopo central amplia a apresentação/uso.",
+      "fontes": [
+        "https://github.com/plugin87/ux-ui-agent-skills/releases/tag/v2.7.0",
+        "https://github.com/plugin87/ux-ui-agent-skills/compare/v2.6.0...v2.7.0"
+      ]
+    },
+    {
+      "full_name": "protontypes/open-sustainable-technology",
+      "tag_name": "OpenSustain.tech-monthly-release-2025-10",
+      "corretiva": "nao",
+      "observacoes": "Snapshot mensal de outubro/2025 com CSVs de projetos e organizações; publicação periódica de dados, sem objetivo corretivo anunciado.",
+      "fontes": [
+        "https://github.com/protontypes/open-sustainable-technology/releases/tag/OpenSustain.tech-monthly-release-2025-10",
+        "https://github.com/protontypes/open-sustainable-technology/compare/OpenSustain.tech-monthly-release-2025-09...OpenSustain.tech-monthly-release-2025-10"
+      ]
+    },
+    {
+      "full_name": "protontypes/open-sustainable-technology",
+      "tag_name": "OpenSustain.tech-monthly-release-2026-03",
+      "corretiva": "nao",
+      "observacoes": "Snapshot mensal de março/2026 com CSVs de projetos e organizações; publicação periódica de dados, sem objetivo corretivo anunciado.",
+      "fontes": [
+        "https://github.com/protontypes/open-sustainable-technology/releases/tag/OpenSustain.tech-monthly-release-2026-03",
+        "https://github.com/protontypes/open-sustainable-technology/compare/OpenSustain.tech-monthly-release-2026-02...OpenSustain.tech-monthly-release-2026-03"
+      ]
+    },
+    {
+      "full_name": "protontypes/open-sustainable-technology",
+      "tag_name": "OpenSustain.tech-monthly-release-2026-06",
+      "corretiva": "nao",
+      "observacoes": "Snapshot mensal de junho/2026 com CSVs de projetos e organizações; publicação periódica de dados, sem objetivo corretivo anunciado.",
+      "fontes": [
+        "https://github.com/protontypes/open-sustainable-technology/releases/tag/OpenSustain.tech-monthly-release-2026-06",
+        "https://github.com/protontypes/open-sustainable-technology/compare/OpenSustain.tech-monthly-release-2026-05...OpenSustain.tech-monthly-release-2026-06"
+      ]
+    },
+    {
+      "full_name": "protontypes/open-sustainable-technology",
+      "tag_name": "OpenSustain.tech-monthly-release-2026-07",
+      "corretiva": "nao",
+      "observacoes": "Snapshot mensal de julho/2026 com CSVs de projetos e organizações; publicação periódica de dados, sem objetivo corretivo anunciado.",
+      "fontes": [
+        "https://github.com/protontypes/open-sustainable-technology/releases/tag/OpenSustain.tech-monthly-release-2026-07",
+        "https://github.com/protontypes/open-sustainable-technology/compare/OpenSustain.tech-monthly-release-2026-06...OpenSustain.tech-monthly-release-2026-07"
+      ]
+    },
+    {
+      "full_name": "protontypes/open-sustainable-technology",
+      "tag_name": "OpenSustain.tech-monthly-release-2026-08",
+      "corretiva": "nao",
+      "observacoes": "Snapshot mensal de agosto/2026 com CSVs de projetos e organizações; publicação periódica de dados, sem objetivo corretivo anunciado.",
+      "fontes": [
+        "https://github.com/protontypes/open-sustainable-technology/releases/tag/OpenSustain.tech-monthly-release-2026-08",
+        "https://github.com/protontypes/open-sustainable-technology/compare/OpenSustain.tech-monthly-release-2026-07...OpenSustain.tech-monthly-release-2026-08"
+      ]
+    },
+    {
+      "full_name": "psygreg/linuxtoys",
+      "tag_name": "5.6.14",
+      "corretiva": null,
+      "observacoes": "Notas apontam servidor indisponível e histórico da tag não permite isolar mudanças desta versão; comparação anterior retorna 404. Evidência insuficiente.",
+      "fontes": [
+        "https://github.com/psygreg/linuxtoys/releases/tag/5.6.14",
+        "https://git.linux.toys/psygreg/linuxtoys",
+        "https://github.com/psygreg/linuxtoys/commits/5.6.14/"
+      ]
+    },
+    {
+      "full_name": "psygreg/linuxtoys",
+      "tag_name": "6.1",
+      "corretiva": "nao",
+      "observacoes": "Introduz chave de compatibilidade para RHEL e derivados, junto de reparos; o destaque é ampliar suporte a distribuições.",
+      "fontes": [
+        "https://github.com/psygreg/linuxtoys/releases/tag/6.1",
+        "https://github.com/psygreg/linuxtoys/compare/6.0.6...6.1"
+      ]
+    },
+    {
+      "full_name": "psygreg/linuxtoys",
+      "tag_name": "6.1.2",
+      "corretiva": "sim",
+      "observacoes": "Repara incompatibilidades entre chaves Debian/Ubuntu e outras falhas em scripts; notas focam problemas de funcionamento.",
+      "fontes": [
+        "https://github.com/psygreg/linuxtoys/releases/tag/6.1.2",
+        "https://github.com/psygreg/linuxtoys/compare/6.1.1...6.1.2"
+      ]
+    },
+    {
+      "full_name": "psygreg/linuxtoys",
+      "tag_name": "6.4.2",
+      "corretiva": "nao",
+      "observacoes": "Adiciona remoção pela interface, destaque de novidades e versão em relatos; correções de Deepin e strings integram lançamento funcional misto.",
+      "fontes": [
+        "https://github.com/psygreg/linuxtoys/releases/tag/6.4.2",
+        "https://github.com/psygreg/linuxtoys/compare/6.4.1...6.4.2"
+      ]
+    },
+    {
+      "full_name": "psygreg/linuxtoys",
+      "tag_name": "6.4.3",
+      "corretiva": "nao",
+      "observacoes": "Adiciona LM Studio, MetaTrader 5 e OCCT ao catálogo e muda integração Distrobox; inclui reparos, sem foco exclusivamente corretivo.",
+      "fontes": [
+        "https://github.com/psygreg/linuxtoys/releases/tag/6.4.3",
+        "https://github.com/psygreg/linuxtoys/compare/6.4.2...6.4.3"
+      ]
+    },
+    {
+      "full_name": "rerun-io/rerun",
+      "tag_name": "0.27.1",
+      "corretiva": "sim",
+      "observacoes": "Repara carregador URDF, exclusão de entradas, cores e atrasos da interface; também reverte mudança que causou problema de desempenho.",
+      "fontes": [
+        "https://github.com/rerun-io/rerun/releases/tag/0.27.1",
+        "https://github.com/rerun-io/rerun/compare/0.27.0...0.27.1"
+      ]
+    },
+    {
+      "full_name": "rerun-io/rerun",
+      "tag_name": "0.30.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz gráficos de escalares arbitrários, streaming sob demanda e novos tipos MCAP; as correções acompanham ampla expansão funcional.",
+      "fontes": [
+        "https://github.com/rerun-io/rerun/releases/tag/0.30.0",
+        "https://github.com/rerun-io/rerun/compare/0.29.2...0.30.0"
+      ]
+    },
+    {
+      "full_name": "rerun-io/rerun",
+      "tag_name": "0.31.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona mapeamento geral de componentes, novo visual das primitivas e APIs do SDK; lançamento de recursos e otimizações.",
+      "fontes": [
+        "https://github.com/rerun-io/rerun/releases/tag/0.31.0",
+        "https://github.com/rerun-io/rerun/compare/0.31.1...0.31.0"
+      ]
+    },
+    {
+      "full_name": "rerun-io/rerun",
+      "tag_name": "0.36.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz gaussian splats, catálogo experimental, eixos configuráveis e múltiplos sinks; correções são parte de evolução ampla.",
+      "fontes": [
+        "https://github.com/rerun-io/rerun/releases/tag/0.36.0",
+        "https://github.com/rerun-io/rerun/compare/0.35.0...0.36.0"
+      ]
+    },
+    {
+      "full_name": "rerun-io/rerun",
+      "tag_name": "0.37.2",
+      "corretiva": "sim",
+      "observacoes": "Repara exibição de URL vazia e habilita importadores em WebAssembly; conjunto pequeno voltado a comportamento incorreto.",
+      "fontes": [
+        "https://github.com/rerun-io/rerun/releases/tag/0.37.2",
+        "https://github.com/rerun-io/rerun/compare/0.37.1...0.37.2"
+      ]
+    },
+    {
+      "full_name": "rust-cross/cargo-zigbuild",
+      "tag_name": "v0.21.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona alvos FreeBSD e atualiza ferramentas/dependências; objetivo descrito é ampliar plataformas suportadas.",
+      "fontes": [
+        "https://github.com/rust-cross/cargo-zigbuild/releases/tag/v0.21.0",
+        "https://github.com/rust-cross/cargo-zigbuild/compare/v0.20.1...v0.21.0"
+      ]
+    },
+    {
+      "full_name": "rust-cross/cargo-zigbuild",
+      "tag_name": "v0.21.1",
+      "corretiva": "sim",
+      "observacoes": "Comparação entre tags mostra reparo da compilação universal2, além do commit de publicação; não há recurso novo no conjunto.",
+      "fontes": [
+        "https://github.com/rust-cross/cargo-zigbuild/releases/tag/v0.21.1",
+        "https://github.com/rust-cross/cargo-zigbuild/compare/v0.21.0...v0.21.1"
+      ]
+    },
+    {
+      "full_name": "rust-cross/cargo-zigbuild",
+      "tag_name": "v0.21.5",
+      "corretiva": "sim",
+      "observacoes": "Repara builds Windows GNU/i686 e tratamento da saída do Zig 0.15; mudanças de empacotamento/documentação são complementares.",
+      "fontes": [
+        "https://github.com/rust-cross/cargo-zigbuild/releases/tag/v0.21.5",
+        "https://github.com/rust-cross/cargo-zigbuild/compare/v0.21.4...v0.21.5"
+      ]
+    },
+    {
+      "full_name": "rust-cross/cargo-zigbuild",
+      "tag_name": "v0.22.2",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta Mac Catalyst e OpenBSD e migra para Zig 0.16; também corrige concorrência no cache, mas combina expansão de plataformas.",
+      "fontes": [
+        "https://github.com/rust-cross/cargo-zigbuild/releases/tag/v0.22.2",
+        "https://github.com/rust-cross/cargo-zigbuild/compare/v0.22.1...v0.22.2"
+      ]
+    },
+    {
+      "full_name": "rust-cross/cargo-zigbuild",
+      "tag_name": "v0.23.3",
+      "corretiva": "sim",
+      "observacoes": "Predominam reparos de linkedição, nomes de CPUs, helpers ARM e panic no bindgen; otimizações/refatoração acompanham estabilização.",
+      "fontes": [
+        "https://github.com/rust-cross/cargo-zigbuild/releases/tag/v0.23.3",
+        "https://github.com/rust-cross/cargo-zigbuild/compare/v0.23.2...v0.23.3"
+      ]
+    },
+    {
+      "full_name": "sbt/sbt",
+      "tag_name": "v1.11.7",
+      "corretiva": "nao",
+      "observacoes": "Amplia compatibilidade com JDK 25 e filtragem de UpdateReport, junto de reparos; lançamento com capacidades novas, não só estabilização.",
+      "fontes": [
+        "https://github.com/sbt/sbt/releases/tag/v1.11.7",
+        "https://github.com/sbt/sbt/compare/v1.11.6...v1.11.7"
+      ]
+    },
+    {
+      "full_name": "sbt/sbt",
+      "tag_name": "v1.12.7",
+      "corretiva": "sim",
+      "observacoes": "Corrige execução arbitrária via URL de dependência no Windows (CVE-2026-32948) e reverte Coursier; foco explícito em segurança.",
+      "fontes": [
+        "https://github.com/sbt/sbt/releases/tag/v1.12.7",
+        "https://github.com/sbt/sbt/compare/v1.12.6...v1.12.7"
+      ]
+    },
+    {
+      "full_name": "sbt/sbt",
+      "tag_name": "v1.12.8",
+      "corretiva": "sim",
+      "observacoes": "Corrige diretório de checkout de dependências de código-fonte; a outra mudança apenas ajusta teste.",
+      "fontes": [
+        "https://github.com/sbt/sbt/releases/tag/v1.12.8",
+        "https://github.com/sbt/sbt/compare/v1.12.7...v1.12.8"
+      ]
+    },
+    {
+      "full_name": "sbt/sbt",
+      "tag_name": "v2.0.5",
+      "corretiva": "sim",
+      "observacoes": "Repara AccessDeniedException, vazamento de configurações, inicialização Windows e deadlocks de build; foco em estabilidade.",
+      "fontes": [
+        "https://github.com/sbt/sbt/releases/tag/v2.0.5",
+        "https://github.com/sbt/sbt/compare/v2.0.4...v2.0.5"
+      ]
+    },
+    {
+      "full_name": "sbt/sbt",
+      "tag_name": "v2.0.7",
+      "corretiva": "sim",
+      "observacoes": "Corrige execução remota via BSP/TCP e outras falhas de cache, parsing e compilação; notas recomendam atualização por segurança.",
+      "fontes": [
+        "https://github.com/sbt/sbt/releases/tag/v2.0.7",
+        "https://github.com/sbt/sbt/compare/v1.13.0...v2.0.7"
+      ]
+    },
+    {
+      "full_name": "serverless-operations/serverless-step-functions",
+      "tag_name": "v3.23.4",
+      "corretiva": "sim",
+      "observacoes": "Corrige resolução de partição AWS; a nota identifica uma mudança específica de reparo na integração.",
+      "fontes": [
+        "https://github.com/serverless-operations/serverless-step-functions/releases/tag/v3.23.4",
+        "https://github.com/serverless-operations/serverless-step-functions/compare/v3.23.3...v3.23.4"
+      ]
+    },
+    {
+      "full_name": "serverless-operations/serverless-step-functions",
+      "tag_name": "v3.24.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona sobrescrita da configuração de criptografia; funcionalidade nova para configurar máquinas de estado.",
+      "fontes": [
+        "https://github.com/serverless-operations/serverless-step-functions/releases/tag/v3.24.0",
+        "https://github.com/serverless-operations/serverless-step-functions/compare/v3.23.4...v3.24.0"
+      ]
+    },
+    {
+      "full_name": "serverless-operations/serverless-step-functions",
+      "tag_name": "v3.26.1",
+      "corretiva": "nao",
+      "observacoes": "Introduz campo period nos alarmes CloudWatch; a issue de origem é proposta de funcionalidade, embora a nota categorize como bug fix.",
+      "fontes": [
+        "https://github.com/serverless-operations/serverless-step-functions/releases/tag/v3.26.1",
+        "https://github.com/serverless-operations/serverless-step-functions/compare/v3.26.0...v3.26.1",
+        "https://github.com/serverless-operations/serverless-step-functions/pull/686",
+        "https://github.com/serverless-operations/serverless-step-functions/issues/612"
+      ]
+    },
+    {
+      "full_name": "serverless-operations/serverless-step-functions",
+      "tag_name": "v3.29.2",
+      "corretiva": "nao",
+      "observacoes": "Refatora compilação de API Gateway, eventos, nomes e notificações; também atualiza CI/dependências, sem correção funcional central.",
+      "fontes": [
+        "https://github.com/serverless-operations/serverless-step-functions/releases/tag/v3.29.2",
+        "https://github.com/serverless-operations/serverless-step-functions/compare/v3.29.1...v3.29.2"
+      ]
+    },
+    {
+      "full_name": "serverless-operations/serverless-step-functions",
+      "tag_name": "v3.31.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona suporte ao osls v4 por migração para AWS SDK v3; entrega compatibilidade nova, não hotfix de comportamento recente.",
+      "fontes": [
+        "https://github.com/serverless-operations/serverless-step-functions/releases/tag/v3.31.0",
+        "https://github.com/serverless-operations/serverless-step-functions/compare/v3.30.0...v3.31.0"
+      ]
+    },
+    {
+      "full_name": "sipeed/picoclaw",
+      "tag_name": "v0.0.1",
+      "corretiva": "nao",
+      "observacoes": "Primeira versão publicada; a tag contém o commit inicial do projeto e binários, sem release anterior a corrigir.",
+      "fontes": [
+        "https://github.com/sipeed/picoclaw/releases/tag/v0.0.1"
+      ]
+    },
+    {
+      "full_name": "sipeed/picoclaw",
+      "tag_name": "v0.2.2",
+      "corretiva": "nao",
+      "observacoes": "Introduz interface de gerenciamento de agentes e eco de transcrição de voz, além de segurança e reparos; evolução funcional mista.",
+      "fontes": [
+        "https://github.com/sipeed/picoclaw/releases/tag/v0.2.2",
+        "https://github.com/sipeed/picoclaw/compare/v0.2.1...v0.2.2"
+      ]
+    },
+    {
+      "full_name": "sipeed/picoclaw",
+      "tag_name": "v0.2.5",
+      "corretiva": "nao",
+      "observacoes": "Amplia provedores, ferramentas, canais e marketplace de skills; numerosas correções acompanham lançamento amplo de funcionalidades.",
+      "fontes": [
+        "https://github.com/sipeed/picoclaw/releases/tag/v0.2.5",
+        "https://github.com/sipeed/picoclaw/compare/v0.2.4...v0.2.5"
+      ]
+    },
+    {
+      "full_name": "sipeed/picoclaw",
+      "tag_name": "v0.2.7",
+      "corretiva": "nao",
+      "observacoes": "Adiciona busca Sogou, interface de terminal, regras de roteamento e configurações de hosts; não é publicação focada só em defeitos.",
+      "fontes": [
+        "https://github.com/sipeed/picoclaw/releases/tag/v0.2.7",
+        "https://github.com/sipeed/picoclaw/compare/v0.2.6...v0.2.7"
+      ]
+    },
+    {
+      "full_name": "sipeed/picoclaw",
+      "tag_name": "v0.2.9",
+      "corretiva": "nao",
+      "observacoes": "Entrega gerenciamento MCP, delegação entre agentes, streaming e novos provedores/canais; reparos compõem expansão funcional ampla.",
+      "fontes": [
+        "https://github.com/sipeed/picoclaw/releases/tag/v0.2.9",
+        "https://github.com/sipeed/picoclaw/compare/v0.2.8...v0.2.9"
+      ]
+    },
+    {
+      "full_name": "sirmalloc/ccstatusline",
+      "tag_name": "v2.2.16",
+      "corretiva": "sim",
+      "observacoes": "Corrige união de dados parciais de uso para widgets continuarem renderizando quando campos/API faltam; outro commit trata publicação.",
+      "fontes": [
+        "https://github.com/sirmalloc/ccstatusline/releases/tag/v2.2.16",
+        "https://github.com/sirmalloc/ccstatusline/compare/v2.2.15...v2.2.16"
+      ]
+    },
+    {
+      "full_name": "sirmalloc/ccstatusline",
+      "tag_name": "v2.2.21",
+      "corretiva": "nao",
+      "observacoes": "Adiciona símbolos personalizados e widgets de uso/cache, além de reparos; predominam capacidades novas na barra de status.",
+      "fontes": [
+        "https://github.com/sirmalloc/ccstatusline/releases/tag/v2.2.21",
+        "https://github.com/sirmalloc/ccstatusline/compare/v2.2.20...v2.2.21"
+      ]
+    },
+    {
+      "full_name": "sirmalloc/ccstatusline",
+      "tag_name": "v2.2.25",
+      "corretiva": "sim",
+      "observacoes": "Move consultas lentas de PR/CI para cache e atualização em segundo plano, evitando bloquear a renderização da barra de status.",
+      "fontes": [
+        "https://github.com/sirmalloc/ccstatusline/releases/tag/v2.2.25",
+        "https://github.com/sirmalloc/ccstatusline/compare/v2.2.24...v2.2.25"
+      ]
+    },
+    {
+      "full_name": "sirmalloc/ccstatusline",
+      "tag_name": "v2.2.27",
+      "corretiva": "nao",
+      "observacoes": "Adiciona importação/exportação de configurações com prévia e modos de mesclagem; funcionalidade nova explicitamente anunciada.",
+      "fontes": [
+        "https://github.com/sirmalloc/ccstatusline/releases/tag/v2.2.27",
+        "https://github.com/sirmalloc/ccstatusline/compare/v2.2.26...v2.2.27"
+      ]
+    },
+    {
+      "full_name": "sirmalloc/ccstatusline",
+      "tag_name": "v2.2.29",
+      "corretiva": "nao",
+      "observacoes": "Adiciona controle de visibilidade, precisão numérica e widget de incidentes; reparos de JSONL/espaçamento acompanham ampliação de recursos.",
+      "fontes": [
+        "https://github.com/sirmalloc/ccstatusline/releases/tag/v2.2.29",
+        "https://github.com/sirmalloc/ccstatusline/compare/v2.2.28...v2.2.29"
+      ]
+    },
+    {
+      "full_name": "spatie/laravel-activitylog",
+      "tag_name": "4.11.0",
+      "corretiva": "sim",
+      "observacoes": "Corrige atividade nula, logUnguarded, exceções sem SoftDeletes e chamadas duplicadas de tapActivity; predominam defeitos funcionais.",
+      "fontes": [
+        "https://github.com/spatie/laravel-activitylog/releases/tag/4.11.0",
+        "https://github.com/spatie/laravel-activitylog/compare/4.10.2...4.11.0"
+      ]
+    },
+    {
+      "full_name": "spatie/laravel-activitylog",
+      "tag_name": "4.12.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona compatibilidade com Laravel 13; a nota apresenta suporte a plataforma nova, sem defeito específico como finalidade.",
+      "fontes": [
+        "https://github.com/spatie/laravel-activitylog/releases/tag/4.12.0",
+        "https://github.com/spatie/laravel-activitylog/compare/4.11.0...4.12.0"
+      ]
+    },
+    {
+      "full_name": "spatie/laravel-activitylog",
+      "tag_name": "4.12.1",
+      "corretiva": "sim",
+      "observacoes": "Corrige validação dos dias usados na limpeza de atividades para exigir inteiro; atualização de CI é secundária.",
+      "fontes": [
+        "https://github.com/spatie/laravel-activitylog/releases/tag/4.12.1",
+        "https://github.com/spatie/laravel-activitylog/compare/4.12.0...4.12.1"
+      ]
+    },
+    {
+      "full_name": "spatie/laravel-activitylog",
+      "tag_name": "5.0.0",
+      "corretiva": "nao",
+      "observacoes": "Moderniza a API e eleva requisitos de PHP/Laravel; lançamento de nova geração da biblioteca, não correção pontual.",
+      "fontes": [
+        "https://github.com/spatie/laravel-activitylog/releases/tag/5.0.0",
+        "https://github.com/spatie/laravel-activitylog/compare/4.12.3...5.0.0"
+      ]
+    },
+    {
+      "full_name": "spatie/laravel-activitylog",
+      "tag_name": "5.1.1",
+      "corretiva": "sim",
+      "observacoes": "Restaura suporte ao Laravel 12 removido involuntariamente em 5.1.0; regressão explicitamente documentada.",
+      "fontes": [
+        "https://github.com/spatie/laravel-activitylog/releases/tag/5.1.1",
+        "https://github.com/spatie/laravel-activitylog/compare/5.1.0...5.1.1"
+      ]
+    },
+    {
+      "full_name": "sveltejs/kit",
+      "tag_name": "@sveltejs/kit@2.47.0",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta propriedade signal à requisição e corrige sintaxe de módulos remotos; mistura funcionalidade nova e reparo.",
+      "fontes": [
+        "https://github.com/sveltejs/kit/releases/tag/%40sveltejs/kit%402.47.0",
+        "https://github.com/sveltejs/kit/compare/%40sveltejs%2Fkit%402.46.5...%40sveltejs%2Fkit%402.47.0"
+      ]
+    },
+    {
+      "full_name": "sveltejs/kit",
+      "tag_name": "@sveltejs/adapter-vercel@6.1.2",
+      "corretiva": "nao",
+      "observacoes": "Atualiza @vercel/nft para reduzir dependências e acompanha versão do Kit; nota descreve manutenção de dependências, não defeito central.",
+      "fontes": [
+        "https://github.com/sveltejs/kit/releases/tag/%40sveltejs/adapter-vercel%406.1.2",
+        "https://github.com/sveltejs/kit/compare/%40sveltejs%2Fpackage%402.5.5...%40sveltejs%2Fadapter-vercel%406.1.2"
+      ]
+    },
+    {
+      "full_name": "sveltejs/kit",
+      "tag_name": "@sveltejs/enhanced-img@0.9.1",
+      "corretiva": "sim",
+      "observacoes": "Atualiza vite-imagetools especificamente para corrigir cache e evitar crashes; objetivo corretivo declarado.",
+      "fontes": [
+        "https://github.com/sveltejs/kit/releases/tag/%40sveltejs/enhanced-img%400.9.1",
+        "https://github.com/sveltejs/kit/compare/%40sveltejs%2Fkit%402.49.0...%40sveltejs%2Fenhanced-img%400.9.1"
+      ]
+    },
+    {
+      "full_name": "sveltejs/kit",
+      "tag_name": "@sveltejs/kit@2.49.5",
+      "corretiva": "sim",
+      "observacoes": "Repara base do Vite com Vitest 4, interpretação de caminhos decodificados e limites de formulários remotos; notas só trazem reparos.",
+      "fontes": [
+        "https://github.com/sveltejs/kit/releases/tag/%40sveltejs/kit%402.49.5",
+        "https://github.com/sveltejs/kit/compare/%40sveltejs%2Fadapter-cloudflare%407.2.5...%40sveltejs%2Fkit%402.49.5"
+      ]
+    },
+    {
+      "full_name": "sveltejs/kit",
+      "tag_name": "@sveltejs/kit@2.53.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz suporte a Vite 8, junto de correções em formulários; destaque é compatibilidade nova do framework.",
+      "fontes": [
+        "https://github.com/sveltejs/kit/releases/tag/%40sveltejs/kit%402.53.0",
+        "https://github.com/sveltejs/kit/compare/%40sveltejs%2Fenhanced-img%400.10.3...%40sveltejs%2Fkit%402.53.0"
+      ]
+    },
+    {
+      "full_name": "the-momentum/open-wearables",
+      "tag_name": "0.1.0",
+      "corretiva": "nao",
+      "observacoes": "Primeira versão pública entrega modelo unificado, integrações OAuth, API e painel; lançamento inicial de capacidades.",
+      "fontes": [
+        "https://github.com/the-momentum/open-wearables/releases/tag/0.1.0"
+      ]
+    },
+    {
+      "full_name": "the-momentum/open-wearables",
+      "tag_name": "0.2",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta endpoints de séries temporais, treinos e sono, além de gestão de membros; expansão da plataforma.",
+      "fontes": [
+        "https://github.com/the-momentum/open-wearables/releases/tag/0.2",
+        "https://github.com/the-momentum/open-wearables/compare/0.1.0...0.2"
+      ]
+    },
+    {
+      "full_name": "the-momentum/open-wearables",
+      "tag_name": "0.4.1",
+      "corretiva": "nao",
+      "observacoes": "Introduz Fitbit, Ultrahuman, estágios de sono e arquitetura de webhooks; correções acompanham grandes recursos novos.",
+      "fontes": [
+        "https://github.com/the-momentum/open-wearables/releases/tag/0.4.1",
+        "https://github.com/the-momentum/open-wearables/compare/0.4...0.4.1"
+      ]
+    },
+    {
+      "full_name": "the-momentum/open-wearables",
+      "tag_name": "0.6.1",
+      "corretiva": "nao",
+      "observacoes": "Adiciona aba de cobertura de dados, observabilidade e lookback de sincronização; reparos de integrações fazem parte de evolução ampla.",
+      "fontes": [
+        "https://github.com/the-momentum/open-wearables/releases/tag/0.6.1",
+        "https://github.com/the-momentum/open-wearables/compare/0.6.0...0.6.1"
+      ]
+    },
+    {
+      "full_name": "the-momentum/open-wearables",
+      "tag_name": "0.6.3",
+      "corretiva": "nao",
+      "observacoes": "Introduz detecção de cochilos, middleware de logs e amostras Strava; mudanças de correção não constituem a finalidade predominante.",
+      "fontes": [
+        "https://github.com/the-momentum/open-wearables/releases/tag/0.6.3",
+        "https://github.com/the-momentum/open-wearables/compare/0.6.2...0.6.3"
+      ]
+    },
+    {
+      "full_name": "tokio-rs/toasty",
+      "tag_name": "toasty-v0.6.0",
+      "corretiva": "nao",
+      "observacoes": "Introduz campos vetoriais, consultas e melhorias no pool de conexões; correções pontuais acompanham novas capacidades do ORM.",
+      "fontes": [
+        "https://github.com/tokio-rs/toasty/releases/tag/toasty-v0.6.0"
+      ]
+    },
+    {
+      "full_name": "tokio-rs/toasty",
+      "tag_name": "toasty-v0.7.0",
+      "corretiva": "nao",
+      "observacoes": "Redesenha relações e adiciona update!, SQL bruto e driver Turso; lançamento amplo com mudanças incompatíveis.",
+      "fontes": [
+        "https://github.com/tokio-rs/toasty/releases/tag/toasty-v0.7.0",
+        "https://github.com/tokio-rs/toasty/compare/toasty-v0.6.0...toasty-v0.7.0"
+      ]
+    },
+    {
+      "full_name": "tokio-rs/toasty",
+      "tag_name": "toasty-v0.8.0",
+      "corretiva": "nao",
+      "observacoes": "Acrescenta concorrência otimista SQL, índices compostos, consultas e tracing; correções integram expansão funcional.",
+      "fontes": [
+        "https://github.com/tokio-rs/toasty/releases/tag/toasty-v0.8.0",
+        "https://github.com/tokio-rs/toasty/compare/toasty-v0.7.0...toasty-v0.8.0"
+      ]
+    },
+    {
+      "full_name": "tokio-rs/toasty",
+      "tag_name": "toasty-v0.10.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona migrações embutidas, endereços de rede e suporte WebAssembly, além de reparar paginação; escopo central é amplo.",
+      "fontes": [
+        "https://github.com/tokio-rs/toasty/releases/tag/toasty-v0.10.0",
+        "https://github.com/tokio-rs/toasty/compare/toasty-v0.9.0...toasty-v0.10.0"
+      ]
+    },
+    {
+      "full_name": "tokio-rs/toasty",
+      "tag_name": "toasty-v0.11.0",
+      "corretiva": "nao",
+      "observacoes": "Completa relações embutidas e adiciona MariaDB/Turso Cloud e tipos de campos; reparos acompanham funcionalidades novas.",
+      "fontes": [
+        "https://github.com/tokio-rs/toasty/releases/tag/toasty-v0.11.0",
+        "https://github.com/tokio-rs/toasty/compare/toasty-v0.10.0...toasty-v0.11.0"
+      ]
+    },
+    {
+      "full_name": "uNetworking/uWebSockets.js",
+      "tag_name": "v20.53.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona Node.js 25 e altera plataformas mínimas/suportadas; lançamento de compatibilidade, não reparo predominante.",
+      "fontes": [
+        "https://github.com/uNetworking/uWebSockets.js/releases/tag/v20.53.0",
+        "https://github.com/uNetworking/uWebSockets.js/compare/v20.52.0...v20.53.0"
+      ]
+    },
+    {
+      "full_name": "uNetworking/uWebSockets.js",
+      "tag_name": "v20.54.0",
+      "corretiva": "sim",
+      "observacoes": "Corrige suporte recém-adicionado ao Node.js 25 no macOS, elevando o alvo macOS; também remove binários ARM antigos.",
+      "fontes": [
+        "https://github.com/uNetworking/uWebSockets.js/releases/tag/v20.54.0",
+        "https://github.com/uNetworking/uWebSockets.js/compare/v20.53.0...v20.54.0"
+      ]
+    },
+    {
+      "full_name": "uNetworking/uWebSockets.js",
+      "tag_name": "v20.56.0",
+      "corretiva": "nao",
+      "observacoes": "Unifica compilação e testes com Clang e melhora portabilidade Windows; reorganização de distribuição, sem defeito recente central.",
+      "fontes": [
+        "https://github.com/uNetworking/uWebSockets.js/releases/tag/v20.56.0",
+        "https://github.com/uNetworking/uWebSockets.js/compare/v20.55.0...v20.56.0"
+      ]
+    },
+    {
+      "full_name": "uNetworking/uWebSockets.js",
+      "tag_name": "v20.58.0",
+      "corretiva": "nao",
+      "observacoes": "Enriquece mensagem de erro com método e URL para facilitar diagnóstico de rotas; melhoria de ergonomia, sem alterar a falha em si.",
+      "fontes": [
+        "https://github.com/uNetworking/uWebSockets.js/releases/tag/v20.58.0",
+        "https://github.com/uNetworking/uWebSockets.js/compare/v20.57.0...v20.58.0"
+      ]
+    },
+    {
+      "full_name": "uNetworking/uWebSockets.js",
+      "tag_name": "v20.61.0",
+      "corretiva": "nao",
+      "observacoes": "Adiciona onDataV2, collectBody, APIs de portas e binários ASAN, além de desempenho; lançamento amplo de capacidades.",
+      "fontes": [
+        "https://github.com/uNetworking/uWebSockets.js/releases/tag/v20.61.0",
+        "https://github.com/uNetworking/uWebSockets.js/compare/v20.60.0...v20.61.0"
+      ]
+    }
+  ]
+}

@@ -14,6 +14,8 @@ from urllib.parse import quote
 from metricas.frequencia import data_da_janela, frequencia_por_semana, semanas_da_janela
 from metricas.lead_time import calcular_lead_times, horas_ate_publicacao, instante, resumir_lead_times
 from pipeline.commits import coletar_commits_entre_releases, normalizar_commit
+from pipeline.cfr_entrega import (COLUNAS_METRICAS_CFR, COLUNAS_PREVISOES,
+                                  calcular_repositorio)
 
 
 log = logging.getLogger(__name__)
@@ -185,7 +187,9 @@ def coletar(cliente, amostra, config):
     # Tags custam uma chamada por tag (data do commit apontado) e só servem à
     # variante da RQ 07; por isso a coleta é opcional.
     coletar_tags_ativo = (config.get("tags") or {}).get("coletar", False)
-    tabelas = {"releases": [], "tags": [], "commits": [], "metricas_entrega": []}
+    versao = (config.get("heuristica") or {}).get("versao", "v1")
+    tabelas = {"releases": [], "tags": [], "commits": [], "metricas_entrega": [],
+               "metricas_cfr_b": [], "previsoes_cfr_b": []}
     vistos = set()
     for repositorio in amostra:
         nome = repositorio["full_name"]
@@ -199,15 +203,21 @@ def coletar(cliente, amostra, config):
             tags, status_tags = [], "nao_coletado"
         commits = enriquecer_commits(cliente, nome, releases)
         resumo = _resumir(nome, releases, tags, status_releases, status_tags, inicio, fim)
+        cfr, previsoes = calcular_repositorio(
+            nome, releases, inicio, fim, versao=versao, coleta_status=status_releases)
         tabelas["releases"].extend(releases)
         tabelas["tags"].extend(tags)
         tabelas["commits"].extend(commits)
         tabelas["metricas_entrega"].append(resumo)
+        tabelas["metricas_cfr_b"].append(cfr)
+        tabelas["previsoes_cfr_b"].extend(previsoes)
         log.info("%s: %s releases na janela, %d com lead time; %d ignoradas (%d compare 404)",
                  nome, resumo["releases_janela"], resumo["releases_com_lead_time"],
                  resumo["releases_ignoradas"], resumo["releases_compare_404"])
     saida = Path(config["saida"]["dir"])
     for nome, colunas in [("releases", COLUNAS_RELEASES), ("tags", COLUNAS_TAGS),
-                          ("commits", COLUNAS_COMMITS), ("metricas_entrega", COLUNAS_METRICAS)]:
+                          ("commits", COLUNAS_COMMITS), ("metricas_entrega", COLUNAS_METRICAS),
+                          ("metricas_cfr_b", COLUNAS_METRICAS_CFR),
+                          ("previsoes_cfr_b", COLUNAS_PREVISOES)]:
         _escrever_csv(saida / f"{nome}.csv", tabelas[nome], colunas)
     return tabelas

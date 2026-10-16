@@ -32,7 +32,7 @@ def configuracao(tmp_path):
     return caminho
 
 
-def test_cli_integra_selecao_releases_commits_e_metricas_sprint1(
+def test_cli_integra_selecao_releases_commits_e_metricas_sprints1_2(
         tmp_path, monkeypatch, cliente_falso):
     def proibir_rede(*args, **kwargs):
         pytest.fail("O teste de integração não deve acessar a rede")
@@ -93,7 +93,14 @@ def test_cli_integra_selecao_releases_commits_e_metricas_sprint1(
     assert {arquivo.name for arquivo in saida.glob("*.csv")} == {
         "candidatos.csv", "repositorios.csv", "descartes.csv", "funil.csv",
         "releases.csv", "tags.csv", "commits.csv", "metricas_entrega.csv",
+        "metricas_cfr_b.csv", "previsoes_cfr_b.csv",
     }
+    cfr, = ler_csv(saida / "metricas_cfr_b.csv")
+    assert float(cfr["cfr_b"]) == pytest.approx(1 / 5)
+    assert cfr["coleta_status"] == "ok"
+    previsoes = {r["tag_name"]: r for r in ler_csv(saida / "previsoes_cfr_b.csv")}
+    assert previsoes["v1.1.0"]["falhou"] == "True"
+    assert previsoes["v1.1.1"]["corretiva"] == "True"
 
 
 def test_cli_explica_dependencia_da_pessoa_c(tmp_path, monkeypatch):

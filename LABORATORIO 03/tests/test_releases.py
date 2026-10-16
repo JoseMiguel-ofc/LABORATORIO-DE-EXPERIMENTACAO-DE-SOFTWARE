@@ -131,7 +131,7 @@ def test_endpoints_inacessiveis_nao_sao_interpretados_como_zero(cliente_falso, t
 def test_amostra_vazia_gera_csvs_com_cabecalho(cliente_falso, tmp_path):
     coletar(cliente_falso({}), [], config(tmp_path))
     assert {arquivo.stem for arquivo in tmp_path.glob("*.csv")} == {
-        "releases", "tags", "commits", "metricas_entrega",
+        "releases", "tags", "commits", "metricas_entrega", "metricas_cfr_b", "previsoes_cfr_b",
     }
     for nome in ["releases", "tags", "commits", "metricas_entrega"]:
         assert (tmp_path / f"{nome}.csv").read_text().startswith("full_name,")

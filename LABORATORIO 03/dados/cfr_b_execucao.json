@@ -1,0 +1,44 @@
+{
+  "executado_em": "2026-10-15T23:14:18.222250+00:00",
+  "versao": "v1",
+  "definicao": {
+    "dias_corretiva": 7,
+    "conjuncao": "AND",
+    "sequencia": "proxima release estavel do mesmo repositorio",
+    "patch": "major e minor iguais; patch estritamente maior; prefixo v opcional",
+    "fonte_textual": "mensagens de commits entre tags consecutivas",
+    "palavras": [
+      "fix",
+      "hotfix",
+      "revert"
+    ],
+    "palavras_inteiras": true,
+    "ignora_maiusculas": true,
+    "censura": "originais sem sete dias completos ate o fim da janela",
+    "validada": false
+  },
+  "inicio": "2025-10-01",
+  "fim": "2026-09-30",
+  "fontes": [
+    {
+      "arquivo": "config.yaml",
+      "sha256": "cd846d395d1fa95ecfd4dddb6599adee9de5aa105aa829127f057451ff2f44e7"
+    },
+    {
+      "arquivo": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 03/dados/releases.csv",
+      "sha256": "6a06c9a65973f6e86ef403b8674a156539ce730e586e1d23fc23edc6a3f9ac2a"
+    },
+    {
+      "arquivo": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 03/dados/commits.csv.gz",
+      "sha256": "2716ecb2a1c608b28836b9bf26149f9616dea1454dd1478e5e570078d5c74121"
+    },
+    {
+      "arquivo": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 03/dados/metricas_entrega.csv",
+      "sha256": "020db48c30e7dcd481e7d043bbf8eb1f9037f7842fa1ca919f9a665351a4de0f"
+    }
+  ],
+  "repositorios": 100,
+  "releases_historicas_lidas": 14157,
+  "previsoes": 14157,
+  "validacao_humana": "Não avaliada por este comando; executar validacao.avaliar_heuristica."
+}

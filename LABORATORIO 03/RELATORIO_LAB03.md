@@ -140,7 +140,88 @@ não confundir mudança de categoria com ausência de dados.
 ## 2. Metodologia
 
 <!-- 2.1 Fonte de dados, janela e funil de seleção: Pessoa C. -->
-<!-- 2.2 Definições operacionais e variantes, incluindo a evolução da heurística de release corretiva: Pessoa B. -->
+### 2.2 Definições operacionais e variantes — pessoa B
+
+**Unidade de entrega e frequência.** Na referência, uma entrega é uma release
+publicada, estável (`draft = false`, `prerelease = false`) e com `published_at`
+dentro da janela, incluindo ambos os dias extremos em UTC. A frequência é o
+número dessas releases dividido pelas semanas da janela, incluindo semanas sem
+publicação. As flags e o histórico são preservados para permitir outras
+definições de entrega; tags são coletadas somente quando habilitadas no config.
+
+**Lead time.** Comparamos as tags de releases estáveis consecutivas usando a API
+`compare` paginada. A predecessora pode estar antes da janela. A referência da
+coleta atual usa `commit.author.date`; a data de integração também é preservada.
+Na variante (a), cada release contribui com o tempo desde seu commit mais antigo
+até a publicação. Na variante (b), cada commit contribui com seu próprio tempo.
+As medianas são calculadas, respectivamente, sobre releases e sobre commits e
+expressas em horas. A primeira release da história, comparações vazias e
+comparações indisponíveis não recebem lead time zero. Datas de autoria
+posteriores à publicação são excluídas do cálculo e contabilizadas.
+
+**CFR de CI, variante (a).** O módulo da pessoa C calcula a quantidade de runs
+com conclusão `failure`, `timed_out` ou `startup_failure` dividida pela soma
+de falhas e sucessos (`success`). Conclusões como `cancelled` ficam fora. Sem
+execuções válidas, a taxa é ausente. Esse proxy descreve CI, sem identificar
+necessariamente falhas experimentadas pelos usuários.
+
+**CFR de entrega, variante (b).** A regra de referência exige conjuntamente:
+(1) a release estável imediatamente seguinte preserva major/minor e aumenta
+somente o patch de SemVer; (2) há uma palavra corretiva nas mensagens dos commits
+entre essas tags; e (3) a publicação ocorre em até sete dias corridos. Prefixo
+`v` e metadados de build são aceitos, sem alterar os números da versão. A
+conjunção e o uso da próxima release estável são decisões operacionais
+explicitadas porque podem mudar a sensibilidade do proxy.
+
+Se `v2.3.0` for seguida em dois dias por `v2.3.1`, com `fix` nos commits, a
+previsão é `corretiva = true` para **v2.3.1** e `falhou = true` para **v2.3.0**.
+Uma passagem de `v2.4.0` para `v2.5.0` não satisfaz a regra de patch. A coluna
+`corretiva` é comparada ao consenso humano da mesma tag; a coluna `falhou` é
+usada no numerador do CFR. Trocar essas duas unidades produziria uma avaliação
+desalinhada mesmo com uma heurística correta.
+
+**Censura e ausências.** Originais sem sete dias completos de acompanhamento
+até o fim da janela ficam fora do denominador, mesmo quando uma correção já
+foi observada. Releases posteriores ao fim não completam o acompanhamento.
+Uma release censurada como original ainda pode ser classificada como corretiva
+de sua predecessora: a classificação própria usa apenas evidência passada.
+Tags não interpretáveis em comparações necessárias, empates de publicação e
+commits indisponíveis são distinguidos de negativos. A primeira release sem
+predecessora tem classificação própria indeterminada. A taxa por repositório
+é `falhas / denominador`, onde o denominador inclui apenas originais estáveis
+na janela, com acompanhamento completo e resultado determinável. Censuras e
+inconclusivos são reportados separadamente; sem denominador, a taxa é ausente.
+
+**Integridade e reprodução.** O cálculo local usa os CSVs da coleta existente,
+inclusive `commits.csv.gz`. A leitura de commits é feita em fluxo, sem guardar
+todas as mensagens na memória. SHAs são deduplicados por repositório e release,
+e a quantidade é conferida contra `commits_novos`; arquivos truncados ou
+mensagens conflitantes geram evidência inconclusiva. As execuções registram a
+versão da regra, a janela e hashes dos arquivos usados. Isso permite recalcular
+o CFR (b) sem consultar novamente a API e sem alterar os dados da Sprint 1.
+
+**Evolução da heurística.** Foram implementadas duas versões candidatas:
+
+| Versão | Palavras nas mensagens, sem distinguir maiúsculas | F1 no consenso |
+|---|---|---|
+| v1 (referência) | Palavras inteiras `fix`, `hotfix`, `revert` | Pendente: consenso humano ainda não disponível |
+| v2 | v1 e flexões como `fixes`, `fixed`, `fixing`, `hotfixed`, `reverted` | Pendente: consenso humano ainda não disponível |
+
+Ambas preservam patch, conjunção e limite de sete dias. O avaliador calcula
+precisão = TP/(TP+FP), recall = TP/(TP+FN) e F1 = 2TP/(2TP+FP+FN), com a
+classe positiva definida como release corretiva. Cada versão efetivamente
+avaliada é registrada no histórico, junto à cobertura dos rótulos e às
+exclusões. A meta do enunciado é F1 ≥ 0,70; versões abaixo da meta devem ser
+refinadas e avaliadas novamente. Ajustar e medir no mesmo consenso não demonstra
+generalização, portanto a versão escolhida e o conjunto usado devem ser
+identificados. Não se transforma uma execução sem consenso em F1 zero ou sucesso.
+
+**Situação em 15/10/2026.** Há coleta de 100 repositórios e amostra-ouro de
+60 repositórios/300 releases. Não foram disponibilizados rótulos humanos nem
+consenso. A avaliação empírica, a escolha de uma versão validada e o eventual
+refinamento para atingir F1 ≥ 0,70 permanecem pendentes. As datas no config
+continuam marcadas como provisórias. Os testes sintéticos verificam o código,
+mas não substituem a rotulagem independente nem o F1 medido na amostra-ouro.
 
 ### 2.3 Validação manual (amostra-ouro)
 
@@ -160,12 +241,12 @@ amostra aleatória da amostra final. De cada repositório sorteamos 5 releases
 estáveis (sem rascunhos nem pré-releases) publicadas na janela, também com
 semente fixa, totalizando 300 releases.
 
-**Rotulagem independente.** Os três integrantes do grupo rotularam a amostra
+**Rotulagem independente.** Os três integrantes do grupo deverão rotular a amostra
 **de forma independente**, sem consultar os demais e sem acesso à saída da
-heurística automática. Cada avaliador recebeu uma planilha gerada
+heurística automática. Cada avaliador deverá usar uma cópia da planilha gerada
 automaticamente, com links para o repositório, para a página de cada release
 (com as *release notes*) e para a lista de commits incluídos nela. A planilha
-também restringe as respostas aos valores permitidos. Foram rotuladas três
+também restringe as respostas aos valores permitidos. Serão rotuladas três
 dimensões:
 
 1. **tipo do projeto** (por repositório): biblioteca/framework,
@@ -177,7 +258,7 @@ dimensões:
 3. **release corretiva** (por release): se o objetivo principal da release é
    corrigir um defeito recente (sim ou não).
 
-**Concordância.** Medimos a concordância entre os três avaliadores em cada
+**Concordância.** Após a rotulagem, calcularemos a concordância entre os três avaliadores em cada
 dimensão pelo **kappa de Fleiss**, que desconta a concordância esperada por
 acaso. Usamos as funções `aggregate_raters` e `fleiss_kappa` do statsmodels
 (script `validacao/kappa.py`) e interpretamos os valores pela escala de Landis e
@@ -188,7 +269,7 @@ achado e como ameaça à validade.
 
 **Consenso.** O rótulo de referência de cada item é definido por **maioria
 simples**: o rótulo dado por pelo menos dois dos três avaliadores. Os empates
-(1-1-1) foram discutidos em reunião pelos três, e a decisão de cada caso ficou
+(1-1-1) serão discutidos em reunião pelos três, e a decisão de cada caso será
 registrada no repositório (`validacao/desempate.csv`), junto com a origem de
 cada rótulo de consenso, maioria ou reunião (script `validacao/consenso.py`).
 
