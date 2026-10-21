@@ -5,6 +5,7 @@ heurística ficam na memória. SHAs são deduplicados em um SQLite temporário
 em disco, que também identifica mensagens conflitantes para o mesmo commit.
 """
 
+from contextlib import closing
 import csv
 from decimal import Decimal, InvalidOperation
 import gzip
@@ -99,7 +100,8 @@ def carregar_releases(caminho_releases, caminho_commits=None):
 
     if caminho_commits is not None:
         with tempfile.TemporaryDirectory(prefix="lab03-commits-") as temporario:
-            with sqlite3.connect(str(Path(temporario) / "vistos.sqlite")) as banco:
+            # closing(): fecha o arquivo antes de apagar a pasta (no Windows, aberto não apaga).
+            with closing(sqlite3.connect(str(Path(temporario) / "vistos.sqlite"))) as banco:
                 banco.execute("PRAGMA journal_mode=OFF")
                 banco.execute("PRAGMA synchronous=OFF")
                 banco.execute("CREATE TABLE vistos (repo TEXT, tag TEXT, sha TEXT, digest TEXT, "
