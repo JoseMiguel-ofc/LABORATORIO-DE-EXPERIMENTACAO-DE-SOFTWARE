@@ -139,7 +139,80 @@ não confundir mudança de categoria com ausência de dados.
 
 ## 2. Metodologia
 
-<!-- 2.1 Fonte de dados, janela e funil de seleção: Pessoa C. -->
+### 2.1 Fonte de dados, janela e funil de seleção
+
+**Fonte de dados.** Todos os dados vêm da API REST pública do GitHub, coletados
+por um pipeline próprio em Python. Não usamos bibliotecas prontas de acesso à
+API. Usamos os endpoints de busca de repositórios, workflows e execuções do
+GitHub Actions, releases, comparação entre tags (`compare`) e contribuidores. O
+pipeline guarda cada resposta em cache local, o que permite retomar a coleta
+depois de uma interrupção sem repetir chamadas. Ele também espera
+automaticamente quando a cota da API acaba e repete com espera crescente as
+requisições que falham por erro do servidor. A coleta é executada com um único
+comando (`python -m pipeline --config config.yaml`), e todos os parâmetros
+deste estudo ficam no arquivo `config.yaml`.
+
+**Janela de observação.** Consideramos 12 meses, de 1º de outubro de 2025 a
+30 de setembro de 2026, com os dois dias incluídos e horários em UTC. Só entram
+nos cálculos as releases publicadas e as execuções de workflow criadas dentro
+desse intervalo. Para o lead time, a release anterior a cada release da janela
+pode estar fora dela.
+
+**Busca de candidatos.** Buscamos repositórios com pelo menos 1.000 estrelas,
+não arquivados e com algum *push* a partir do início da janela. Um repositório
+sem *push* na janela não pode ter releases nem execuções nela. A API de busca
+devolve no máximo 1.000 resultados por consulta. Para contornar esse limite,
+dividimos a busca em faixas de estrelas que não se sobrepõem. Cada faixa com
+mais de 1.000 resultados é dividida ao meio automaticamente até caber no
+limite. Assim, todos os candidatos são acessíveis, e não apenas os mais
+populares de cada faixa.
+
+**Critérios de inclusão.** Os candidatos são embaralhados com semente fixa
+(42) e avaliados nessa ordem até a amostra atingir o tamanho desejado. Cada
+candidato passa pelos filtros abaixo, nesta ordem, e é descartado no primeiro
+em que falhar:
+
+1. o repositório responde na API;
+2. usa GitHub Actions, ou seja, tem ao menos um workflow;
+3. tem pelo menos 5 releases publicadas na janela (sem rascunhos nem
+   pré-releases);
+4. tem pelo menos 50 execuções de workflow válidas na janela: disparadas por
+   `push` no *default branch* e com conclusão de sucesso ou falha.
+
+**Funil de seleção.** A Tabela 1 mostra o funil gerado automaticamente pelo
+pipeline (`dados/funil.csv`).
+
+*Tabela 1 — Funil de seleção dos repositórios.*
+
+| Etapa | Restantes | Descartados | Motivo do descarte |
+|---|---:|---:|---|
+| Candidatos da busca | 37.606 | — | — |
+| Candidatos avaliados | 492 | 37.114 | Não avaliados: a amostra-alvo já tinha sido atingida |
+| Acessíveis pela API | 492 | 0 | — |
+| Com GitHub Actions | 392 | 100 | Sem workflows do GitHub Actions |
+| Com ≥ 5 releases na janela | 142 | 250 | Menos de 5 releases publicadas na janela |
+| Com ≥ 50 execuções válidas | 100 | 42 | Menos de 50 execuções válidas no *default branch* |
+| **Amostra final** | **100** | | |
+
+<!-- ATUALIZAR quando a coleta de 300+ terminar: copiar os números de dados/funil.csv. -->
+
+O filtro mais restritivo é o de releases: 64% dos repositórios com GitHub
+Actions (250 de 392) não publicaram 5 releases na janela. Muitos projetos
+populares usam apenas tags ou não versionam as entregas pelo mecanismo de
+releases do GitHub. Isso limita a amostra a projetos que publicam releases com
+regularidade, o que discutimos como ameaça à validade externa.
+
+**Coleta detalhada e consolidação.** Para cada repositório da amostra, o
+pipeline coleta o histórico de releases e os commits entre releases
+consecutivas, e também as execuções de workflow da janela. Como a API devolve
+no máximo 1.000 execuções por consulta, a janela é dividida por mês, e um mês
+que atinge o limite é subdividido até caber. Quando um único dia passa de
+1.000 execuções, a coleta de CI do repositório é marcada como incompleta e suas
+métricas de CI ficam ausentes, nunca zeradas. Por fim, o script
+`pipeline/consolidar.py` reúne as métricas de todas as variantes num único
+arquivo (`dados/metricas_consolidadas.csv`). O significado de cada coluna está
+documentado no dicionário de dados (`dados/dicionario_dados.md`).
+
 ### 2.2 Definições operacionais e variantes — pessoa B
 
 **Unidade de entrega e frequência.** Na referência, uma entrega é uma release

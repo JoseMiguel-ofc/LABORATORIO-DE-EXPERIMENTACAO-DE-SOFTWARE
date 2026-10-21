@@ -5,7 +5,7 @@ github:
   token_env: GITHUB_TOKEN
 
 janela:
-  # TODO: substituir pelas datas fixadas pelo professor na abertura do Lab03S01.
+  # Datas fixadas pelo professor na abertura do Lab03S01 (inclusivas, UTC).
   inicio: 2025-10-01
   fim: 2026-09-30
 

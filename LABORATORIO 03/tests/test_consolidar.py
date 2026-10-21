@@ -136,3 +136,54 @@ def test_saida_preserva_entradas(tmp_path):
         assert list(csv.DictReader(f))[0]['full_name'] == 'dono/repo'
     for arq, dados in originais.items():
         assert (tmp_path / arq).read_bytes() == dados
+
+
+def tabelas_com_variantes():
+    t = tabelas()
+    t['entrega']['dono/repo'].update(semanas_janela='52', tags_status='ok', tags_janela='26')
+    t['ci']['dono/repo'].update(episodios_resolvidos='3', episodios_censurados='1')
+    t['cfr_b']['dono/repo'].update(falhas='2', denominador='8', censuradas='1', inconclusivas='3')
+    return t
+
+
+def test_variantes_de_deploy_e_censura():
+    linha = consolidar(tabelas_com_variantes(), releases_com_prerelease={'dono/repo': 13})[0][0]
+    assert linha['frequencia_releases_prerelease_semana'] == 0.25    # 13 / 52
+    assert linha['frequencia_tags_semana'] == 0.5                    # 26 / 52
+    assert linha['episodios_censurados'] == 1 and linha['episodios_resolvidos'] == 3
+    assert linha['proporcao_episodios_censurados'] == 0.25
+    assert (linha['cfr_b_falhas'], linha['cfr_b_denominador'], linha['cfr_b_censuradas'],
+            linha['cfr_b_inconclusivas']) == (2, 8, 1, 3)
+
+
+def test_variantes_ausentes_nao_viram_zero():
+    t = tabelas_com_variantes()
+    t['entrega']['dono/repo']['tags_status'] = 'nao_coletado'
+    t['ci']['dono/repo']['coleta_completa'] = 'False'
+    t['cfr_b']['dono/repo']['coleta_status'] = 'erro'
+    linha = consolidar(t)[0][0]  # sem releases.csv: variante com pré-release indisponível
+    assert linha['frequencia_releases_prerelease_semana'] is None
+    assert linha['tags_status'] == 'nao_coletado' and linha['frequencia_tags_semana'] is None
+    assert linha['episodios_censurados'] is None and linha['proporcao_episodios_censurados'] is None
+    assert linha['cfr_b_censuradas'] is None
+
+
+def test_sem_episodios_proporcao_censurada_e_ausente():
+    t = tabelas_com_variantes()
+    t['ci']['dono/repo'].update(episodios_resolvidos='0', episodios_censurados='0')
+    assert consolidar(t)[0][0]['proporcao_episodios_censurados'] is None
+
+
+def test_contagem_de_releases_com_prerelease(tmp_path):
+    from pipeline.consolidar import contar_releases_com_prerelease
+    linhas = [
+        'full_name,tag_name,na_janela,draft,prerelease',
+        'o/r,v1,True,False,False',
+        'o/r,v2-rc,True,False,True',      # pré-release entra
+        'o/r,rascunho,True,True,False',   # draft não entra
+        'o/r,v0,False,False,False',       # fora da janela não entra
+        'o/s,v1,True,False,True',
+    ]
+    arquivo = tmp_path / 'releases.csv'
+    arquivo.write_text(chr(10).join(linhas) + chr(10), encoding='utf-8')
+    assert contar_releases_com_prerelease(arquivo) == {'o/r': 2, 'o/s': 1}

@@ -45,6 +45,16 @@ O comando `python -m pipeline.consolidar --config config.yaml` faz junção por 
 | `cfr_a` | decimal opcional, 0 a 1 | `falhas de CI / (falhas + sucessos)` |
 | `cfr_b` | decimal opcional, 0 a 1 | Releases com correção em até 7 dias sobre originais elegíveis (heurística da Pessoa B) |
 | `recuperacao_mediana_horas` | decimal opcional | Mediana de horas de episódios resolvidos no mesmo workflow |
+| `frequencia_releases_prerelease_semana` | decimal opcional | Variante de unidade de deploy (RQ 07): releases publicadas na janela **incluindo pré-releases** (sem drafts), de `releases.csv`, divididas por `semanas_janela` |
+| `tags_status` | texto | Estado da coleta de tags: `ok`, `nao_coletado` (padrão, `tags.coletar: false`) ou erro HTTP |
+| `frequencia_tags_semana` | decimal opcional | Variante de unidade de deploy (RQ 07): tags cujo commit apontado tem data de autoria na janela, por semana; vazia se `tags_status` ≠ `ok` |
+| `episodios_resolvidos` | inteiro opcional | Episódios de falha de CI encerrados por um sucesso dentro da janela |
+| `episodios_censurados` | inteiro opcional | Episódios de falha de CI sem sucesso posterior até o fim da janela (censura) |
+| `proporcao_episodios_censurados` | decimal opcional, 0 a 1 | `episodios_censurados / (resolvidos + censurados)`; vazio se não houve episódios |
+| `cfr_b_falhas` | inteiro opcional | Releases originais seguidas de corretiva em até 7 dias (numerador do CFR b) |
+| `cfr_b_denominador` | inteiro opcional | Releases originais avaliáveis (denominador do CFR b) |
+| `cfr_b_censuradas` | inteiro opcional | Releases dos últimos 7 dias da janela, fora do denominador (censura) |
+| `cfr_b_inconclusivas` | inteiro opcional | Releases sem dados suficientes para a heurística (ex.: compare indisponível), fora do denominador |
 | `categoria_frequencia` | texto opcional | Elite / High / Medium / Low segundo cortes em `metricas/dora.py` |
 | `categoria_lead_time` | texto opcional | Categoria do lead time (a) |
 | `categoria_cfr` | texto opcional | Categoria do CFR(a) |
