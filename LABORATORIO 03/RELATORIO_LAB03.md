@@ -186,18 +186,16 @@ pipeline (`dados/funil.csv`).
 
 | Etapa | Restantes | Descartados | Motivo do descarte |
 |---|---:|---:|---|
-| Candidatos da busca | 37.606 | — | — |
-| Candidatos avaliados | 492 | 37.114 | Não avaliados: a amostra-alvo já tinha sido atingida |
-| Acessíveis pela API | 492 | 0 | — |
-| Com GitHub Actions | 392 | 100 | Sem workflows do GitHub Actions |
-| Com ≥ 5 releases na janela | 142 | 250 | Menos de 5 releases publicadas na janela |
-| Com ≥ 50 execuções válidas | 100 | 42 | Menos de 50 execuções válidas no *default branch* |
-| **Amostra final** | **100** | | |
+| Candidatos da busca | 37.611 | — | — |
+| Candidatos avaliados | 1.447 | 36.164 | Não avaliados: a amostra-alvo já tinha sido atingida |
+| Acessíveis pela API | 1.447 | 0 | — |
+| Com GitHub Actions | 1.177 | 270 | Sem workflows do GitHub Actions |
+| Com ≥ 5 releases na janela | 407 | 770 | Menos de 5 releases publicadas na janela |
+| Com ≥ 50 execuções válidas | 300 | 107 | Menos de 50 execuções válidas no *default branch* |
+| **Amostra final** | **300** | | |
 
-<!-- ATUALIZAR quando a coleta de 300+ terminar: copiar os números de dados/funil.csv. -->
-
-O filtro mais restritivo é o de releases: 64% dos repositórios com GitHub
-Actions (250 de 392) não publicaram 5 releases na janela. Muitos projetos
+O filtro mais restritivo é o de releases: 65% dos repositórios com GitHub
+Actions (770 de 1.177) não publicaram 5 releases na janela. Muitos projetos
 populares usam apenas tags ou não versionam as entregas pelo mecanismo de
 releases do GitHub. Isso limita a amostra a projetos que publicam releases com
 regularidade, o que discutimos como ameaça à validade externa.
@@ -353,3 +351,184 @@ de novo. As versões testadas e seus resultados são descritos na seção 2.2.
 
 <!-- Após a rotulagem: inserir a tabela com o kappa de cada dimensão
      (validacao/resultado_kappa.csv) e o número de empates resolvidos em reunião. -->
+
+## 3. Resultados
+
+Os resultados abaixo são calculados sobre os 300 repositórios da amostra final
+pelo script `analises/rq01_04.py`, que lê `dados/metricas_consolidadas.csv`.
+Como as métricas têm distribuições muito assimétricas, reportamos a mediana e o
+intervalo interquartil (IQR, a faixa entre o 1º e o 3º quartil). Métricas
+ausentes ficam fora de cada cálculo e nunca são tratadas como zero. A Tabela 2
+resume as quatro métricas, e a Figura 1 mostra suas distribuições com os cortes
+das categorias DORA.
+
+*Tabela 2 — Estatística descritiva das métricas DORA (n = repositórios com a métrica).*
+
+| RQ | Métrica | n | Mediana | Q1 | Q3 | IQR |
+|---|---|---:|---:|---:|---:|---:|
+| RQ 01 | Frequência de deploy | 300 | 0,32/semana | 0,15/semana | 0,82/semana | 0,67/semana |
+| RQ 02 | Lead time (a) por release | 300 | 12,8 dias | 3,0 dias | 39,9 dias | 36,9 dias |
+| RQ 02 | Lead time (b) por commit | 300 | 8,5 dias | 2,1 dias | 36,5 dias | 34,4 dias |
+| RQ 03 | CFR (a) proxy de CI | 300 | 5,6% | 1,9% | 14,5% | 12,6% |
+| RQ 03 | CFR (b) proxy de entrega | 299 | 11,1% | 0,0% | 27,5% | 27,5% |
+| RQ 04 | Tempo de recuperação | 279 | 3,7 h | 0,9 h | 20,1 h | 19,2 h |
+
+![Figura 1 — Distribuição das métricas DORA](analises/resultados/figuras/rq01_04_histogramas.png)
+
+*Figura 1 — Histogramas das métricas. As linhas tracejadas marcam os cortes entre
+as categorias DORA, e a linha contínua marca a mediana. Os eixos de frequência,
+lead time e recuperação estão em escala logarítmica.*
+
+### 3.1 RQ 01 — Frequência de deploy
+
+O repositório típico publica **0,32 release por semana**, cerca de uma release a
+cada três semanas (IQR de 0,15 a 0,82 por semana). A distribuição tem uma cauda
+longa à direita: 58 repositórios (19%) publicam uma ou mais releases por semana,
+e o maior valor passa de 22 por semana. Na outra ponta, 111 repositórios (37%)
+publicam menos de uma release por mês. Pelos cortes DORA, a maior parte dos
+repositórios fica em **Medium** (44%) ou **Low** (37%), e só 2% chegam a Elite.
+
+### 3.2 RQ 02 — Lead time for changes
+
+A mediana do lead time é de **12,8 dias** na variante por release (a) e de
+**8,5 dias** na variante por commit (b). As duas variantes estão fortemente
+correlacionadas (ρ de Spearman = 0,73), mas a variante (a) é maior em 66% dos
+repositórios. Isso é esperado pela definição: a variante (a) mede o commit mais
+antigo de cada release, enquanto a (b) dá o mesmo peso a todos os commits, e a
+maioria deles fica mais perto da data de publicação. Um único commit antigo
+"esquecido" numa release basta para aumentar a variante (a), mas pouco altera a
+(b). A dispersão é grande nas duas: o IQR vai de cerca de 2 a 3 dias até quase
+40 dias, e 96 repositórios (32%) ficam acima de 30 dias na variante (a), o que
+corresponde à categoria Low.
+
+### 3.3 RQ 03 — Change failure rate
+
+As duas variantes contam histórias diferentes. Pelo proxy de CI (a), a mediana é
+de **5,6%** de execuções com falha no *default branch*, e 76% dos repositórios
+ficam na categoria Elite (até 15%). Pelo proxy de entrega (b), a mediana é de
+**11,1%** de releases seguidas de uma release corretiva em até 7 dias, com IQR de
+0% a 27,5%. Nessa variante, 121 repositórios (40%) não tiveram nenhuma release
+classificada como falha. As duas variantes **praticamente não se correlacionam**
+(ρ = 0,03; p = 0,56; n = 299). Um repositório com CI muito estável pode publicar
+correções com frequência, e o inverso também acontece. A variante (b) depende de
+uma heurística cuja validação contra a amostra-ouro é descrita na seção 2.3.
+
+### 3.4 RQ 04 — Tempo de recuperação
+
+Quando uma execução de CI falha no *default branch*, o mesmo workflow volta a
+passar, na mediana, em **3,7 horas** (IQR de 0,9 a 20,1 horas), o que coloca
+metade dos repositórios na categoria High. A cauda é longa: há repositórios cuja
+mediana passa de mil horas. Foram observados 12.251 episódios de falha, dos quais
+200 (1,6%) são **censurados**, ou seja, não tinham sido resolvidos até o fim da
+janela. Esses episódios estão concentrados: 108 repositórios (36%) têm ao menos um
+episódio censurado, mas a mediana da proporção por repositório é zero. Outros 21
+repositórios (7%) não tiveram nenhum episódio resolvido na janela e ficam sem
+tempo de recuperação.
+
+### 3.5 Classificação DORA de referência (C1)
+
+Na combinação de referência (C1: release como unidade de deploy, lead time (a),
+CFR (a) e tempo de recuperação), a classificação geral fica concentrada nas
+categorias intermediárias: **Medium (43%)** e **High (37%)**. Só 7% dos
+repositórios são Elite e 13% são Low (Figura 2). A distribuição muda bastante de
+uma métrica para outra. O CFR (a) é a métrica mais "generosa" (76% Elite), e a
+frequência de deploy é a mais restritiva (só 2% Elite). Assim, na classificação
+geral, o desempenho em estabilidade compensa em parte o desempenho em velocidade.
+
+![Figura 2 — Categorias DORA na combinação C1](analises/resultados/figuras/rq01_04_categorias_c1.png)
+
+*Figura 2 — Proporção de repositórios em cada categoria DORA, por métrica e na
+classificação geral (C1). "Sem dado": repositórios sem episódio de falha resolvido.*
+
+<!-- 3.6 RQ 05 e 06: Pessoa B. -->
+<!-- 3.7 RQ 07: Pessoa C. -->
+
+## 4. Discussão
+
+### 4.1 Hipóteses das RQ 01 a 04
+
+**H1 (frequência) — confirmada em parte.** A mediana de 0,32 release por semana
+caiu dentro da faixa esperada (0,25 a 0,75), e a distribuição tem a cauda longa
+prevista, com poucos repositórios que publicam várias releases por semana. A
+surpresa foi a categoria Low. Esperávamos que o critério de inclusão (5 releases
+na janela) a tornasse rara, mas 37% dos repositórios ficam abaixo de uma release
+por mês. O motivo é que o piso do filtro (cerca de 0,1 release por semana) está
+bem abaixo do corte de Low (cerca de 0,23 por semana). Em outras palavras, um
+projeto que publica entre 5 e 11 releases por ano entra na amostra e é
+classificado como Low.
+
+**H2 (lead time) — confirmada, com valores um pouco menores.** Como previsto, a
+variante (a) é maior que a (b) na maioria dos repositórios, e as duas ficam
+longe da faixa Elite. A variante (b) ficou na fronteira entre High e Medium
+(8,5 dias), como esperado. A variante (a) ficou abaixo da faixa prevista (12,8
+dias, contra 2 a 4 semanas). Uma explicação é que muitos projetos publicam
+*patches* poucos dias depois de uma versão maior, e essas releases curtas puxam a
+mediana por release para baixo.
+
+**H3 (taxa de falha) — confirmada em parte.** O CFR de entrega (b) ficou dentro
+da faixa prevista (11,1%), e a correlação fraca entre as duas variantes se
+confirmou de forma ainda mais forte do que esperávamos (ρ = 0,03). Já o CFR de CI
+(a) ficou abaixo do previsto (5,6%, contra 10% a 25%): o *default branch* de
+projetos populares falha menos do que imaginávamos, provavelmente porque o código
+já passou pela CI do *pull request* antes do *merge*. A falta de correlação
+reforça que "falha de pipeline" e "falha percebida pelo usuário" são fenômenos
+distintos. Por isso, escolher uma das duas variantes como "a" taxa de falha muda
+a conclusão sobre a estabilidade de um projeto.
+
+**H4 (recuperação) — confirmada quanto ao valor típico, refutada quanto aos
+contribuidores.** A mediana de 3,7 horas está na faixa prevista (1 a 12 horas) e
+na categoria High, e a cauda longa apareceu. A censura existe, mas é menor do que
+esperávamos: 1,6% dos episódios, concentrados em pouco mais de um terço dos
+repositórios. Também esperávamos uma recuperação mais lenta em repositórios com
+menos contribuidores, mas a correlação observada é fraca e vai no sentido
+**oposto** (ρ = 0,14; p = 0,02): repositórios com mais contribuidores demoram um
+pouco mais para se recuperar. Uma explicação possível é que projetos grandes têm
+mais workflows secundários (documentação, *benchmarks*, publicação), que podem
+ficar quebrados por mais tempo sem bloquear o trabalho principal.
+
+<!-- 4.2 Hipóteses das RQ 05 e 06: Pessoa B. 4.3 Hipótese da RQ 07: Pessoa C. -->
+
+## 5. Ameaças à validade
+
+### 5.1 Validade de construto
+
+A principal ameaça é que **nenhuma das métricas observa diretamente o fenômeno
+que o DORA define**. Medimos aproximações (*proxies*), e cada uma tem um desvio
+conhecido.
+
+- **Release ≠ deploy.** Tratamos a publicação de uma release no GitHub como um
+  deploy. Para bibliotecas e frameworks, publicar uma release não coloca nada em
+  produção: quem faz isso são os usuários, quando atualizam a dependência. Para
+  aplicações, o deploy real pode acontecer sem release (deploy contínuo a partir
+  do *default branch*) ou com uma release que agrupa vários deploys. Assim, a
+  frequência de deploy tende a ser **subestimada** em projetos com deploy
+  contínuo e a não ter correspondente em produção para bibliotecas. A dimensão
+  "entregas reais" da amostra-ouro (seção 2.3) mede o quanto esse proxy se
+  sustenta no julgamento humano.
+- **Falha de CI ≠ falha em produção.** O CFR (a) conta execuções de workflow com
+  falha. Uma falha de pipeline quase nunca chega ao usuário, porque é justamente
+  o pipeline que a barra. Ao mesmo tempo, defeitos que chegam ao usuário em geral
+  passaram pela CI sem falhar. A correlação quase nula entre CFR (a) e CFR (b)
+  (ρ = 0,03) é evidência empírica de que as duas variantes medem construtos
+  diferentes. O mesmo vale para o tempo de recuperação, que mede quanto tempo um
+  workflow fica "vermelho", e não quanto tempo os usuários ficam afetados.
+- **Release corretiva como falha.** O CFR (b) depende de uma heurística (versão
+  *patch*, palavras-chave e janela de 7 dias). Uma release *patch* pode corrigir
+  um defeito antigo, ou só atualizar dependências, e uma correção importante
+  pode sair numa versão *minor*. A precisão e o recall dessa heurística são
+  medidos contra a amostra-ouro.
+- **Data do commit.** O lead time usa `commit.author.date`, que registra quando a
+  mudança foi escrita. *Rebases* e *squash merges* preservam ou reescrevem essa
+  data, de modo que o lead time pode incluir o tempo de revisão do *pull request*
+  ou, ao contrário, omiti-lo.
+- **Release anterior em projetos com várias linhas de versão.** A release
+  anterior é a última estável publicada antes, por data. Em projetos que mantêm
+  versões em paralelo (por exemplo, correções de 1.114.x publicadas depois da
+  1.115.0), a comparação cruza linhas de versão diferentes e pode inflar o número
+  de commits e o lead time da release.
+- **Cortes de categoria fixos.** As categorias usam cortes adaptados dos
+  relatórios DORA, que definem as faixas por agrupamento das respostas de cada
+  ano. Os cortes desta disciplina permitem comparar grupos, mas a classificação
+  de um repositório não equivale à que ele receberia num relatório DORA.
+
+<!-- 5.2 Validade interna e 5.3 externa: Pessoa C. 5.4 Validade de conclusão: Pessoa B. -->

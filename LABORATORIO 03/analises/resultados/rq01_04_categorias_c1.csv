@@ -1,0 +1,26 @@
+metrica,coluna,categoria,repositorios,percentual
+Frequência de deploy,categoria_frequencia,Elite,7,2.3333333333333335
+Frequência de deploy,categoria_frequencia,High,51,17.0
+Frequência de deploy,categoria_frequencia,Medium,131,43.666666666666664
+Frequência de deploy,categoria_frequencia,Low,111,37.0
+Frequência de deploy,categoria_frequencia,Sem dado,0,0.0
+Lead time (a),categoria_lead_time,Elite,51,17.0
+Lead time (a),categoria_lead_time,High,62,20.666666666666668
+Lead time (a),categoria_lead_time,Medium,91,30.333333333333332
+Lead time (a),categoria_lead_time,Low,96,32.0
+Lead time (a),categoria_lead_time,Sem dado,0,0.0
+CFR (a),categoria_cfr,Elite,228,76.0
+CFR (a),categoria_cfr,High,35,11.666666666666666
+CFR (a),categoria_cfr,Medium,19,6.333333333333333
+CFR (a),categoria_cfr,Low,18,6.0
+CFR (a),categoria_cfr,Sem dado,0,0.0
+Tempo de recuperação,categoria_recuperacao,Elite,72,24.0
+Tempo de recuperação,categoria_recuperacao,High,150,50.0
+Tempo de recuperação,categoria_recuperacao,Medium,37,12.333333333333334
+Tempo de recuperação,categoria_recuperacao,Low,20,6.666666666666667
+Tempo de recuperação,categoria_recuperacao,Sem dado,21,7.0
+Classificação geral,categoria_geral,Elite,20,6.666666666666667
+Classificação geral,categoria_geral,High,111,37.0
+Classificação geral,categoria_geral,Medium,130,43.333333333333336
+Classificação geral,categoria_geral,Low,39,13.0
+Classificação geral,categoria_geral,Sem dado,0,0.0

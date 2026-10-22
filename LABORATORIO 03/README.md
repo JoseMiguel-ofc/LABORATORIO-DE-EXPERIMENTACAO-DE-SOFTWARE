@@ -172,6 +172,19 @@ python -m validacao.consenso    # 3. consenso por maioria; empates vão para des
 
    A coluna `metodo_*` diz se cada rótulo veio da maioria ou da reunião.
 
+## Análise das RQ 01 a 04 (`analises/rq01_04.py`)
+
+```bash
+python -m analises.rq01_04
+```
+
+Lê `dados/metricas_consolidadas.csv` e grava em `analises/resultados/`:
+- mediana, Q1, Q3 e IQR de cada métrica (`rq01_04_descritiva.csv`);
+- casos censurados (`rq01_04_censura.csv`);
+- categorias DORA da combinação de referência C1 (`rq01_04_categorias_c1.csv`);
+- as tabelas formatadas para o artigo (`rq01_04_resumo.md`);
+- histogramas, boxplots e o gráfico de categorias (`figuras/`).
+
 ## Classificação DORA (`metricas/dora.py`)
 
 Cortes fixos da RQ 07. Unidades de entrada: deploys por semana; lead time e tempo

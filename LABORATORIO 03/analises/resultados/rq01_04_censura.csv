@@ -1,0 +1,7 @@
+item,valor
+Episódios de falha resolvidos (RQ 04),12051.0
+Episódios de falha censurados (RQ 04),200.0
+Repositórios com ao menos 1 episódio censurado,108.0
+Mediana da proporção de episódios censurados por repositório,0.0
+Repositórios sem episódio resolvido (sem tempo de recuperação),21.0
+Releases censuradas no CFR (b) (últimos 7 dias da janela),295.0
