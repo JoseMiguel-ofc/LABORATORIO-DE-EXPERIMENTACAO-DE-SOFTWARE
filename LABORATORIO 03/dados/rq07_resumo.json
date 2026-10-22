@@ -1,0 +1,31 @@
+{
+  "repositorios": 300,
+  "tags_completas": true,
+  "observacao": "Pares calculados apenas sobre repositórios com 4 métricas nos dois cenários",
+  "comparacoes": [
+    {
+      "comparacao": "C1xC2",
+      "comparaveis": 278,
+      "excluidos": 22,
+      "mudaram": 102,
+      "percentual_mudanca": 36.69064748201439,
+      "kappa_linear": 0.4719574526868352
+    },
+    {
+      "comparacao": "C1xC3",
+      "comparaveis": 279,
+      "excluidos": 21,
+      "mudaram": 58,
+      "percentual_mudanca": 20.788530465949822,
+      "kappa_linear": 0.738627161434764
+    },
+    {
+      "comparacao": "C2xC3",
+      "comparaveis": 278,
+      "excluidos": 22,
+      "mudaram": 69,
+      "percentual_mudanca": 24.820143884892087,
+      "kappa_linear": 0.6391536273115221
+    }
+  ]
+}

@@ -33,7 +33,7 @@ busca:
 tags:
   # Variante da RQ 07. Cada tag custa uma chamada à API (data do commit apontado),
   # o que pode somar milhares de chamadas por repositório. Ligar só para a RQ 07.
-  coletar: false
+  coletar: true
 
 filtros:
   releases: 5 # releases publicadas (draft = false, não pré-release) na janela
