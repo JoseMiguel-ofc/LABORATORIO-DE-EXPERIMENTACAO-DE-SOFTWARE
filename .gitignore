@@ -14,3 +14,7 @@ env/
 # Arquivos de sistema
 .DS_Store
 Thumbs.db
+
+# Backup
+dados_backup_sprint01/
+/LABORATORIO 03/dados/checkpoints_tags_rq07/
