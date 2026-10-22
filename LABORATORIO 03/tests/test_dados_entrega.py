@@ -99,8 +99,11 @@ def test_rejeita_commit_orfao_e_duplicata_release_conflitante(tmp_path):
     with pytest.raises(ValueError, match="sem release"):
         carregar_releases(r, c)
     gravar_csv(r, [release(), release(commits_novos="3")])
-    with pytest.raises(ValueError, match="conflitantes"):
-        carregar_releases(r)
+    dados = carregar_releases(r)
+    assert len(dados) == 1  # Uma tag conta como uma única entrega.
+    assert "tag_com_releases_conflitantes" in dados[0]["commits_integridade"]
+    assert dados[0]["evidencia_commits"]["v1"] is None
+    assert dados[0]["evidencia_commits"]["v2"] is None
 
 
 @pytest.mark.parametrize("valor", ["-1", "1.5", "NaN", "Infinity", "errado"])
@@ -132,3 +135,17 @@ def test_booleanos_csv(valor, esperado):
 def test_booleano_nao_aceita_texto_arbitrario():
     with pytest.raises(ValueError, match="booleano inválido"):
         booleano("talvez")
+
+
+def test_tags_repetidas_com_release_ids_diferentes_ficam_inconclusivas(tmp_path):
+    r = tmp_path / "r.csv"
+    gravar_csv(r, [
+        release(release_id="25582079", tag_anterior="v1.0.0"),
+        release(release_id="25582080", tag_anterior="v1.0.1"),
+    ])
+    dados = carregar_releases(r)
+    assert len(dados) == 1
+    assert dados[0]["release_ids_agrupados"] == ["25582079", "25582080"]
+    assert "tag_com_releases_conflitantes" in dados[0]["commits_integridade"]
+    assert dados[0]["evidencia_commits"]["v1"] is None
+    assert dados[0]["evidencia_commits"]["v2"] is None

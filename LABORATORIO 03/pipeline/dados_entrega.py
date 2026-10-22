@@ -83,8 +83,14 @@ def carregar_releases(caminho_releases, caminho_commits=None):
         if not all(chave):
             raise ValueError("Release sem full_name/tag_name")
         if chave in por_chave:
-            if original != por_chave[chave]["original"]:
-                raise ValueError(f"Release duplicada com dados conflitantes: {chave}")
+            estado = por_chave[chave]
+            # Uma tag pode aparecer em mais de uma release da API. Uma tag
+            # representa apenas uma entrega para o cálculo de CFR(b).
+            # Preservamos a linha original, mas nunca aceitamos como conclusiva
+            # evidência de commits pertencente a releases distintas.
+            if original != estado["original"]:
+                estado["releases_conflitantes"] = True
+            estado["release_ids"].add(original.get("release_id", ""))
             continue
         release = dict(original)
         for campo in ("draft", "prerelease", "na_janela"):
@@ -93,7 +99,9 @@ def carregar_releases(caminho_releases, caminho_commits=None):
                 if campo != "na_janela" and release[campo] is None:
                     raise ValueError(f"{campo} ausente em {chave}")
         release["commits_novos"] = _quantidade(release["commits_novos"])
-        por_chave[chave] = {"original": original, "release": release, "total": 0,
+        por_chave[chave] = {"original": original, "release": release,
+                           "releases_conflitantes": False,
+                           "release_ids": {original.get("release_id", "")}, "total": 0,
                            "incompletos": 0, "duplicados": 0, "conflitos": 0,
                            "comparacoes_divergentes": 0,
                            "evidencia": {versao: False for versao in VERSOES}}
@@ -139,6 +147,8 @@ def carregar_releases(caminho_releases, caminho_commits=None):
         release = estado["release"]
         esperado, total = release["commits_novos"], estado["total"]
         problemas = []
+        if estado["releases_conflitantes"]:
+            problemas.append("tag_com_releases_conflitantes")
         if release["commits_status"] not in {"ok", "sem_commits"}:
             problemas.append("compare_indisponivel")
         if release["commits_status"] == "sem_commits" and (esperado != 0 or total != 0):
@@ -155,7 +165,8 @@ def carregar_releases(caminho_releases, caminho_commits=None):
             problemas.append("sha_conflitante")
         if estado["comparacoes_divergentes"]:
             problemas.append("comparacao_divergente")
-        release.update(commits_coletados=total, commits_duplicados=estado["duplicados"],
+        release.update(release_ids_agrupados=sorted(estado["release_ids"]),
+                       commits_coletados=total, commits_duplicados=estado["duplicados"],
                        commits_conflitantes=estado["conflitos"],
                        commits_integridade=";".join(problemas) if problemas else "ok",
                        evidencia_commits={**{v: None if problemas else estado["evidencia"][v]

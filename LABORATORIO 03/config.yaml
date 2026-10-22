@@ -14,19 +14,19 @@ busca:
   # Limites inclusivos e sem sobreposição. Faixas com mais de 1.000 repositórios
   # são divididas ao meio automaticamente até caber.
   faixas_estrelas:
-    - {min: 1000, max: 1099}
-    - {min: 1100, max: 1249}
-    - {min: 1250, max: 1499}
-    - {min: 1500, max: 1799}
-    - {min: 1800, max: 2199}
-    - {min: 2200, max: 2799}
-    - {min: 2800, max: 3599}
-    - {min: 3600, max: 4999}
-    - {min: 5000, max: 7499}
-    - {min: 7500, max: 11999}
-    - {min: 12000, max: 24999}
-    - {min: 25000, max: 59999}
-    - {min: 60000}
+    - { min: 1000, max: 1099 }
+    - { min: 1100, max: 1249 }
+    - { min: 1250, max: 1499 }
+    - { min: 1500, max: 1799 }
+    - { min: 1800, max: 2199 }
+    - { min: 2200, max: 2799 }
+    - { min: 2800, max: 3599 }
+    - { min: 3600, max: 4999 }
+    - { min: 5000, max: 7499 }
+    - { min: 7500, max: 11999 }
+    - { min: 12000, max: 24999 }
+    - { min: 25000, max: 59999 }
+    - { min: 60000 }
   # Repositórios sem push dentro da janela não podem ter releases nem runs nela.
   filtro_extra: "archived:false pushed:>=2025-10-01"
 
@@ -36,12 +36,12 @@ tags:
   coletar: false
 
 filtros:
-  releases: 5   # releases publicadas (draft = false, não pré-release) na janela
-  runs: 50      # workflow runs com event = push no default branch, conclusão válida
+  releases: 5 # releases publicadas (draft = false, não pré-release) na janela
+  runs: 50 # workflow runs com event = push no default branch, conclusão válida
 
 amostra:
   # Lab03S01: 100. Lab03S02: >= 300 (ou null para avaliar todos os candidatos).
-  tamanho: 100
+  tamanho: 300
   semente: 42
 
 heuristica:

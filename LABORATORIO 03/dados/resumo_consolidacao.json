@@ -1,17 +1,17 @@
 {
-  "repositorios": 100,
+  "repositorios": 300,
   "meta_sprint2": 300,
-  "meta_atingida": false,
-  "classificacao_completa": 93,
-  "sem_tempo_recuperacao": 7,
-  "episodios_censurados": 214,
-  "episodios_resolvidos": 5833,
-  "releases_censuradas_cfr_b": 74,
+  "meta_atingida": true,
+  "classificacao_completa": 279,
+  "sem_tempo_recuperacao": 21,
+  "episodios_censurados": 200,
+  "episodios_resolvidos": 12051,
+  "releases_censuradas_cfr_b": 295,
   "categorias_gerais": {
-    "Elite": 9,
-    "High": 45,
-    "Medium": 42,
-    "Low": 4
+    "Elite": 20,
+    "High": 111,
+    "Medium": 130,
+    "Low": 39
   },
   "avisos": []
 }
