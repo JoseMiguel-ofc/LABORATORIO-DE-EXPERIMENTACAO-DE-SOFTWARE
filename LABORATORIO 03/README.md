@@ -185,6 +185,24 @@ Lê `dados/metricas_consolidadas.csv` e grava em `analises/resultados/`:
 - as tabelas formatadas para o artigo (`rq01_04_resumo.md`);
 - histogramas, boxplots e o gráfico de categorias (`figuras/`).
 
+## Análise das RQ 05 e 06 (`analises/rq05.py`, `analises/rq06.py`)
+
+```bash
+python -m analises.rq05   # Spearman frequência × CFR (a) e (b): ρ, p-valor e n + dispersão em log
+python -m analises.rq06   # Kruskal-Wallis por quartis/linguagem, Holm, ε² e Cliff's delta
+```
+
+A RQ 06 testa 4 fatores × 4 métricas da combinação C1:
+- os fatores são estrelas, contribuidores e idade (em quartis) e linguagem (com pelo menos 15 repositórios);
+- todos os 16 testes passam pela correção de Holm;
+- o ε² é interpretado por analogia ao η² (0,01, 0,06 e 0,14), e o Cliff's delta pela escala de Romano et al. (2006).
+
+Saídas:
+- `rq05_spearman.csv`;
+- `rq06_testes.csv`;
+- `rq06_medianas.csv`;
+- figuras em `analises/resultados/figuras/`.
+
 ## Classificação DORA (`metricas/dora.py`)
 
 Cortes fixos da RQ 07. Unidades de entrada: deploys por semana; lead time e tempo

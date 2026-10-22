@@ -1,0 +1,3 @@
+x,y,n,rho,p_valor,interpretacao
+frequencia_releases_semana,cfr_a,300,0.03332222301798529,0.5653534717501174,desprezível
+frequencia_releases_semana,cfr_b,299,0.3452786768783853,8.509299278594268e-10,moderada positiva

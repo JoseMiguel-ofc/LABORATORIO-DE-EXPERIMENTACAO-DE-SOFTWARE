@@ -440,8 +440,68 @@ geral, o desempenho em estabilidade compensa em parte o desempenho em velocidade
 *Figura 2 — Proporção de repositórios em cada categoria DORA, por métrica e na
 classificação geral (C1). "Sem dado": repositórios sem episódio de falha resolvido.*
 
-<!-- 3.6 RQ 05 e 06: Pessoa B. -->
-<!-- 3.7 RQ 07: Pessoa C. -->
+### 3.6 RQ 05 — Frequência de deploy × taxa de falha
+
+Calculamos a correlação de Spearman entre a frequência de deploy (RQ 01) e cada
+variante do CFR (RQ 03), com o script `analises/rq05.py` (Tabela 3 e Figura 3).
+
+*Tabela 3 — Correlação de Spearman entre frequência de deploy e CFR.*
+
+| Par | ρ | p-valor | n | Força |
+|---|---:|---:|---:|---|
+| Frequência × CFR (a) proxy de CI | 0,03 | 0,57 | 300 | desprezível |
+| Frequência × CFR (b) proxy de entrega | 0,35 | < 0,001 | 299 | moderada positiva |
+
+Com o proxy de CI, **não há relação** entre publicar mais e falhar mais: a nuvem
+de pontos da Figura 3 (à esquerda) é plana em toda a faixa de frequência. Com o
+proxy de entrega, a relação é **moderada e positiva**: repositórios que publicam
+mais releases também têm uma proporção maior de releases seguidas de uma
+correção em até 7 dias.
+
+![Figura 3 — Frequência de deploy × CFR](analises/resultados/figuras/rq05_dispersao.png)
+
+*Figura 3 — Frequência de deploy (escala log) contra cada variante do CFR. Cada
+ponto é um repositório.*
+
+### 3.7 RQ 06 — Características associadas ao desempenho
+
+Comparamos as quatro métricas da combinação de referência entre grupos de
+quatro fatores: estrelas, contribuidores e idade, divididos em quartis, e
+linguagem principal (as seis linguagens com pelo menos 15 repositórios e um grupo
+"Outras"). O tipo do projeto não entrou, porque só foi rotulado nos 60
+repositórios da amostra-ouro. Em cada um dos 16 pares fator × métrica, aplicamos
+o teste de Kruskal-Wallis e corrigimos os p-valores pelo método de Holm. Como
+tamanho de efeito, reportamos o ε² = H / (n − 1), interpretado por analogia ao
+η² (0,01 pequeno; 0,06 médio; 0,14 grande). Para os fatores em quartis, também
+calculamos o Cliff's delta entre o 4º e o 1º quartil, que indica a direção do
+efeito (script `analises/rq06.py`). A Figura 4 resume os 16 testes, e a Tabela 4
+detalha os quatro que continuam significativos após a correção.
+
+![Figura 4 — Tamanho de efeito por fator e métrica](analises/resultados/figuras/rq06_efeitos.png)
+
+*Figura 4 — ε² de cada teste de Kruskal-Wallis. O asterisco marca os testes com
+p < 0,05 após a correção de Holm.*
+
+*Tabela 4 — Associações significativas após a correção de Holm.*
+
+| Fator | Métrica | ε² | p (Holm) | Medianas por grupo | δ (Q4 × Q1) |
+|---|---|---:|---:|---|---:|
+| Idade | Lead time (a) | 0,23 (grande) | < 0,001 | Q1 2,5 dias → Q4 38,3 dias | 0,69 (grande) |
+| Contribuidores | Lead time (a) | 0,15 (grande) | < 0,001 | Q1 3,2 dias → Q4 30,0 dias | 0,61 (grande) |
+| Idade | Frequência | 0,15 (grande) | < 0,001 | Q1 0,84 → Q4 0,19 por semana | −0,57 (grande) |
+| Linguagem | Lead time (a) | 0,11 (médio) | < 0,001 | TypeScript 5,1 dias; C++ 37,1 dias | — |
+
+Os resultados formam um padrão claro. **Os fatores se associam às métricas de
+velocidade, mas não às de estabilidade.** Repositórios mais antigos publicam
+releases com menos frequência e têm lead time bem maior. O mesmo acontece com o
+lead time dos repositórios com mais contribuidores. Na linguagem, projetos em
+TypeScript (5,1 dias), JavaScript (6,3) e Rust (7,1) têm lead time mediano bem
+menor que os em Go (24,2) e C++ (37,1). Nenhum fator teve associação
+significativa com o CFR (a) ou com o tempo de recuperação, e os efeitos nessas
+métricas são todos pequenos ou desprezíveis (ε² ≤ 0,034). A popularidade
+(estrelas) não se associou a nenhuma métrica depois da correção.
+
+<!-- 3.8 RQ 07: Pessoa C. -->
 
 ## 4. Discussão
 
@@ -475,18 +535,59 @@ reforça que "falha de pipeline" e "falha percebida pelo usuário" são fenômen
 distintos. Por isso, escolher uma das duas variantes como "a" taxa de falha muda
 a conclusão sobre a estabilidade de um projeto.
 
-**H4 (recuperação) — confirmada quanto ao valor típico, refutada quanto aos
-contribuidores.** A mediana de 3,7 horas está na faixa prevista (1 a 12 horas) e
+**H4 (recuperação) — confirmada quanto ao valor típico, não confirmada quanto
+aos contribuidores.** A mediana de 3,7 horas está na faixa prevista (1 a 12 horas) e
 na categoria High, e a cauda longa apareceu. A censura existe, mas é menor do que
 esperávamos: 1,6% dos episódios, concentrados em pouco mais de um terço dos
 repositórios. Também esperávamos uma recuperação mais lenta em repositórios com
 menos contribuidores, mas a correlação observada é fraca e vai no sentido
 **oposto** (ρ = 0,14; p = 0,02): repositórios com mais contribuidores demoram um
-pouco mais para se recuperar. Uma explicação possível é que projetos grandes têm
-mais workflows secundários (documentação, *benchmarks*, publicação), que podem
-ficar quebrados por mais tempo sem bloquear o trabalho principal.
+pouco mais para se recuperar. Essa associação, porém, não se mantém depois da
+correção para comparações múltiplas na RQ 06 (seção 3.7), então não a tratamos
+como um achado. Se ela existir, uma explicação possível é que projetos grandes
+têm mais workflows secundários (documentação, *benchmarks*, publicação), que
+podem ficar quebrados por mais tempo sem bloquear o trabalho principal.
 
-<!-- 4.2 Hipóteses das RQ 05 e 06: Pessoa B. 4.3 Hipótese da RQ 07: Pessoa C. -->
+### 4.2 Hipóteses das RQ 05 e 06
+
+**H5 (velocidade e estabilidade) — confirmada.** Como previsto, a frequência de
+deploy não se associa ao CFR de CI (ρ = 0,03) e se associa de forma positiva e
+mais marcada ao CFR de entrega (ρ = 0,35).
+
+**Existe trade-off entre velocidade e estabilidade?** Os dados **não sustentam um
+trade-off**, mas também não reproduzem a afirmação do DORA de que as equipes
+mais rápidas são também as mais estáveis. Pelo proxy de CI, velocidade e
+estabilidade são simplesmente independentes: publicar mais não aumenta nem
+diminui a taxa de falha do pipeline. A correlação positiva com o CFR (b) parece
+um trade-off à primeira vista, mas é em boa parte um **efeito da própria
+definição do proxy**, por dois motivos:
+
+1. as releases corretivas também contam como deploys, então um projeto que
+   corrige muito publica muito, e a frequência sobe junto com a taxa;
+2. quem publica com frequência tem mais pares de releases separados por menos de
+   7 dias, o que dá à heurística mais oportunidades de marcar uma release como
+   falha.
+
+Além disso, correlação não implica causalidade. Em qualquer dos casos, os dados
+mostram associação, não que publicar mais *cause* mais correções.
+
+**H6 (características dos projetos) — refutada para contribuidores, confirmada
+para popularidade.** Esperávamos que projetos com mais contribuidores
+entregassem mais rápido. Aconteceu o contrário: o lead time cresce de 3,2 dias
+no quartil com menos contribuidores para 30 dias no quartil com mais. A idade
+mostra o mesmo padrão, ainda mais forte, e também se associa a uma frequência
+menor. As duas variáveis estão correlacionadas (ρ = 0,53 entre idade e
+contribuidores), então parte do efeito dos contribuidores pode ser, na verdade,
+efeito da maturidade do projeto. Uma explicação plausível é que projetos maduros
+e com muitos colaboradores adotam ciclos de release mais longos e planejados,
+com mais revisão e mais estabilidade de API, enquanto projetos novos publicam
+pequenas versões com frequência. Para a popularidade, como esperávamos, não há
+associação: ter mais estrelas não diz nada sobre o desempenho de entrega. O fato
+de nenhum fator se associar às métricas de estabilidade sugere que o CFR (a) e a
+recuperação dependem mais de práticas de cada projeto (testes, cultura de
+revisão, workflows secundários) do que de tamanho, idade ou linguagem.
+
+<!-- 4.3 Hipótese da RQ 07: Pessoa C. -->
 
 ## 5. Ameaças à validade
 
@@ -531,4 +632,29 @@ conhecido.
   ano. Os cortes desta disciplina permitem comparar grupos, mas a classificação
   de um repositório não equivale à que ele receberia num relatório DORA.
 
-<!-- 5.2 Validade interna e 5.3 externa: Pessoa C. 5.4 Validade de conclusão: Pessoa B. -->
+<!-- 5.2 Validade interna e 5.3 externa: Pessoa C. -->
+
+### 5.4 Validade de conclusão
+
+- **Muitas comparações.** A RQ 06 faz 16 testes. Sem correção, a chance de ao
+  menos um falso positivo ao nível de 5% passaria de 50%. Aplicamos a correção de
+  Holm sobre os 16 testes, e só reportamos como significativos os que continuam
+  abaixo de 0,05 depois dela. Quatro testes com p < 0,05 sem correção (por
+  exemplo, estrelas × frequência, com p = 0,02) deixaram de ser significativos,
+  e não os interpretamos.
+- **Significância não é relevância.** Com n = 300, até diferenças pequenas
+  podem ser significativas. Por isso reportamos o tamanho de efeito (ε² e
+  Cliff's delta) em todos os testes, e a discussão se apoia nos efeitos médios e
+  grandes.
+- **Subgrupos pequenos.** Nos quartis, cada grupo tem cerca de 75 repositórios.
+  Na linguagem, alguns grupos são pequenos (C++ tem 18, JavaScript 19), e o
+  grupo "Outras" junta linguagens muito diferentes. As medianas dos grupos
+  pequenos são menos estáveis.
+- **Testes não paramétricos e assimetria.** Usamos Spearman, Kruskal-Wallis e
+  Mann-Whitney porque as métricas têm distribuições muito assimétricas, com
+  caudas longas. Esses testes comparam postos e não exigem distribuição normal,
+  mas o Kruskal-Wallis indica que *alguma* distribuição difere, sem dizer qual
+  grupo. O Cliff's delta entre os quartis extremos complementa essa informação.
+- **Fatores correlacionados.** Idade e número de contribuidores estão
+  correlacionados (ρ = 0,53). Como cada fator é testado separadamente, não é
+  possível separar o efeito de um do efeito do outro.

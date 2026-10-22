@@ -1,0 +1,77 @@
+fator,metrica,grupo,mediana
+Estrelas,Frequência,Q1,0.2684931506849315
+Estrelas,Frequência,Q2,0.3068493150684931
+Estrelas,Frequência,Q3,0.3643835616438356
+Estrelas,Frequência,Q4,0.4027397260273972
+Estrelas,Lead time (a),Q1,325.84027777777777
+Estrelas,Lead time (a),Q2,295.74194444444447
+Estrelas,Lead time (a),Q3,253.5306944444445
+Estrelas,Lead time (a),Q4,310.8572222222222
+Estrelas,CFR (a),Q1,0.0486159169550173
+Estrelas,CFR (a),Q2,0.0714285714285714
+Estrelas,CFR (a),Q3,0.05
+Estrelas,CFR (a),Q4,0.0623501199040767
+Estrelas,Recuperação,Q1,2.748611111111111
+Estrelas,Recuperação,Q2,4.697777777777778
+Estrelas,Recuperação,Q3,3.589861111111111
+Estrelas,Recuperação,Q4,5.520208333333333
+Contribuidores,Frequência,Q1,0.4123287671232876
+Contribuidores,Frequência,Q2,0.31643835616438354
+Contribuidores,Frequência,Q3,0.2876712328767123
+Contribuidores,Frequência,Q4,0.2684931506849315
+Contribuidores,Lead time (a),Q1,75.77854166666665
+Contribuidores,Lead time (a),Q2,294.8498611111111
+Contribuidores,Lead time (a),Q3,428.91541666666666
+Contribuidores,Lead time (a),Q4,719.1027777777778
+Contribuidores,CFR (a),Q1,0.06631414022718365
+Contribuidores,CFR (a),Q2,0.048780487804878
+Contribuidores,CFR (a),Q3,0.0470723306544202
+Contribuidores,CFR (a),Q4,0.0575762037991459
+Contribuidores,Recuperação,Q1,1.6359722222222222
+Contribuidores,Recuperação,Q2,5.510833333333333
+Contribuidores,Recuperação,Q3,6.238611111111112
+Contribuidores,Recuperação,Q4,3.82
+Idade,Frequência,Q1,0.8438356164383561
+Idade,Frequência,Q2,0.3068493150684931
+Idade,Frequência,Q3,0.2684931506849315
+Idade,Frequência,Q4,0.1917808219178082
+Idade,Lead time (a),Q1,61.00222222222222
+Idade,Lead time (a),Q2,253.5306944444445
+Idade,Lead time (a),Q3,505.15527777777777
+Idade,Lead time (a),Q4,919.1233333333332
+Idade,CFR (a),Q1,0.0748299319727891
+Idade,CFR (a),Q2,0.0486159169550173
+Idade,CFR (a),Q3,0.0528541226215644
+Idade,CFR (a),Q4,0.0524916943521594
+Idade,Recuperação,Q1,1.998888888888889
+Idade,Recuperação,Q2,2.336388888888889
+Idade,Recuperação,Q3,6.2425
+Idade,Recuperação,Q4,5.539583333333333
+Linguagem,Frequência,C++,0.210958904109589
+Linguagem,Frequência,Go,0.2684931506849315
+Linguagem,Frequência,JavaScript,0.3643835616438356
+Linguagem,Frequência,Outras,0.2589041095890411
+Linguagem,Frequência,Python,0.3356164383561643
+Linguagem,Frequência,Rust,0.5753424657534246
+Linguagem,Frequência,TypeScript,0.5178082191780822
+Linguagem,Lead time (a),C++,891.0729861111112
+Linguagem,Lead time (a),Go,581.8891666666667
+Linguagem,Lead time (a),JavaScript,151.86277777777778
+Linguagem,Lead time (a),Outras,459.78493055555555
+Linguagem,Lead time (a),Python,289.6353472222222
+Linguagem,Lead time (a),Rust,171.2811111111111
+Linguagem,Lead time (a),TypeScript,121.62555555555556
+Linguagem,CFR (a),C++,0.11565293488536771
+Linguagem,CFR (a),Go,0.0533151287089147
+Linguagem,CFR (a),JavaScript,0.1421800947867298
+Linguagem,CFR (a),Outras,0.057999862722218395
+Linguagem,CFR (a),Python,0.04995088994770335
+Linguagem,CFR (a),Rust,0.0508196721311475
+Linguagem,CFR (a),TypeScript,0.0503875968992248
+Linguagem,Recuperação,C++,3.468611111111111
+Linguagem,Recuperação,Go,6.006458333333334
+Linguagem,Recuperação,JavaScript,3.7576388888888888
+Linguagem,Recuperação,Outras,3.7562499999999996
+Linguagem,Recuperação,Python,6.559999999999999
+Linguagem,Recuperação,Rust,5.983888888888889
+Linguagem,Recuperação,TypeScript,1.541875
