@@ -302,13 +302,9 @@ do CFR de entrega (RQ 03 b). Para medir esse erro, construímos uma
 **amostra-ouro**: um subconjunto rotulado por pessoas que serve de referência
 para avaliar os critérios automáticos.
 
-**Sorteio.** Sorteamos 60 repositórios da amostra com semente fixa
-(`random_state = 42`), pelo script `validacao/sorteio.py`. O sorteio foi feito
-no início da coleta completa, sobre os 100 primeiros repositórios aprovados no
-funil. Como o pipeline avalia os candidatos numa ordem aleatória com semente
-fixa, esses 100 repositórios são um subconjunto aleatório da amostra final e
-permanecem nela quando a amostra cresce. Assim, os 60 sorteados também são uma
-amostra aleatória da amostra final. De cada repositório sorteamos 5 releases
+
+**Sorteio.** Sorteamos 60 repositórios da amostra final com semente fixa
+(`random_state = 42`), pelo script `validacao/sorteio.py`. De cada repositório sorteamos 5 releases
 estáveis (sem rascunhos nem pré-releases) publicadas na janela, também com
 semente fixa, totalizando 300 releases.
 
@@ -359,8 +355,8 @@ pelo script `analises/rq01_04.py`, que lê `dados/metricas_consolidadas.csv`.
 Como as métricas têm distribuições muito assimétricas, reportamos a mediana e o
 intervalo interquartil (IQR, a faixa entre o 1º e o 3º quartil). Métricas
 ausentes ficam fora de cada cálculo e nunca são tratadas como zero. A Tabela 2
-resume as quatro métricas, e a Figura 1 mostra suas distribuições com os cortes
-das categorias DORA.
+resume as quatro métricas, a Figura 1 mostra suas distribuições com os cortes
+das categorias DORA, e a Figura 2 compara as variantes em boxplots.
 
 *Tabela 2 — Estatística descritiva das métricas DORA (n = repositórios com a métrica).*
 
@@ -378,6 +374,12 @@ das categorias DORA.
 *Figura 1 — Histogramas das métricas. As linhas tracejadas marcam os cortes entre
 as categorias DORA, e a linha contínua marca a mediana. Os eixos de frequência,
 lead time e recuperação estão em escala logarítmica.*
+
+![Figura 2 — Boxplots das métricas DORA](analises/resultados/figuras/rq01_04_boxplots.png)
+
+*Figura 2 — Boxplots das métricas. A caixa é o IQR, a linha interna é a mediana e
+os pontos são valores atípicos. As variantes (a) e (b) do lead time e do CFR
+aparecem lado a lado no mesmo eixo.*
 
 ### 3.1 RQ 01 — Frequência de deploy
 
@@ -430,20 +432,20 @@ tempo de recuperação.
 Na combinação de referência (C1: release como unidade de deploy, lead time (a),
 CFR (a) e tempo de recuperação), a classificação geral fica concentrada nas
 categorias intermediárias: **Medium (43%)** e **High (37%)**. Só 7% dos
-repositórios são Elite e 13% são Low (Figura 2). A distribuição muda bastante de
+repositórios são Elite e 13% são Low (Figura 3). A distribuição muda bastante de
 uma métrica para outra. O CFR (a) é a métrica mais "generosa" (76% Elite), e a
 frequência de deploy é a mais restritiva (só 2% Elite). Assim, na classificação
 geral, o desempenho em estabilidade compensa em parte o desempenho em velocidade.
 
-![Figura 2 — Categorias DORA na combinação C1](analises/resultados/figuras/rq01_04_categorias_c1.png)
+![Figura 3 — Categorias DORA na combinação C1](analises/resultados/figuras/rq01_04_categorias_c1.png)
 
-*Figura 2 — Proporção de repositórios em cada categoria DORA, por métrica e na
+*Figura 3 — Proporção de repositórios em cada categoria DORA, por métrica e na
 classificação geral (C1). "Sem dado": repositórios sem episódio de falha resolvido.*
 
 ### 3.6 RQ 05 — Frequência de deploy × taxa de falha
 
 Calculamos a correlação de Spearman entre a frequência de deploy (RQ 01) e cada
-variante do CFR (RQ 03), com o script `analises/rq05.py` (Tabela 3 e Figura 3).
+variante do CFR (RQ 03), com o script `analises/rq05.py` (Tabela 3 e Figura 4).
 
 *Tabela 3 — Correlação de Spearman entre frequência de deploy e CFR.*
 
@@ -453,14 +455,14 @@ variante do CFR (RQ 03), com o script `analises/rq05.py` (Tabela 3 e Figura 3).
 | Frequência × CFR (b) proxy de entrega | 0,35 | < 0,001 | 299 | moderada positiva |
 
 Com o proxy de CI, **não há relação** entre publicar mais e falhar mais: a nuvem
-de pontos da Figura 3 (à esquerda) é plana em toda a faixa de frequência. Com o
+de pontos da Figura 4 (à esquerda) é plana em toda a faixa de frequência. Com o
 proxy de entrega, a relação é **moderada e positiva**: repositórios que publicam
 mais releases também têm uma proporção maior de releases seguidas de uma
 correção em até 7 dias.
 
-![Figura 3 — Frequência de deploy × CFR](analises/resultados/figuras/rq05_dispersao.png)
+![Figura 4 — Frequência de deploy × CFR](analises/resultados/figuras/rq05_dispersao.png)
 
-*Figura 3 — Frequência de deploy (escala log) contra cada variante do CFR. Cada
+*Figura 4 — Frequência de deploy (escala log) contra cada variante do CFR. Cada
 ponto é um repositório.*
 
 ### 3.7 RQ 06 — Características associadas ao desempenho
@@ -474,12 +476,12 @@ o teste de Kruskal-Wallis e corrigimos os p-valores pelo método de Holm. Como
 tamanho de efeito, reportamos o ε² = H / (n − 1), interpretado por analogia ao
 η² (0,01 pequeno; 0,06 médio; 0,14 grande). Para os fatores em quartis, também
 calculamos o Cliff's delta entre o 4º e o 1º quartil, que indica a direção do
-efeito (script `analises/rq06.py`). A Figura 4 resume os 16 testes, e a Tabela 4
+efeito (script `analises/rq06.py`). A Figura 5 resume os 16 testes, e a Tabela 4
 detalha os quatro que continuam significativos após a correção.
 
-![Figura 4 — Tamanho de efeito por fator e métrica](analises/resultados/figuras/rq06_efeitos.png)
+![Figura 5 — Tamanho de efeito por fator e métrica](analises/resultados/figuras/rq06_efeitos.png)
 
-*Figura 4 — ε² de cada teste de Kruskal-Wallis. O asterisco marca os testes com
+*Figura 5 — ε² de cada teste de Kruskal-Wallis. O asterisco marca os testes com
 p < 0,05 após a correção de Holm.*
 
 *Tabela 4 — Associações significativas após a correção de Holm.*
@@ -501,7 +503,47 @@ significativa com o CFR (a) ou com o tempo de recuperação, e os efeitos nessas
 métricas são todos pequenos ou desprezíveis (ε² ≤ 0,034). A popularidade
 (estrelas) não se associou a nenhuma métrica depois da correção.
 
-<!-- 3.8 RQ 07: Pessoa C. -->
+### 3.8 RQ 07 — Sensibilidade à definição operacional
+
+Para medir o quanto a classificação depende das escolhas de medição,
+classificamos cada repositório em três combinações de definições operacionais
+(script `analises/rq07_sensibilidade.py`). O tempo de recuperação é o mesmo nas
+três.
+
+- **C1 (referência):** release como unidade de deploy, lead time (a) e CFR (a).
+- **C2:** release ou pré-release como unidade de deploy, lead time (b) e CFR (b).
+- **C3:** tag como unidade de deploy, lead time (b) e CFR (a).
+
+As comparações em pares usam só os repositórios com as quatro métricas nos dois
+cenários comparados (278 ou 279 dos 300). Os demais não tiveram episódio de
+falha resolvido. A Tabela 5 mostra a proporção de repositórios que mudam de
+categoria geral e o kappa de Cohen ponderado linearmente, e a Figura 6 compara
+a distribuição das categorias nas três combinações.
+
+*Tabela 5 — Mudança de categoria geral entre combinações de definições.*
+
+| Par | n | Mudaram de categoria | Subiram | Desceram | κ ponderado | Concordância |
+|---|---:|---:|---:|---:|---:|---|
+| C1 × C2 | 278 | 102 (36,7%) | 49 | 53 | 0,47 | moderada |
+| C1 × C3 | 279 | 58 (20,8%) | 43 | 15 | 0,74 | substancial |
+| C2 × C3 | 278 | 69 (24,8%) | 50 | 19 | 0,64 | substancial |
+
+Trocar só a definição faz entre **um quinto e mais de um terço** dos
+repositórios mudarem de categoria. O par C1 × C2 é o menos estável (κ = 0,47):
+em C2, a classificação geral fica mais concentrada em Medium (143 repositórios,
+contra 121 em C1) e o número de Elite cai de 19 para 8. A maior parte das
+mudanças vem da taxa de falha: a categoria do CFR muda em 157 dos 300
+repositórios entre C1 e C2, contra 130 no lead time e 26 na frequência. Em
+C3, a frequência por tags é maior (mediana de 0,44 por semana, contra 0,32 com
+releases), e os repositórios tendem a **subir** de categoria (43 sobem, 15
+descem). Quase todas as mudanças são de um nível só: só 8 repositórios mudam
+dois níveis ou mais entre C1 e C2, e só um entre C1 e C3.
+
+![Figura 6 — Sensibilidade da classificação DORA](analises/resultados/figuras/rq07_sensibilidade.png)
+
+*Figura 6 — À esquerda, a categoria geral dos repositórios em cada combinação de
+definições. À direita, a proporção de repositórios que mudam de categoria em cada
+par e o kappa de Cohen ponderado.*
 
 ## 4. Discussão
 
@@ -587,7 +629,24 @@ de nenhum fator se associar às métricas de estabilidade sugere que o CFR (a) e
 recuperação dependem mais de práticas de cada projeto (testes, cultura de
 revisão, workflows secundários) do que de tamanho, idade ou linguagem.
 
-<!-- 4.3 Hipótese da RQ 07: Pessoa C. -->
+### 4.3 Hipótese da RQ 07
+
+**H7 (sensibilidade) — confirmada.** Esperávamos que ao menos 20% dos
+repositórios mudassem de categoria em alguma comparação e que o kappa ficasse
+abaixo de 0,80 em ao menos uma delas. Os três pares passaram dos 20% de mudança
+(de 20,8% a 36,7%), e os três kappas ficaram abaixo de 0,80 (de 0,47 a 0,74).
+
+**As conclusões das RQ 01 a 06 são robustas?** Em parte. Os resultados agregados
+mudam pouco: em todas as combinações, a maioria dos repositórios fica em High ou
+Medium, e Elite e Low são minoria. Por isso, a conclusão de que projetos
+open-source populares têm desempenho intermediário pelos critérios DORA não
+depende da definição escolhida. Já a classificação de **um repositório
+específico** não é robusta: para cerca de um terço deles, a categoria depende de
+qual proxy de falha foi usado. Como CFR (a) e CFR (b) praticamente não se
+correlacionam (seção 3.3), a escolha do proxy de falha é a decisão que mais pesa.
+Na prática, comparar ou ranquear projetos individuais pelas métricas DORA
+mineradas do GitHub exige declarar e justificar as definições operacionais, e de
+preferência mostrar mais de uma.
 
 ## 5. Ameaças à validade
 
@@ -632,7 +691,43 @@ conhecido.
   ano. Os cortes desta disciplina permitem comparar grupos, mas a classificação
   de um repositório não equivale à que ele receberia num relatório DORA.
 
-<!-- 5.2 Validade interna e 5.3 externa: Pessoa C. -->
+### 5.2 Validade interna
+
+- **Fatores não controlados.** As associações da RQ 06 podem ser explicadas por
+  fatores que não medimos. A idade e o número de contribuidores estão
+  correlacionados (ρ = 0,53), e projetos antigos tendem a ter processos de
+  release mais formais. Não é possível dizer qual dos dois fatores, ou um
+  terceiro (por exemplo, o tipo do projeto), explica o lead time maior.
+- **Automação e bots.** Alguns repositórios disparam CI centenas de vezes por dia
+  por meio de bots e agentes automatizados. Eles distorcem o CFR (a) e o tempo de
+  recuperação. Um repositório (`wolfSSL/wolfssl`) teve a coleta de CI
+  incompleta por exceder o limite da API num único dia, e suas métricas de CI
+  ficaram ausentes.
+- **Dados que mudam com o tempo.** Releases podem ser apagadas ou reescritas, e
+  tags podem ser movidas. As comparações com erro 404 foram contadas e excluídas,
+  mas o histórico observado na coleta pode não ser o histórico original.
+- **Ordem de coleta.** A coleta de 300 repositórios foi refeita do zero. Como a
+  lista de candidatos da busca muda com o tempo, a ordem aleatória de avaliação
+  mudou, e a amostra final é diferente da amostra parcial da primeira sprint.
+
+### 5.3 Validade externa
+
+- **Projetos populares e que usam releases.** A amostra contém apenas
+  repositórios públicos com mais de 1.000 estrelas, que usam GitHub Actions e
+  publicaram ao menos 5 releases na janela. O filtro de releases excluiu 65% dos
+  repositórios com Actions. Os resultados não valem para projetos que só usam
+  tags, que publicam por outros canais (como gerenciadores de pacotes) ou que
+  fazem deploy contínuo sem releases.
+- **Open-source ≠ corporativo.** Equipes corporativas têm deploy real em
+  produção, monitoramento e incidentes registrados, que não observamos aqui. Os
+  relatórios DORA são baseados principalmente nessas equipes, então nossos
+  resultados não devem ser comparados diretamente com os deles.
+- **Janela única de 12 meses.** Todos os resultados vêm de outubro de 2025 a
+  setembro de 2026. Projetos com ciclos de release longos, ou que mudaram de
+  processo nesse período, podem ter sido medidos num momento atípico.
+- **Linguagens e ecossistemas.** As linguagens mais frequentes (Python,
+  TypeScript, Rust e Go) dominam a amostra. Linguagens menos representadas foram
+  agrupadas em "Outras", e não é possível generalizar para elas.
 
 ### 5.4 Validade de conclusão
 

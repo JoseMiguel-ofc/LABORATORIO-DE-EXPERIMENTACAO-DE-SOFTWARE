@@ -203,6 +203,13 @@ Saídas:
 - `rq06_medianas.csv`;
 - figuras em `analises/resultados/figuras/`.
 
+## Gráfico da RQ 07 (`analises/rq07_grafico.py`)
+
+```bash
+python -m analises.rq07_sensibilidade --config config.yaml   # classificações C1, C2, C3 e kappa
+python -m analises.rq07_grafico                               # figuras/rq07_sensibilidade.png
+```
+
 ## Classificação DORA (`metricas/dora.py`)
 
 Cortes fixos da RQ 07. Unidades de entrada: deploys por semana; lead time e tempo
