@@ -1,0 +1,61 @@
+numero,grupo,autor,titulo,criado_em,mergeado_em,url,mes
+123037,com_bot,mckn,DataSources: Introduce async APIs and hooks as replacement for datasourceSrv,2026-04-20T10:11:52Z,2026-05-27T09:09:20Z,https://github.com/grafana/grafana/pull/123037,2026-05
+124256,com_bot,ferruvich,Provisioning: Fix duplicate folder cleanup during full sync,2026-05-06T11:02:39Z,2026-05-07T15:28:24Z,https://github.com/grafana/grafana/pull/124256,2026-05
+124725,com_bot,ericrshields,Feature toggle: introduce grafana.enableScopesFirstMode,2026-05-12T20:09:15Z,2026-05-13T09:12:09Z,https://github.com/grafana/grafana/pull/124725,2026-05
+124923,com_bot,matyax,Copy Log as JSON: follow up updates,2026-05-14T16:33:17Z,2026-05-15T16:26:59Z,https://github.com/grafana/grafana/pull/124923,2026-05
+125732,com_bot,MissingRoberto,Provisioning: reject http:// repository URLs when a token is configured,2026-05-29T14:14:17Z,2026-05-29T17:07:32Z,https://github.com/grafana/grafana/pull/125732,2026-05
+125289,com_bot,amalavet,"Provisioning: signed commit support (GPG, SSH, S/MIME)",2026-05-21T18:14:45Z,2026-06-11T06:51:06Z,https://github.com/grafana/grafana/pull/125289,2026-06
+126418,com_bot,kristinademeshchik,Annotation list panel (backend): fix creator filtering,2026-06-12T16:44:27Z,2026-06-18T14:32:16Z,https://github.com/grafana/grafana/pull/126418,2026-06
+126947,com_bot,MissingRoberto,Provisioning: Refactor EnsureFolderTreeExists to options struct,2026-06-22T11:18:34Z,2026-06-22T11:35:15Z,https://github.com/grafana/grafana/pull/126947,2026-06
+126982,com_bot,Shubham19032004,fix(provisioning): delete stale GitHub webhook when spec.webhook.disabled is set,2026-06-22T18:30:02Z,2026-06-24T09:39:29Z,https://github.com/grafana/grafana/pull/126982,2026-06
+127463,com_bot,cbodonnell,chore(mt-annotations): preserve legacy data field when proxying,2026-06-29T15:05:11Z,2026-06-30T20:11:46Z,https://github.com/grafana/grafana/pull/127463,2026-06
+127698,com_bot,rwwiv,Apimachinery: Support classic provisioning shim kinds in ManagerProperties,2026-07-01T19:33:05Z,2026-07-09T06:41:44Z,https://github.com/grafana/grafana/pull/127698,2026-07
+128068,com_bot,floriecai,Provisioning: make GitHub webhook creation idempotent (fix repos stuck unhealthy with HTTP 422),2026-07-08T19:08:05Z,2026-07-10T07:54:01Z,https://github.com/grafana/grafana/pull/128068,2026-07
+128180,com_bot,MissingRoberto,Provisioning: attribute Git Sync jobs via admission mutator,2026-07-10T08:41:54Z,2026-07-10T14:44:42Z,https://github.com/grafana/grafana/pull/128180,2026-07
+128370,com_bot,joey-grafana,TraceView: Categorise span and resource attributes,2026-07-14T09:55:51Z,2026-07-14T13:53:45Z,https://github.com/grafana/grafana/pull/128370,2026-07
+129075,com_bot,MissingRoberto,Provisioning: add remove-pending-jobs finalizer to clear repository queue,2026-07-23T09:02:01Z,2026-07-27T09:59:57Z,https://github.com/grafana/grafana/pull/129075,2026-07
+130133,com_bot,alexander-akhmetov,Alerting: Improve capture matching performance,2026-08-05T10:58:18Z,2026-08-05T12:25:23Z,https://github.com/grafana/grafana/pull/130133,2026-08
+130633,com_bot,CollinFingar,Notebooks: Code Cell - CodeMirror + Improvements,2026-08-12T20:07:09Z,2026-08-18T21:17:28Z,https://github.com/grafana/grafana/pull/130633,2026-08
+130650,com_bot,leventebalogh,Datasources: Add `useDatasourcesAsync()` hook with loading and error state,2026-08-13T06:52:53Z,2026-08-13T09:50:32Z,https://github.com/grafana/grafana/pull/130650,2026-08
+130666,com_bot,mckn,Runtime: Migrate tests to setDataSourceInstanceSettings,2026-08-13T09:18:45Z,2026-08-21T06:34:17Z,https://github.com/grafana/grafana/pull/130666,2026-08
+131166,com_bot,NWRichmond,PanelEditNext: Add AI query coauthoring,2026-08-20T14:14:50Z,2026-08-27T18:17:15Z,https://github.com/grafana/grafana/pull/131166,2026-08
+131393,com_bot,PranshulSoni,Tagging: widen tag value column to length 512,2026-08-24T16:11:36Z,2026-09-10T20:28:18Z,https://github.com/grafana/grafana/pull/131393,2026-09
+131879,com_bot,SamuelGD,Logs: Preserve original label case in suggested fields,2026-09-01T13:33:32Z,2026-09-02T20:37:47Z,https://github.com/grafana/grafana/pull/131879,2026-09
+132708,com_bot,floriecai,Provisioning: Skip mutation/validation hooks if only `status` subresource is changed,2026-09-15T20:32:12Z,2026-09-18T16:05:30Z,https://github.com/grafana/grafana/pull/132708,2026-09
+133241,com_bot,MissingRoberto,Provisioning: Surface the finalizer blocking a stuck repository deletion,2026-09-22T11:40:06Z,2026-09-22T15:16:01Z,https://github.com/grafana/grafana/pull/133241,2026-09
+133249,com_bot,dmihai,IAM: Invalidate AuthInfo cache on legacy store,2026-09-22T13:25:26Z,2026-09-23T09:12:00Z,https://github.com/grafana/grafana/pull/133249,2026-09
+134447,com_bot,jliuhq,Dashboards API: call public dashboard API to show public badge,2026-10-07T20:30:14Z,2026-10-08T20:58:51Z,https://github.com/grafana/grafana/pull/134447,2026-10
+135408,com_bot,MissingRoberto,Provisioning: Add per-execution reconcile total metric for repo and connection operators,2026-10-20T08:56:17Z,2026-10-20T10:05:59Z,https://github.com/grafana/grafana/pull/135408,2026-10
+135696,com_bot,mckn,Plugin Compat: Add useDataSourceInstanceList hook,2026-10-22T12:01:17Z,2026-10-29T14:23:30Z,https://github.com/grafana/grafana/pull/135696,2026-10
+135865,com_bot,joshhunt,Pnpm: Update Github Actions for Yarn or pnpm,2026-10-23T11:53:55Z,2026-10-27T16:45:10Z,https://github.com/grafana/grafana/pull/135865,2026-10
+136199,com_bot,darrenjaneczek,Plugin extensions: ensure observable accessors load contributing plugins to the extension point,2026-10-27T18:35:47Z,2026-10-29T01:31:04Z,https://github.com/grafana/grafana/pull/136199,2026-10
+123338,sem_bot,gillesdemey,Alerting: Add modular ability hooks under hooks/abilities/ (1/N),2026-04-23T10:00:58Z,2026-05-12T11:39:32Z,https://github.com/grafana/grafana/pull/123338,2026-05
+124036,sem_bot,hugohaggmark,Chore: upgrade to Storybook 10,2026-05-04T11:21:53Z,2026-05-05T08:25:35Z,https://github.com/grafana/grafana/pull/124036,2026-05
+124660,sem_bot,macabu,Go: Module file cleanup,2026-05-12T07:59:35Z,2026-05-12T13:35:37Z,https://github.com/grafana/grafana/pull/124660,2026-05
+124785,sem_bot,stevesg,IAM: Remove unused app manifest,2026-05-13T10:29:08Z,2026-05-21T09:25:00Z,https://github.com/grafana/grafana/pull/124785,2026-05
+125216,sem_bot,gassiss,fix: update grafana to close DB connections on shutdown,2026-05-20T16:19:54Z,2026-05-21T13:05:56Z,https://github.com/grafana/grafana/pull/125216,2026-05
+126102,sem_bot,Develer,QueryEditor: Remove queryEditorNextMultiSelect feature toggle,2026-06-09T17:25:36Z,2026-06-09T18:06:01Z,https://github.com/grafana/grafana/pull/126102,2026-06
+126157,sem_bot,Clarity-89,Provisioning: Degrade gracefully when settings read is forbidden in repository view hook,2026-06-10T14:52:58Z,2026-06-11T09:52:25Z,https://github.com/grafana/grafana/pull/126157,2026-06
+126260,sem_bot,MissingRoberto,Provisioning: drop Grafana-saved-by trailer note from CommitOptions spec,2026-06-11T10:55:19Z,2026-06-11T11:56:11Z,https://github.com/grafana/grafana/pull/126260,2026-06
+127319,sem_bot,konsalex,fix: storage service tracing with authz service,2026-06-26T09:18:35Z,2026-06-26T11:34:25Z,https://github.com/grafana/grafana/pull/127319,2026-06
+127476,sem_bot,MattIPv4,Deps: Fix duplicate dependency in lockfile,2026-06-29T17:24:58Z,2026-06-29T19:37:20Z,https://github.com/grafana/grafana/pull/127476,2026-06
+127614,sem_bot,floriecai,Provisioning: Add Dashboard Previews to GitHub Enterprise,2026-07-01T03:22:37Z,2026-07-10T15:00:55Z,https://github.com/grafana/grafana/pull/127614,2026-07
+128105,sem_bot,ashharrison90,[Patch steady] Preferences: Close behaviour gaps between legacy and unified storage …,2026-07-09T09:56:32Z,2026-07-09T10:50:57Z,https://github.com/grafana/grafana/pull/128105,2026-07
+128403,sem_bot,RafaelPaulovic,Unified storage: stop test backends to avoid SQLite contention,2026-07-14T14:25:13Z,2026-07-15T11:06:02Z,https://github.com/grafana/grafana/pull/128403,2026-07
+128430,sem_bot,ezebunandu,CI: Add Workflow to Generate and Attach SBOM on Release,2026-07-14T20:38:30Z,2026-07-20T19:08:31Z,https://github.com/grafana/grafana/pull/128430,2026-07
+128913,sem_bot,itsmylife,Chore: Use `lokiGrammar` from @grafana/lezer-logql package,2026-07-21T16:20:53Z,2026-07-21T17:35:30Z,https://github.com/grafana/grafana/pull/128913,2026-07
+129964,sem_bot,toddtreece,Chore: Update cloudwatch generated types,2026-08-03T16:06:42Z,2026-08-03T16:43:22Z,https://github.com/grafana/grafana/pull/129964,2026-08
+130551,sem_bot,JacobsonMT,Alerting: Refactor time intervals as top-level resource with UID,2026-08-11T23:33:11Z,2026-08-12T16:01:09Z,https://github.com/grafana/grafana/pull/130551,2026-08
+130880,sem_bot,gtk-grafana,SystemTransforms: Fix transform pass-thru,2026-08-17T22:11:20Z,2026-08-17T22:29:59Z,https://github.com/grafana/grafana/pull/130880,2026-08
+131030,sem_bot,tonypowa,chore: bump the pinned TRIAGE_REF across the external contribution workflows,2026-08-19T10:30:19Z,2026-08-19T11:05:40Z,https://github.com/grafana/grafana/pull/131030,2026-08
+131359,sem_bot,pstibrany,Dashboards: name the title field once in search requests,2026-08-24T08:09:42Z,2026-08-24T09:12:02Z,https://github.com/grafana/grafana/pull/131359,2026-08
+132565,sem_bot,Xiaowen-Yang,XYChart: Improve size and color field selection,2026-09-14T18:59:30Z,2026-09-24T13:29:36Z,https://github.com/grafana/grafana/pull/132565,2026-09
+132675,sem_bot,pstibrany,Docs: say that Grafana adds the grafana_ prefix to metric names,2026-09-15T15:44:07Z,2026-09-15T15:57:52Z,https://github.com/grafana/grafana/pull/132675,2026-09
+133442,sem_bot,joey-grafana,NodeGraph: Use design system tokens for chrome and hover,2026-09-24T09:19:26Z,2026-09-29T11:52:24Z,https://github.com/grafana/grafana/pull/133442,2026-09
+133515,sem_bot,yuri-tceretian,Alerting: Optimize historian queries with line filters,2026-09-24T19:53:14Z,2026-09-25T13:30:23Z,https://github.com/grafana/grafana/pull/133515,2026-09
+133638,sem_bot,ryantxu,Router: Expose route state and fix request metrics for dashboards,2026-09-26T07:26:09Z,2026-09-26T22:38:08Z,https://github.com/grafana/grafana/pull/133638,2026-09
+131477,sem_bot,Clarity-89,Preferences: Support reserved global-home home dashboard value,2026-08-25T13:27:52Z,2026-10-06T22:08:33Z,https://github.com/grafana/grafana/pull/131477,2026-10
+134033,sem_bot,tinitiuset,Navigation: Preserve section labels in tab titles after session expiry,2026-10-02T10:08:23Z,2026-10-19T08:56:35Z,https://github.com/grafana/grafana/pull/134033,2026-10
+134193,sem_bot,jtvdez,Docs: Update Title of secrets management terraform docs,2026-10-05T20:47:51Z,2026-10-06T18:30:01Z,https://github.com/grafana/grafana/pull/134193,2026-10
+135892,sem_bot,fastfrwrd,Table: Restore borders for transparent panels,2026-10-23T14:24:47Z,2026-10-26T22:34:00Z,https://github.com/grafana/grafana/pull/135892,2026-10
+135990,sem_bot,ryantxu,Router: Serve local dev apps from manifest files,2026-10-26T10:46:55Z,2026-10-26T12:00:03Z,https://github.com/grafana/grafana/pull/135990,2026-10

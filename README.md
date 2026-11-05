@@ -8,3 +8,4 @@ Repositório voltado para a disciplina de LABORATÓRIO DE EXPERIMENTAÇÃO DE SO
 - [Lab02S01 — Katas e testes automatizados](LABORATORIO%2002/S01/README.md) - Preparação do experimento de codificação com e sem IA, com hipóteses e protocolo de validade.
 - [Lab02S02 — Execução e resultados](LABORATORIO%2002/S02/README.md) - Soluções de validação, logs dos testes, métricas e consolidação dos trials.
 - [Lab03 — Mineração de métricas DORA](LABORATORIO%2003/README.md) - Pipeline de coleta, funil de seleção e classificação DORA.
+- [Lab04 — Testes de hipótese por dentro](LABORATORIO%2004/README.md) - Simulação e dashboard comparando t de Welch e Mann-Whitney.
