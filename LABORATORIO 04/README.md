@@ -11,14 +11,24 @@ de revisão.
 
 ## Como executar
 
-Na pasta `LABORATORIO 04` (testado com Python 3.13):
+Na pasta `LABORATORIO 04`, prepare um ambiente com Python 3.12 ou 3.13
+(esta entrega foi validada com Python 3.12.14):
 
 ```bash
-pip install -r requirements.txt && streamlit run app.py
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+Depois, o dashboard completo disponível nesta sprint abre com um único comando:
+
+```bash
+.venv/bin/python -m streamlit run app.py
 ```
 
 O dashboard abre em `http://localhost:8501`, lê o CSV versionado e não acessa a
-API do GitHub. Para ver só o resumo dos dados: `python -m src.dados`.
+API do GitHub. Para ver só o resumo dos dados: `.venv/bin/python -m src.dados`.
+Se usar Python 3.13, troque somente o comando de criação do ambiente por
+`python3.13 -m venv .venv`.
 
 ## Estrutura
 
@@ -29,7 +39,85 @@ API do GitHub. Para ver só o resumo dos dados: `python -m src.dados`.
 | `resultados/` | Resultados das simulações (a partir da Sprint 2) |
 | `src/coleta.py` | Coleta dos dados reais (já executada) |
 | `src/dados.py` | Leitura do CSV e resumo estatístico |
-| `src/graficos.py` | Gráficos do dashboard |
+| `src/cenario.py` | Pergunta, hipóteses, previsão e parâmetros estimados dos dados |
+| `src/simulacao.py` | Gerador reproduzível de dados lognormais |
+| `src/testes.py` | Welch e Mann-Whitney, com estatísticas, p-valores e interpretação |
+| `src/graficos.py` | G1 e G2 do dashboard |
+| `src/exemplo.py` | Execução do exemplo da Sprint 1 pelo terminal |
+| `tests/` | Verificações numéricas, reprodutibilidade, gráficos e integração do dashboard |
+
+## Sprint 1 — pessoa B
+
+O cenário compara tempos de merge de PRs com e sem revisão do bot. A alternativa
+é bicaudal, pois a pergunta admite aumento ou redução do tempo, e α = 0,05.
+Welch testa médias iguais; Mann-Whitney usa postos sob a hipótese de distribuições
+iguais. Interpretar Mann-Whitney como teste de medianas exige condições adicionais
+sobre as formas das distribuições.
+
+Há dois usos distintos da lognormal:
+
+- **`ajuste_real` (G1):** μ e σ de `log(horas)` estimados separadamente em cada
+  grupo, usando desvio padrão amostral (`ddof=1`). Preserva as diferenças
+  descritivas observadas; não é uma geração sob H₀.
+- **`base` (exemplo e G2):** reúne os logaritmos dos 60 tempos, obtendo
+  μ = 2,903374 e σ = 2,270152. Os dois grupos partem da mesma distribuição,
+  com sorteios independentes. `efeito=0` representa H₀; `efeito=0.30` multiplica
+  os tempos do grupo com bot por 1,30, alterando média e mediana populacionais
+  nessa proporção. Valores negativos maiores que -1 representam redução.
+
+O contrato do gerador é
+`gerar(n, efeito, situacao, rng, *, cenario=None)`, retornando os arrays
+`com_bot` e `sem_bot` em horas. `n` é o tamanho de **cada** grupo. Um gerador
+`numpy.random.default_rng(42)` reproduz os resultados; se o mesmo objeto `rng`
+for reutilizado, seu estado avança para a próxima amostra. `ajuste_real` exige
+efeito zero, e as situações da Q3 ficam para a Sprint 2.
+
+**Previsão registrada antes de medir poder:** Mann-Whitney pode ter vantagem
+com n = 30 e forte assimetria, mas isso será verificado por simulações repetidas.
+Um único exemplo não demonstra superioridade de um teste.
+
+O G2 usa as **distribuições de referência aproximadas sob H₀**: t com os graus
+de liberdade de Welch e normal padrão para o U padronizado em Z. Exibe a
+região de rejeição bilateral, os limites críticos, a estatística observada e
+as duas caudas do p-valor. Mann-Whitney usa `method="asymptotic"`, correção de
+empates e `use_continuity=False`, mantendo a área `2*sf(abs(z))` coerente com
+o p-valor apresentado. As probabilidades incluem as caudas até infinito;
+a janela desenhada é finita.
+
+Essas curvas não são uma medição da distribuição empírica da estatística para
+os tempos lognormais assimétricos. A calibração do erro tipo I e o poder serão
+avaliados na Sprint 2. Não rejeitar H₀ não prova igualdade, e p não é a
+probabilidade de H₀ ser verdadeira.
+
+### Executar e testar
+
+Para rodar somente o exemplo, sem abrir o navegador:
+
+```bash
+.venv/bin/python -m src.exemplo
+.venv/bin/python -m src.exemplo --n 30 --efeito 0
+```
+
+No exemplo padrão (`n=30`, `efeito=0.30`, semente 42), os resultados esperados,
+arredondados, são **Welch: t = -0,839645, p = 0,407387** e
+**Mann-Whitney: U = 468, p = 0,790147**. Nenhum rejeita sua H₀ a 5% nessa
+realização, embora o efeito configurado seja diferente de zero.
+
+Para conferir a sintaxe e executar os testes automatizados:
+
+```bash
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python -m compileall -q src app.py
+.venv/bin/python -m pytest -q
+```
+
+Os testes verificam resultados analíticos/SciPy, empates, reprodução pela
+semente, amostras independentes sob H₀, efeito no grupo correto, áreas do G2 e
+interação com os controles do dashboard. A integração mantém G3/G4, aplicação
+aos dados reais e conclusão final como etapas futuras.
+
+Referências das implementações: [Welch no SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html)
+e [Mann-Whitney no SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html).
 
 ## Dados reais
 
