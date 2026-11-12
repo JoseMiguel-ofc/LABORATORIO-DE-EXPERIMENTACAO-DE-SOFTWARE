@@ -1,0 +1,7 @@
+# Dependências do dashboard do Lab04 (streamlit_app.py), usadas pelo Streamlit Cloud.
+# Mantenha igual a "LABORATORIO 04/requirements.txt".
+numpy>=2.0
+pandas>=2.2
+scipy>=1.11
+plotly>=5.24
+streamlit>=1.50

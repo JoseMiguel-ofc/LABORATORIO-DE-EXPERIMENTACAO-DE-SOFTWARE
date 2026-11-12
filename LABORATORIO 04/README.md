@@ -443,11 +443,16 @@ simulações na nuvem. Para publicar:
 1. Entre em [share.streamlit.io](https://share.streamlit.io) com a conta do GitHub.
 2. Em **Create app**, escolha o repositório
    `JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE`, a branch `main` e o
-   arquivo `LABORATORIO 04/app.py`.
+   arquivo `streamlit_app.py`, que fica na **raiz** do repositório.
 3. Em **Advanced settings**, escolha Python 3.12 e confirme.
 4. Copie o link gerado para `DASHBOARD` em `app.py` e para o topo deste README.
 
-O Streamlit Cloud instala o `requirements.txt` da mesma pasta do `app.py`.
+O arquivo principal não pode ser `LABORATORIO 04/app.py`. O Streamlit Cloud
+instala o `requirements.txt` da pasta do arquivo principal e quebra o caminho no
+espaço do nome da pasta. O log mostra `Failed to parse: 04/requirements.txt`.
+Por isso, `streamlit_app.py` e um `requirements.txt` ficam na raiz, e o
+`streamlit_app.py` executa este `app.py`. Mantenha os dois `requirements.txt`
+iguais.
 
 ## Dados reais
 
