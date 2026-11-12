@@ -8,7 +8,7 @@ de revisão.
 (colunas `Backlog`, `In Progress`, `In Review`,
 `Done`; limite de WIP de 2 cartões em `In Progress` por pessoa).
 
-**Dashboard publicado:** a preencher.
+**Dashboard publicado:** <https://laboratorio-de-experimentacao-de-software-2udkd3bww7xhqd36jdsk.streamlit.app/>
 
 ## Como executar
 

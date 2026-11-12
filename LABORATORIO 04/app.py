@@ -21,7 +21,7 @@ from src.testes import aplicar_testes
 REPOSITORIO = ("https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE"
                "/tree/main/LABORATORIO%2004")
 PROJECT = "https://github.com/users/JoseMiguel-ofc/projects/1"
-DASHBOARD = ""  # Preencher com o link público
+DASHBOARD = "https://laboratorio-de-experimentacao-de-software-2udkd3bww7xhqd36jdsk.streamlit.app/"
 
 
 def link(rotulo, url):
