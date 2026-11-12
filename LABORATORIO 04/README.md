@@ -4,7 +4,8 @@ Comparação entre o **t de Welch** e o **Mann-Whitney** (par P1) por simulaçã
 com parâmetros tirados de dados reais: o tempo até o merge de PRs com e sem bot
 de revisão.
 
-**GitHub Project:** a preencher (colunas `Backlog`, `In Progress`, `In Review`,
+**GitHub Project:** [quadro do grupo](https://github.com/users/JoseMiguel-ofc/projects/1)
+(colunas `Backlog`, `In Progress`, `In Review`,
 `Done`; limite de WIP de 2 cartões em `In Progress` por pessoa).
 
 **Dashboard publicado:** a preencher.
@@ -19,7 +20,7 @@ python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
-Depois, o dashboard completo disponível nesta sprint abre com um único comando:
+Depois, o dashboard abre com um único comando:
 
 ```bash
 .venv/bin/python -m streamlit run app.py
@@ -36,14 +37,23 @@ Se usar Python 3.13, troque somente o comando de criação do ambiente por
 |---|---|
 | `app.py` | Dashboard com as 7 seções |
 | `dados/prs.csv` | Amostra real coletada |
-| `resultados/` | Resultados das simulações (a partir da Sprint 2) |
+| `resultados/` | Taxas de rejeição, curvas de amostra e metadados das execuções |
 | `src/coleta.py` | Coleta dos dados reais (já executada) |
 | `src/dados.py` | Leitura do CSV e resumo estatístico |
 | `src/cenario.py` | Pergunta, hipóteses, previsão e parâmetros estimados dos dados |
 | `src/simulacao.py` | Gerador reproduzível de dados lognormais |
 | `src/testes.py` | Welch e Mann-Whitney, com estatísticas, p-valores e interpretação |
-| `src/graficos.py` | G1 e G2 do dashboard |
+| `src/graficos.py` | G1 a G4 e curva de tamanho da amostra do dashboard |
 | `src/exemplo.py` | Execução do exemplo da Sprint 1 pelo terminal |
+| `src/motor.py` | Repetições em lotes, taxas de rejeição, ICs e persistência |
+| `src/rodar_q1_q2.py` | Q1/Q2 e opção de executar todas as situações da Q3 |
+| `src/efeito.py` | g de Hedges e delta de Cliff |
+| `src/amostra.py` | Poder com n real e busca de n para 80% de poder |
+| `src/estilo.py` | Cores fixas e tema dos gráficos |
+| `src/conclusoes.py` | Interpretações calculadas a partir dos resultados |
+| `src/experimentos.py` | Cálculo e leitura das simulações para α de 1%, 5% e 10% |
+| `src/intervalos_efeito.py` | ICs bootstrap BCa dos efeitos reais e sua persistência |
+| `src/reproduzir.py` | Reprodução das Sprints 2 e 3 e dos extras em um comando |
 | `tests/` | Verificações numéricas, reprodutibilidade, gráficos e integração do dashboard |
 
 ## Sprint 1 — pessoa B
@@ -70,7 +80,7 @@ O contrato do gerador é
 `com_bot` e `sem_bot` em horas. `n` é o tamanho de **cada** grupo. Um gerador
 `numpy.random.default_rng(42)` reproduz os resultados; se o mesmo objeto `rng`
 for reutilizado, seu estado avança para a próxima amostra. `ajuste_real` exige
-efeito zero, e as situações da Q3 ficam para a Sprint 2.
+efeito zero. As situações da Q3 estão descritas na seção da Sprint 2 abaixo.
 
 **Previsão registrada antes de medir poder:** Mann-Whitney pode ter vantagem
 com n = 30 e forte assimetria, mas isso será verificado por simulações repetidas.
@@ -85,8 +95,8 @@ o p-valor apresentado. As probabilidades incluem as caudas até infinito;
 a janela desenhada é finita.
 
 Essas curvas não são uma medição da distribuição empírica da estatística para
-os tempos lognormais assimétricos. A calibração do erro tipo I e o poder serão
-avaliados na Sprint 2. Não rejeitar H₀ não prova igualdade, e p não é a
+os tempos lognormais assimétricos. A calibração do erro tipo I e o poder são
+avaliados pelas repetições da Sprint 2. Não rejeitar H₀ não prova igualdade, e p não é a
 probabilidade de H₀ ser verdadeira.
 
 ### Executar e testar
@@ -113,11 +123,261 @@ Para conferir a sintaxe e executar os testes automatizados:
 
 Os testes verificam resultados analíticos/SciPy, empates, reprodução pela
 semente, amostras independentes sob H₀, efeito no grupo correto, áreas do G2 e
-interação com os controles do dashboard. A integração mantém G3/G4, aplicação
-aos dados reais e conclusão final como etapas futuras.
+interação com os controles do dashboard. As verificações das Sprints 2 e 3
+também cobrem o motor, tamanhos de efeito, busca amostral e resultados persistidos.
 
 Referências das implementações: [Welch no SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html)
 e [Mann-Whitney no SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html).
+
+## Sprints 2 e 3 — pessoa B
+
+Estão implementados o motor, Q1/Q2, persistência de resultados, G4, tamanhos de
+efeito, análise de tamanho da amostra, padronização visual e textos das seções
+3, 4, 5 e 7. O dashboard lê os resultados salvos e não executa Monte Carlo ao
+abrir ou alterar os controles do exemplo G2.
+
+Os cenários da Q3, o G3 e a aplicação aos dados reais também estão integrados
+localmente para permitir conferir as curvas e conclusões. Isso não substitui
+a revisão e a entrega das tarefas atribuídas à Pessoa A no planejamento.
+
+### Reproduzir os resultados
+
+Partindo da raiz do repositório, entre primeiro na pasta do laboratório:
+
+```bash
+cd "LABORATORIO 04"
+.venv/bin/python -m src.reproduzir
+```
+
+Esse comando usa **10.000 repetições por configuração e semente 42**, salva os
+resultados de Q1/Q2/Q3 e calcula as curvas de tamanho da amostra para
+**α = 1%, 5% e 10%**. Também calcula os ICs de 95% dos tamanhos de efeito com
+10.000 reamostragens bootstrap. Arquivos válidos são reutilizados; só as etapas
+ausentes, desatualizadas ou com outra configuração são recalculadas. O terminal
+mostra o andamento; a busca de amostras grandes pode levar alguns minutos.
+Depois, execute `.venv/bin/python -m streamlit run app.py` para abrir o dashboard.
+O ambiente `.venv` fica nesta subpasta, não na raiz do repositório.
+
+Também é possível executar as etapas separadamente:
+
+```bash
+.venv/bin/python -m src.rodar_q1_q2 --todas-situacoes
+.venv/bin/python -m src.amostra
+```
+
+O primeiro comando substitui a grade completa de simulação e seu manifesto.
+Sem `--todas-situacoes`, atualiza somente o cenário base e preserva Q3 quando
+os dados e o método são os mesmos. Para experimentar outra configuração,
+use `--saida` com outro destino. Execuções com menos de 10.000 repetições são
+diagnósticos e não substituem os resultados da entrega.
+
+Os CSVs são acompanhados por metadados com parâmetros, semente, versões das
+bibliotecas e hashes dos dados e do código estatístico. Se os dados ou o método
+mudarem, o dashboard pede nova execução em vez de exibir resultados antigos.
+Os hashes verificam integridade e compatibilidade; não validam a escolha do modelo.
+
+### Sprint 2: perguntas Q1, Q2 e Q3
+
+`simular(situacao, efeito, n, reps, rng, ...)` aplica os dois testes ao mesmo
+conjunto de amostras independentes em cada repetição. Retorna as contagens,
+taxas de rejeição (`p < α`, com 0,05 na análise principal) e intervalos de Wilson
+de 95%. O processamento
+em lotes limita a memória sem alterar a sequência de sorteios. A opção
+`testes=("welch",)` é usada na busca amostral quando só esse teste ainda
+precisa de amostras maiores.
+
+Q1 usa efeito zero; Q2 usa **0%, 10%, 20%, 30%, 40% e 50%** de aumento no
+tempo com bot. Cada ponto reinicia a semente 42, compartilhando números
+aleatórios para comparar efeitos. Por isso, os pontos das curvas são
+correlacionados: os ICs são individuais, não bandas simultâneas nem testes
+de diferença de poder.
+
+| Situação | Distribuição e tamanho por grupo | Efeito zero |
+|---|---|---|
+| Base | Lognormal pooled da amostra real, n = 30 | H₀ verdadeira |
+| Assimetria forte | σ base × 1,35 em ambos os grupos, n = 30 | H₀ verdadeira |
+| Outliers | Contaminação independente de 5% por fator 20 em ambos os grupos, n = 30 | H₀ verdadeira |
+| Amostra pequena | Distribuição base, n = 10 | H₀ verdadeira |
+| Variâncias diferentes | Mediana inicial igual; σ × 1,35 somente com bot, n = 30 | Médias e distribuições já diferentes |
+
+No último caso, médias e distribuições diferem mesmo com medianas iguais.
+Suas taxas não são erro tipo I e não entram no G3. O painel correspondente
+do G4 mostra taxas de rejeição, com essa ressalva, em vez de tratá-las como
+uma comparação de poder para a mesma hipótese dos demais cenários.
+
+O cenário base já é assimétrico: a situação de assimetria forte agrava essa
+característica, não cria um contraste com normalidade perfeita. A interpretação
+da calibração considera se o α selecionado está dentro do IC Monte Carlo; o IC não inclui
+a incerteza dos parâmetros estimados dos 60 PRs reais.
+
+### Sprint 3: efeito, amostra e conclusão
+
+`hedges_g(com_bot, sem_bot)` calcula a diferença de médias pelo desvio combinado,
+com a correção exata J obtida da função gamma. É uma medida adimensional e
+descritiva; a correção usual deriva do modelo normal e não elimina a assimetria.
+`cliffs_delta(com_bot, sem_bot)` calcula P(com > sem) − P(com < sem), entre −1 e 1,
+com contribuição zero dos empates. Em ambas, o sinal positivo indica maior
+tempo com bot. O tamanho do efeito não demonstra causalidade nem substitui o
+p-valor; sua relevância prática exige considerar horas e contexto.
+
+A análise amostral usa o modelo base comum com duas mudanças de escala:
+
+- **Planejada:** +30%, uma hipótese de planejamento, sem presumir que esse seja
+  o efeito verdadeiro ou o mínimo relevante para a equipe.
+- **Inspirada na amostra:** razão das medianas com/sem bot menos 1. O modelo
+  supõe forma lognormal comum; não preserva as dispersões reais diferentes.
+  É uma análise de sensibilidade, não uma validação dos p-valores por “poder observado”.
+
+O n real é sempre incluído. A grade inicial é 10, 20, 30, 50, 100, 200, 500,
+1.000 e 2.000 por grupo. Se necessário, a busca dobra n apenas para os testes
+que ainda não atingiram 80%, até o limite de 64.000 por grupo. O resultado
+é o **primeiro n avaliado** com taxa estimada de pelo menos 80%, não o menor
+n possível. Se a busca atingir o limite, informa que a meta não foi alcançada,
+sem inventar um tamanho. O resumo também informa se o limite inferior do IC
+atinge 80%; cruzar a meta apenas na estimativa pontual ainda envolve incerteza.
+
+`resultados/amostra.csv` contém as curvas; `amostra_resumo.csv`, os pontos da
+meta; e `amostra_metadados.json`, a configuração e sua proveniência. As curvas
+podem terminar em n diferentes: após completar a grade inicial, somente os
+testes abaixo da meta continuam na extensão. Não é necessário gerar novamente
+esses arquivos para abrir o dashboard.
+
+Resultados da execução principal salva (α = 5%, semente 42, 10.000 repetições;
+versões nos metadados):
+
+| Indicador no cenário base, n = 30 | Welch | Mann–Whitney |
+|---|---:|---:|
+| Erro tipo I (efeito zero) | 1,46% | 4,79% |
+| Poder com efeito de +50% | 2,52% | 10,29% |
+| Poder com efeito de +30% | 1,82% | 7,07% |
+| Poder com efeito inspirado nas medianas (+81,87%) | 4,03% | 16,58% |
+
+| Efeito para planejamento | Primeiro n avaliado ≥80%, Welch | Primeiro n avaliado ≥80%, Mann–Whitney |
+|---|---:|---:|
+| +30% | 32.000 por grupo (87,20%) | 2.000 por grupo (94,62%) |
+| +81,87% inspirado nas medianas | 4.000 por grupo (84,85%) | 500 por grupo (98,04%) |
+
+Os pontos anteriores da grade ficaram abaixo de 80%; os números acima são
+resoluções da busca, não mínimos exatos nem garantias para uma coleta futura.
+Nos dados reais, Welch apresentou p = 0,844723 e g de Hedges = 0,050139;
+Mann–Whitney apresentou p = 0,071278 e delta de Cliff = 0,271111. Nenhum teste
+rejeitou sua H₀ a 5%, o que não demonstra equivalência ou ausência de efeito.
+
+As conclusões são derivadas das taxas salvas, comparadas à previsão registrada
+na Sprint 1. A escolha do teste considera o parâmetro de interesse: Welch
+compara médias; Mann–Whitney compara posições relativas e não testa medianas
+sem condições adicionais. A análise mantém a limitação observacional da coleta.
+
+Referências: [correção de Hedges no NIST](https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/hedgeg.htm),
+[intervalos binomiais no statsmodels](https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportion_confint.html)
+e [definição e opções de Mann–Whitney no SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html).
+
+### Extras: significância e incerteza dos efeitos
+
+O seletor global do dashboard permite comparar **α = 1%, 5% e 10%**. Ele altera
+os limites críticos e a decisão do G2, a referência de erro tipo I no G3, as
+curvas de rejeição do G4, a análise de tamanho da amostra e as decisões nos
+dados reais. Os p-valores e os tamanhos de efeito de uma mesma amostra não
+mudam ao trocar α: muda o limiar usado para decidir se `p < α`.
+
+**A análise principal continua com α = 5%, definido na Sprint 1.** As opções
+de 1% e 10% são análises de sensibilidade; não redefinem a hipótese ou a
+conclusão principal depois de observar o resultado. Nos dados reais,
+Mann–Whitney tem p = 0,071278, portanto rejeita sua H₀ a 10%, mas não a 1% ou
+5%. Welch não rejeita sua H₀ em nenhuma das três opções. Essas diferenças de
+decisão não demonstram causalidade nem equivalência entre os grupos.
+
+As simulações de cada α usam as mesmas sementes nas mesmas configurações.
+Com os mesmos p-valores simulados, aumentar α só pode manter ou aumentar a
+contagem de rejeições; isso permite mostrar a troca entre falsos positivos
+e detecção de diferenças. As curvas usam resultados próprios de cada nível,
+com 10.000 repetições por ponto. Mudar o seletor apenas lê os resultados
+salvos: não inicia uma simulação nem uma busca amostral durante a interação.
+
+Na seção dos dados reais, **g de Hedges e δ de Cliff têm ICs bootstrap BCa
+bilaterais de 95%**, calculados com 10.000 reamostragens e semente 42. A
+reamostragem é feita com reposição e separadamente em cada grupo, preservando
+seus tamanhos (`paired=False`). BCa corrige viés e aceleração usando também
+jackknife; a implementação usa
+[`scipy.stats.bootstrap`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bootstrap.html).
+
+Esses ICs descrevem a incerteza dos efeitos estimados dos PRs reais. Diferem
+dos ICs de Wilson das curvas, que descrevem o erro Monte Carlo das taxas.
+**Ambos permanecem em 95% ao trocar α.** Os ICs BCa não são inversões dos testes
+Welch e Mann–Whitney; não se deve exigir que incluir zero coincida com a
+decisão do teste, especialmente com α de 1% ou 10%. São intervalos individuais,
+sem ajuste para cobertura simultânea das duas medidas.
+
+O bootstrap trata os PRs como observações independentes dentro de cada grupo.
+Ele **não preserva os estratos mensais** do sorteio original nem modela
+dependência entre PRs de um mesmo autor ou período. A cobertura é aproximada,
+e a amostra pequena, a assimetria e os valores extremos limitam sua precisão.
+Os intervalos não removem confundimento da coleta observacional. Grupos com
+menos de três observações ou reamostragens degeneradas geram erro explicativo;
+não são descartados sorteios nem substituído o método silenciosamente.
+
+#### Reproduzir e conferir os extras
+
+Na pasta `LABORATORIO 04`, o comando geral acima já inclui os extras. Para
+explicitar as três opções:
+
+```bash
+.venv/bin/python -m src.reproduzir --alfas 0.01 0.05 0.10
+```
+
+Para calcular apenas simulações e curvas de amostra, ou apenas os ICs:
+
+```bash
+.venv/bin/python -m src.experimentos --alfas 0.01 0.05 0.10
+.venv/bin/python -m src.intervalos_efeito --n-resamples 10000 --confianca 0.95 --semente 42
+```
+
+`--alfas` aceita uma ou mais opções; por exemplo, `--alfas 0.01` prepara somente
+o nível de 1%. `src.reproduzir` ainda verifica os ICs compartilhados. O padrão
+de `--reps` é 10.000 para Monte Carlo, e o de `--n-resamples` é 10.000 para
+bootstrap: são contagens de processos distintos. Em `src.experimentos` e
+`src.reproduzir`, `--forcar` refaz inclusive os arquivos válidos. A CLI isolada
+`src.intervalos_efeito` sempre calcula novamente os ICs; para reutilização
+automática, use `src.reproduzir`.
+
+| Local | Resultados salvos |
+|---|---|
+| `resultados/` | Grade e análise amostral principal, α = 5% |
+| `resultados/alfa_001/` | Grade e análise amostral com α = 1% |
+| `resultados/alfa_010/` | Grade e análise amostral com α = 10% |
+| `resultados/efeitos_ic.csv` | Estimativas e limites BCa comuns aos três níveis |
+| `resultados/efeitos_ic_metadados.json` | Método, confiança, reamostragens, semente, versões e hashes do bootstrap |
+
+Cada diretório de simulação inclui os CSVs e seus manifestos. Antes de
+reutilizá-los, os carregadores conferem dados, código estatístico, configuração,
+integridade e α esperado. Os ICs também têm os grupos reais e o CSV de origem
+verificados. Alterar os dados ou o método exige recalcular os arquivos
+correspondentes; mudar apenas α reaproveita os ICs de 95% existentes.
+
+Para um diagnóstico rápido, salve em outro diretório, preservando os resultados
+da entrega:
+
+```bash
+.venv/bin/python -m src.reproduzir --reps 100 --n-max 2000 --n-resamples 100 --saida resultados_diagnostico
+```
+
+Os testes automatizados incluem coerência entre níveis de α, decisões e regiões
+críticas, textos derivados das taxas, integridade dos arquivos e intervalos
+BCa comparados diretamente ao SciPy. Para executá-los, use o mesmo comando
+`.venv/bin/python -m pytest -q` mostrado na Sprint 1.
+
+### Entrega e apresentação
+
+Cada integrante deve ter Issue com Assignee e código commitado com referência
+ao número real da Issue. A outra pessoa revisa o PR; mantenham o Project
+atualizado. Publicação, links públicos e ensaio oral dependem do grupo.
+
+Para a fala da Pessoa B, use as seções 3 a 7: explique o parâmetro de cada teste,
+a área do p-valor no G2, os erros tipo I/II, a comparação de poder no G4,
+o que muda ao reduzir α, a previsão versus os resultados e a recomendação com
+as limitações do estudo. Reduzir α torna a rejeição mais exigente e normalmente
+reduz erro tipo I e poder; os números para α = 0,01 e 0,10 vêm das execuções
+próprias de cada nível, descritas nos extras acima.
 
 ## Dados reais
 

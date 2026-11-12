@@ -1,0 +1,67 @@
+{
+  "contexto": {
+    "versao_metodo": 1,
+    "dados_sha256": "fed2e25a0954a971a833744b61ca8842ed5314cdc0abb31f883e949402f11cda",
+    "codigo_sha256": {
+      "cenario.py": "fb201bc42b40d30b05ea3dac084709f38a0eba2d5d8a493417b1d16f425dcf36",
+      "simulacao.py": "77f0b3340c5d059585fa8002f3553aa3d05ba87c2c3f557fe689c72e5f922b2d",
+      "testes.py": "5a8a1ca33d0c626cd3bd3c1cf1c59948d6afdfa00751406154017e1589920d56",
+      "motor.py": "1a149bf88b78f4d019345040be62f42ba1dd83d33c2dd9d728f7341b1bab9623"
+    },
+    "parametros": {
+      "parametros_descritivos": {
+        "com_bot": {
+          "mu": 3.3896087799874177,
+          "sigma": 1.9648240879411765,
+          "n": 30,
+          "media_modelo": 204.35846399549985,
+          "mediana_modelo": 29.6543486260853
+        },
+        "sem_bot": {
+          "mu": 2.4171385979144797,
+          "sigma": 2.476934726829519,
+          "n": 30,
+          "media_modelo": 240.986621234877,
+          "mediana_modelo": 11.213726384126668
+        }
+      },
+      "parametros_base": {
+        "mu": 2.903373688950949,
+        "sigma": 2.2701523678185715
+      },
+      "n_por_grupo": {
+        "com_bot": 30,
+        "sem_bot": 30
+      }
+    },
+    "alternativa": "two-sided",
+    "mann_whitney": {
+      "metodo": "asymptotic",
+      "continuidade": false
+    },
+    "intervalo": "Wilson 95%",
+    "sigma_fator": 1.35,
+    "contaminacao_probabilidade": 0.05,
+    "contaminacao_fator": 20.0
+  },
+  "csv_sha256": "0ef2feaa0565102ce753117930e8086928dbf9a7845b53c31ce927eefd3557f6",
+  "versoes": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1"
+  },
+  "python": "3.12.14",
+  "execucoes": [
+    {
+      "gerado_em_utc": "2026-11-12T01:59:06.976753+00:00",
+      "configuracao": {
+        "reps": 10000,
+        "semente": 42,
+        "alfa": 0.1,
+        "n": 30,
+        "todas_situacoes": true
+      },
+      "configuracoes_atualizadas": 30
+    }
+  ]
+}

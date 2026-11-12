@@ -1,0 +1,135 @@
+{
+  "versao_esquema": 1,
+  "fonte": "dados/prs.csv",
+  "tipo_hash_dados": "arquivo",
+  "dados_sha256": "fed2e25a0954a971a833744b61ca8842ed5314cdc0abb31f883e949402f11cda",
+  "cenario": {
+    "parametros_descritivos": {
+      "com_bot": {
+        "mu": 3.3896087799874177,
+        "sigma": 1.9648240879411765,
+        "n": 30,
+        "media_modelo": 204.35846399549985,
+        "mediana_modelo": 29.6543486260853
+      },
+      "sem_bot": {
+        "mu": 2.4171385979144797,
+        "sigma": 2.476934726829519,
+        "n": 30,
+        "media_modelo": 240.986621234877,
+        "mediana_modelo": 11.213726384126668
+      }
+    },
+    "parametros_base": {
+      "mu": 2.903373688950949,
+      "sigma": 2.2701523678185715
+    },
+    "n_por_grupo": {
+      "com_bot": 30,
+      "sem_bot": 30
+    }
+  },
+  "cenario_sha256": "9fd7d38de8d9c6e6aa31d97e935ae5a48a25f79bce66d600165f9d345f02043d",
+  "metodo_sha256": {
+    "cenario.py": "fb201bc42b40d30b05ea3dac084709f38a0eba2d5d8a493417b1d16f425dcf36",
+    "simulacao.py": "77f0b3340c5d059585fa8002f3553aa3d05ba87c2c3f557fe689c72e5f922b2d",
+    "motor.py": "1a149bf88b78f4d019345040be62f42ba1dd83d33c2dd9d728f7341b1bab9623",
+    "testes.py": "5a8a1ca33d0c626cd3bd3c1cf1c59948d6afdfa00751406154017e1589920d56",
+    "amostra.py": "a8b6f1246f5e44029466ac37caeeb43f5e89db1fee3da90f78371c7d88a67f28"
+  },
+  "parametros": {
+    "situacao": "base",
+    "grade_n": [
+      10,
+      20,
+      30,
+      50,
+      100,
+      200,
+      500,
+      1000,
+      2000
+    ],
+    "efeitos": {
+      "planejado_30pct": 0.3,
+      "observado_mediana": 0.8187389472483233
+    },
+    "n_real_por_grupo": 30,
+    "reps": 10000,
+    "semente": 42,
+    "alfa": 0.01,
+    "tamanho_lote": 500,
+    "alvo_poder": 0.8,
+    "buscar_alvo": true,
+    "n_max": 64000,
+    "grade_n_por_curva": {
+      "observado_mediana": {
+        "mann_whitney": [
+          10,
+          20,
+          30,
+          50,
+          100,
+          200,
+          500,
+          1000,
+          2000
+        ],
+        "welch": [
+          10,
+          20,
+          30,
+          50,
+          100,
+          200,
+          500,
+          1000,
+          2000,
+          4000,
+          8000
+        ]
+      },
+      "planejado_30pct": {
+        "mann_whitney": [
+          10,
+          20,
+          30,
+          50,
+          100,
+          200,
+          500,
+          1000,
+          2000
+        ],
+        "welch": [
+          10,
+          20,
+          30,
+          50,
+          100,
+          200,
+          500,
+          1000,
+          2000,
+          4000,
+          8000,
+          16000,
+          32000,
+          64000
+        ]
+      }
+    }
+  },
+  "efeito_observado_mediana": 0.8187389472483233,
+  "versoes": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1"
+  },
+  "interpretacao": "Planejamento condicional à lognormal base de forma comum. O efeito observado é razão de medianas empíricas menos um; sua curva é sensibilidade, não evidência adicional para os testes reais. IC Wilson de 95% cobre apenas erro Monte Carlo; não inclui incerteza no efeito ou nos parâmetros. n80 é o primeiro ponto avaliado com poder estimado >= 0,8, não mínimo exato. A extensão adaptativa dobra n somente para testes ainda abaixo do alvo; os ICs são pontuais e não corrigem a seleção do ponto da grade.",
+  "arquivos_sha256": {
+    "amostra.csv": "06d8e31a6765b6ded035a10e579ac3bc9cbdca409b0882fe77f0202410b0e897",
+    "amostra_resumo.csv": "a122f97877816d9f948fc750edfdeee567ae95d50a0f212f3fd1f7797c81c1e3"
+  }
+}

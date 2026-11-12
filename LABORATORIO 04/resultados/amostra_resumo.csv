@@ -1,0 +1,5 @@
+referencia_efeito,teste,alvo_poder,n_grade_80,atingiu_alvo,n_max,limite_censurado,n_ponto_reportado,poder_ponto_reportado,ic_inf,ic_sup,limite_inferior_atinge_alvo,interpretacao,rotulo_efeito,efeito,n_real_por_grupo
+observado_mediana,mann_whitney,0.80000000000000004,500,True,2000,,500,0.98040000000000005,0.97749286644890521,0.98293818791654874,True,Primeiro ponto da grade que atinge o alvo estimado.,Efeito observado: razão de medianas,0.8187389472483233,30
+observado_mediana,welch,0.80000000000000004,4000,True,4000,,4000,0.84850000000000003,0.84133908362228738,0.85539326951335104,True,Primeiro ponto da grade que atinge o alvo estimado.,Efeito observado: razão de medianas,0.8187389472483233,30
+planejado_30pct,mann_whitney,0.80000000000000004,2000,True,2000,,2000,0.94620000000000004,0.94160406847479139,0.95045325137921688,True,Primeiro ponto da grade que atinge o alvo estimado.,Efeito planejado: +30%,0.29999999999999999,30
+planejado_30pct,welch,0.80000000000000004,32000,True,32000,,32000,0.872,0.86530881178423746,0.87840549342797913,True,Primeiro ponto da grade que atinge o alvo estimado.,Efeito planejado: +30%,0.29999999999999999,30

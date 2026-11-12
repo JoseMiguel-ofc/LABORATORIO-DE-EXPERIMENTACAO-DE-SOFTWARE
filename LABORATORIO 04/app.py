@@ -4,24 +4,27 @@ import pandas as pd
 import streamlit as st
 
 from src.cenario import ALFA, H0, H1, PERGUNTA, PREVISAO, SEMENTE, ajustar_cenario
+from src.amostra import resumir_amostra
 from src.coleta import BOT, FIM, INICIO, REPO
+from src.conclusoes import (classificacao_calibracao, textos_simulacao,
+                            validar_configuracao_dashboard)
 from src.dados import GRUPOS, carregar, resumo
-from src.graficos import g1, g2
+from src.efeito import cliffs_delta, hedges_g
+from src.estilo import NOMES_SITUACAO, NOMES_TESTE
+from src.experimentos import ALFAS, carregar_amostra_alfa, carregar_simulacao_alfa
+from src.graficos import g1, g2, g3, g4, grafico_amostra
+from src.intervalos_efeito import carregar_intervalos
 from src.simulacao import gerar
 from src.testes import aplicar_testes
 
 REPOSITORIO = ("https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE"
                "/tree/main/LABORATORIO%2004")
-PROJECT = ""  # Preencher com o link do GitHub Project
+PROJECT = "https://github.com/users/JoseMiguel-ofc/projects/1"
 DASHBOARD = ""  # Preencher com o link público
 
 
 def link(rotulo, url):
     return f"[{rotulo}]({url})" if url else f"{rotulo}: *a preencher*"
-
-
-def em_construcao(entrega, sprint):
-    st.info(f"{entrega}: previsto para a {sprint}.")
 
 
 st.set_page_config(page_title="Lab04: Welch × Mann-Whitney", layout="wide")
@@ -30,6 +33,14 @@ st.markdown("Bot de revisão e tempo até o merge: **t de Welch × Mann-Whitney*
 st.markdown(" · ".join([link("Dashboard publicado", DASHBOARD),
                         link("Repositório", REPOSITORIO),
                         link("GitHub Project", PROJECT)]))
+alfa = st.selectbox("Nível de significância (α)", ALFAS,
+                    index=ALFAS.index(ALFA), format_func=lambda valor: f"{valor:.0%}",
+                    key="alfa")
+coluna_decisao = f"Decisão (α = {alfa:.0%})"
+comando_experimentos = f".venv/bin/python -m src.experimentos --alfas {alfa:g}"
+st.caption("A análise principal usa α = 5%; 1% e 10% permitem explorar a sensibilidade "
+           "das decisões. A seleção atualiza regiões críticas, taxas de rejeição "
+           "e tamanho da amostra. Os p-valores e os IC de 95% dos efeitos não mudam.")
 
 df = carregar()
 reais = {grupo: df.loc[df["grupo"] == grupo, "horas"].to_numpy() for grupo in GRUPOS}
@@ -46,7 +57,7 @@ st.markdown(f"""
 - **H₁ da simulação:** {H1}
 
 Os testes são **bicaudais**, pois investigamos diferenças em qualquer direção,
-com nível de significância **α = {ALFA:.2f}**.
+com nível de significância **α = {alfa:.0%}**.
 
 **Dados reais.** {len(df)} PRs mergeados de
 [{REPO}](https://github.com/{REPO}), {len(reais["com_bot"])} revisados pelo bot
@@ -104,24 +115,24 @@ with col_efeito:
                                        "negativo: menos tempo. Não é um efeito causal estimado.")
 exemplo = gerar(int(n_exemplo), efeito_percentual / 100, "base",
                 np.random.default_rng(SEMENTE), cenario=cenario)
-resultados = aplicar_testes(exemplo["com_bot"], exemplo["sem_bot"], alfa=ALFA)
+resultados = aplicar_testes(exemplo["com_bot"], exemplo["sem_bot"], alfa=alfa)
 st.caption(f"Um único conjunto simulado, com {n_exemplo} PRs por grupo, "
            f"semente {SEMENTE} e efeito configurado de {efeito_percentual}%. "
            "Uma realização não mede poder nem erro tipo I.")
 st.dataframe(pd.DataFrame([
     {"Teste": r["nome"], "Estatística": r["estatistica"], "p-valor": r["p_valor"],
-     "Decisão (α = 0,05)": "Rejeitar H₀" if r["rejeita_h0"] else "Não rejeitar H₀"}
+     coluna_decisao: "Rejeitar H₀" if r["rejeita_h0"] else "Não rejeitar H₀"}
     for r in resultados.values()
 ]).style.format({"Estatística": "{:.4f}", "p-valor": "{:.6f}"}),
     hide_index=True, width="stretch")
-st.plotly_chart(g2(resultados, alfa=ALFA), theme=None)
+st.plotly_chart(g2(resultados, alfa=alfa), theme=None)
 st.markdown("O G2 mostra as **distribuições de referência aproximadas sob H₀**: "
             "t com os graus de liberdade de Welch e normal padrão para U padronizado "
             "em Z. As duas caudas além dos limites críticos formam a região de "
             "rejeição, enquanto as caudas tão extremas quanto a estatística observada "
             "formam a área do p-valor. O p-valor não é a probabilidade de H₀ ser verdadeira. "
             "Com dados lognormais assimétricos, a calibração dessas aproximações "
-            "precisa ser investigada por repetições na Sprint 2.")
+            "é investigada pelas repetições mostradas nas próximas seções.")
 st.caption("Na tabela, a estatística de Mann-Whitney é U do grupo com bot; no G2 ela "
            "é padronizada em Z. Usamos aproximação normal com correção de empates, "
            "sem correção de continuidade, para que a área exibida corresponda ao p-valor. "
@@ -130,13 +141,161 @@ for resultado in resultados.values():
     st.markdown(f"**{resultado['nome']}:** {resultado['interpretacao']}")
 
 st.header("4. Erro tipo I")
-em_construcao("G3", "Sprint 2")
+resultados_mc = None
+textos = None
+try:
+    resultados_mc = carregar_simulacao_alfa(alfa)
+    validar_configuracao_dashboard(resultados_mc, alfa=alfa)
+    textos = textos_simulacao(resultados_mc)
+except (FileNotFoundError, ValueError) as exc:
+    st.warning(f"Os resultados da simulação precisam ser gerados ou atualizados: {exc}")
+    st.code(comando_experimentos, language="bash")
+if resultados_mc is not None and textos is not None:
+    st.plotly_chart(g3(resultados_mc), theme=None)
+    st.markdown(textos["erro_tipo_i"])
+    nulos = resultados_mc[np.isclose(resultados_mc["efeito"], 0)].copy()
+    nulos["Avaliação"] = nulos.apply(classificacao_calibracao, axis=1)
+    nulos["Situação"] = nulos["situacao"].map(NOMES_SITUACAO)
+    nulos["Teste"] = nulos["teste"].map(NOMES_TESTE)
+    with st.expander("Taxas de rejeição com efeito configurado zero"):
+        st.dataframe(nulos[["Situação", "Teste", "n", "reps", "taxa_rejeicao",
+                            "ic_inf", "ic_sup", "Avaliação"]].rename(columns={
+            "n": "PRs por grupo", "reps": "Repetições", "taxa_rejeicao": "Rejeições",
+            "ic_inf": "IC 95% inferior", "ic_sup": "IC 95% superior",
+        }).style.format({
+            "Rejeições": "{:.2%}", "IC 95% inferior": "{:.2%}", "IC 95% superior": "{:.2%}",
+        }), hide_index=True, width="stretch")
+    st.caption("Intervalos de Wilson de 95%. Uma classificação conservadora/liberal "
+               f"compara o intervalo Monte Carlo ao nível de {alfa:.0%}; não é uma afirmação "
+               "de igualdade exata ou uma comparação formal entre os testes.")
+    st.markdown("**Atenção ao cenário com variâncias diferentes:** manter a mediana "
+                "da lognormal e alterar σ também altera sua média e sua distribuição. "
+                "Por isso, mesmo com efeito configurado zero, essas rejeições "
+                "não são classificadas como erro tipo I no G3.")
 
 st.header("5. Poder")
-em_construcao("G4", "Sprint 2")
+if resultados_mc is not None and textos is not None:
+    st.plotly_chart(g4(resultados_mc), theme=None)
+    st.markdown(textos["poder"])
+    st.caption("Cada ponto é calculado a partir dos resultados salvos; os controles "
+               "do exemplo G2 não alteram esta grade. O painel de variâncias diferentes "
+               "mostra taxas de rejeição sob distribuições diferentes, sem uma comparação "
+               "de poder para a mesma hipótese científica dos demais painéis.")
+    with st.expander("Como foram definidas as situações"):
+        st.markdown("""
+- **Base:** lognormal estimada dos logaritmos reunidos da amostra real, n = 30.
+- **Assimetria forte:** σ multiplicado por 1,35 em ambos os grupos, n = 30.
+- **Outliers:** cada observação tem 5% de chance de ser multiplicada por 20,
+  independentemente e de forma idêntica nos dois grupos, n = 30.
+- **Amostra pequena:** mesma distribuição base, n = 10 por grupo.
+- **Variâncias diferentes:** mesma mediana inicial, com σ multiplicado por 1,35
+  apenas no grupo com bot; as médias e distribuições já diferem no efeito zero.
+
+Nos quatro primeiros casos, efeito zero gera grupos independentes com a mesma
+distribuição. O efeito positivo multiplica os tempos com bot por `1 + efeito`.
+""")
+    st.download_button("Baixar resultados das simulações", resultados_mc.to_csv(index=False),
+                       file_name=f"simulacao_alfa_{alfa:.0%}.csv", mime="text/csv")
 
 st.header("6. Dados reais")
-em_construcao("Tabela com os dois testes", "Entrega Final")
+testes_reais = aplicar_testes(reais["com_bot"], reais["sem_bot"], alfa=alfa)
+efeitos_reais = {"welch": hedges_g(reais["com_bot"], reais["sem_bot"]),
+                 "mann_whitney": cliffs_delta(reais["com_bot"], reais["sem_bot"])}
+st.dataframe(pd.DataFrame([
+    {"Teste": r["nome"], "Estatística": r["estatistica"], "p-valor": r["p_valor"],
+     "Medida do efeito": "g de Hedges" if chave == "welch" else "δ de Cliff",
+     "Tamanho do efeito": efeitos_reais[chave],
+     coluna_decisao: "Rejeitar H₀" if r["rejeita_h0"] else "Não rejeitar H₀"}
+    for chave, r in testes_reais.items()
+]).style.format({"Estatística": "{:.4f}", "p-valor": "{:.6f}",
+                 "Tamanho do efeito": "{:.4f}"}), hide_index=True, width="stretch")
+for resultado in testes_reais.values():
+    st.markdown(f"**{resultado['nome']}:** {resultado['interpretacao']}")
+st.markdown(f"O g de Hedges é **{efeitos_reais['welch']:.4f}**, a diferença de médias "
+            "padronizada pelo desvio combinado, com correção para amostras pequenas. "
+            f"O delta de Cliff é **{efeitos_reais['mann_whitney']:.4f}**, a diferença "
+            "entre as probabilidades de um PR com bot demorar mais e demorar menos "
+            "que um PR sem bot; empates contribuem zero. "
+            "Ambos usam a direção com bot menos sem bot, e valores positivos indicam "
+            "maior tempo nesse grupo. A relevância prática deve considerar horas "
+            "e contexto, sem atribuir causalidade ao bot.")
+st.caption("Hedges padroniza a diferença, mas não elimina a assimetria nem torna "
+           "as variâncias iguais; sua correção usual deriva do modelo normal. "
+           "A amostra observacional continua sujeita a diferenças de complexidade dos PRs.")
+st.subheader("Incerteza dos tamanhos de efeito")
+try:
+    intervalos = carregar_intervalos()
+    if (not np.allclose(intervalos["confianca"], 0.95)
+            or not intervalos["n_resamples"].eq(10_000).all()
+            or not intervalos["semente"].eq(SEMENTE).all()):
+        raise ValueError("Os intervalos usam confiança de 95%, 10.000 reamostragens e semente 42.")
+except (FileNotFoundError, ValueError) as exc:
+    st.warning(f"Os intervalos dos efeitos precisam ser gerados ou atualizados: {exc}")
+    st.code(".venv/bin/python -m src.intervalos_efeito", language="bash")
+else:
+    st.dataframe(intervalos[["medida", "estimativa", "ic_inf", "ic_sup"]].rename(columns={
+        "medida": "Medida do efeito", "estimativa": "Estimativa",
+        "ic_inf": "IC 95% inferior", "ic_sup": "IC 95% superior",
+    }).style.format({"Estimativa": "{:.4f}", "IC 95% inferior": "{:.4f}",
+                     "IC 95% superior": "{:.4f}"}), hide_index=True, width="stretch")
+    st.caption("Bootstrap BCa: 10.000 reamostragens independentes dentro de cada grupo, "
+               "semente 42. Os IC permanecem em 95% para qualquer α selecionado. "
+               "Eles descrevem a incerteza de g e δ; não são a inversão dos testes "
+               "de Welch e Mann-Whitney. O procedimento assume PRs independentes "
+               "e não preserva os estratos mensais da coleta.")
+    st.download_button("Baixar intervalos dos efeitos", intervalos.to_csv(index=False),
+                       file_name="efeitos_ic.csv", mime="text/csv")
 
 st.header("7. Conclusão")
-em_construcao("Conclusão", "Entrega Final")
+if textos is not None:
+    st.markdown(textos["previsao"])
+    st.markdown(textos["recomendacao"])
+st.subheader("Quanto aumentar a amostra?")
+try:
+    amostra = carregar_amostra_alfa(alfa)
+    if (not np.allclose(amostra["alfa"], alfa)
+            or not amostra["reps"].eq(10_000).all()
+            or not amostra["semente"].eq(SEMENTE).all()):
+        raise ValueError(f"A análise usa α = {alfa:.0%}, semente 42 e 10.000 repetições.")
+except (FileNotFoundError, ValueError) as exc:
+    st.warning(f"A análise de tamanho da amostra precisa ser gerada ou atualizada: {exc}")
+    st.code(comando_experimentos, language="bash")
+else:
+    st.plotly_chart(grafico_amostra(amostra), theme=None)
+    st.markdown("A análise mantém o modelo base e varia o número de PRs por grupo. "
+                "Compara uma mudança de 30% definida para planejamento com a mudança "
+                "inspirada na razão das medianas observadas. O segundo cenário assume "
+                "a mesma forma lognormal nos grupos: não estima um efeito causal "
+                "nem comprova o poder do estudo realizado.")
+    n_real = int(amostra["n_real_por_grupo"].iloc[0])
+    no_n_real = amostra[amostra["n"] == n_real].copy()
+    no_n_real["Teste"] = no_n_real["teste"].map(NOMES_TESTE)
+    st.markdown(f"**Poder simulado com o tamanho real: {n_real} PRs por grupo.**")
+    st.dataframe(no_n_real[["rotulo_efeito", "efeito", "Teste", "taxa_rejeicao",
+                           "ic_inf", "ic_sup"]].rename(columns={
+        "rotulo_efeito": "Referência", "efeito": "Mudança de escala", "taxa_rejeicao": "Poder",
+        "ic_inf": "IC 95% inferior", "ic_sup": "IC 95% superior",
+    }).style.format({
+        "Mudança de escala": "{:+.1%}", "Poder": "{:.2%}",
+        "IC 95% inferior": "{:.2%}", "IC 95% superior": "{:.2%}",
+    }), hide_index=True, width="stretch")
+    st.markdown("**Meta de 80% de poder na grade simulada.**")
+    resumo_amostra = resumir_amostra(amostra)
+    resumo_legivel = pd.DataFrame([
+        {"Referência": r.rotulo_efeito, "Teste": NOMES_TESTE[r.teste],
+         "Primeiro n testado com ≥80% (por grupo)":
+             str(int(r.n_grade_80)) if r.atingiu_alvo else r.limite_censurado,
+         "Poder no ponto reportado": r.poder_ponto_reportado,
+         "IC 95%": f"{r.ic_inf:.2%} a {r.ic_sup:.2%}",
+         "Limite inferior também ≥80%": "Sim" if r.limite_inferior_atinge_alvo else "Não"}
+        for r in resumo_amostra.itertuples()
+    ])
+    st.dataframe(resumo_legivel.style.format({"Poder no ponto reportado": "{:.2%}"}),
+                 hide_index=True, width="stretch")
+    st.caption("O primeiro ponto da grade com taxa estimada de pelo menos 80% "
+               "não é o tamanho mínimo exato. Se a meta não foi atingida, o resultado "
+               "é um limite da busca; não extrapolamos um número. Os intervalos "
+               "são pontuais: não corrigem a seleção adaptativa do n e medem somente "
+               "o erro Monte Carlo, não a incerteza do efeito e do modelo.")
+    st.download_button("Baixar análise de tamanho da amostra", amostra.to_csv(index=False),
+                       file_name=f"amostra_alfa_{alfa:.0%}.csv", mime="text/csv")

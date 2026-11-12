@@ -36,18 +36,23 @@ def test_dashboard_com_g1_g2_e_controles_funcionando():
     app = AppTest.from_file(str(RAIZ / "app.py"), default_timeout=45).run()
     assert not app.exception
     assert len(app.header) == 7
-    assert len(app.get("plotly_chart")) == 2
+    assert len(app.get("plotly_chart")) == 5
     assert all("G2" not in aviso.value for aviso in app.info)
-    resultados_iniciais = app.dataframe[-1].value.copy()
+    def tabela_exemplo():
+        return next(item.value for item in app.dataframe
+                    if "Teste" in item.value.columns
+                    and "Medida do efeito" not in item.value.columns)
+
+    resultados_iniciais = tabela_exemplo().copy()
 
     app.slider[0].set_value(-80).run()
     assert not app.exception
-    assert not app.dataframe[-1].value.equals(resultados_iniciais)
+    assert not tabela_exemplo().equals(resultados_iniciais)
 
     app.number_input[0].set_value(200).run()
     assert not app.exception
-    assert len(app.get("plotly_chart")) == 2
+    assert len(app.get("plotly_chart")) == 5
 
     app.radio[0].set_value("Linear").run()
     assert not app.exception
-    assert len(app.get("plotly_chart")) == 2
+    assert len(app.get("plotly_chart")) == 5
