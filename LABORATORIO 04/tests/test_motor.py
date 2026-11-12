@@ -188,11 +188,13 @@ def test_cli_executa_e_valida_entrada(tmp_path):
     raiz = Path(__file__).resolve().parents[1]
     saida = tmp_path / "execucao.csv"
     comando = [sys.executable, "-m", "src.rodar_q1_q2", "--reps", "3", "--saida", str(saida)]
-    execucao = subprocess.run(comando, cwd=raiz, capture_output=True, text=True)
+    execucao = subprocess.run(comando, cwd=raiz, capture_output=True, text=True,
+                              encoding="utf-8")
     assert execucao.returncode == 0, execucao.stderr
     assert len(carregar_resultados(saida)) == 12
     assert "Execução rápida" in execucao.stdout
-    invalida = subprocess.run(comando + ["--reps", "0"], cwd=raiz, capture_output=True, text=True)
+    invalida = subprocess.run(comando + ["--reps", "0"], cwd=raiz, capture_output=True, text=True,
+                              encoding="utf-8")
     assert invalida.returncode != 0
     assert "reps deve" in invalida.stderr
 
@@ -209,7 +211,8 @@ def test_grade_completa_recupera_manifesto_obsoleto_e_remove_configuracoes_antig
         carregar_resultados(saida)
     execucao = subprocess.run(
         [sys.executable, "-m", "src.rodar_q1_q2", "--reps", "3",
-         "--todas-situacoes", "--saida", str(saida)], cwd=raiz, capture_output=True, text=True)
+         "--todas-situacoes", "--saida", str(saida)], cwd=raiz, capture_output=True, text=True,
+                              encoding="utf-8")
     assert execucao.returncode == 0, execucao.stderr
     assert "[30/30]" in execucao.stdout
     dados = carregar_resultados(saida)

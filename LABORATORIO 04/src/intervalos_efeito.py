@@ -7,6 +7,7 @@ conclusões causais. Execute ``python -m src.intervalos_efeito`` para salvar.
 """
 
 import argparse
+import sys
 import hashlib
 import importlib.metadata
 import json
@@ -199,7 +200,7 @@ def salvar_intervalos(df, caminho=None):
     caminho = Path(caminho) if caminho is not None else RAIZ / "resultados" / "efeitos_ic.csv"
     caminho.parent.mkdir(parents=True, exist_ok=True)
     manifesto = caminho.with_name(caminho.stem + "_metadados.json")
-    df.to_csv(caminho, index=False, float_format="%.17g")
+    df.to_csv(caminho, index=False, float_format="%.17g", lineterminator="\n")
     metadados["arquivos_sha256"] = {caminho.name: _sha256(caminho.read_bytes())}
     manifesto.write_text(json.dumps(metadados, ensure_ascii=False, indent=2, allow_nan=False)
                          + "\n", encoding="utf-8")
@@ -257,4 +258,5 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     main()

@@ -4,7 +4,7 @@
   "dados_sha256": "f0e6fcdcb9699ae070c02e135a8d05c48eaafb58bd94f7a40e4cf923eadda98a",
   "metodo_sha256": {
     "efeito.py": "32f4d53d3af3fe5ea12d3c000a5815ac339a8434ad9a6eba8a2afe132726d81b",
-    "intervalos_efeito.py": "605549710267ab4504227d8526942d6c8a5de90be103e58cef986bfea942d865"
+    "intervalos_efeito.py": "b8f33db4a3cb53672a55bd449ad3f4441e62058c6ac728ebd874aa5f78c5f34c"
   },
   "parametros": {
     "n_resamples": 10000,
@@ -18,7 +18,7 @@
     "n_sem_bot": 30
   },
   "versoes": {
-    "python": "3.12.14",
+    "python": "3.13.12",
     "numpy": "2.5.4",
     "pandas": "3.1.1",
     "scipy": "1.18.1"
@@ -27,6 +27,6 @@
   "interpretacao": "Efeitos descritivos, com bot menos sem bot, sem interpretação causal. ICs BCa não são inversões dos testes Welch e Mann–Whitney. Confiança independente do alfa do dashboard; sem ajuste simultâneo entre as duas medidas.",
   "arquivo_dados_sha256": "fed2e25a0954a971a833744b61ca8842ed5314cdc0abb31f883e949402f11cda",
   "arquivos_sha256": {
-    "efeitos_ic.csv": "4c760015ce4377251ac40b8d7801d1e6bfb5678c1bbe6c8ef97b22f84947a33f"
+    "efeitos_ic.csv": "32bcc11e8c07d4fbf1659d0b3eef142ec7f2d46ef01cfeca8873cca2ca67236d"
   }
 }

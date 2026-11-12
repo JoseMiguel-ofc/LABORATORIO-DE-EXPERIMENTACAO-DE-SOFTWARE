@@ -1,6 +1,7 @@
 """Reproduz simulações para três alfas e ICs bootstrap com um único comando."""
 
 import argparse
+import sys
 from src import intervalos_efeito
 from src.experimentos import argumentos, precomputar
 from src.motor import RAIZ
@@ -46,5 +47,7 @@ def main(argv=None):
     return 0
 
 
+# Saída redirecionada no Windows usa cp1252, que não tem α.
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     raise SystemExit(main())

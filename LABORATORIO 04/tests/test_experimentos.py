@@ -171,7 +171,8 @@ def test_configuracao_invalida_nao_cria_arquivos(tmp_path, kwargs):
 def test_cli_rapida_gera_tres_caches_e_reproduzir_bootstrap(tmp_path):
     comando = [sys.executable, "-m", "src.reproduzir", "--reps", "2", "--n-max", "2000",
                "--n-resamples", "100", "--saida", str(tmp_path)]
-    execucao = subprocess.run(comando, cwd=RAIZ, capture_output=True, text=True)
+    execucao = subprocess.run(comando, cwd=RAIZ, capture_output=True, text=True,
+                              encoding="utf-8")
     assert execucao.returncode == 0, execucao.stderr
     assert "α=1% | Simulação [30/30]" in execucao.stdout
     assert "α=5% | Amostra" in execucao.stdout
@@ -181,7 +182,8 @@ def test_cli_rapida_gera_tres_caches_e_reproduzir_bootstrap(tmp_path):
         assert len(experimentos.carregar_simulacao_alfa(alfa, tmp_path)) == 60
         assert experimentos.carregar_amostra_alfa(alfa, tmp_path)["alfa"].eq(alfa).all()
     assert (tmp_path / "efeitos_ic.csv").is_file()
-    repetida = subprocess.run(comando, cwd=RAIZ, capture_output=True, text=True)
+    repetida = subprocess.run(comando, cwd=RAIZ, capture_output=True, text=True,
+                              encoding="utf-8")
     assert repetida.returncode == 0, repetida.stderr
     assert repetida.stdout.count("cache válido reutilizado") == 7
 
@@ -189,7 +191,8 @@ def test_cli_rapida_gera_tres_caches_e_reproduzir_bootstrap(tmp_path):
 def test_cli_rejeita_configuracao_invalida_antes_de_escrever(tmp_path):
     execucao = subprocess.run(
         [sys.executable, "-m", "src.reproduzir", "--n-resamples", "1", "--saida", str(tmp_path)],
-        cwd=RAIZ, capture_output=True, text=True)
+        cwd=RAIZ, capture_output=True, text=True,
+                              encoding="utf-8")
     assert execucao.returncode != 0
     assert "n-resamples deve" in execucao.stderr
     assert not list(tmp_path.iterdir())

@@ -33,9 +33,9 @@
   "metodo_sha256": {
     "cenario.py": "fb201bc42b40d30b05ea3dac084709f38a0eba2d5d8a493417b1d16f425dcf36",
     "simulacao.py": "77f0b3340c5d059585fa8002f3553aa3d05ba87c2c3f557fe689c72e5f922b2d",
-    "motor.py": "1a149bf88b78f4d019345040be62f42ba1dd83d33c2dd9d728f7341b1bab9623",
+    "motor.py": "96a080ef4ce0356da9c86b2500ee22d39118a6c52dfbe05767223bdbcbd20208",
     "testes.py": "5a8a1ca33d0c626cd3bd3c1cf1c59948d6afdfa00751406154017e1589920d56",
-    "amostra.py": "a8b6f1246f5e44029466ac37caeeb43f5e89db1fee3da90f78371c7d88a67f28"
+    "amostra.py": "9a38898d57995bc4d97314537e1b1d4532a1c9aa1b33e787f9f8ab713002e85b"
   },
   "parametros": {
     "situacao": "base",
@@ -120,7 +120,7 @@
   },
   "efeito_observado_mediana": 0.8187389472483233,
   "versoes": {
-    "python": "3.12.14",
+    "python": "3.13.12",
     "numpy": "2.5.4",
     "pandas": "3.1.1",
     "scipy": "1.18.1"

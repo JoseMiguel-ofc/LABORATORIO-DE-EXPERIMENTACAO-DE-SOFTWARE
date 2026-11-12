@@ -1,0 +1,4 @@
+# Os manifestos conferem hashes dos bytes dos CSVs, JSONs e do código. Com
+# core.autocrlf=true (padrão do Git no Windows) o checkout troca LF por CRLF,
+# os hashes deixam de bater e o dashboard pede para refazer as simulações.
+* text=auto eol=lf

@@ -1,4 +1,5 @@
 """Leitura e resumo dos dados reais. Para ver o resumo: python -m src.dados"""
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -50,6 +51,7 @@ def simular_provisorio(df, rng, n=10_000):
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     dados = carregar()
     print(resumo(dados).round(2).to_string())
     print("\nParâmetros lognormal (μ, σ de log(horas)):")

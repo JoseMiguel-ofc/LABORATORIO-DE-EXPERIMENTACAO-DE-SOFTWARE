@@ -121,7 +121,7 @@ def main():
         print(f"{grupo}: população de {len(pop)} PRs", flush=True)
         print(pop["autor"].value_counts().head(8).to_string(), flush=True)
         amostras.append(sortear(pop, rng))
-    pd.concat(amostras).to_csv(SAIDA, index=False)
+    pd.concat(amostras).to_csv(SAIDA, index=False, lineterminator="\n")
     print(f"Gravado em {SAIDA}", flush=True)
 
 

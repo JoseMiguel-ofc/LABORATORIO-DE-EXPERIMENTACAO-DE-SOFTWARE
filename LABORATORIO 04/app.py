@@ -5,15 +5,16 @@ import streamlit as st
 
 from src.cenario import ALFA, H0, H1, PERGUNTA, PREVISAO, SEMENTE, ajustar_cenario
 from src.amostra import resumir_amostra
+from src.aplicacao_real import aplicar_dados_reais, tabela_secao6, texto_secao6
 from src.coleta import BOT, FIM, INICIO, REPO
 from src.conclusoes import (classificacao_calibracao, textos_simulacao,
                             validar_configuracao_dashboard)
 from src.dados import GRUPOS, carregar, resumo
-from src.efeito import cliffs_delta, hedges_g
 from src.estilo import NOMES_SITUACAO, NOMES_TESTE
 from src.experimentos import ALFAS, carregar_amostra_alfa, carregar_simulacao_alfa
 from src.graficos import g1, g2, g3, g4, grafico_amostra
 from src.intervalos_efeito import carregar_intervalos
+from src.rodar_q3 import resumo_q3, texto_erro_tipo_i, texto_poder
 from src.simulacao import gerar
 from src.testes import aplicar_testes
 
@@ -75,11 +76,17 @@ st.dataframe(tabela.style.format({coluna: "{:.2f}" for coluna in tabela.columns
                                   if coluna not in ("n", "Outliers (Tukey)")}
                                  | {"n": "{:.0f}", "Outliers (Tukey)": "{:.0f}"}),
              width="stretch")
-st.markdown("Os tempos reais têm forte assimetria à direita: poucos PRs muito demorados "
-            "elevam a média. O G1 usa uma lognormal ajustada separadamente a cada grupo, "
-            "com média e desvio padrão dos logaritmos dos tempos reais. A cauda do "
-            "modelo pode ser mais longa que a observada; o ajuste descritivo não "
-            "significa que os grupos sejam iguais sob H₀.")
+razao_media = tabela["Média (h)"] / tabela["Mediana (h)"]
+st.markdown(f"Os tempos reais têm forte assimetria à direita nos dois grupos: a média é "
+            f"de {razao_media.min():.1f} a {razao_media.max():.1f} vezes a mediana, a "
+            f"assimetria fica entre {tabela['Assimetria'].min():.2f} e "
+            f"{tabela['Assimetria'].max():.2f}, e há "
+            f"{int(tabela['Outliers (Tukey)'].sum())} outliers pela regra de Tukey. "
+            "Na escala logarítmica os tempos ficam próximos de um sino, por isso a "
+            "simulação usa uma lognormal, com μ e σ estimados dos logaritmos dos "
+            "tempos reais. O G1 ajusta cada grupo separadamente só para comparar "
+            "formas; a cauda do modelo é mais longa que a observada, e esse ajuste "
+            "descritivo não é a geração sob H₀, que usa os 60 PRs reunidos.")
 st.caption("G1: 10.000 observações simuladas por grupo, semente 42. As faixas são "
            "definidas pelos dados reais; valores simulados fora delas não aparecem "
            "nas barras, em ambas as escalas. Os percentuais usam a amostra inteira.")
@@ -151,8 +158,10 @@ except (FileNotFoundError, ValueError) as exc:
     st.warning(f"Os resultados da simulação precisam ser gerados ou atualizados: {exc}")
     st.code(comando_experimentos, language="bash")
 if resultados_mc is not None and textos is not None:
+    resumo_situacoes = resumo_q3(resultados_mc)
     st.plotly_chart(g3(resultados_mc), theme=None)
     st.markdown(textos["erro_tipo_i"])
+    st.markdown(f"**Por situação (Q3).** {texto_erro_tipo_i(resumo_situacoes, alfa)}")
     nulos = resultados_mc[np.isclose(resultados_mc["efeito"], 0)].copy()
     nulos["Avaliação"] = nulos.apply(classificacao_calibracao, axis=1)
     nulos["Situação"] = nulos["situacao"].map(NOMES_SITUACAO)
@@ -177,6 +186,23 @@ st.header("5. Poder")
 if resultados_mc is not None and textos is not None:
     st.plotly_chart(g4(resultados_mc), theme=None)
     st.markdown(textos["poder"])
+    st.markdown(f"**Por situação (Q3).** {texto_poder(resumo_situacoes)}")
+    maior_efeito = resumo_situacoes["efeito_maior"].iloc[0]
+    st.dataframe(pd.DataFrame({
+        "Situação": resumo_situacoes["situacao"].map(NOMES_SITUACAO),
+        "PRs por grupo": resumo_situacoes["n"],
+        "Welch, efeito 0": resumo_situacoes["zero_welch"],
+        "Mann–Whitney, efeito 0": resumo_situacoes["zero_mann_whitney"],
+        f"Welch, +{maior_efeito:.0%}": resumo_situacoes["maior_welch"],
+        f"Mann–Whitney, +{maior_efeito:.0%}": resumo_situacoes["maior_mann_whitney"],
+        "Rejeita mais": resumo_situacoes["mais_rejeicoes"].map(NOMES_TESTE)
+                        .fillna("ICs se sobrepõem"),
+    }).style.format({coluna: "{:.2%}" for coluna in (
+        "Welch, efeito 0", "Mann–Whitney, efeito 0",
+        f"Welch, +{maior_efeito:.0%}", f"Mann–Whitney, +{maior_efeito:.0%}")}),
+        hide_index=True, width="stretch")
+    st.caption("“Rejeita mais” só aponta um teste quando os intervalos de Wilson de 95% "
+               "não se sobrepõem. Em variâncias diferentes, efeito 0 não é H₀ verdadeira.")
     st.caption("Cada ponto é calculado a partir dos resultados salvos; os controles "
                "do exemplo G2 não alteram esta grade. O painel de variâncias diferentes "
                "mostra taxas de rejeição sob distribuições diferentes, sem uma comparação "
@@ -198,27 +224,15 @@ distribuição. O efeito positivo multiplica os tempos com bot por `1 + efeito`.
                        file_name=f"simulacao_alfa_{alfa:.0%}.csv", mime="text/csv")
 
 st.header("6. Dados reais")
-testes_reais = aplicar_testes(reais["com_bot"], reais["sem_bot"], alfa=alfa)
-efeitos_reais = {"welch": hedges_g(reais["com_bot"], reais["sem_bot"]),
-                 "mann_whitney": cliffs_delta(reais["com_bot"], reais["sem_bot"])}
-st.dataframe(pd.DataFrame([
-    {"Teste": r["nome"], "Estatística": r["estatistica"], "p-valor": r["p_valor"],
-     "Medida do efeito": "g de Hedges" if chave == "welch" else "δ de Cliff",
-     "Tamanho do efeito": efeitos_reais[chave],
-     coluna_decisao: "Rejeitar H₀" if r["rejeita_h0"] else "Não rejeitar H₀"}
-    for chave, r in testes_reais.items()
-]).style.format({"Estatística": "{:.4f}", "p-valor": "{:.6f}",
-                 "Tamanho do efeito": "{:.4f}"}), hide_index=True, width="stretch")
-for resultado in testes_reais.values():
-    st.markdown(f"**{resultado['nome']}:** {resultado['interpretacao']}")
-st.markdown(f"O g de Hedges é **{efeitos_reais['welch']:.4f}**, a diferença de médias "
-            "padronizada pelo desvio combinado, com correção para amostras pequenas. "
-            f"O delta de Cliff é **{efeitos_reais['mann_whitney']:.4f}**, a diferença "
-            "entre as probabilidades de um PR com bot demorar mais e demorar menos "
-            "que um PR sem bot; empates contribuem zero. "
-            "Ambos usam a direção com bot menos sem bot, e valores positivos indicam "
-            "maior tempo nesse grupo. A relevância prática deve considerar horas "
-            "e contexto, sem atribuir causalidade ao bot.")
+resultado_real = aplicar_dados_reais(reais["com_bot"], reais["sem_bot"], alfa=alfa)
+st.dataframe(tabela_secao6(resultado_real).style.format(
+    {"Estatística": "{:.4f}", "p-valor": "{:.6f}", "Tamanho do efeito": "{:.4f}"}),
+    hide_index=True, width="stretch")
+st.markdown(texto_secao6(resultado_real))
+st.caption("g de Hedges: diferença de médias dividida pelo desvio combinado, com correção "
+           "para amostras pequenas. δ de Cliff: P(com bot demora mais) − P(com bot demora "
+           "menos), entre −1 e 1. Valores positivos indicam mais tempo com bot. Magnitudes "
+           "pelas faixas de Cohen (g) e de Romano et al. (δ).")
 st.caption("Hedges padroniza a diferença, mas não elimina a assimetria nem torna "
            "as variâncias iguais; sua correção usual deriva do modelo normal. "
            "A amostra observacional continua sujeita a diferenças de complexidade dos PRs.")

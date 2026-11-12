@@ -230,7 +230,7 @@ def carregar_resultados(caminho=None, *, validar_manifesto=True):
 
 
 def _temporario(destino, conteudo):
-    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=destino.parent,
+    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", newline="", dir=destino.parent,
                                      prefix=f".{destino.name}.", suffix=".tmp", delete=False) as arquivo:
         arquivo.write(conteudo)
         arquivo.flush()

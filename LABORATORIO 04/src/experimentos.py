@@ -6,6 +6,7 @@ Os resultados originais de 5% continuam diretamente em ``resultados/``.
 """
 
 import argparse
+import sys
 from hashlib import sha256
 import json
 from numbers import Integral
@@ -230,5 +231,7 @@ def main(argv=None):
     return 0
 
 
+# Saída redirecionada no Windows usa cp1252, que não tem α.
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     raise SystemExit(main())

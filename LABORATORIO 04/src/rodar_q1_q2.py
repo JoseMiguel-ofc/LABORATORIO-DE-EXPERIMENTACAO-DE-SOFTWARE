@@ -1,6 +1,7 @@
 """CLI reproduzível de Q1/Q2; --todas-situacoes inclui o complemento Q3."""
 
 import argparse
+import sys
 from pathlib import Path
 
 from src.cenario import ALFA, SEMENTE, ajustar_cenario
@@ -43,4 +44,5 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     main()

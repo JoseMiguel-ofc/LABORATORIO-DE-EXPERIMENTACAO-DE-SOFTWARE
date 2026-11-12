@@ -6,6 +6,7 @@ modelo, não evidência adicional nem validação por poder observado dos p-valo
 """
 
 import argparse
+import sys
 import hashlib
 import importlib.metadata
 import json
@@ -268,8 +269,9 @@ def salvar_amostra(df, diretorio=None):
     diretorio.mkdir(parents=True, exist_ok=True)
     caminhos = {"curvas": diretorio / "amostra.csv", "resumo": diretorio / "amostra_resumo.csv",
                 "metadados": diretorio / "amostra_metadados.json"}
-    df.to_csv(caminhos["curvas"], index=False, float_format="%.17g")
-    resumir_amostra(df).to_csv(caminhos["resumo"], index=False, float_format="%.17g")
+    df.to_csv(caminhos["curvas"], index=False, float_format="%.17g", lineterminator="\n")
+    resumir_amostra(df).to_csv(caminhos["resumo"], index=False, float_format="%.17g",
+                                lineterminator="\n")
     metadados["arquivos_sha256"] = {
         caminhos[chave].name: _sha256(caminhos[chave].read_bytes())
         for chave in ("curvas", "resumo")}
@@ -342,4 +344,5 @@ def main():
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     main()

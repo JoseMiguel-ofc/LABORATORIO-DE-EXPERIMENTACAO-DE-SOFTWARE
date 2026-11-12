@@ -31,6 +31,20 @@ API do GitHub. Para ver só o resumo dos dados: `.venv/bin/python -m src.dados`.
 Se usar Python 3.13, troque somente o comando de criação do ambiente por
 `python3.13 -m venv .venv`.
 
+No Windows (PowerShell), o caminho do Python do ambiente muda:
+
+```powershell
+py -3.13 -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt
+.venv\Scripts\python -m streamlit run app.py
+```
+
+Nos demais comandos deste README, troque `.venv/bin/python` por
+`.venv\Scripts\python`. O arquivo `.gitattributes` desta pasta mantém as quebras
+de linha no padrão Unix (LF) também no Windows: os manifestos conferem o hash dos
+bytes dos CSVs e do código, e a conversão para CRLF do Git no Windows faria o
+dashboard pedir para refazer as simulações.
+
 ## Estrutura
 
 | Caminho | Conteúdo |
@@ -47,6 +61,8 @@ Se usar Python 3.13, troque somente o comando de criação do ambiente por
 | `src/exemplo.py` | Execução do exemplo da Sprint 1 pelo terminal |
 | `src/motor.py` | Repetições em lotes, taxas de rejeição, ICs e persistência |
 | `src/rodar_q1_q2.py` | Q1/Q2 e opção de executar todas as situações da Q3 |
+| `src/rodar_q3.py` | Q3 isolada, resumo por situação e textos das seções 4 e 5 |
+| `src/aplicacao_real.py` | Testes nos dados reais: tabela e texto da seção 6 |
 | `src/efeito.py` | g de Hedges e delta de Cliff |
 | `src/amostra.py` | Poder com n real e busca de n para 80% de poder |
 | `src/estilo.py` | Cores fixas e tema dos gráficos |
@@ -378,6 +394,60 @@ o que muda ao reduzir α, a previsão versus os resultados e a recomendação co
 as limitações do estudo. Reduzir α torna a rejeição mais exigente e normalmente
 reduz erro tipo I e poder; os números para α = 0,01 e 0,10 vêm das execuções
 próprias de cada nível, descritas nos extras acima.
+
+## Sprints 2 e 3 — pessoa A
+
+### Q3: situações que violam os pressupostos
+
+`src/rodar_q3.py` roda Q1 e Q2 nas quatro situações da Q3 (assimetria forte,
+outliers, amostra pequena e variâncias diferentes) com o motor da Parte B. Cada
+configuração reinicia a semente 42, então as taxas são idênticas às da grade
+completa; um teste automatizado confere essa igualdade. A execução atualiza só as
+linhas da Q3 e preserva o cenário base salvo:
+
+```bash
+.venv/bin/python -m src.rodar_q3                 # α = 5%
+.venv/bin/python -m src.rodar_q3 --alfa 0.01     # outra grade da entrega
+.venv/bin/python -m src.rodar_q3 --reps 200 --saida resultados_diagnostico/q3.csv
+```
+
+`resumo_q3()` reduz a grade a uma linha por situação: calibração no efeito zero
+(pelo IC de Wilson) e taxas no maior efeito. Um teste só é apontado como o que
+"rejeita mais" quando os intervalos dos dois não se sobrepõem. Variâncias
+diferentes fica fora do veredito sobre poder, porque ali efeito zero já não é H₀.
+Os textos das seções 4 e 5 saem desse resumo e mudam com o α selecionado.
+
+Com α = 5%, Mann–Whitney ficou entre 4,79% e 5,23% de erro tipo I em todas as
+situações sob H₀, enquanto Welch ficou conservador em todas (0,78% a 1,46%). No
+efeito de +50%, Mann–Whitney rejeita mais em todas as situações, e Welch não
+rejeitou mais em nenhum efeito positivo da grade: a vantagem não muda de lado.
+
+### Seção 6: os testes nos dados reais
+
+`src/aplicacao_real.py` aplica os dois testes ao CSV real e monta a tabela da
+seção 6 com estatística, p-valor, decisão, tamanho do efeito, magnitude e uma
+conclusão por teste. As magnitudes seguem as faixas de Cohen para o g de Hedges
+(0,2; 0,5; 0,8) e de Romano et al. (2006) para o δ de Cliff (0,147; 0,33; 0,474).
+Para ver no terminal: `.venv/bin/python -m src.aplicacao_real`.
+
+Com α = 5%, nenhum teste rejeita H₀. O efeito é desprezível pelo g de Hedges
+(0,050) e pequeno pelo δ de Cliff (0,271): o PR com bot demorou mais em 64% dos
+pares. Em horas, a mediana com bot é 14,0 h maior e a média, 10,1 h maior, perto
+de desvios padrão de 188 h e 211 h.
+
+### Publicação no Streamlit Community Cloud
+
+O dashboard só lê arquivos versionados (`dados/` e `resultados/`), então não roda
+simulações na nuvem. Para publicar:
+
+1. Entre em [share.streamlit.io](https://share.streamlit.io) com a conta do GitHub.
+2. Em **Create app**, escolha o repositório
+   `JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE`, a branch `main` e o
+   arquivo `LABORATORIO 04/app.py`.
+3. Em **Advanced settings**, escolha Python 3.12 e confirme.
+4. Copie o link gerado para `DASHBOARD` em `app.py` e para o topo deste README.
+
+O Streamlit Cloud instala o `requirements.txt` da mesma pasta do `app.py`.
 
 ## Dados reais
 
