@@ -1,0 +1,51 @@
+name: coleta-steam
+# Lab05: mede de hora em hora a latência e a disponibilidade da Steam e
+# commita o CSV em "LABORATORIO 05/dados/brutos/". O agendamento só roda
+# a partir da branch padrão (main).
+on:
+  schedule:
+    - cron: "17 * * * *"   # minuto 17 de cada hora (UTC)
+  workflow_dispatch:        # permite rodar manualmente para testar
+
+permissions:
+  contents: write
+
+# Nunca duas coletas ao mesmo tempo: evita conflito no push do CSV.
+concurrency:
+  group: coleta-steam
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: "LABORATORIO 05"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Coletar
+        run: python coleta/coletar.py
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+      - name: Commitar os dados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/brutos/
+          if git diff --cached --quiet; then
+            echo "sem mudanças"
+            exit 0
+          fi
+          git commit -m "coleta automática $(date -u +%FT%TZ)"
+          # Se alguém deu push durante a coleta, rebaseia e tenta de novo.
+          for tentativa in 1 2 3 4 5; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0
+            echo "push falhou (tentativa $tentativa); aguardando"
+            sleep $((tentativa * 5))
+          done
+          exit 1

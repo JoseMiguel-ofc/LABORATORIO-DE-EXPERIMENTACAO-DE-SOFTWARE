@@ -1,0 +1,40 @@
+{
+  "user_agent": "LabExpSoftware-Steam/1.0 (projeto academico; medicao externa de latencia; +https://github.com/JoseMiguel-ofc/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE)",
+  "timeout_s": 15,
+  "pausa_s": 1.0,
+  "saida": "dados/brutos/coleta.csv",
+  "usuarios_online": {
+    "nome": "ValveStats",
+    "url": "https://www.valvesoftware.com/en/about/stats",
+    "campo": "users_online"
+  },
+  "endpoints": [
+    {
+      "nome": "GetServerInfo",
+      "url": "https://api.steampowered.com/ISteamWebAPIUtil/GetServerInfo/v1/"
+    },
+    {
+      "nome": "GetNumberOfCurrentPlayers_730",
+      "url": "https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=730",
+      "jogadores": true
+    },
+    {
+      "nome": "GetNumberOfCurrentPlayers_570",
+      "url": "https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=570",
+      "jogadores": true
+    },
+    {
+      "nome": "GetNumberOfCurrentPlayers_578080",
+      "url": "https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=578080",
+      "jogadores": true
+    },
+    {
+      "nome": "PaginaLoja",
+      "url": "https://store.steampowered.com/app/730/"
+    },
+    {
+      "nome": "appdetails",
+      "url": "https://store.steampowered.com/api/appdetails?appids=730&filters=basic"
+    }
+  ]
+}
