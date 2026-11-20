@@ -1,0 +1,73 @@
+{
+  "versao_metodo": 1,
+  "dados_reais_utilizados": false,
+  "data_used": false,
+  "hipotese_dimensionada": "H1: latência pico > fora; H2/H3 não dimensionadas",
+  "teste": "Mann–Whitney U",
+  "alternativa": "greater",
+  "metodo": "asymptotic",
+  "correcao_continuidade": false,
+  "intervalo": "Wilson 95%, pontual, incerteza de Monte Carlo",
+  "modelo": "log(L_t)=sigma*X_t+I(pico)*log(1+efeito); X_t AR(1) estacionário, Var=1",
+  "pico_utc": {
+    "inicio_inclusivo": 14,
+    "fim_exclusivo": 22,
+    "status": "definição operacional provisória, não inferida de dados"
+  },
+  "unidade": "uma observação por hora para um único endpoint; endpoints não são réplicas independentes",
+  "cobertura": "floor(8*dias*cobertura) pico, floor(16*dias*cobertura) fora; espaçamento determinístico",
+  "pressupostos_sinteticos": true,
+  "limites": [
+    "Modelo não inclui falhas/timeouts, rajadas, tendências ou mudança de runner.",
+    "Dependência AR(1) é sensibilidade; MW independente não corrige autocorrelação.",
+    "Não mede associação com usuários (H2) nem manutenção semanal (H3).",
+    "Dias de uma grade não são o menor tamanho possível; ICs não são simultâneos."
+  ],
+  "configuracao": {
+    "dias": [
+      7,
+      14,
+      21,
+      28,
+      42,
+      56
+    ],
+    "efeitos": [
+      0.0,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "sigmas": [
+      0.5,
+      1.0
+    ],
+    "rhos": [
+      0.0,
+      0.5
+    ],
+    "reps": 10000,
+    "semente": 42,
+    "alfa": 0.016666666666666666,
+    "cobertura": 1.0
+  },
+  "versoes": {
+    "python": "3.12.14",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1"
+  },
+  "codigo_sha256": "d50f41b45ad078512e308e9360cf77e97858ef18edf5dcceb8af02ab3b6d67fc",
+  "reuso_lab04": "motor em lotes, sementes comuns e Wilson; adaptação autocontida ao desenho horário H1",
+  "referencias": [
+    "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html",
+    "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.lfilter.html"
+  ],
+  "gerado_em_utc": "2026-11-20T00:10:54.034756+00:00",
+  "csv_sha256": "1fae358bc4e99c1e17ed882b89f25b8717b952dc2e017ad6ef450ebf8e6d036a",
+  "resumo_sha256": "b03d377d9ae40a73723d8f39d67af1e46d72c3f0251bd15772af7efa44571dd0",
+  "resumo_configuracao": {
+    "alvo": 0.8,
+    "efeito_planejado": 0.2
+  }
+}

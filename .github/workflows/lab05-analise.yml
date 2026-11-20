@@ -1,0 +1,33 @@
+name: lab05-analise
+
+on:
+  push:
+    paths:
+      - 'LABORATORIO 05/**'
+      - '.github/workflows/lab05-analise.yml'
+  pull_request:
+    paths:
+      - 'LABORATORIO 05/**'
+      - '.github/workflows/lab05-analise.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'LABORATORIO 05'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: 'LABORATORIO 05/requirements.txt'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python -m compileall -q analise coleta
+      - run: python -m analise.executar_notebook

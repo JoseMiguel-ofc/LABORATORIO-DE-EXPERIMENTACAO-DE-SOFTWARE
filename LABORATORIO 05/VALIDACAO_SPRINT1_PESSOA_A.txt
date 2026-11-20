@@ -1,0 +1,54 @@
+LAB05 - Sprint 1 - Pessoa A (Método e Análise)
+Validação local em 19/11/2026 (America/Sao_Paulo)
+
+ENTREGAS
+- docs/proposta.md: critérios com fontes, GQM, hipóteses, métricas/escalas,
+  sete categorias, desenho e justificativa da duração.
+- analise/piloto.ipynb: notebook executado com o CSV real disponível.
+- analise/piloto.py: resumo por endpoint, quartis/IQR, falhas e ausências,
+  usuários por hora, figura e metadados.
+- analise/poder.py: Monte Carlo de H1 adaptado do procedimento do Lab04;
+  pressupostos sintéticos, cenários IID e diagnóstico de autocorrelação.
+- README.md: instalação, execução e limites dos resultados.
+- .github/workflows/lab05-analise.yml: testes e notebook preparados para CI.
+
+COMANDOS EXECUTADOS (dentro da pasta LABORATORIO 05)
+.venv/bin/python -m pytest -q
+Resultado: 84 passed in 3.02s.
+
+.venv/bin/python -m compileall -q analise coleta
+Resultado: concluído sem erro de sintaxe.
+
+.venv/bin/python -m analise.executar_notebook
+Resultado: todas as células executadas, nenhuma saída de erro.
+Figura resultados/piloto/piloto.png também conferida visualmente.
+
+.venv/bin/python -m analise.poder
+.venv/bin/python -m analise.poder --alfa 0.016666666666666666 --saida resultados/planejamento_familia
+Resultado: duas grades completas de 96 configurações, 10.000 repetições por
+configuração, semente 42. CSVs e hashes conferidos. Com os mesmos sorteios,
+o limiar menor não aumentou o número de rejeições em nenhuma configuração.
+
+git diff --check
+Resultado: sem erros de whitespace.
+
+DADOS E SITUAÇÃO DO PILOTO
+O CSV bruto foi comparado com a versão HEAD e permaneceu intacto.
+SHA256: 2a3426d4b6a07985bc10a55747940741c9b6041095c8371d836a967696210614
+Disponíveis: 7 linhas, sendo 6 serviços e 1 consulta auxiliar ValveStats.
+Há um intervalo horário observado: piloto PARCIAL.
+A janela de 48h começa em 19/11/2026 19:38:11.983 UTC e termina, com fim
+exclusivo, em 21/11/2026 19:38:11.983 UTC.
+Nenhum teste confirmatório foi aplicado à rodada isolada.
+Os resultados de planejamento são sintéticos e não foram misturados ao CSV.
+
+PENDÊNCIA EMPÍRICA
+Quando houver 24-48h, executar novamente analise.executar_notebook e rever
+as premissas e o prazo da coleta com a dupla. O cenário IID mais disperso
+precisou de 42 dias testados a alfa=0,05 e 56 dias a alfa=0,05/3 para superar
+80% de poder para aumento de 20%. Isso é condicional ao modelo e não dimensiona
+H2/H3. A proposta documenta os limites da alternativa de 28 dias.
+
+CI
+O workflow foi preparado localmente. Execução remota no GitHub depende do
+envio destas alterações; não foi declarada como testada remotamente.

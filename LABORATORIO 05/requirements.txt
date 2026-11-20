@@ -1,3 +1,10 @@
-# Lab05 Sprint 1: coleta.
+# Lab05 Sprint 1: coleta e análise piloto / planejamento.
 requests>=2.31
 pytest>=8.0
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+matplotlib>=3.8
+nbformat>=5.10
+nbclient>=0.10
+ipykernel>=6.29

@@ -1,0 +1,7 @@
+endpoint,medicoes,tentativas_classificaveis,tentativas_nao_classificaveis,sucessos_operacionais,falhas_operacionais,respostas_http_disponiveis,disponibilidade_http_observada_pct,sucesso_operacional_observado_pct,latencias_sucesso_validas,latencias_ausentes_ou_invalidas,latencia_media_ms,latencia_dp_ms,latencia_p25_ms,latencia_p50_ms,latencia_p75_ms,latencia_iqr_ms,latencia_p95_ms,usuarios_online_ausentes,intervalos_horarios_com_dados,horas_calendario_utc_com_dados,cobertura_horaria_pct
+GetServerInfo,1,1,0,1,0,1,100,100,1,0,177.4,,177.4,177.4,177.4,0,177.4,0,1,1,2.0833333
+GetNumberOfCurrentPlayers_730,1,1,0,1,0,1,100,100,1,0,90.3,,90.3,90.3,90.3,0,90.3,0,1,1,2.0833333
+GetNumberOfCurrentPlayers_570,1,1,0,1,0,1,100,100,1,0,91.3,,91.3,91.3,91.3,0,91.3,0,1,1,2.0833333
+GetNumberOfCurrentPlayers_578080,1,1,0,1,0,1,100,100,1,0,125.7,,125.7,125.7,125.7,0,125.7,0,1,1,2.0833333
+PaginaLoja,1,1,0,1,0,1,100,100,1,0,264.4,,264.4,264.4,264.4,0,264.4,0,1,1,2.0833333
+appdetails,1,1,0,1,0,1,100,100,1,0,75.7,,75.7,75.7,75.7,0,75.7,0,1,1,2.0833333

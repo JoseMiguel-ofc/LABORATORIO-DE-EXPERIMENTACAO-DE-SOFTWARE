@@ -1,0 +1,62 @@
+{
+  "status": "parcial",
+  "horas_planejadas": 48,
+  "janela_inicio_inclusivo_utc": "2026-11-19T19:38:11.983000Z",
+  "janela_fim_exclusivo_utc": "2026-11-21T19:38:11.983000Z",
+  "duracao_coleta_observada_h": 0.0019308333333333332,
+  "amplitude_observada_na_janela_h": 0.0019308333333333332,
+  "intervalos_horarios_com_dados": 1,
+  "horas_calendario_utc_com_dados": 1,
+  "cobertura_horaria_pct": 2.0833333333333335,
+  "linhas_na_janela": 7,
+  "medicoes_servicos_na_janela": 6,
+  "tentativas_classificaveis_na_janela": 6,
+  "tentativas_nao_classificaveis_na_janela": 0,
+  "medicoes_auxiliares_na_janela": 1,
+  "linhas_fora_da_janela": 0,
+  "endpoints_esperados": [
+    "GetServerInfo",
+    "GetNumberOfCurrentPlayers_730",
+    "GetNumberOfCurrentPlayers_570",
+    "GetNumberOfCurrentPlayers_578080",
+    "PaginaLoja",
+    "appdetails"
+  ],
+  "diagnostico_entrada": {
+    "linhas_brutas": 7,
+    "duplicatas_excluidas": 0,
+    "pares_duplicados_com_valores_divergentes": 0,
+    "linhas_apos_deduplicacao": 7,
+    "endpoints_desconhecidos": [],
+    "medicoes_endpoints_desconhecidos": 0,
+    "latencias_ausentes_ou_invalidas": 0,
+    "status_ausentes_ou_invalidos": 0
+  },
+  "usuarios_horas_observadas": 1,
+  "horas_com_contagens_usuarios_conflitantes": 0,
+  "entrada": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 05/dados/brutos/coleta.csv",
+  "sha256_csv": "2a3426d4b6a07985bc10a55747940741c9b6041095c8371d836a967696210614",
+  "avisos": [
+    "Piloto parcial: aguardar ao menos 24 horas e medições repetidas dos endpoints antes de concluir a análise.",
+    "Percentuais de HTTP disponível e sucesso operacional usam somente tentativas classificáveis observadas; não são uptime.",
+    "Status ausente, inválido ou apenas HTTP 1xx sem erro registrado é não classificável; não conta como falha nem entra no denominador de sucesso.",
+    "Intervalos sem medição representam ausência de dados, não falha do serviço.",
+    "Latências de falhas e timeouts foram excluídas das estatísticas de latência de sucesso.",
+    "Percentis com poucas observações são apenas descritivos; DP com n=1 permanece ausente.",
+    "A série de usuários usa uma observação por hora UTC; réplicas entre endpoints não aumentam n."
+  ],
+  "gerado_em_utc": "2026-11-20T00:13:23.519633Z",
+  "versoes": {
+    "python": "3.12.14",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "matplotlib": "3.11.2"
+  },
+  "sha256_codigo_piloto": "297cb9668ed828cb2bb9aa26ee62a37db9a08f44c14e0b5ea52764a49093225d",
+  "sha256_configuracao": "8a5af96b4aee77986569b52150d242a646ee0c0d316db2c5f44aaf59e87a947f",
+  "sha256_artefatos": {
+    "resumo_endpoints": "163d72f5b0d911aec4e22fbb911988d96ef83949ad0fb72fe497e83fe643c58e",
+    "usuarios_por_hora": "3c1ea0d77506cc20b35f0c20eb6fa9d4674b19e7f3a3f29f1dd6e280c33e71c2",
+    "grafico": "66c76d5fe51559ae1346767504269ff0e2d5f8c96f9615dfd636ecd00bdabf41"
+  }
+}
