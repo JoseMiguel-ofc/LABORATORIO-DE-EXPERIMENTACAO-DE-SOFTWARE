@@ -12,8 +12,13 @@ conforme o número de usuários online e a janela de manutenção semanal?
 |---|---|---|
 | `coleta/config.json` | Endpoints, User-Agent, timeout e pausa | B |
 | `coleta/coletar.py` | Uma rodada de medição por execução, gravada no CSV | B |
+| `coleta/laco.py` e `coleta/commitar.sh` | Laço de ~5h40 com uma rodada por hora e commit após cada rodada | B |
 | `../.github/workflows/coleta.yml` | Agendamento no minuto 17 de cada hora e commit automático | B |
+| `../.github/workflows/lab05-validacao.yml` | Validação do dataset a cada push e uma vez por dia | B |
 | `dados/brutos/coleta.csv` | Dataset (commits do `github-actions[bot]`) | bot |
+| `dados/downdetector_manual.csv` | Incidentes consultados manualmente no Downdetector | B |
+| `scripts/validar_dados.py` | Faltantes, duplicatas, execuções puladas, outliers e cobertura | B |
+| `resultados/validacao/` | Relatório de validação e cobertura por horário | B |
 | `analise/piloto.ipynb` | Notebook executável de descrição das primeiras 24–48 horas | A |
 | `analise/piloto.py` | Leitura do CSV, tabelas e gráficos do piloto | A |
 | `analise/poder.py` | Planejamento prospectivo de H1 por Monte Carlo | A |
@@ -175,3 +180,44 @@ executa os testes e o notebook em Python 3.12 quando estas alterações estivere
 no GitHub.
 
 Registro da execução local: [VALIDACAO_SPRINT1_PESSOA_A.txt](VALIDACAO_SPRINT1_PESSOA_A.txt).
+
+## Sprint 2 — Pessoa B
+
+### Correção da coleta
+
+Na primeira semana, o agendador do GitHub disparou o workflow só a cada 6 a 12
+horas: 20 rodadas em 154 horários (13% de cobertura) e nenhuma na janela
+candidata de manutenção. Desde 26/11/2026, cada execução de `coleta-steam` roda
+`coleta/laco.py` por até ~5h40 e mede no minuto 17 de cada hora, com commit após
+cada rodada. O `cron` só inicia a execução seguinte. O coletor, os endpoints e o
+esquema do CSV não mudaram. Detalhes em
+[docs/ameacas_interna_externa.md](docs/ameacas_interna_externa.md).
+
+### Validar os dados
+
+```bash
+.venv/bin/python scripts/validar_dados.py                                  # relatório no terminal
+.venv/bin/python scripts/validar_dados.py --saida resultados/validacao     # grava relatório e cobertura
+.venv/bin/python scripts/validar_dados.py --ate 2026-12-20 --saida resultados/validacao   # até a data de corte
+```
+
+O relatório cobre valores faltantes, duplicatas, execuções puladas (horário de
+coleta sem rodada), atraso em relação ao minuto 17, rodadas em que tudo falhou,
+outliers de latência por endpoint (Tukey) e cobertura por grupo (pico, fora,
+janela candidata de manutenção), com as definições da proposta. O script só
+reprova (código 1) se o arquivo estiver quebrado. O workflow `lab05-validacao`
+roda a validação a cada push e uma vez por dia e publica o relatório no resumo
+da execução.
+
+### Downdetector e data de corte
+
+- Consulta manual ao Downdetector a cada dois dias, registrada em
+  `dados/downdetector_manual.csv` conforme [docs/downdetector.md](docs/downdetector.md).
+- Na data de corte: desativar o workflow `coleta-steam` em *Actions*, gerar o
+  relatório com `--ate` e congelar o dataset na tag `dados-v1.0`.
+
+### Testes
+
+```bash
+.venv/bin/python -m pytest -q tests/test_coletar.py tests/test_laco.py tests/test_validar_dados.py
+```

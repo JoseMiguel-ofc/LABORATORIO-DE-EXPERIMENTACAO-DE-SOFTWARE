@@ -1,16 +1,20 @@
 name: coleta-steam
-# Lab05: mede de hora em hora a latência e a disponibilidade da Steam e
-# commita o CSV em "LABORATORIO 05/dados/brutos/". O agendamento só roda
-# a partir da branch padrão (main).
+# Lab05: mede a latência e a disponibilidade da Steam uma vez por hora e
+# commita o CSV em "LABORATORIO 05/dados/brutos/".
+#
+# O agendador do GitHub não dispara toda hora (na 1ª semana: a cada 6-12 h).
+# Por isso cada execução fica ativa por até ~5h40 e coleta no minuto 17 de
+# cada hora (coleta/laco.py). O cron só serve para iniciar uma nova execução
+# quando a anterior acaba: com o "concurrency", disparos durante uma execução
+# ficam na fila (no máximo um) em vez de rodar em paralelo.
 on:
   schedule:
     - cron: "17 * * * *"   # minuto 17 de cada hora (UTC)
-  workflow_dispatch:        # permite rodar manualmente para testar
+  workflow_dispatch:        # permite iniciar manualmente
 
 permissions:
   contents: write
 
-# Nunca duas coletas ao mesmo tempo: evita conflito no push do CSV.
 concurrency:
   group: coleta-steam
   cancel-in-progress: false
@@ -18,7 +22,7 @@ concurrency:
 jobs:
   coletar:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 355   # limite do GitHub para um job: 360 min
     defaults:
       run:
         working-directory: "LABORATORIO 05"
@@ -28,24 +32,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install requests
-      - name: Coletar
-        run: python coleta/coletar.py
-        env:
-          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
-      - name: Commitar os dados
+      - name: Configurar o autor dos commits
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/brutos/
-          if git diff --cached --quiet; then
-            echo "sem mudanças"
-            exit 0
-          fi
-          git commit -m "coleta automática $(date -u +%FT%TZ)"
-          # Se alguém deu push durante a coleta, rebaseia e tenta de novo.
-          for tentativa in 1 2 3 4 5; do
-            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0
-            echo "push falhou (tentativa $tentativa); aguardando"
-            sleep $((tentativa * 5))
-          done
-          exit 1
+      - name: Coletar de hora em hora
+        run: python coleta/laco.py --duracao-min 340 --commit "bash coleta/commitar.sh"
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}

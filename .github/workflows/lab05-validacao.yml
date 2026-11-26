@@ -1,0 +1,45 @@
+name: lab05-validacao
+# Lab05: valida o dataset da coleta (faltantes, duplicatas, execuções puladas,
+# outliers e cobertura) a cada push e uma vez por dia. O relatório aparece no
+# resumo da execução, em Actions. Os commits do bot da coleta não disparam
+# workflows (usam o GITHUB_TOKEN); por isso há também a execução diária.
+on:
+  push:
+    paths:
+      - "LABORATORIO 05/**"
+      - ".github/workflows/lab05-validacao.yml"
+      - ".github/workflows/coleta.yml"
+  pull_request:
+    paths:
+      - "LABORATORIO 05/**"
+  schedule:
+    - cron: "45 9 * * *"   # todo dia às 9:45 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "LABORATORIO 05"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: "LABORATORIO 05/requirements.txt"
+      - run: python -m pip install pandas requests pytest
+      - name: Testes do coletor, do laço e da validação
+        run: python -m pytest -q tests/test_coletar.py tests/test_laco.py tests/test_validar_dados.py
+      - name: Validar o dataset
+        run: python scripts/validar_dados.py --saida /tmp/validacao
+      - name: Publicar o relatório no resumo da execução
+        if: always()
+        run: |
+          if [ -f /tmp/validacao/relatorio_validacao.md ]; then
+            cat /tmp/validacao/relatorio_validacao.md >> "$GITHUB_STEP_SUMMARY"
+          fi
