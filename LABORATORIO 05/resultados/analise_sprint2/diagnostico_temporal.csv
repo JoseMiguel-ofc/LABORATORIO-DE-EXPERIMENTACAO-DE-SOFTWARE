@@ -1,0 +1,7 @@
+endpoint,horas_com_medicao,horas_calendario_entre_primeira_e_ultima,cobertura_calendario_observado_pct,pares_consecutivos_validos_1h,correlacao_descritiva_lag1h,status_inferencia
+GetServerInfo,26,170,15.294117647058824,5,-0.21651516267048299,exploratoria; independência não estabelecida
+GetNumberOfCurrentPlayers_730,26,170,15.294117647058824,5,-0.29234542429521676,exploratoria; independência não estabelecida
+GetNumberOfCurrentPlayers_570,26,170,15.294117647058824,5,-0.7142974965618558,exploratoria; independência não estabelecida
+GetNumberOfCurrentPlayers_578080,26,170,15.294117647058824,5,-0.5845185202067364,exploratoria; independência não estabelecida
+PaginaLoja,26,170,15.294117647058824,5,-0.5019098743338123,exploratoria; independência não estabelecida
+appdetails,26,170,15.294117647058824,5,-0.8780559122084275,exploratoria; independência não estabelecida

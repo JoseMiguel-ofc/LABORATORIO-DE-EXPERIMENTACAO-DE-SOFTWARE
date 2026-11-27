@@ -1,0 +1,56 @@
+LAB05 - Sprint 2 - Pessoa A (Método e Análise)
+Validação local: 26/11/2026 (America/Sao_Paulo)
+
+IMPLEMENTAÇÃO
+- analise/analise.py: preparação, descrição por endpoint/período/dia, diagnóstico
+  temporal, normalidade, H1-H3, correção de Holm e relatório reproduzível.
+- analise/estatistica.py: Mann-Whitney unilateral, delta de Cliff, Spearman,
+  Fisher unilateral, Shapiro-Wilk e Holm com famílias planejadas preservadas.
+- analise/graficos_s2.py: três figuras com painéis separados por endpoint.
+- docs/ameacas_conclusao_construto.md: ameaças e mitigação da Pessoa A.
+- docs/metodo_analise_sprint2.md: escalas, distribuição, justificativa dos testes,
+  regras de seleção e limites da inferência.
+- README.md e workflow lab05-analise atualizados para a Sprint 2.
+
+EXECUÇÕES
+Na pasta LABORATORIO 05:
+.venv/bin/python -m analise.analise
+Resultado: 156 medições, seis repetições por endpoint/hora excluídas;
+relatório, sete CSVs e três PNGs em resultados/analise_sprint2, mais manifesto.
+
+.venv/bin/python -m pytest -q
+Resultado: 160 passed in 6.07s.
+Casos incluem referência SciPy, empates, extremos numéricos, zeros em Fisher,
+grupos vazios, dados faltantes, UTC/DST, limites semiabertos, seleção horária,
+reprodução e preservação dos arquivos de entrada.
+
+.venv/bin/python -m compileall -q analise coleta scripts
+Resultado: sem erros de sintaxe.
+
+git diff --check
+Resultado: sem erros de whitespace.
+
+VERIFICAÇÕES DOS ARTEFATOS
+- Os três gráficos foram conferidos visualmente.
+- Links locais, hashes de código, entrada e saídas foram conferidos.
+- O CSV bruto permanece idêntico ao HEAD do repositório.
+- SHA256: fbe086f5ecf75ae832a319de31a95907cdf2828adf9c1ba98682f8b2871d6a70.
+- Valores-p e efeitos do endpoint primário:
+  H1: n_pico=12, n_fora=14, Cliff=0,452381, p=0,025321, Holm=0,075962.
+  H2: 26 pares, Spearman=0,149402, p=0,233172, Holm=0,466344.
+  H3: zero tentativas na janela, 26 fora; comparação não estimável.
+
+LIMITES DOS DADOS ATUAIS
+O CSV tem 189 linhas e 27 rodadas por endpoint. Uma rodada extra na mesma
+hora foi excluída em cada serviço pela regra de conservar a primeira tentativa,
+independentemente do resultado. ValveStats foi excluído da estatística dos
+serviços. A análise reteve 26 medições por serviço.
+H3 está implementada e testada com dados controlados, mas não pode ser estimada
+no recorte real sem observações na janela candidata de manutenção.
+Os valores-p de H1/H2 são exploratórios: cobertura baixa, dependência temporal
+não estabelecida e mudança de agendamento ainda limitam a inferência.
+O dataset não foi declarado congelado nem a coleta completa.
+
+CI
+O workflow está preparado localmente. Sua execução remota depende do envio
+das alterações ao GitHub; não foi declarada como validada remotamente.

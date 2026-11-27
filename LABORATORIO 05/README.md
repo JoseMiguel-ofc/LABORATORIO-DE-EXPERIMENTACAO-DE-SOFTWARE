@@ -22,6 +22,9 @@ conforme o número de usuários online e a janela de manutenção semanal?
 | `analise/piloto.ipynb` | Notebook executável de descrição das primeiras 24–48 horas | A |
 | `analise/piloto.py` | Leitura do CSV, tabelas e gráficos do piloto | A |
 | `analise/poder.py` | Planejamento prospectivo de H1 por Monte Carlo | A |
+| `analise/analise.py` | Descrição, normalidade, H1–H3 e relatório da Sprint 2 | A |
+| `analise/estatistica.py` | Mann–Whitney, Cliff, Spearman, Fisher, Shapiro e Holm | A |
+| `analise/graficos_s2.py` | Figuras por hora, período e usuários | A |
 | `resultados/` | Relatórios parciais reais e planejamento sintético identificado | A |
 | `docs/` | Proposta (A) e ética (B) | A e B |
 | `tests/` | Testes do coletor e das análises, sem rede | A e B |
@@ -180,6 +183,79 @@ executa os testes e o notebook em Python 3.12 quando estas alterações estivere
 no GitHub.
 
 Registro da execução local: [VALIDACAO_SPRINT1_PESSOA_A.txt](VALIDACAO_SPRINT1_PESSOA_A.txt).
+
+## Sprint 2 — Pessoa A
+
+Com o ambiente da pasta `LABORATORIO 05` já instalado:
+
+```bash
+.venv/bin/python -m analise.analise
+```
+
+No Windows/PowerShell, use `.venv\Scripts\python -m analise.analise`.
+O comando lê o CSV disponível e gera o
+[relatório exploratório](resultados/analise_sprint2/relatorio.md), tabelas e três
+gráficos em `resultados/analise_sprint2/`. Não é necessário aguardar o fim da
+coleta para executar; atualize os resultados sempre que o CSV mudar.
+
+A entrega inclui:
+
+- Estatística descritiva por endpoint, por período e por dia da semana UTC.
+- Normalidade por Shapiro–Wilk, com indicação de grupos pequenos ou constantes.
+- H1 por Mann–Whitney unilateral, com delta de Cliff e descrição das medianas.
+- H2 por Spearman unilateral, com o coeficiente e a limitação do valor-p em
+  amostras pequenas.
+- H3 por Fisher unilateral, com tabela 2×2 e razão de chances de falha quando
+  estimáveis.
+- Valores-p brutos e ajustados por Holm nas famílias principal e secundária.
+- Gráficos de latência por hora, boxplots pico × fora do pico e dispersão
+  latência × usuários, separados por endpoint.
+- Documentação das [ameaças de conclusão e construto](docs/ameacas_conclusao_construto.md)
+  e da [justificativa dos testes](docs/metodo_analise_sprint2.md).
+
+Uma observação por endpoint e hora UTC é selecionada pela primeira tentativa,
+independentemente de sucesso ou falha. `ValveStats` é excluído da estatística dos
+serviços. Dados faltantes não viram zero; falhas não entram na latência de
+sucesso; outliers válidos são mantidos. Os metadados registram essas escolhas,
+os filtros, versões e hashes do CSV, do código e dos artefatos.
+
+Os valores-p desta etapa são **exploratórios**: a independência entre horas não
+foi estabelecida, a cobertura tem lacunas e o agendamento mudou em 26/11/2026.
+Holm controla a multiplicidade apenas sob referências de teste válidas e não
+corrige a dependência temporal. A robustez por reamostragem e os intervalos
+correspondentes são etapas posteriores.
+
+### Escolher um recorte temporal
+
+Para descrever uma fase separada, escolha os limites antes de interpretar os
+valores-p e salve em outra pasta. Por exemplo, para incluir medições do dia
+26/11 até antes do dia 27/11 em UTC:
+
+```bash
+.venv/bin/python -m analise.analise --inicio 2026-11-26T00:00:00Z --fim 2026-11-27T00:00:00Z --saida resultados/analise_sprint2_recorte
+```
+
+O início é inclusivo e o fim é exclusivo; ambos exigem fuso explícito. O exemplo
+é um recorte de calendário, sem afirmar o instante exato da mudança do coletor.
+Também existem `--entrada` e `--config`; consulte `--help`.
+
+### Situação da execução de 26/11/2026
+
+O CSV disponível tinha 189 linhas: 27 consultas auxiliares e 162 medições dos
+seis serviços. A regra horária selecionou **156 medições, 26 por serviço**,
+excluindo seis repetições na mesma hora. Não havia tentativa na janela candidata
+de manutenção: H3 ficou **não estimável**, com motivo explícito. Ter zero falhas
+nas tentativas observadas não comprova disponibilidade contínua nem ausência de
+efeito de manutenção. O estado atual sempre deve ser conferido no manifesto.
+
+Para testar a entrega:
+
+```bash
+.venv/bin/python -m pytest -q
+.venv/bin/python -m compileall -q analise coleta scripts
+```
+
+Registro local: [VALIDACAO_SPRINT2_PESSOA_A.txt](VALIDACAO_SPRINT2_PESSOA_A.txt).
 
 ## Sprint 2 — Pessoa B
 

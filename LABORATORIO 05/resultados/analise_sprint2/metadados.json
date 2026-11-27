@@ -1,0 +1,81 @@
+{
+  "entrada": "/Users/eddiechristian/Desktop/LABORATORIO-DE-EXPERIMENTACAO-DE-SOFTWARE/LABORATORIO 05/dados/brutos/coleta.csv",
+  "sha256_csv": "fbe086f5ecf75ae832a319de31a95907cdf2828adf9c1ba98682f8b2871d6a70",
+  "inicio_filtro_inclusivo_utc": null,
+  "fim_filtro_exclusivo_utc": null,
+  "inicio_observado_utc": "2026-11-19T19:38:13.180000Z",
+  "fim_observado_utc": "2026-11-26T20:17:08.239000Z",
+  "diagnostico_entrada": {
+    "linhas_brutas": 189,
+    "duplicatas_excluidas": 0,
+    "pares_duplicados_com_valores_divergentes": 0,
+    "linhas_apos_deduplicacao": 189,
+    "endpoints_desconhecidos": [],
+    "medicoes_endpoints_desconhecidos": 0,
+    "latencias_ausentes_ou_invalidas": 0,
+    "status_ausentes_ou_invalidos": 0
+  },
+  "linhas_fora_filtro_temporal": 0,
+  "consultas_auxiliares_excluidas": 27,
+  "medicoes_desconhecidas_excluidas": 0,
+  "medicoes_servicos_antes_selecao_horaria": 162,
+  "repeticoes_endpoint_hora_excluidas": 6,
+  "medicoes_analisadas": 156,
+  "endpoints_planejados": [
+    "GetServerInfo",
+    "GetNumberOfCurrentPlayers_730",
+    "GetNumberOfCurrentPlayers_570",
+    "GetNumberOfCurrentPlayers_578080",
+    "PaginaLoja",
+    "appdetails"
+  ],
+  "sha256_configuracao": "06b993a7a21aa2eef7058cf97bc70d1a06c71858fd891f80b2b057c0a17cc6d7",
+  "selecao_horaria": "Primeira tentativa por endpoint e hora de calendário UTC, independente do resultado.",
+  "metodo": "sprint2_exploratoria_v1",
+  "gerado_em_utc": "2026-11-27T00:10:04.115639+00:00",
+  "status": "exploratorio_coleta_em_andamento",
+  "dataset_congelado": false,
+  "alfa": 0.05,
+  "endpoint_primario": "GetServerInfo",
+  "pico_utc": [
+    14,
+    22
+  ],
+  "janela_candidata": {
+    "dia": "terça-feira",
+    "horas": [
+      15,
+      18
+    ],
+    "fuso": "America/Los_Angeles"
+  },
+  "correcao_multiplicidade": "Holm; família primária de 3, secundária com todas as H1-H3 dos demais endpoints configurados; ausentes preservadas",
+  "outliers": "mantidos",
+  "testes_independencia": "não estabelecida; valores-p exploratórios",
+  "versoes": {
+    "python": "3.12.14",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "sha256_codigo": {
+    "analise.py": "236fd78a6fbf8016ded890b2a66a9b6e99e10fc7213b35e66cfe8443ca574dfe",
+    "estatistica.py": "a230a7f0e3e7e15e7436a8447f4903b66f354b37b813c81df23cb170e0f3125f",
+    "graficos_s2.py": "18702af3825fbfb169057733fe57d7ab56bb0765f7eba57c47105876cce30c14",
+    "piloto.py": "297cb9668ed828cb2bb9aa26ee62a37db9a08f44c14e0b5ea52764a49093225d"
+  },
+  "sha256_artefatos": {
+    "descritiva_endpoint.csv": "96db5711b14f919432d3a599729b52e7c2e777624c1a2524feaf5468c7ccc2a0",
+    "descritiva_periodo.csv": "e9955849aca77e7e03658aeaff116ac4c14e29a3e0d20eb3585bc39c9887496c",
+    "descritiva_dia_semana.csv": "c854cae63ddf3ce8587258c28501af5a5cf4dcf0bd10a461a3eecf2759746b30",
+    "normalidade.csv": "ac04749b8f5672280bf54dc7c5dae6bd576c2fe90ce6584ee32edce8e31c214f",
+    "hipoteses.csv": "934f7d5ccd13a20de82975d22b27820fde1405ff9f166aa94b46cb1e19870c48",
+    "diagnostico_temporal.csv": "6935fd745b9c8c68ad49178162ba2f27134c50c9c7fe7b397e0107a7be9d3cc4",
+    "dados_analisados.csv": "f95e14d4e95e63326541b12c551a123015ce561146227752fb0613b4232d290b",
+    "latencia_por_hora.png": "3371a6c3e22abbc023196a996c6d2042e18805a1de083d927f5588578067127b",
+    "boxplot_pico_fora.png": "9571f52a6a509147383c2c616c9a35978da0b86cca702c45b254b3695e52cf32",
+    "dispersao_usuarios_latencia.png": "e502c951bc6558ec7ebcc0f012db16c3251fb164096f1f0b41197da70ca42733",
+    "relatorio.md": "e78d898915a22f39b84f9a74f2391b2b546c55154634fa35711e113c42fb5f50"
+  }
+}

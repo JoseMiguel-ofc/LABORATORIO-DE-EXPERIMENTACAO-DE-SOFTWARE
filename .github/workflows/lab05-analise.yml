@@ -31,3 +31,5 @@ jobs:
       - run: python -m pytest -q
       - run: python -m compileall -q analise coleta
       - run: python -m analise.executar_notebook
+      - name: Executar análise exploratória da Sprint 2
+        run: python -m analise.analise
